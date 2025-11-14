@@ -1,0 +1,10 @@
+window.addEventListener("scroll", function () {
+  const tren = document.getElementById("tren");
+
+  const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+  const porcentaje = window.scrollY / scrollMax;
+
+  const avance = porcentaje * (window.innerWidth - 200); // Avance horizontal
+
+  tren.style.transform = `translateX(${avance}px)`;
+});
