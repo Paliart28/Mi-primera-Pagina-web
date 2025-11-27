@@ -1,0 +1,59 @@
+:root{
+    --bar-h: 64px;          /* alto del header del tren */
+    --track-h: 8px;         /* grosor de la vía */
+    --accent: #2563eb;      /* color de progreso */
+    --accent-2:#22c55e;     /* gradiente 2 */
+    --track: #e5e7eb;       /* color vía */
+    --label: #374151;       /* color labels */
+    --dot: #111827;         /* color estaciones */
+    --bg: #fff;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--bg); font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial; color:#111827; }
+
+  /* ===== Barra fija arriba ===== */
+  .railway{
+    position:fixed; inset:0 0 auto 0; height:var(--bar-h); z-index:9999;
+    background:linear-gradient(to bottom,rgba(255,255,255,.9),rgba(255,255,255,.7));
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid #f3f4f6;
+  }
+  .railway__inner{ max-width:1100px; margin:0 auto; height:100%; padding:12px 20px; display:grid; grid-template-rows:auto 1fr; gap:8px; }
+
+  .railway__labels{ display:flex; justify-content:space-between; gap:10px; font-size:12px; color:var(--label); font-weight:700; }
+  .railway__labels a{ text-decoration:none; color:inherit; transition:color .2s; }
+  .railway__labels a:hover{ color:var(--accent); }
+  .railway__labels a.is-active{ color:var(--accent); text-underline-offset: 3px; text-decoration: underline; }
+
+  .track{ position:relative; height:var(--track-h); border-radius:999px; background:var(--track); }
+  .track__progress{ position:absolute; inset:0 auto 0 0; width:100%; transform-origin:left center; transform:scaleX(0); background:linear-gradient(90deg,var(--accent),var(--accent-2)); border-radius:inherit; }
+
+  /* Tren */
+  .train{ position:absolute; top:50%; transform:translate(-50%,-50%); left:0%; width:36px; height:24px; pointer-events:none; filter:drop-shadow(0 1px 2px rgba(0,0,0,.15)); }
+
+  /* Estaciones */
+  .station{ position:absolute; top:50%; width:12px; height:12px; border-radius:999px; background:var(--dot); transform:translate(-50%,-50%); outline:4px solid #fff; }
+  .station--1{ left:0%; } .station--2{ left:25%; } .station--3{ left:50%; } .station--4{ left:75%; } .station--5{ left:100%; }
+  .station.is-active{ background:var(--accent); scale:1.2; }
+
+  /* Contenido */
+  main{ margin-top:var(--bar-h); max-width:1100px; padding:32px 20px; margin-inline:auto; }
+  section{ padding:120px 0; border-bottom:1px solid #f3f4f6; scroll-margin-top: calc(var(--bar-h) + 16px); }
+  section:last-child{ border-bottom:0; }
+  section h2{ margin:0 0 12px; font-size:clamp(22px,3vw,32px); }
+
+  .train { animation: bob 1.2s ease-in-out infinite alternate; }
+@keyframes bob { from { translate:0 -1.5px; } to { translate:0 0.5px; } }
+
+
+  /* Accesibilidad */
+  @media (prefers-reduced-motion: reduce){
+    .train, .track__progress{ transition:none !important; }
+  }
+
+  /* Móvil */
+  @media (max-width: 640px){
+    :root{ --bar-h: 72px; }
+    .railway__labels{ font-size:11px; }
+  }
