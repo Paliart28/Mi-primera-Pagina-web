@@ -33,7 +33,7 @@ body {
   margin: 0 auto;
 }
 
-/* Barra fija del tren */
+/* Barra que se mueve del tren*/
 .railway {
   position: sticky;
   top: 0;
