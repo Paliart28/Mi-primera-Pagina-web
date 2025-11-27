@@ -8,11 +8,10 @@
   --bg: #f9fafb;
 }
 
+/* RESET */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -21,57 +20,51 @@ html {
 body {
   margin: 0;
   background: var(--bg);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   color: #111827;
+  font-family: system-ui, sans-serif;
 }
 
+/* CONTENEDOR */
 .container {
   width: min(1120px, 100% - 2rem);
   margin: 0 auto;
 }
 
+/* ================== BARRA SUPERIOR =================== */
 .railway {
   position: sticky;
   top: 0;
-  z-index: 20;
-  background: rgba(15, 23, 42, 0.97);
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.95);
   color: #e5e7eb;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(31, 41, 55, 0.65);
 }
 
 .railway__inner {
-  width: min(1120px, 100% - 2rem);
-  margin: 0 auto;
-  padding: 0.5rem 0;
+  padding: .5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: .5rem;
 }
 
+/* NAV */
 .railway__labels {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 
 .label {
-  position: relative;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
   color: #e5e7eb;
   text-decoration: none;
-  white-space: nowrap;
-  opacity: 0.7;
-  transition: background 0.2s, opacity 0.2s, color 0.2s;
+  padding: .2rem .6rem;
+  border-radius: 20px;
+  opacity: .7;
+  transition: 0.2s;
 }
 
-.label:hover {
-  background: rgba(15, 23, 42, 0.8);
-  opacity: 1;
-}
+.label:hover { opacity: 1; }
 
 .label--active {
   background: #facc15;
@@ -79,8 +72,8 @@ body {
   opacity: 1;
 }
 
+/* VÍA */
 .railway__track {
-  position: relative;
   height: var(--bar-h);
   display: flex;
   align-items: center;
@@ -90,43 +83,39 @@ body {
   position: relative;
   width: 100%;
   height: var(--track-h);
-  border-radius: 999px;
 }
 
 .track__base {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
   background: var(--track);
+  border-radius: 999px;
 }
 
 .track__progress {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
   transform-origin: left center;
   transform: scaleX(0);
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: transform 0.15s linear;
+  border-radius: 999px;
 }
 
+/* ESTACIONES */
 .stations {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  pointer-events: none;
+  align-items: center;
 }
 
 .station {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
+  width: 12px;
+  height: 12px;
   background: var(--dot);
-  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.7);
-  opacity: 0.6;
-  transform: translateY(-1px);
+  border-radius: 50%;
+  opacity: .6;
 }
 
 .station--active {
@@ -134,60 +123,41 @@ body {
   box-shadow: 0 0 0 3px #facc15;
 }
 
+/* TREN */
 .train {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 60px;
-  height: auto;
   transform: translate(-50%, -50%);
-  fill: #f9fafb;
-  stroke: #0f172a;
-  stroke-width: 1;
-  filter: drop-shadow(0 2px 4px rgba(15,23,42,0.6));
-  animation: bob 1.2s ease-in-out infinite alternate;
+  width: 60px;
+  fill: #fff;
+  stroke: #000;
+  stroke-width: 1.5;
 }
 
-.wheel-inner {
-  fill: #9ca3af;
-}
-
-.headlight {
-  fill: #facc15;
-}
-
-@keyframes bob {
-  from { transform: translate(-50%, -52%); }
-  to   { transform: translate(-50%, -48%); }
-}
-
+/* SECCIONES */
 .section {
   padding: 4rem 0;
 }
 
 .section--hero {
-  padding-top: 3.5rem;
-  background: radial-gradient(circle at top left, #1d4ed8 0, #0f172a 40%, #020617 100%);
-  color: #e5e7eb;
+  background: #0f172a;
+  color: white;
 }
 
 .section--light {
   background: #f9fafb;
-  color: #111827;
 }
 
 .section--dark {
   background: #0f172a;
-  color: #e5e7eb;
+  color: white;
 }
 
-.section h1, .section h2 {
-  margin-top: 0;
-}
-
+/* FOOTER */
 .site-footer {
   background: #020617;
   color: #9ca3af;
-  padding: 2rem 0;
   text-align: center;
+  padding: 2rem;
 }

@@ -3,92 +3,106 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo: los cruces que siguen siendo punto ciego</title>
-  <link href="style.css" rel="stylesheet">
+  <title>Rieles en riesgo</title>
+
+  <link href="style.css" rel="stylesheet" />
 </head>
+
 <body>
-  <div class="railway">
+
+  <!-- =================== BARRA DEL TREN ==================== -->
+  <div class="railway" role="region" aria-label="Progreso por secciones">
     <div class="railway__inner">
-      <nav class="railway__labels" aria-label="Estaciones de la historia">
-        <a href="#s1" class="label label--active">Inicio</a>
+
+      <!-- NAV -->
+      <nav class="railway__labels">
+        <a href="#s1" class="label">Inicio</a>
         <a href="#s2" class="label">El problema</a>
         <a href="#s3" class="label">Los datos</a>
         <a href="#s4" class="label">Historias</a>
         <a href="#s5" class="label">Metodología</a>
       </nav>
 
+      <!-- VÍA -->
       <div class="railway__track">
         <div class="track">
           <div class="track__base"></div>
           <div class="track__progress" id="progress"></div>
 
-          <div class="stations" aria-hidden="true">
-            <span class="station station--active"></span>
+          <div class="stations">
+            <span class="station"></span>
             <span class="station"></span>
             <span class="station"></span>
             <span class="station"></span>
             <span class="station"></span>
           </div>
 
-          <svg class="train" id="train" viewBox="0 0 64 40" aria-hidden="true">
-            <rect x="4" y="10" width="40" height="18" rx="3" ry="3" />
-            <rect x="12" y="6" width="22" height="6" rx="2" ry="2" />
-            <rect x="8" y="14" width="10" height="6" rx="1" />
-            <rect x="22" y="14" width="10" height="6" rx="1" />
+          <!-- TREN -->
+          <svg id="train" class="train" viewBox="0 0 64 40">
+            <rect x="4" y="10" width="40" height="18" rx="3" />
+            <rect x="12" y="6" width="22" height="6" rx="2" />
             <circle cx="14" cy="30" r="4" />
             <circle cx="32" cy="30" r="4" />
             <circle cx="14" cy="30" r="2" class="wheel-inner" />
             <circle cx="32" cy="30" r="2" class="wheel-inner" />
             <circle cx="42" cy="18" r="2" class="headlight" />
           </svg>
+
         </div>
       </div>
+
     </div>
   </div>
 
+  <!-- =================== CONTENIDO ==================== -->
+
   <main>
+
     <section id="s1" class="section section--hero">
       <div class="container">
         <h1>Rieles en riesgo</h1>
-        <p>Inicio del reportaje...</p>
+        <p>Portada...</p>
       </div>
     </section>
 
     <section id="s2" class="section section--light">
       <div class="container">
         <h2>El problema</h2>
-        <p>Contenido del problema...</p>
+        <p>Contenido...</p>
       </div>
     </section>
 
     <section id="s3" class="section section--dark">
       <div class="container">
         <h2>Los datos</h2>
-        <p>Contenido de datos...</p>
+        <p>Contenido...</p>
       </div>
     </section>
 
     <section id="s4" class="section section--light">
       <div class="container">
         <h2>Historias</h2>
-        <p>Contenido de historias...</p>
+        <p>Contenido...</p>
       </div>
     </section>
 
     <section id="s5" class="section section--dark">
       <div class="container">
         <h2>Metodología</h2>
-        <p>Contenido de metodología...</p>
+        <p>Contenido...</p>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>Pie de página</p>
+      <p>Proyecto Rieles en riesgo</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="visualizacion.js"></script>
+
 </body>
 </html>
+
