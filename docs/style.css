@@ -1,15 +1,15 @@
 :root {
-  --bar-h: 72px;
-  --track-h: 8px;
-  --accent: #2563eb;
-  --accent-2: #22c55e;
-  --track: #e5e7eb;
-  --label: #374151;
-  --dot: #111827;
+  --bar-h: 72px;           /* alto del header del tren */
+  --track-h: 8px;          /* grosor de la vía */
+  --accent: #2563eb;       /* azul riel */
+  --accent-2: #22c55e;     /* verde segundo tono */
+  --track: #e5e7eb;        /* gris vía */
+  --label: #374151;        /* gris labels */
+  --dot: #111827;          /* negro estaciones */
   --bg: #f9fafb;
 }
 
-/* Reset */
+/* Reset mínimo */
 *,
 *::before,
 *::after {
@@ -33,7 +33,8 @@ body {
   margin: 0 auto;
 }
 
-/* Barra que se mueve del tren*/
+/* ===== Barra fija del tren ===== */
+
 .railway {
   position: sticky;
   top: 0;
@@ -52,6 +53,8 @@ body {
   flex-direction: column;
   gap: 0.5rem;
 }
+
+/* Labels / estaciones */
 
 .railway__labels {
   display: flex;
@@ -82,6 +85,8 @@ body {
   color: #111827;
   opacity: 1;
 }
+
+/* Vía y tren */
 
 .railway__track {
   position: relative;
@@ -114,6 +119,8 @@ body {
   transition: transform 0.15s linear;
 }
 
+/* Estaciones (puntos) */
+
 .stations {
   position: absolute;
   inset: 0;
@@ -138,6 +145,8 @@ body {
   box-shadow: 0 0 0 3px #facc15;
 }
 
+/* Tren */
+
 .train {
   position: absolute;
   top: 50%;
@@ -161,11 +170,11 @@ body {
 }
 
 @keyframes bob {
-  from { transform: translate(-50%, -52%); }
-  to   { transform: translate(-50%, -48%); }
+  from { translate: 0 -1.5px; }
+  to   { translate: 0  0.5px; }
 }
 
-/* Secciones */
+/* ===== Secciones ===== */
 
 .section {
   padding: 4rem 0;
@@ -186,6 +195,8 @@ body {
   background: #0f172a;
   color: #e5e7eb;
 }
+
+/* Hero */
 
 .section__hero-layout {
   display: grid;
@@ -220,6 +231,8 @@ body {
   color: #cbd5f5;
 }
 
+/* Hero highlights */
+
 .hero-highlights {
   display: flex;
   flex-wrap: wrap;
@@ -247,6 +260,8 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
 }
+
+/* Hero aside */
 
 .hero-aside {
   display: flex;
@@ -326,7 +341,7 @@ body {
 }
 
 .side-card__title {
-  margin: 0;
+  margin-top: 0;
   font-size: 1rem;
 }
 
@@ -336,7 +351,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* Data & charts */
+/* Bloques de datos */
 
 .data-block {
   margin-top: 3rem;
@@ -392,7 +407,7 @@ body {
   margin-top: 1.25rem;
 }
 
-/* Story cards */
+/* Historias */
 
 .story-card {
   margin-top: 2rem;
@@ -416,7 +431,7 @@ body {
   font-size: 1rem;
 }
 
-/* Method & links list */
+/* Metodología */
 
 .method-list {
   margin: 1rem 0 0;
@@ -456,19 +471,21 @@ body {
   text-align: center;
 }
 
-/* Responsive */
+/* ===== Responsivo ===== */
 
 @media (max-width: 768px) {
   .railway__labels {
     font-size: 0.7rem;
     overflow-x: auto;
   }
+
   .section__hero-layout,
   .section__two-cols,
   .data-block__layout,
   .data-block__layout--two {
     grid-template-columns: minmax(0, 1fr);
   }
+
   .hero-aside {
     justify-content: flex-start;
   }
@@ -478,12 +495,14 @@ body {
   :root {
     --bar-h: 80px;
   }
+
   .railway__inner {
     gap: 0.4rem;
   }
 }
 
 /* Accesibilidad: reducir motion */
+
 @media (prefers-reduced-motion: reduce) {
   .train,
   .track__progress {
@@ -491,3 +510,4 @@ body {
     animation: none !important;
   }
 }
+
