@@ -1,84 +1,34 @@
+// ===== SCRIPT MINIMAL PARA MOVER EL TREN =====
 document.addEventListener("DOMContentLoaded", () => {
-  const progressEl = document.getElementById("progress");
-  const trainEl = document.getElementById("train");
-  const sections = Array.from(document.querySelectorAll("main section"));
-  const labels = Array.from(document.querySelectorAll(".label"));
-  const stations = Array.from(document.querySelectorAll(".station"));
+  
+  const progress = document.getElementById("progress");
+  const train = document.getElementById("train");
 
-  if (!progressEl || !trainEl || sections.length === 0) {
-    console.error("ERROR: No se encontraron los elementos necesarios.");
-    return;
+  function moveTrain() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    const docHeight = document.documentElement.scrollHeight;
+    const winHeight = window.innerHeight;
+
+    const maxScroll = docHeight - winHeight;
+    const ratio = Math.min(scrollTop / maxScroll, 1);
+
+    // ancho total de la vía
+    const track = progress.parentElement.getBoundingClientRect();
+    const trackWidth = track.width;
+
+    // mover barra
+    progress.style.transform = `scaleX(${ratio})`;
+
+    // Mover tren
+    const posX = ratio * trackWidth;
+    train.style.left = `${posX}px`; 
+    train.style.top = "50%";
+    train.style.transform = "translate(-50%, -50%)";
   }
 
-  /* ============================================================
-     ACTUALIZAR BARRA DE PROGRESO Y POSICIÓN DEL TREN
-     ============================================================ */
+  window.addEventListener("scroll", moveTrain);
+  window.addEventListener("resize", moveTrain);
 
-  const updateTrain = () => {
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollY = window.scrollY;
-
-    let progress = scrollY / maxScroll;
-    progress = Math.max(0, Math.min(1, progress));
-
-    // Actualizar barra de progreso
-    progressEl.style.transform = `scaleX(${progress})`;
-
-    // Mover tren horizontalmente
-    const trackWidth = progressEl.parentElement.offsetWidth;
-    const trainX = progress * trackWidth;
-
-    trainEl.style.left = `${trainX}px`;
-  };
-
-  window.addEventListener("scroll", updateTrain);
-  window.addEventListener("resize", updateTrain);
-  updateTrain();
-
-  /* ============================================================
-     INTERSECTION OBSERVER → MARCAR SECCIÓN ACTIVA
-     ============================================================ */
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const activeId = entry.target.id;
-          const index = sections.findIndex((s) => s.id === activeId);
-
-          labels.forEach((l, i) =>
-            l.classList.toggle("label--active", i === index)
-          );
-
-          stations.forEach((s, i) =>
-            s.classList.toggle("station--active", i === index)
-          );
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  sections.forEach((section) => observer.observe(section));
-
-  /* ============================================================
-     CLICK EN ETIQUETAS PARA SCROLL SUAVE
-     ============================================================ */
-
-  labels.forEach((label) => {
-    label.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const targetId = label.getAttribute("href").replace("#", "");
-      const target = document.getElementById(targetId);
-      const headerHeight = document.querySelector(".railway").offsetHeight;
-
-      const y = target.offsetTop - headerHeight - 10;
-
-      window.scrollTo({
-        top: y,
-        behavior: "smooth",
-      });
-    });
-  });
+  moveTrain();
 });
