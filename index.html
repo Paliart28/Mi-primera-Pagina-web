@@ -3,20 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo</title>
-  <link href="style.css" rel="stylesheet" />
+  <title>Rieles en riesgo: los cruces que siguen siendo punto ciego</title>
+  <link href="style.css" rel="stylesheet">
 </head>
-
 <body>
-
-  <!-- BARRA CON TREN -->
   <div class="railway">
     <div class="railway__inner">
-
-      <nav class="railway__labels">
+      <nav class="railway__labels" aria-label="Estaciones de la historia">
         <a href="#s1" class="label label--active">Inicio</a>
-        <a href="#s2" class="label">Problema</a>
-        <a href="#s3" class="label">Datos</a>
+        <a href="#s2" class="label">El problema</a>
+        <a href="#s3" class="label">Los datos</a>
         <a href="#s4" class="label">Historias</a>
         <a href="#s5" class="label">Metodología</a>
       </nav>
@@ -24,9 +20,9 @@
       <div class="railway__track">
         <div class="track">
           <div class="track__base"></div>
-          <div id="progress" class="track__progress"></div>
+          <div class="track__progress" id="progress"></div>
 
-          <div class="stations">
+          <div class="stations" aria-hidden="true">
             <span class="station station--active"></span>
             <span class="station"></span>
             <span class="station"></span>
@@ -34,89 +30,64 @@
             <span class="station"></span>
           </div>
 
-          <svg id="train" class="train" viewBox="0 0 64 40">
-            <rect x="4" y="10" width="40" height="18" rx="3" ry="3"/>
-            <rect x="12" y="6" width="22" height="6" rx="2" ry="2"/>
-            <circle cx="14" cy="30" r="4"/>
-            <circle cx="32" cy="30" r="4"/>
-            <circle cx="42" cy="18" r="2"/>
+          <svg class="train" id="train" viewBox="0 0 64 40" aria-hidden="true">
+            <rect x="4" y="10" width="40" height="18" rx="3" ry="3" />
+            <rect x="12" y="6" width="22" height="6" rx="2" ry="2" />
+            <rect x="8" y="14" width="10" height="6" rx="1" />
+            <rect x="22" y="14" width="10" height="6" rx="1" />
+            <circle cx="14" cy="30" r="4" />
+            <circle cx="32" cy="30" r="4" />
+            <circle cx="14" cy="30" r="2" class="wheel-inner" />
+            <circle cx="32" cy="30" r="2" class="wheel-inner" />
+            <circle cx="42" cy="18" r="2" class="headlight" />
           </svg>
-
         </div>
       </div>
-
     </div>
   </div>
 
   <main>
-
-    <!-- SECCION 1 -->
     <section id="s1" class="section section--hero">
       <div class="container">
         <h1>Rieles en riesgo</h1>
-        <p class="lead">
-          Entre 2014 y 2024, los registros de atropellos en el tramo Estación Central – O’Higgins
-          revelan patrones que combinan error humano e infraestructura insuficiente.
-        </p>
+        <p>Inicio del reportaje...</p>
       </div>
     </section>
 
-    <!-- SECCION 2 -->
     <section id="s2" class="section section--light">
       <div class="container">
         <h2>El problema</h2>
-        <p>
-          El registro de “imprudencia del peatón” aparece como causa recurrente,
-          pero muchas de estas decisiones ocurren en cruces sin iluminación adecuada,
-          barreras tardías o señalética mínima.
-        </p>
+        <p>Contenido del problema...</p>
       </div>
     </section>
 
-    <!-- SECCION 3 -->
     <section id="s3" class="section section--dark">
       <div class="container">
-        <h2>Datos</h2>
-        <p>
-          Visualizaciones basadas en el sistema de control, la hora del día y la edad
-          de las personas atropelladas.
-        </p>
-        <img src="assets/chart-sistema-cruce.png" class="chart">
-        <img src="assets/chart-horas.png" class="chart">
+        <h2>Los datos</h2>
+        <p>Contenido de datos...</p>
       </div>
     </section>
 
-    <!-- SECCION 4 -->
     <section id="s4" class="section section--light">
       <div class="container">
         <h2>Historias</h2>
-
-        <article class="story-card">
-          <h3>Un cruce en Maipú que suena, pero no alcanza</h3>
-          <p>
-            La alarma suena, pero la calle sigue en movimiento.
-            Las barreras bajan lento, la visibilidad se pierde al atardecer
-            y la vereda termina directo en la vía.
-          </p>
-        </article>
-
-        <blockquote class="big-quote">
-          “Lo más honesto no es borrar la palabra imprudencia,
-          sino preguntarse cuántas oportunidades tiene alguien
-          de equivocarse sin morir en el intento.”
-        </blockquote>
+        <p>Contenido de historias...</p>
       </div>
     </section>
 
-    <!-- SECCION 5 -->
     <section id="s5" class="section section--dark">
       <div class="container">
         <h2>Metodología</h2>
-        <p>Datos: EFE, Carabineros · Periodo: 2014–2024 · Visualizaciones: Python / Altair.</p>
+        <p>Contenido de metodología...</p>
       </div>
     </section>
-
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Pie de página</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>

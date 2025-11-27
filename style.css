@@ -1,139 +1,193 @@
 :root {
-  --yellow: #fdd835;
-  --dark: #1a1a1a;
-  --deepblue: #0c1b33;
-  --lightgray: #e5e5e5;
-  --track: #bdbdbd;
-
-  --bar-h: 70px;
+  --bar-h: 72px;
   --track-h: 8px;
+  --accent: #2563eb;
+  --accent-2: #22c55e;
+  --track: #e5e7eb;
+  --dot: #111827;
+  --bg: #f9fafb;
 }
 
-/* GENERAL */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #fafafa;
-  color: #111;
+  background: var(--bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #111827;
 }
 
 .container {
-  width: min(1100px, 90%);
-  margin: auto;
+  width: min(1120px, 100% - 2rem);
+  margin: 0 auto;
 }
 
-/* SECCIONES */
-.section {
-  padding: 4rem 0;
-}
-
-.section--hero {
-  background: var(--deepblue);
-  color: white;
-}
-
-.section--light {
-  background: white;
-}
-
-.section--dark {
-  background: var(--dark);
-  color: white;
-}
-
-.lead {
-  max-width: 700px;
-  font-size: 1.1rem;
-}
-
-/* TREN */
 .railway {
   position: sticky;
   top: 0;
-  background: var(--dark);
-  color: white;
-  z-index: 999;
-  padding-bottom: 0.5rem;
+  z-index: 20;
+  background: rgba(15, 23, 42, 0.97);
+  color: #e5e7eb;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(31, 41, 55, 0.65);
 }
 
 .railway__inner {
-  width: min(1100px, 90%);
-  margin: auto;
+  width: min(1120px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .railway__labels {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: .5rem 0;
+  gap: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .label {
-  color: #ddd;
+  position: relative;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  color: #e5e7eb;
   text-decoration: none;
-  font-size: .85rem;
-  padding: .3rem .8rem;
-  border-radius: 50px;
+  white-space: nowrap;
+  opacity: 0.7;
+  transition: background 0.2s, opacity 0.2s, color 0.2s;
+}
+
+.label:hover {
+  background: rgba(15, 23, 42, 0.8);
+  opacity: 1;
 }
 
 .label--active {
-  background: var(--yellow);
-  color: black;
+  background: #facc15;
+  color: #111827;
+  opacity: 1;
 }
 
-/* PISTA */
 .railway__track {
+  position: relative;
   height: var(--bar-h);
   display: flex;
   align-items: center;
-  position: relative;
 }
 
 .track {
+  position: relative;
   width: 100%;
   height: var(--track-h);
-  background: var(--track);
   border-radius: 999px;
-  position: relative;
+}
+
+.track__base {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--track);
 }
 
 .track__progress {
-  height: 100%;
-  background: var(--yellow);
-  width: 0;
-  transform-origin: left;
-  transition: width .1s linear;
-}
-
-/* ESTACIONES */
-.stations {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: absolute;
   inset: 0;
+  border-radius: inherit;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: transform 0.15s linear;
+}
+
+.stations {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
 }
 
 .station {
-  width: 12px;
-  height: 12px;
-  background: black;
-  border-radius: 50%;
-  opacity: .4;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--dot);
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.7);
+  opacity: 0.6;
+  transform: translateY(-1px);
 }
 
 .station--active {
   opacity: 1;
-  background: var(--yellow);
+  box-shadow: 0 0 0 3px #facc15;
 }
 
-/* TREN */
 .train {
   position: absolute;
   top: 50%;
   left: 0;
   width: 60px;
+  height: auto;
   transform: translate(-50%, -50%);
-  fill: white;
-  stroke: black;
+  fill: #f9fafb;
+  stroke: #0f172a;
   stroke-width: 1;
+  filter: drop-shadow(0 2px 4px rgba(15,23,42,0.6));
+  animation: bob 1.2s ease-in-out infinite alternate;
+}
+
+.wheel-inner {
+  fill: #9ca3af;
+}
+
+.headlight {
+  fill: #facc15;
+}
+
+@keyframes bob {
+  from { transform: translate(-50%, -52%); }
+  to   { transform: translate(-50%, -48%); }
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section--hero {
+  padding-top: 3.5rem;
+  background: radial-gradient(circle at top left, #1d4ed8 0, #0f172a 40%, #020617 100%);
+  color: #e5e7eb;
+}
+
+.section--light {
+  background: #f9fafb;
+  color: #111827;
+}
+
+.section--dark {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.section h1, .section h2 {
+  margin-top: 0;
+}
+
+.site-footer {
+  background: #020617;
+  color: #9ca3af;
+  padding: 2rem 0;
+  text-align: center;
 }
