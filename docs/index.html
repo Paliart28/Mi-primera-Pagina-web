@@ -1,148 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rieles en riesgo: los cruces que siguen siendo punto ciego</title>
-  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="Historia web sobre siniestros por atropello entre Estación Central y O’Higgins.">
+
+  <link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
 
-<!-- ░░░░░ BARRA SUPERIOR DEL TREN ░░░░░ -->
-<div class="railway">
-  <div class="railway__inner">
+  <!-- ============================================
+       BARRA DEL TREN (PROGRESO)
+       ============================================ -->
+  <header class="railway" role="region" aria-label="Progreso por secciones">
+    <div class="railway__inner">
 
-    <!-- Labels -->
-    <nav class="railway__labels">
-      <a href="#s1" class="label label--active">Inicio</a>
-      <a href="#s2" class="label">El problema</a>
-      <a href="#s3" class="label">Datos</a>
-      <a href="#s4" class="label">Historias</a>
-      <a href="#s5" class="label">Metodología</a>
-    </nav>
+      <!-- Labels de navegación -->
+      <nav class="railway__labels">
+        <a href="#s1" class="label label--active">Inicio</a>
+        <a href="#s2" class="label">El problema</a>
+        <a href="#s3" class="label">Datos</a>
+        <a href="#s4" class="label">Historias</a>
+        <a href="#s5" class="label">Metodología</a>
+      </nav>
 
-    <!-- Vía + Progreso + Tren -->
-    <div class="railway__track">
-      <div class="track">
-        <div class="track__base"></div>
-        <div id="progress" class="track__progress"></div>
+      <!-- Vía -->
+      <div class="railway__track">
+        <div class="track">
 
-        <div class="stations">
-          <span class="station station--active"></span>
-          <span class="station"></span>
-          <span class="station"></span>
-          <span class="station"></span>
-          <span class="station"></span>
-        </div>
+          <div class="track__base"></div>
+          <div class="track__progress" id="progress"></div>
 
-        <!-- SVG Tren -->
-        <svg id="train" class="train" viewBox="0 0 64 40">
-          <rect x="4" y="10" width="40" height="18" rx="3"></rect>
-          <rect x="12" y="6" width="22" height="6" rx="2"></rect>
-          <rect x="8" y="14" width="10" height="6" rx="1"></rect>
-          <rect x="22" y="14" width="10" height="6" rx="1"></rect>
-          <circle cx="14" cy="30" r="4"></circle>
-          <circle cx="32" cy="30" r="4"></circle>
-          <circle class="wheel-inner" cx="14" cy="30" r="2"></circle>
-          <circle class="wheel-inner" cx="32" cy="30" r="2"></circle>
-          <circle class="headlight" cx="42" cy="18" r="2"></circle>
-        </svg>
+          <!-- Estaciones -->
+          <div class="stations">
+            <span class="station station--active"></span>
+            <span class="station"></span>
+            <span class="station"></span>
+            <span class="station"></span>
+            <span class="station"></span>
+          </div>
 
-      </div>
-    </div>
+          <!-- Tren -->
+          <svg class="train" id="train" viewBox="0 0 64 40">
+            <rect x="4" y="10" width="40" height="18" rx="3" ry="3"></rect>
+            <rect x="12" y="6" width="22" height="6" rx="2"></rect>
+            <rect x="8"  y="14" width="10" height="6" rx="1"></rect>
+            <rect x="22" y="14" width="10" height="6" rx="1"></rect>
 
-  </div>
-</div>
+            <circle cx="14" cy="30" r="4"></circle>
+            <circle cx="32" cy="30" r="4"></circle>
 
-<!-- ░░░░░ CONTENIDO PRINCIPAL ░░░░░ -->
-<main>
+            <circle cx="14" cy="30" r="2" class="wheel-inner"></circle>
+            <circle cx="32" cy="30" r="2" class="wheel-inner"></circle>
 
-  <!-- Sección 1 -->
-  <section id="s1" class="section section--hero">
-    <div class="container section__hero-layout">
-      <div>
-        <p class="kicker">Siniestros ferroviarios en la Región Metropolitana</p>
-        <h1 class="hero-title">Rieles en riesgo:<br>los cruces que siguen siendo punto ciego</h1>
+            <circle cx="42" cy="18" r="2" class="headlight"></circle>
+          </svg>
 
-        <p class="hero-lead">
-          Entre 2014 y 2024, los registros muestran patrones donde la combinación
-          de infraestructura insuficiente y decisiones humanas genera riesgos críticos.
-        </p>
-
-        <p class="hero-meta">
-          Por Andrés Hernández, Paloma Riquelme y Josefa Mariñanco — COM-208, 2025
-        </p>
-
-        <div class="hero-highlights">
-          <div class="highlight"><span class="highlight-label">Años</span><span class="highlight-value">2014–2024</span></div>
-          <div class="highlight"><span class="highlight-label">Tramo</span><span class="highlight-value">Estación Central – O’Higgins</span></div>
-          <div class="highlight"><span class="highlight-label">Tipo</span><span class="highlight-value">Siniestros ferroviarios</span></div>
         </div>
       </div>
 
-      <aside class="hero-aside">
-        <figure class="hero-figure">
-          <div class="hero-map-placeholder">Mapa / foto</div>
-          <figcaption>Tramo ferroviario analizado.</figcaption>
-        </figure>
-      </aside>
     </div>
-  </section>
+  </header>
 
-  <!-- Sección 2 -->
-  <section id="s2" class="section section--light">
-    <div class="container section__two-cols">
-      <div>
-        <h2 class="section-title">El problema</h2>
-        <p>Descripción del problema...</p>
+  <!-- ============================================
+       CONTENIDO PRINCIPAL
+       ============================================ -->
+  <main>
+
+    <!-- Sección 1 -->
+    <section id="s1" class="section section--hero">
+      <div class="container section__hero-layout">
+
+        <div>
+          <p class="kicker">Siniestros ferroviarios en la RM</p>
+
+          <h1 class="hero-title">
+            Rieles en riesgo:<br>los cruces que siguen siendo punto ciego
+          </h1>
+
+          <p class="hero-lead">
+            Entre 2014 y 2024, el tramo Estación Central – O’Higgins concentra atropellos
+            asociados a fallas de infraestructura y a la exposición cotidiana de peatones.
+          </p>
+
+          <p class="hero-meta">
+            Por Andrés Hernández, Paloma Riquelme y Josefa Mariñanco · PUC 2025
+          </p>
+
+          <div class="hero-highlights">
+            <div class="highlight">
+              <span class="highlight-label">Años</span>
+              <span class="highlight-value">2014–2024</span>
+            </div>
+
+            <div class="highlight">
+              <span class="highlight-label">Tramo</span>
+              <span class="highlight-value">Estación Central – O’Higgins</span>
+            </div>
+
+            <div class="highlight">
+              <span class="highlight-label">Unidad</span>
+              <span class="highlight-value">Atropellos ferroviarios</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-aside">
+          <figure class="hero-figure">
+            <div class="hero-map-placeholder">
+              <span>Mapa o imagen del cruce</span>
+            </div>
+            <figcaption>
+              Cruces con distintos niveles de resguardo: barreras, señalización o solo alerta visual.
+            </figcaption>
+          </figure>
+        </aside>
+
       </div>
+    </section>
 
-      <aside class="side-card">
-        <h3 class="side-card__title">Preguntas</h3>
-        <ul class="side-list">
-          <li>¿Cuál es el rol de la infraestructura?</li>
-          <li>¿Qué patrones emergen?</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
+    <!-- Sección 2 -->
+    <section id="s2" class="section section--light">
+      <div class="container section__two-cols">
 
-  <!-- Sección 3 -->
-  <section id="s3" class="section section--dark">
-    <div class="container">
-      <h2 class="section-title section-title--invert">Datos</h2>
-      <p class="section-lead section-lead--invert">Visualizaciones y análisis.</p>
-    </div>
-  </section>
+        <div>
+          <h2 class="section-title">El problema no termina en “imprudencia”</h2>
+          <p>
+            La mayoría de los registros clasifican los atropellos como “imprudencia del peatón”,
+            pero los patrones muestran que la infraestructura de algunos cruces reduce el margen de error.
+          </p>
+        </div>
 
-  <!-- Sección 4 -->
-  <section id="s4" class="section section--light">
-    <div class="container">
-      <h2 class="section-title">Historias</h2>
-      <p class="section-lead">Microcrónicas...</p>
-    </div>
-  </section>
+        <aside class="side-card">
+          <h3>Preguntas clave</h3>
+          <ul class="side-list">
+            <li>¿Qué cruces concentran más casos?</li>
+            <li>¿Qué horarios presentan mayor riesgo?</li>
+            <li>¿Qué edades aparecen más?</li>
+          </ul>
+        </aside>
 
-  <!-- Sección 5 -->
-  <section id="s5" class="section section--dark">
-    <div class="container section__two-cols">
-      <div>
-        <h2 class="section-title section-title--invert">Metodología</h2>
-        <p>Fuentes y proceso de análisis.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <!-- Sección 3 -->
+    <section id="s3" class="section section--dark">
+      <div class="container">
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="container">
-    <p>Proyecto Narración Gráfica — 2025</p>
-  </div>
-</footer>
+        <h2 class="section-title section-title--invert">Lo que dicen los datos</h2>
 
-<script src="script.js"></script>
+        <article class="data-block">
+          <h3>1. Tipo de infraestructura</h3>
+          <figure class="chart-frame">
+            <img src="assets/chart-sistema-cruce.png" class="chart-image" alt="">
+          </figure>
+        </article>
+
+        <article class="data-block">
+          <h3>2. Horarios críticos</h3>
+          <figure class="chart-frame">
+            <img src="assets/chart-horas.png" class="chart-image" alt="">
+          </figure>
+        </article>
+
+        <article class="data-block">
+          <h3>3. Edad de las víctimas</h3>
+          <figure class="chart-frame">
+            <img src="assets/chart-edades.png" class="chart-image" alt="">
+          </figure>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Sección 4 -->
+    <section id="s4" class="section section--light">
+      <div class="container">
+
+        <h2 class="section-title">Cuando el cruce es parte del barrio</h2>
+
+        <article class="story-card">
+          <h3>Un cruce en Maipú que suena, pero no alcanza</h3>
+          <p>
+            La alarma suena, la barrera baja, los autos esperan. Pero los peatones calculan cada movimiento,
+            muchas veces sin alternativas seguras para cruzar.
+          </p>
+          <p>
+            En los registros aparece repetidamente como “imprudencia”, pero la vereda llega directo a la vía,
+            no hay pasarela, y la iluminación es baja.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Sección 5 -->
+    <section id="s5" class="section section--dark">
+      <div class="container section__two-cols">
+
+        <div>
+          <h2 class="section-title section-title--invert">Metodología</h2>
+          <p>Datos de EFE y Carabineros · Visualizaciones en Python.</p>
+        </div>
+
+        <aside class="side-card side-card--invert">
+          <h3>Repositorios</h3>
+          <ul class="links-list">
+            <li><a href="../Entrega_03">Entrega 03</a></li>
+            <li><a href="../Entrega_05">Entrega 05</a></li>
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Rieles en riesgo · PUC 2025</p>
+  </footer>
+
+  <!-- Script del tren -->
+  <script src="script.js"></script>
+
 </body>
 </html>
