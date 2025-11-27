@@ -1,15 +1,15 @@
 :root {
-  --bar-h: 72px;           /* alto del header del tren */
-  --track-h: 8px;          /* grosor de la vía */
-  --accent: #2563eb;       /* azul riel */
-  --accent-2: #22c55e;     /* verde segundo tono */
-  --track: #e5e7eb;        /* gris vía */
-  --label: #374151;        /* gris labels */
-  --dot: #111827;          /* negro estaciones */
+  --bar-h: 72px;
+  --track-h: 8px;
+  --accent: #1d4ed8;     /* azul principal */
+  --accent-2: #fde047;   /* amarillo suave */
+  --track: #e5e7eb;
+  --label: #374151;
+  --dot: #0f172a;
   --bg: #f9fafb;
 }
 
-/* Reset mínimo */
+/* Reset */
 *,
 *::before,
 *::after {
@@ -33,61 +33,64 @@ body {
   margin: 0 auto;
 }
 
-/* ===== Barra fija del tren ===== */
-
+/* ============================================================
+   BARRA FIJA DEL TREN
+   ============================================================ */
 .railway {
   position: sticky;
   top: 0;
-  z-index: 20;
-  background: rgba(15, 23, 42, 0.97);
+  z-index: 30;
+  background: rgba(2, 6, 23, 0.92);
   color: #e5e7eb;
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(31, 41, 55, 0.65);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(31, 41, 55, 0.45);
 }
 
 .railway__inner {
   width: min(1120px, 100% - 2rem);
   margin: 0 auto;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-/* Labels / estaciones */
-
+/* Labels */
 .railway__labels {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.5rem;
   font-size: 0.8rem;
 }
 
 .label {
-  position: relative;
+  
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
   color: #e5e7eb;
   text-decoration: none;
+  opacity: 0.65;
+  transition: 0.2s;
   white-space: nowrap;
-  opacity: 0.7;
-  transition: background 0.2s, opacity 0.2s, color 0.2s;
+
 }
 
 .label:hover {
-  background: rgba(15, 23, 42, 0.8);
+
   opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .label--active {
-  background: #facc15;
-  color: #111827;
+  background: #fde047;
+  color: #0f172a;
   opacity: 1;
 }
 
-/* Vía y tren */
-
+/* ============================================================
+   VÍA Y TREN
+   ============================================================ */
 .railway__track {
   position: relative;
   height: var(--bar-h);
@@ -105,22 +108,21 @@ body {
 .track__base {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
+
   background: var(--track);
+  border-radius: inherit;
 }
 
 .track__progress {
   position: absolute;
   inset: 0;
-  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
   transform-origin: left center;
   transform: scaleX(0);
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: transform 0.15s linear;
+  border-radius: inherit;
 }
 
-/* Estaciones (puntos) */
-
+/* Estaciones */
 .stations {
   position: absolute;
   inset: 0;
@@ -133,16 +135,16 @@ body {
 .station {
   width: 10px;
   height: 10px;
-  border-radius: 999px;
+
   background: var(--dot);
-  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.7);
-  opacity: 0.6;
-  transform: translateY(-1px);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.3);
+  opacity: 0.5;
 }
 
 .station--active {
   opacity: 1;
-  box-shadow: 0 0 0 3px #facc15;
+  box-shadow: 0 0 0 3px #fde047;
 }
 
 /* Tren */
@@ -150,15 +152,20 @@ body {
 .train {
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 0%;
   width: 60px;
   height: auto;
   transform: translate(-50%, -50%);
-  fill: #f9fafb;
+  fill: white;
   stroke: #0f172a;
   stroke-width: 1;
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.6));
-  animation: bob 1.2s ease-in-out infinite alternate;
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.4));
+  animation: bob 1s ease-in-out infinite alternate;
+}
+
+@keyframes bob {
+  from { transform: translate(-50%, -53%); }
+  to   { transform: translate(-50%, -47%); }
 }
 
 .wheel-inner {
@@ -166,29 +173,26 @@ body {
 }
 
 .headlight {
-  fill: #facc15;
+  fill: #fde047;
 }
 
-@keyframes bob {
-  from { translate: 0 -1.5px; }
-  to   { translate: 0  0.5px; }
-}
-
-/* ===== Secciones ===== */
+/* ============================================================
+   SECCIONES
+   ============================================================ */
 
 .section {
   padding: 4rem 0;
 }
 
 .section--hero {
-  padding-top: 3.5rem;
-  background: radial-gradient(circle at top left, #1d4ed8 0, #0f172a 40%, #020617 100%);
-  color: #e5e7eb;
+  padding-top: 4rem;
+  background: radial-gradient(circle at top left, #1e3a8a 0%, #0f172a 40%, #020617 100%);
+  color: white;
 }
 
 .section--light {
   background: #f9fafb;
-  color: #111827;
+
 }
 
 .section--dark {
@@ -196,106 +200,82 @@ body {
   color: #e5e7eb;
 }
 
-/* Hero */
-
+/* Hero layout */
 .section__hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-columns: 2fr 1fr;
   gap: 2.5rem;
-  align-items: flex-start;
+
 }
 
+/* Tipos */
 .kicker {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.8rem;
-  color: #bfdbfe;
-  margin-bottom: 0.5rem;
+  color: #bfdbff;
 }
 
 .hero-title {
   margin: 0;
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
 }
 
 .hero-lead {
   margin-top: 1rem;
-  font-size: 1rem;
-  max-width: 40rem;
+  color: #e0e7ff;
 }
 
 .hero-meta {
   margin-top: 0.75rem;
   font-size: 0.85rem;
-  color: #cbd5f5;
+  color: #dbeafe;
 }
 
 /* Hero highlights */
 
 .hero-highlights {
+  margin-top: 1.5rem;
   display: flex;
-  flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1.75rem;
+  flex-wrap: wrap;
 }
 
 .highlight {
-  flex: 1 1 140px;
+  background: rgba(255,255,255,0.06);
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.7);
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
 .highlight-label {
-  display: block;
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: #cbd5e1;
 }
 
 .highlight-value {
-  display: block;
-  margin-top: 0.25rem;
   font-size: 0.95rem;
-  font-weight: 600;
+  margin-top: 0.25rem;
+  font-weight: bold;
 }
 
-/* Hero aside */
-
-.hero-aside {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.hero-figure {
-  margin: 0;
-  max-width: 22rem;
+/* Aside */
+.hero-figure figcaption {
+  color: #cbd5e1;
   font-size: 0.8rem;
-  color: #cbd5f5;
+
 }
 
-.hero-map-placeholder {
-  border-radius: 1rem;
-  border: 1px dashed rgba(191, 219, 254, 0.7);
-  aspect-ratio: 4 / 3;
-  display: grid;
-  place-items: center;
-  margin-bottom: 0.75rem;
-  font-size: 0.8rem;
-  text-align: center;
-  padding: 0.75rem;
-}
-
-/* Títulos y textos generales */
-
+/* Títulos generales */
 .section-title {
-  margin-top: 0;
-  font-size: 1.7rem;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .section-title--invert {
-  color: #e5e7eb;
+  color: white;
 }
 
 .section-lead {
@@ -303,211 +283,64 @@ body {
   max-width: 40rem;
 }
 
-.section-lead--invert {
-  color: #cbd5f5;
-}
-
+/* Two cols */
 .section__two-cols {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-columns: 3fr 2fr;
   gap: 2.5rem;
-  align-items: flex-start;
+
 }
 
 /* Callout */
 
 .callout {
   margin-top: 1.5rem;
-  padding: 1rem 1.25rem;
+  padding: 1rem;
   border-radius: 0.75rem;
   background: #eff6ff;
   border: 1px solid #bfdbfe;
-  font-size: 0.95rem;
 }
 
 /* Side cards */
-
 .side-card {
-  padding: 1.25rem 1.5rem;
+  padding: 1.25rem;
   border-radius: 0.75rem;
-  background: #ffffff;
+  background: white;
   border: 1px solid #e5e7eb;
-  font-size: 0.9rem;
 }
 
-.side-card--invert {
-  background: #020617;
-  border-color: #1f2937;
-}
-
-.side-card__title {
-  margin-top: 0;
-  font-size: 1rem;
-}
-
-.side-list {
-  margin: 0.75rem 0 0;
-  padding-left: 1.1rem;
-  font-size: 0.9rem;
-}
-
-/* Bloques de datos */
-
-.data-block {
-  margin-top: 3rem;
-}
-
-.data-block__header {
-  margin-bottom: 1rem;
-}
-
-.data-block__subtitle {
-  margin: 0.25rem 0 0;
-  font-size: 0.9rem;
-  color: #9ca3af;
-}
-
-.data-block__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 1.75rem;
-  align-items: flex-start;
-  margin-top: 1.5rem;
-}
-
-.data-block__layout--two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.chart-frame {
-  padding: 1rem;
-  border-radius: 0.75rem;
-  background: #020617;
-  border: 1px solid #1f2937;
-}
-
-.chart-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-}
-
-.chart-frame figcaption {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: #9ca3af;
-}
-
-.data-text {
-  font-size: 0.95rem;
-}
-
-.data-text--wide {
-  margin-top: 1.25rem;
-}
-
-/* Historias */
-
+/* Story card */
 .story-card {
   margin-top: 2rem;
-  padding: 1.5rem 1.75rem;
+  padding: 1.5rem;
   border-radius: 0.75rem;
-  background: #ffffff;
+  background: white;
   border: 1px solid #e5e7eb;
-}
-
-.story-meta {
-  margin: 0.25rem 0 0.75rem;
-  font-size: 0.85rem;
-  color: #6b7280;
 }
 
 .big-quote {
-  margin: 2.5rem auto 0;
-  max-width: 42rem;
+  margin-top: 2.5rem;
+  border-left: 4px solid #fde047;
   padding-left: 1rem;
-  border-left: 4px solid #facc15;
-  font-size: 1rem;
-}
-
-/* Metodología */
-
-.method-list {
-  margin: 1rem 0 0;
-  padding-left: 1.1rem;
-  font-size: 0.9rem;
-}
-
-.links-list {
-  list-style: none;
-  margin: 0.75rem 0 0;
-  padding: 0;
-  font-size: 0.9rem;
-}
-
-.links-list a {
-  color: #bfdbfe;
-  text-decoration: none;
-}
-
-.links-list a:hover {
-  text-decoration: underline;
-}
-
-.side-note {
-  margin-top: 0.75rem;
-  font-size: 0.8rem;
-  color: #9ca3af;
+  font-size: 1.1rem;
+  max-width: 42rem;
 }
 
 /* Footer */
-
 .site-footer {
-  background: #020617;
-  color: #9ca3af;
-  padding: 1.5rem 0 2rem;
-  font-size: 0.8rem;
   text-align: center;
+  padding: 2rem 0;
+  background: #020617;
+  color: #cbd5e1;
+  font-size: 0.85rem;
 }
 
-/* ===== Responsivo ===== */
-
+/* Responsive */
 @media (max-width: 768px) {
-  .railway__labels {
-    font-size: 0.7rem;
-    overflow-x: auto;
-  }
-
   .section__hero-layout,
-  .section__two-cols,
-  .data-block__layout,
-  .data-block__layout--two {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-aside {
-    justify-content: flex-start;
+  .section__two-cols {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  :root {
-    --bar-h: 80px;
-  }
-
-  .railway__inner {
-    gap: 0.4rem;
-  }
-}
-
-/* Accesibilidad: reducir motion */
-
-@media (prefers-reduced-motion: reduce) {
-  .train,
-  .track__progress {
-    transition: none !important;
-    animation: none !important;
-  }
-}
 
