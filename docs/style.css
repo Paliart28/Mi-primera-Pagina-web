@@ -1,12 +1,20 @@
 :root {
-  --bar-h: 72px;           /* alto del header del tren */
-  --track-h: 8px;          /* grosor de la vía */
-  --accent: #2563eb;       /* azul riel */
-  --accent-2: #22c55e;     /* verde segundo tono */
-  --track: #e5e7eb;        /* gris vía */
-  --label: #374151;        /* gris labels */
-  --dot: #111827;          /* negro estaciones */
-  --bg: #f9fafb;
+  --bar-h: 72px;
+
+  /* Colores del manual de identidad */
+  --color-azul-acero: #1E3A68;
+  --color-naranja-oxido: #F2994A;
+  --color-amarillo-senaletica: #F6E05E;
+  --color-verde-industrial: #2E7D5B;
+  --color-gris-humo: #E5EAF1;
+
+  /* Aplicación en la UI */
+  --track: var(--color-gris-humo);
+  --accent: var(--color-amarillo-senaletica);
+  --accent-2: var(--color-naranja-oxido);
+  --dot: var(--color-azul-acero);
+  --label: var(--color-azul-acero);
+  --bg: #ffffff;
 }
 
 /* Reset mínimo */
