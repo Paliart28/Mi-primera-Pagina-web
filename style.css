@@ -1,0 +1,139 @@
+:root {
+  --yellow: #fdd835;
+  --dark: #1a1a1a;
+  --deepblue: #0c1b33;
+  --lightgray: #e5e5e5;
+  --track: #bdbdbd;
+
+  --bar-h: 70px;
+  --track-h: 8px;
+}
+
+/* GENERAL */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #fafafa;
+  color: #111;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+/* SECCIONES */
+.section {
+  padding: 4rem 0;
+}
+
+.section--hero {
+  background: var(--deepblue);
+  color: white;
+}
+
+.section--light {
+  background: white;
+}
+
+.section--dark {
+  background: var(--dark);
+  color: white;
+}
+
+.lead {
+  max-width: 700px;
+  font-size: 1.1rem;
+}
+
+/* TREN */
+.railway {
+  position: sticky;
+  top: 0;
+  background: var(--dark);
+  color: white;
+  z-index: 999;
+  padding-bottom: 0.5rem;
+}
+
+.railway__inner {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+.railway__labels {
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem 0;
+}
+
+.label {
+  color: #ddd;
+  text-decoration: none;
+  font-size: .85rem;
+  padding: .3rem .8rem;
+  border-radius: 50px;
+}
+
+.label--active {
+  background: var(--yellow);
+  color: black;
+}
+
+/* PISTA */
+.railway__track {
+  height: var(--bar-h);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.track {
+  width: 100%;
+  height: var(--track-h);
+  background: var(--track);
+  border-radius: 999px;
+  position: relative;
+}
+
+.track__progress {
+  height: 100%;
+  background: var(--yellow);
+  width: 0;
+  transform-origin: left;
+  transition: width .1s linear;
+}
+
+/* ESTACIONES */
+.stations {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+}
+
+.station {
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+  opacity: .4;
+}
+
+.station--active {
+  opacity: 1;
+  background: var(--yellow);
+}
+
+/* TREN */
+.train {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 60px;
+  transform: translate(-50%, -50%);
+  fill: white;
+  stroke: black;
+  stroke-width: 1;
+}

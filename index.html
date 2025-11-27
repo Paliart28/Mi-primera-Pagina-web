@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rieles en riesgo</title>
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- BARRA CON TREN -->
+  <div class="railway">
+    <div class="railway__inner">
+
+      <nav class="railway__labels">
+        <a href="#s1" class="label label--active">Inicio</a>
+        <a href="#s2" class="label">Problema</a>
+        <a href="#s3" class="label">Datos</a>
+        <a href="#s4" class="label">Historias</a>
+        <a href="#s5" class="label">Metodología</a>
+      </nav>
+
+      <div class="railway__track">
+        <div class="track">
+          <div class="track__base"></div>
+          <div id="progress" class="track__progress"></div>
+
+          <div class="stations">
+            <span class="station station--active"></span>
+            <span class="station"></span>
+            <span class="station"></span>
+            <span class="station"></span>
+            <span class="station"></span>
+          </div>
+
+          <svg id="train" class="train" viewBox="0 0 64 40">
+            <rect x="4" y="10" width="40" height="18" rx="3" ry="3"/>
+            <rect x="12" y="6" width="22" height="6" rx="2" ry="2"/>
+            <circle cx="14" cy="30" r="4"/>
+            <circle cx="32" cy="30" r="4"/>
+            <circle cx="42" cy="18" r="2"/>
+          </svg>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <main>
+
+    <!-- SECCION 1 -->
+    <section id="s1" class="section section--hero">
+      <div class="container">
+        <h1>Rieles en riesgo</h1>
+        <p class="lead">
+          Entre 2014 y 2024, los registros de atropellos en el tramo Estación Central – O’Higgins
+          revelan patrones que combinan error humano e infraestructura insuficiente.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCION 2 -->
+    <section id="s2" class="section section--light">
+      <div class="container">
+        <h2>El problema</h2>
+        <p>
+          El registro de “imprudencia del peatón” aparece como causa recurrente,
+          pero muchas de estas decisiones ocurren en cruces sin iluminación adecuada,
+          barreras tardías o señalética mínima.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECCION 3 -->
+    <section id="s3" class="section section--dark">
+      <div class="container">
+        <h2>Datos</h2>
+        <p>
+          Visualizaciones basadas en el sistema de control, la hora del día y la edad
+          de las personas atropelladas.
+        </p>
+        <img src="assets/chart-sistema-cruce.png" class="chart">
+        <img src="assets/chart-horas.png" class="chart">
+      </div>
+    </section>
+
+    <!-- SECCION 4 -->
+    <section id="s4" class="section section--light">
+      <div class="container">
+        <h2>Historias</h2>
+
+        <article class="story-card">
+          <h3>Un cruce en Maipú que suena, pero no alcanza</h3>
+          <p>
+            La alarma suena, pero la calle sigue en movimiento.
+            Las barreras bajan lento, la visibilidad se pierde al atardecer
+            y la vereda termina directo en la vía.
+          </p>
+        </article>
+
+        <blockquote class="big-quote">
+          “Lo más honesto no es borrar la palabra imprudencia,
+          sino preguntarse cuántas oportunidades tiene alguien
+          de equivocarse sin morir en el intento.”
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- SECCION 5 -->
+    <section id="s5" class="section section--dark">
+      <div class="container">
+        <h2>Metodología</h2>
+        <p>Datos: EFE, Carabineros · Periodo: 2014–2024 · Visualizaciones: Python / Altair.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
