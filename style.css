@@ -181,7 +181,7 @@ body {
     color: var(--text-light);
 }
 
-.section-title {
+.section-title { 
     font-size: 2.4rem;
     margin-bottom: 1.2rem;
     font-weight: 700;
