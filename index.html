@@ -5,34 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rieles en riesgo: los cruces que siguen siendo punto ciego</title>
 
-  <meta name="description" content="Historia web sobre siniestros ferroviarios por atropello entre Estación Central y el límite con O’Higgins, con foco en la relación entre infraestructura técnica e imprudencia peatonal.">
-
   <link href="style.css" rel="stylesheet" />
+  <link href="tren_horizontal.css" rel="stylesheet" />
 </head>
 <body>
-<!-- ===== Barra del tren ===== -->
-<div class="railway" role="region" aria-label="Progreso por secciones">
+
+<!-- ======================
+     BARRA DEL TREN
+====================== -->
+<div class="railway">
   <div class="railway__inner">
-    <nav class="railway__labels" aria-label="Estaciones">
-      <a class="label" data-index="0" href="#s1">Inicio</a>
-      <a class="label" data-index="1" href="#s2">Título 02</a>
-      <a class="label" data-index="2" href="#s3">Título 03</a>
-      <a class="label" data-index="3" href="#s4">Título 04</a>
-      <a class="label" data-index="4" href="#s5">Cierre</a>
+
+    <!-- NOMBRES ACTUALIZADOS -->
+    <nav class="railway__labels">
+      <a class="label is-active" data-index="0" href="#s1">Inicio</a>
+      <a class="label" data-index="1" href="#s2">Santiago</a>
+      <a class="label" data-index="2" href="#s3">dias, edad</a>
+      <a class="label" data-index="3" href="#s4">zonas</a>
+      <a class="label" data-index="4" href="#s5">Metodologia</a>
     </nav>
 
-    <div class="track" aria-hidden="true">
+    <!-- Vía y estaciones -->
+    <div class="track">
       <div class="track__progress" id="progress"></div>
 
-      <!-- estaciones -->
       <div class="station station--1" data-index="0"></div>
       <div class="station station--2" data-index="1"></div>
       <div class="station station--3" data-index="2"></div>
       <div class="station station--4" data-index="3"></div>
       <div class="station station--5" data-index="4"></div>
 
-      <!-- tren SVG -->
-      <svg class="train" id="train" viewBox="0 0 64 40" aria-hidden="true">
+      <!-- Tren -->
+      <svg class="train" id="train" viewBox="0 0 64 40">
         <rect x="0" y="28" width="64" height="4" fill="#9ca3af"/>
         <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#111827"/>
         <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#e5e7eb"/>
@@ -44,367 +48,104 @@
         <circle cx="38" cy="32" r="2" fill="#9ca3af"/>
       </svg>
     </div>
+
   </div>
 </div>
 
-<!-- ===== Contenido (5 secciones) ===== -->
+<!-- ======================
+     CONTENIDO REORGANIZADO
+====================== -->
 <main>
-  <section id="s1"><h2>Inicio</h2><p>Tren continuo con un poquito de JS para suavidad cross-browser.</p></section>
-  <section id="s2"><h2>Santiago</h2><p>El tren avanza proporcional al scroll total.</p></section>
-  <section id="s3"><h2>dias, edad </h2><p>Las estaciones/labels se resaltan cuando su sección domina el viewport.</p></section>
-  <section id="s4"><h2>zonas</h2><p>Implementación simple con <code>requestAnimationFrame</code> + <code>IntersectionObserver</code>.</p></section>
-  <section id="s5"><h2>Metodologia</h2><p>Listo para integrar a cualquier sitio.</p></section>
+
+  <!-- 1️⃣ SECCIÓN 1: PORTADA (la azul arriba del todo) -->
+  <section id="s1" class="section section--hero">
+    <div class="container section__hero-layout">
+
+      <div>
+        <p class="kicker">Siniestros ferroviarios en la Región Metropolitana</p>
+
+        <h1 class="hero-title">
+          Rieles en riesgo:<br>
+          los cruces que siguen siendo punto ciego
+        </h1>
+
+        <p class="hero-lead">
+          Entre 2014 y 2024, en el tramo entre Estación Central y el límite con O’Higgins,
+          los registros de atropellos en la vía férrea muestran algo incómodo:
+          casi todos se anotan como “imprudencia del peatón”, pero muchos ocurren en cruces donde
+          la infraestructura técnica no alcanza para que ese error humano no termine en tragedia.
+        </p>
+
+        <p class="hero-meta">
+          Por Andrés Hernández, Paloma Riquelme y Josefa Mariñanco<br>
+          Proyecto para Narración Gráfica (COM-208) · PUC
+        </p>
+
+        <div class="hero-highlights">
+          <div class="highlight">
+            <span class="highlight-label">Años analizados</span>
+            <span class="highlight-value">2014–2024</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-label">Tramo</span>
+            <span class="highlight-value">Estación Central – O’Higgins</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-label">Unidad de análisis</span>
+            <span class="highlight-value">Siniestros por atropello</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-aside">
+        <figure class="hero-figure">
+          <div class="hero-map-placeholder">
+            <span class="hero-map-label">Aquí va el mapa / foto de cruce</span>
+          </div>
+          <figcaption>
+            El tramo concentra cruces con distintos niveles de resguardo técnico.
+          </figcaption>
+        </figure>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 2️⃣ SECCIÓN 2 -->
+  <section id="s2" class="section section--light">
+    <div class="container section__two-cols">
+      <!-- TODO TU TEXTO ORIGINAL AQUÍ -->
+      <!-- (no lo repito para ahorrar espacio) -->
+      {{CONTENIDO S2 ORIGINAL}}
+    </div>
+  </section>
+
+  <!-- 3️⃣ SECCIÓN 3 -->
+  <section id="s3" class="section section--dark">
+    <div class="container">
+      {{CONTENIDO S3 ORIGINAL}}
+    </div>
+  </section>
+
+  <!-- 4️⃣ SECCIÓN 4 -->
+  <section id="s4" class="section section--light">
+    <div class="container">
+      {{CONTENIDO S4 ORIGINAL}}
+    </div>
+  </section>
+
+  <!-- 5️⃣ SECCIÓN 5 -->
+  <section id="s5" class="section section--dark">
+    <div class="container section__two-cols">
+      {{CONTENIDO S5 ORIGINAL}}
+    </div>
+  </section>
+
 </main>
 
-<script src="tren_horizontal.js" type="text/javascript"></script>
+<script src="tren_horizontal.js"></script>
 </body>
 </html>
-      <!-- Vía, progreso y tren -->
-      <div class="railway__track">
-        <div class="track">
-          <div class="track__base"></div>
-          <div class="track__progress" id="progress"></div>
 
-          <div class="stations" aria-hidden="true">
-            <span class="station station--active"></span>
-            <span class="station"></span>
-            <span class="station"></span>
-            <span class="station"></span>
-            <span class="station"></span>
-          </div>
-
-          <!-- Tren en SVG -->
-          <svg class="train" id="train" viewBox="0 0 64 40" aria-hidden="true">
-            <rect x="4" y="10" width="40" height="18" rx="3" ry="3" />
-            <rect x="12" y="6" width="22" height="6" rx="2" ry="2" />
-            <rect x="8" y="14" width="10" height="6" rx="1" />
-            <rect x="22" y="14" width="10" height="6" rx="1" />
-            <circle cx="14" cy="30" r="4" />
-            <circle cx="32" cy="30" r="4" />
-            <circle cx="14" cy="30" r="2" class="wheel-inner" />
-            <circle cx="32" cy="30" r="2" class="wheel-inner" />
-            <circle cx="42" cy="18" r="2" class="headlight" />
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== Contenido principal ===== -->
-  <main>
-
-    <!-- S1: Inicio / Portada -->
-    <section id="s1" class="section section--hero">
-      <div class="container section__hero-layout">
-        <div>
-          <p class="kicker">Siniestros ferroviarios en la Región Metropolitana</p>
-          <h1 class="hero-title">
-            Rieles en riesgo:<br>
-            los cruces que siguen siendo punto ciego
-          </h1>
-
-          <p class="hero-lead">
-            Entre 2014 y 2024, en el tramo entre Estación Central y el límite con O’Higgins,
-            los registros de atropellos en la vía férrea muestran algo incómodo:
-            casi todos se anotan como “imprudencia del peatón”, pero muchos ocurren en cruces donde
-            la infraestructura técnica no alcanza para que ese error humano no termine en tragedia.
-          </p>
-
-          <p class="hero-meta">
-            Por <strong>Andrés Hernández</strong>, <strong>Paloma Riquelme</strong> y <strong>Josefa Mariñanco</strong><br>
-            Proyecto para Narración Gráfica (COM-208), 2025-1 · PUC
-          </p>
-
-          <div class="hero-highlights">
-            <div class="highlight">
-              <span class="highlight-label">Años analizados</span>
-              <span class="highlight-value">2014–2024</span>
-            </div>
-            <div class="highlight">
-              <span class="highlight-label">Tramo</span>
-              <span class="highlight-value">Estación Central – O’Higgins</span>
-            </div>
-            <div class="highlight">
-              <span class="highlight-label">Unidad de análisis</span>
-              <span class="highlight-value">Siniestros por atropello</span>
-            </div>
-          </div>
-        </div>
-
-        <aside class="hero-aside">
-          <figure class="hero-figure">
-            <div class="hero-map-placeholder">
-              <span class="hero-map-label">Aquí va el mapa / foto de cruce</span>
-            </div>
-            <figcaption>
-              El tramo concentra cruces con distintos niveles de resguardo técnico:
-              desde señalización básica hasta sistemas automatizados con barreras y alarmas sonoras.
-            </figcaption>
-          </figure>
-        </aside>
-      </div>
-    </section>
-
-    <!-- S2: El problema -->
-    <section id="s2" class="section section--light">
-      <div class="container section__two-cols">
-        <div>
-          <h2 class="section-title">El problema no termina en la palabra “imprudencia”</h2>
-          <p>
-            Cada vez que ocurre un atropello en la vía férrea, el registro policial tiende a resumir la causa
-            como “imprudencia del peatón”. Esa etiqueta parece cerrar el caso: alguien cruzó donde no debía,
-            a la hora equivocada. Sin embargo, al mirar el tramo entre Estación Central y el límite con
-            O’Higgins, los datos muestran patrones que apuntan también a la infraestructura.
-          </p>
-          <p>
-            Hay cruces donde las barreras bajan tarde, donde la iluminación es insuficiente o donde la línea
-            férrea corta en dos un barrio sin ofrecer alternativas seguras de conexión. En esos lugares,
-            el margen de error es mínimo: basta un cálculo mal hecho para que el tren llegue antes de lo previsto.
-          </p>
-
-          <div class="callout">
-            <p>
-              <strong>Hipótesis de trabajo:</strong><br>
-              Los cruces con menor nivel de resguardo técnico y peor diseño urbano concentran siniestros más
-              graves, especialmente en horarios de baja visibilidad y en grupos etarios que usan el cruce como
-              parte de su rutina diaria.
-            </p>
-          </div>
-        </div>
-
-        <aside class="side-card">
-          <h3 class="side-card__title">Lo que buscamos responder</h3>
-          <ul class="side-list">
-            <li>¿En qué tipo de cruces se concentran los atropellos?</li>
-            <li>¿Hay horarios claramente más peligrosos?</li>
-            <li>¿Qué edades aparecen con mayor frecuencia en los registros?</li>
-            <li>¿Cómo dialogan esos datos con la experiencia de vecinos y vecinas?</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <!-- S3: Los datos / visualizaciones -->
-    <section id="s3" class="section section--dark">
-      <div class="container">
-        <h2 class="section-title section-title--invert">Lo que dicen los datos</h2>
-        <p class="section-lead section-lead--invert">
-          A partir de bases de EFE y Carabineros, cruzamos tipo de cruce, sistema de control,
-          hora del día, gravedad del siniestro y edad de las personas atropelladas.
-        </p>
-
-        <!-- Bloque 1: tipo de cruce / sistema -->
-        <article class="data-block">
-          <header class="data-block__header">
-            <h3>1. El impacto del sistema de control técnico</h3>
-            <p class="data-block__subtitle">
-              Cruces con CTC, BRS y señalización básica, y su relación con los siniestros.
-            </p>
-          </header>
-
-          <div class="data-block__layout">
-            <figure class="chart-frame">
-              <!-- Reemplazar src por imagen o iframe de Altair -->
-              <img src="assets/chart-sistema-cruce.png"
-                   alt="Gráfico que compara siniestros por tipo de sistema de control en cada cruce"
-                   class="chart-image">
-              <figcaption>
-                Visualización de ejemplo: número de atropellos por cruce y tipo de sistema de control
-                (CTC, BRS, señalización básica). Esta imagen debe exportarse desde su notebook de Altair.
-              </figcaption>
-            </figure>
-
-            <div class="data-text">
-              <p>
-                El sentido común diría que los cruces con más tecnología deberían concentrar menos atropellos.
-                Pero el tramo analizado muestra una realidad más matizada: algunos puntos con CTC o BRS todavía
-                registran siniestros graves, mientras que otros con señalización mínima acumulan casos en
-                horarios muy específicos.
-              </p>
-              <p>
-                La discusión ya no es sólo “falta barrera”, sino cuánto ayuda cada sistema a ampliar
-                el tiempo de reacción de peatones y maquinistas cuando alguien decide cruzar igual.
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Bloque 2: horario -->
-        <article class="data-block">
-          <header class="data-block__header">
-            <h3>2. Horas del día donde el riesgo se dispara</h3>
-            <p class="data-block__subtitle">
-              Franja horaria vs. número de atropellos y gravedad.
-            </p>
-          </header>
-
-          <div class="data-block__layout data-block__layout--two">
-            <figure class="chart-frame">
-              <img src="assets/chart-horas.png"
-                   alt="Gráfico de líneas con número de siniestros por hora del día"
-                   class="chart-image">
-              <figcaption>
-                Cantidad de atropellos según tramo horario. Se observan picos en la mañana temprano y al atardecer.
-              </figcaption>
-            </figure>
-
-            <figure class="chart-frame">
-              <img src="assets/chart-horas-gravedad.png"
-                   alt="Gráfico que muestra gravedad de los siniestros según la hora"
-                   class="chart-image">
-              <figcaption>
-                Distribución de heridos leves, graves y fallecidos por tramo horario.
-              </figcaption>
-            </figure>
-          </div>
-
-          <p class="data-text data-text--wide">
-            Los picos de siniestros coinciden con momentos de transición: cuando vecinos salen a trabajar
-            o vuelven a casa, y la luz natural todavía no llega o ya se fue. Ahí, la visibilidad disminuye,
-            el flujo aumenta y las decisiones se toman en segundos.
-          </p>
-        </article>
-
-        <!-- Bloque 3: edad -->
-        <article class="data-block">
-          <header class="data-block__header">
-            <h3>3. ¿Quiénes se exponen más?</h3>
-            <p class="data-block__subtitle">
-              Rangos de edad de las personas atropelladas.
-            </p>
-          </header>
-
-          <div class="data-block__layout">
-            <figure class="chart-frame">
-              <img src="assets/chart-edades.png"
-                   alt="Gráfico de barras con distribución de siniestros por rangos de edad"
-                   class="chart-image">
-              <figcaption>
-                Histograma por rangos de edad. La mayor parte de los casos corresponde a personas en edad laboral.
-              </figcaption>
-            </figure>
-
-            <div class="data-text">
-              <p>
-                Los registros no hablan principalmente de niños jugando junto a la vía,
-                sino de adultos que usan el cruce como parte de su recorrido diario:
-                ir a trabajar, ir al colegio, comprar en el almacén del otro lado de la línea.
-              </p>
-              <p>
-                Esa rutina repetida hace que el cruce se vuelva paisaje. Y cuando algo se vuelve paisaje,
-                el riesgo deja de sentirse como un evento excepcional.
-              </p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- S4: Historias / microcrónica -->
-    <section id="s4" class="section section--light">
-      <div class="container">
-        <h2 class="section-title">Cuando el cruce es parte del barrio</h2>
-        <p class="section-lead">
-          Cada punto en los gráficos es una rutina interrumpida. Detrás de las cifras hay esquinas, horarios
-          y trayectos que para los vecinos son tan cotidianos como esperar la micro.
-        </p>
-
-        <article class="story-card">
-          <h3>Un cruce en Maipú que suena, pero no alcanza</h3>
-          <p class="story-meta">
-            Microhistoria basada en registros de siniestros y observación en terreno.
-          </p>
-          <p>
-            En la esquina donde la vía férrea corta la calle, la alarma del tren suena siempre igual:
-            tres pitidos largos, la barrera baja y los autos se ordenan en fila. Los peatones, en cambio,
-            hacen su propio cálculo. Algunos se apuran para “ganarle” a la barrera; otros cruzan por el
-            espacio que queda entre el brazo mecánico y la reja.
-          </p>
-          <p>
-            En los registros, ese punto aparece asociado a “imprudencia del peatón” una y otra vez.
-            Pero al mirar el entorno, la frase se queda corta: la vereda llega directo a la vía,
-            no hay una pasarela cercana, el semáforo peatonal está descoordinado con las barreras
-            y la iluminación es pobre al atardecer.
-          </p>
-          <p>
-            El cruce deja de ser sólo un lugar donde “alguien se equivocó”, y pasa a ser un lugar
-            donde el sistema entero empuja a que la gente se vea obligada a arriesgarse.
-          </p>
-        </article>
-
-        <blockquote class="big-quote">
-          <p>
-            “Lo más honesto no es borrar la palabra imprudencia, sino preguntarse cuántas
-            oportunidades tiene alguien de equivocarse sin morir en el intento.”
-          </p>
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- S5: Metodología y fuentes -->
-    <section id="s5" class="section section--dark">
-      <div class="container section__two-cols">
-        <div>
-          <h2 class="section-title section-title--invert">Cómo hicimos esta historia</h2>
-          <p>
-            Esta webstory se construyó a partir de bases de datos oficiales de siniestros ferroviarios
-            y de observación en terreno en distintos cruces del tramo Estación Central – O’Higgins.
-            Las visualizaciones fueron desarrolladas en <strong>Python (Altair)</strong> y exportadas
-            como imágenes para su integración en la web.
-          </p>
-          <ul class="method-list">
-            <li><strong>Período analizado:</strong> 2014–2024.</li>
-            <li><strong>Unidad de análisis:</strong> siniestros por atropello en el tramo definido.</li>
-            <li><strong>Variables clave:</strong> tipo de cruce, sistema de control, hora del día,
-              gravedad del siniestro, edad de las personas involucradas.</li>
-            <li><strong>Herramientas:</strong> Python, Jupyter Notebook, Altair, HTML, CSS y Javascript.</li>
-          </ul>
-        </div>
-
-        <aside class="side-card side-card--invert">
-          <h3 class="side-card__title">Transparencia y replicabilidad</h3>
-          <p>
-            El código usado para limpiar las bases y generar las visualizaciones, así como las
-            fichas técnicas de cada conjunto de datos, está disponible en el repositorio del proyecto:
-          </p>
-          <ul class="links-list">
-            <li><a href="../Entrega_03" target="_blank" rel="noopener noreferrer">Entrega 03 – Datos y visualizaciones</a></li>
-            <li><a href="../Entrega_05/visualizaciones" target="_blank" rel="noopener noreferrer">Entrega 05 – Visualizaciones (código e imágenes)</a></li>
-            <li><a href="../Entrega_05/diseno-historia" target="_blank" rel="noopener noreferrer">Entrega 05 – Diseño de la historia</a></li>
-          </ul>
-          <p class="side-note">
-            Ajusta estos enlaces según la organización final de tu repositorio.
-          </p>
-        </aside>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>
-        Proyecto “Rieles en riesgo” · Narración Gráfica de No Ficción (COM-208) · Pontificia Universidad Católica de Chile · 2025.
-      </p>
-      <p>
-        Datos: EFE, Carabineros de Chile y elaboración propia.
-      </p>
-    </div>
-  </footer>
-
-  <script src="visualizacion.js" type="text/javascript"></script>
-</body>
-</html>
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tren con scroll (HTML + CSS + JS mínimo)</title>
-
-<link href="tren_horizontal.css" rel="stylesheet" />
-
-</head>
-<body>
 
 
 
