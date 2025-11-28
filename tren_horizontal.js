@@ -1,16 +1,11 @@
-// ===============================
-// Tren sincronizado por secciones
-// ===============================
-
 const progressEl = document.getElementById("progress");
 const trainEl = document.getElementById("train");
 const trainBody = document.querySelector(".train-body");
 
-const labels = Array.from(document.querySelectorAll(".label"));
-const stations = Array.from(document.querySelectorAll(".station"));
-const sections = Array.from(document.querySelectorAll("main section"));
+const labels = [...document.querySelectorAll(".label")];
+const stations = [...document.querySelectorAll(".station")];
+const sections = [...document.querySelectorAll("main section")];
 
-// Colores de la paleta, uno por sección
 const sectionColors = [
   "var(--acero)",
   "var(--senal)",
@@ -20,19 +15,18 @@ const sectionColors = [
 ];
 
 function setTrainPosition(index) {
-  const fraction = index / (sections.length - 1);
+  const total = sections.length - 1;
+  const fraction = index / total;
 
-  // Barra de progreso
+  // Avance del track
   progressEl.style.transform = `scaleX(${fraction})`;
   progressEl.style.background = sectionColors[index];
 
-  // Posición del tren
-  trainEl.style.left = `${fraction * 100}%`;
+  // Posición del tren compensando su ancho
+  trainEl.style.left = `calc(${fraction * 100}% - 20px)`;
 
-  // Color del cuerpo del tren
-  if (trainBody) {
-    trainBody.style.fill = sectionColors[index];
-  }
+  // Color dinámico del tren
+  if (trainBody) trainBody.style.fill = sectionColors[index];
 
   // Labels activos
   labels.forEach(l =>
@@ -45,7 +39,6 @@ function setTrainPosition(index) {
   );
 }
 
-// Observer: detecta sección dominante en pantalla
 const observer = new IntersectionObserver(entries => {
   let best = null;
 
@@ -61,13 +54,12 @@ const observer = new IntersectionObserver(entries => {
   }
 }, {
   root: null,
-  rootMargin: "-45% 0px -45% 0px",
-  threshold: [0.25, 0.5, 0.75]
+  rootMargin: "-40% 0px -40% 0px",
+  threshold: [0, 0.25, 0.5, 0.75, 1]
 });
 
 sections.forEach(sec => observer.observe(sec));
 
-// Click en menú: scroll suave a la sección
 document.querySelector(".railway__labels").addEventListener("click", e => {
   const a = e.target.closest("a[href^='#']");
   if (!a) return;
@@ -80,7 +72,7 @@ document.querySelector(".railway__labels").addEventListener("click", e => {
 
   const headerH = parseFloat(
     getComputedStyle(document.documentElement).getPropertyValue("--bar-h")
-  ) || 72;
+  ) || 80;
 
   const top =
     el.getBoundingClientRect().top +
@@ -93,5 +85,5 @@ document.querySelector(".railway__labels").addEventListener("click", e => {
   });
 });
 
-// Estado inicial
+// iniciar en la primera sección
 setTrainPosition(0);

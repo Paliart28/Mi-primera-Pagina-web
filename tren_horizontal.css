@@ -1,14 +1,23 @@
 :root {
-  --bar-h: 72px;
+  --bar-h: 80px;
   --track-h: 8px;
+
+  --acero: #1E3A68;
+  --senal: #F6E05E;
+  --oxido: #F2994A;
+  --verde: #2E7D5B;
+  --gris: #E5EAF1;
 }
 
-/* Barra fija del tren */
+/* =============================
+   BARRA SUPERIOR DEL TREN
+============================= */
+
 .railway {
   position: sticky;
   top: 0;
-  width: 100vw;
   z-index: 900;
+  width: 100vw;
   background: #0f172acc;
   backdrop-filter: blur(14px);
   border-bottom: 1px solid #1f2937;
@@ -16,28 +25,34 @@
 
 .railway__inner {
   width: 100%;
-  padding: 12px 32px;
+  padding: 12px 24px;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-/* Etiquetas del menú */
+/* =============================
+   MENÚ SUPERIOR (labels)
+============================= */
+
 .railway__labels {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   width: 100%;
 }
 
 .label {
-  padding: 7px 14px;
+  flex: 1;                     /* ← evita que se corte Metodología */
+  text-align: center;
+  padding: 10px 14px;
+  white-space: nowrap;
+  margin: 0;
   border-radius: 999px;
+  font-size: 0.95rem;
   color: #e5e7eb;
-  opacity: 0.75;
   text-decoration: none;
+  opacity: 0.75;
   transition: 0.25s;
-  font-size: 0.9rem;
-  font-family: "Poppins", sans-serif;
 }
 
 .label:hover {
@@ -45,14 +60,16 @@
   background: #ffffff20;
 }
 
-/* Colores activos por sección */
-.label.is-active[data-index="0"] { background: var(--acero); color: #f9fafb; }
-.label.is-active[data-index="1"] { background: var(--senal); color: #111827; }
-.label.is-active[data-index="2"] { background: var(--oxido); color: #111827; }
-.label.is-active[data-index="3"] { background: var(--verde); color: #f9fafb; }
-.label.is-active[data-index="4"] { background: var(--gris); color: #111827; }
+.label.is-active[data-index="0"] { background: var(--acero); color:white; }
+.label.is-active[data-index="1"] { background: var(--senal); color:#111; }
+.label.is-active[data-index="2"] { background: var(--oxido); color:#111; }
+.label.is-active[data-index="3"] { background: var(--verde); color:white; }
+.label.is-active[data-index="4"] { background: var(--gris); color:#111; }
 
-/* Track */
+/* =============================
+   TRACK (vía)
+============================= */
+
 .track {
   width: 100%;
   height: var(--track-h);
@@ -70,7 +87,10 @@
   border-radius: inherit;
 }
 
-/* Estaciones */
+/* =============================
+   ESTACIONES
+============================= */
+
 .station {
   width: 14px;
   height: 14px;
@@ -93,7 +113,10 @@
   box-shadow: 0 0 0 4px #ffffffaa;
 }
 
-/* Tren */
+/* =============================
+   TREN SVG
+============================= */
+
 .train {
   position: absolute;
   top: 50%;
@@ -109,18 +132,4 @@
 @keyframes train-float {
   from { transform: translate(-50%, -52%); }
   to   { transform: translate(-50%, -48%); }
-}
-
-/* Responsive header */
-@media (max-width: 900px) {
-  :root { --bar-h: 80px; }
-
-  .railway__inner {
-    padding-inline: 16px;
-  }
-
-  .label {
-    font-size: 0.8rem;
-    padding: 6px 10px;
-  }
 }
