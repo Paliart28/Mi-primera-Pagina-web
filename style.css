@@ -1,22 +1,20 @@
 /* ============================
-   VARIABLES Y RESET
-   ============================ */
+   VARIABLES
+============================ */
 :root {
   --bar-h: 72px;
   --track-h: 8px;
-  --accent: #2563eb;
-  --accent-2: #22c55e;
+
+  /* Paleta original */
+  --azul: #2563eb;
+  --verde: #22c55e;
+  --amarillo: #facc15;
+  --azul-oscuro: #1e3a8a;
+  --verde-oscuro: #15803d;
+
   --track: #e5e7eb;
   --dot: #111827;
   --bg: #f9fafb;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -24,21 +22,22 @@ html {
 }
 
 body {
-  background: var(--bg);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  color: #111827;
+  margin: 0;
+  padding: 0;
   width: 100vw;
   overflow-x: hidden;
+  background: var(--bg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* ============================
-   BARRA DEL TREN (FULL WIDTH)
-   ============================ */
+   MENÚ DEL TREN – FULL WIDTH
+============================ */
 .railway {
   position: sticky;
   top: 0;
   width: 100vw;
-  z-index: 50;
+  z-index: 100;
   background: rgba(15, 23, 42, 0.97);
   border-bottom: 1px solid rgba(31, 41, 55, 0.65);
   backdrop-filter: blur(12px);
@@ -47,13 +46,13 @@ body {
 .railway__inner {
   width: 100%;
   max-width: 100%;
-  padding: 0.75rem 2rem;
+  padding: 12px 32px;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-/* ===== labels ===== */
+/* Etiquetas */
 .railway__labels {
   display: flex;
   justify-content: space-between;
@@ -66,53 +65,40 @@ body {
   border-radius: 999px;
   opacity: 0.7;
   text-decoration: none;
-  transition: 0.2s;
-  font-size: 0.85rem;
+  transition: 0.25s;
+  font-size: 0.87rem;
 }
 
 .label:hover {
   opacity: 1;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.label--active {
-  background: #facc15;
-  color: #111827 !important;
-  opacity: 1 !important;
-}
+/* COLORES DIFERENTES POR SECCIÓN */
+.label.is-active[data-index="0"] { background: var(--azul); color: white; }
+.label.is-active[data-index="1"] { background: var(--verde); color: #111; }
+.label.is-active[data-index="2"] { background: var(--amarillo); color: #111; }
+.label.is-active[data-index="3"] { background: var(--azul-oscuro); color: white; }
+.label.is-active[data-index="4"] { background: var(--verde-oscuro); color: white; }
 
-/* ===== track ===== */
-.railway__track {
-  position: relative;
-  height: var(--bar-h);
-  display: flex;
-  align-items: center;
-}
-
+/* ============================
+   VÍA DEL TREN
+============================ */
 .track {
-  position: relative;
   width: 100%;
   height: var(--track-h);
   background: var(--track);
   border-radius: 999px;
+  position: relative;
 }
 
 .track__progress {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, var(--azul), var(--verde));
   transform-origin: left center;
   transform: scaleX(0);
   border-radius: inherit;
-}
-
-/* ===== puntos ===== */
-.stations {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .station {
@@ -121,92 +107,60 @@ body {
   background: var(--dot);
   border-radius: 50%;
   opacity: 0.5;
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.4);
-}
-
-.station--active {
-  opacity: 1;
-  box-shadow: 0 0 0 3px #facc15;
-}
-
-/* ===== tren ===== */
-.train {
   position: absolute;
   top: 50%;
-  left: 0%;
-  width: 60px;
   transform: translate(-50%, -50%);
-  fill: white;
-  stroke: black;
-  stroke-width: 1;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
-  animation: float 1.4s ease-in-out infinite alternate;
 }
 
-@keyframes float {
-  from { transform: translate(-50%, -52%); }
-  to   { transform: translate(-50%, -48%); }
+.station.is-active {
+  opacity: 1;
+  box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.8);
 }
 
 /* ============================
-   MAQUETACIÓN FULL-WIDTH
-   ============================ */
-
+   FULL SCREEN REAL
+============================ */
 main {
   width: 100vw;
-  margin: auto;
+  margin: 0;
+  padding: 0;
 }
 
 section {
-  padding: 5rem 2rem;
-  width: 100%;
+  width: 100vw;
+  padding: 6rem 0;
+  margin: 0;
 }
 
-/* ===== PORTADA FULL WIDTH ===== */
+/* Layout interno sin bordes laterales */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 4rem;
+  margin: 0;
+}
+
+/* ============================
+   PORTADA (FULL WIDTH)
+============================ */
 .section--hero {
   background: radial-gradient(circle at top left, #1d4ed8, #0f172a 60%, #020617);
   color: #e5e7eb;
-  width: 100%;
-  padding-top: calc(var(--bar-h) + 3rem);
+  padding-top: calc(var(--bar-h) + 4rem);
 }
 
 .section__hero-layout {
-  width: 100%;
-  max-width: 1400px;
-  margin: auto;
-  padding: 0 2rem;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-}
-
-.hero-title {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  margin-bottom: 1.5rem;
-}
-
-.hero-lead {
-  font-size: 1.05rem;
-  max-width: 42rem;
-}
-
-.hero-highlights {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.highlight {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  padding: 1rem;
-  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
 }
 
 /* ============================
    SECCIONES
-   ============================ */
+============================ */
 .section--light {
   background: #ffffff;
 }
@@ -220,20 +174,8 @@ section {
   width: 100%;
   max-width: 1400px;
   margin: auto;
-  padding: 0 2rem;
-
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 3rem;
-}
-
-/* ============================
-   FOOTER FULL WIDTH
-   ============================ */
-.site-footer {
-  width: 100vw;
-  background: #020617;
-  color: #9ca3af;
-  text-align: center;
-  padding: 2rem;
+  padding: 0 4rem;
 }
