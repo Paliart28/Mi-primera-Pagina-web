@@ -27,10 +27,10 @@ body {
   color: #111827;
 }
 
-/* Contenedor general */
 .container {
-  width: min(1120px, 100% - 2rem);
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 0 2rem;
 }
 
 /* ===== Barra fija del tren ===== */
