@@ -10,20 +10,55 @@
   <link href="style.css" rel="stylesheet" />
 </head>
 <body>
+<!-- ===== Barra del tren ===== -->
+<div class="railway" role="region" aria-label="Progreso por secciones">
+  <div class="railway__inner">
+    <nav class="railway__labels" aria-label="Estaciones">
+      <a class="label" data-index="0" href="#s1">Inicio</a>
+      <a class="label" data-index="1" href="#s2">Título 02</a>
+      <a class="label" data-index="2" href="#s3">Título 03</a>
+      <a class="label" data-index="3" href="#s4">Título 04</a>
+      <a class="label" data-index="4" href="#s5">Cierre</a>
+    </nav>
 
-  <!-- ===== Barra del tren (progreso) ===== -->
-  <div class="railway" role="region" aria-label="Progreso por secciones">
-    <div class="railway__inner">
+    <div class="track" aria-hidden="true">
+      <div class="track__progress" id="progress"></div>
 
-      <!-- Estaciones / navegación -->
-      <nav class="railway__labels" aria-label="Estaciones de la historia">
-        <a href="#s1" class="label label--active">Inicio</a>
-        <a href="#s2" class="label">El problema</a>
-        <a href="#s3" class="label">Los datos</a>
-        <a href="#s4" class="label">Historias</a>
-        <a href="#s5" class="label">Metodología</a>
-      </nav>
+      <!-- estaciones -->
+      <div class="station station--1" data-index="0"></div>
+      <div class="station station--2" data-index="1"></div>
+      <div class="station station--3" data-index="2"></div>
+      <div class="station station--4" data-index="3"></div>
+      <div class="station station--5" data-index="4"></div>
 
+      <!-- tren SVG -->
+      <svg class="train" id="train" viewBox="0 0 64 40" aria-hidden="true">
+        <rect x="0" y="28" width="64" height="4" fill="#9ca3af"/>
+        <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#111827"/>
+        <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#e5e7eb"/>
+        <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#22c55e"/>
+        <circle cx="50" cy="22" r="2" fill="#fde047"/>
+        <circle cx="18" cy="32" r="5" fill="#111827"/>
+        <circle cx="38" cy="32" r="5" fill="#111827"/>
+        <circle cx="18" cy="32" r="2" fill="#9ca3af"/>
+        <circle cx="38" cy="32" r="2" fill="#9ca3af"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Contenido (5 secciones) ===== -->
+<main>
+  <section id="s1"><h2>Inicio</h2><p>Tren continuo con un poquito de JS para suavidad cross-browser.</p></section>
+  <section id="s2"><h2>Santiago</h2><p>El tren avanza proporcional al scroll total.</p></section>
+  <section id="s3"><h2>dias, edad </h2><p>Las estaciones/labels se resaltan cuando su sección domina el viewport.</p></section>
+  <section id="s4"><h2>zonas</h2><p>Implementación simple con <code>requestAnimationFrame</code> + <code>IntersectionObserver</code>.</p></section>
+  <section id="s5"><h2>Metodologia</h2><p>Listo para integrar a cualquier sitio.</p></section>
+</main>
+
+<script src="tren_horizontal.js" type="text/javascript"></script>
+</body>
+</html>
       <!-- Vía, progreso y tren -->
       <div class="railway__track">
         <div class="track">
@@ -169,7 +204,7 @@
 
           <div class="data-block__layout">
             <figure class="chart-frame">
-              <!-- Reemplaza src por tu imagen o iframe de Altair -->
+              <!-- Reemplazar src por imagen o iframe de Altair -->
               <img src="assets/chart-sistema-cruce.png"
                    alt="Gráfico que compara siniestros por tipo de sistema de control en cada cruce"
                    class="chart-image">
