@@ -3,12 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo: los cruces que siguen siendo punto ciego</title>
+  <title>Punto ciego · Rieles en riesgo</title>
 
+  <!-- Tipografías del manual: Bebas Neue, Poppins, Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos generales + secciones -->
   <link href="style.css" rel="stylesheet" />
+  <!-- Estilos específicos del tren -->
   <link href="tren_horizontal.css" rel="stylesheet" />
 </head>
 <body>
+
+<!-- PRELOADER: tren entrando -->
+<div id="preloader">
+  <svg id="preloader-train" viewBox="0 0 64 40">
+    <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
+    <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+    <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#F6E05E"/>
+  </svg>
+</div>
+
+<!-- SPRITE DE SÍMBOLOS (para íconos reutilizables) -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
+  <defs>
+    <!-- Cruce ferroviario -->
+    <symbol id="icon-cruce" viewBox="0 0 64 64">
+      <rect x="4" y="28" width="56" height="8" rx="2" fill="#1E3A68"/>
+      <line x1="12" y1="18" x2="52" y2="46" stroke="#F2994A" stroke-width="4"/>
+      <line x1="12" y1="46" x2="52" y2="18" stroke="#F2994A" stroke-width="4"/>
+    </symbol>
+
+    <!-- Advertencia peatonal -->
+    <symbol id="icon-peatonal" viewBox="0 0 64 64">
+      <path d="M32 8L56 52H8L32 8Z" fill="#F6E05E" stroke="#1E3A68" stroke-width="4"/>
+      <circle cx="32" cy="28" r="4" fill="#1E3A68"/>
+      <path d="M26 44L32 32L38 44" stroke="#1E3A68" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Peligro / barrera -->
+    <symbol id="icon-barrera" viewBox="0 0 64 64">
+      <rect x="10" y="28" width="44" height="8" rx="2" fill="#F2994A"/>
+      <line x1="10" y1="28" x2="54" y2="36" stroke="#1E3A68" stroke-width="4"/>
+      <line x1="10" y1="36" x2="54" y2="28" stroke="#1E3A68" stroke-width="4"/>
+    </symbol>
+
+    <!-- Tren frontal -->
+    <symbol id="icon-tren" viewBox="0 0 64 64">
+      <rect x="18" y="12" width="28" height="30" rx="4" fill="#1E3A68"/>
+      <rect x="22" y="16" width="20" height="10" rx="2" fill="#E5EAF1"/>
+      <circle cx="26" cy="46" r="6" fill="#2E7D5B"/>
+      <circle cx="38" cy="46" r="6" fill="#2E7D5B"/>
+    </symbol>
+  </defs>
+</svg>
 
 <!-- ======================
      BARRA DEL TREN
@@ -16,16 +64,14 @@
 <div class="railway">
   <div class="railway__inner">
 
-    <!-- NOMBRES ACTUALIZADOS -->
     <nav class="railway__labels">
       <a class="label is-active" data-index="0" href="#s1">Inicio</a>
       <a class="label" data-index="1" href="#s2">Santiago</a>
-      <a class="label" data-index="2" href="#s3">dias, edad</a>
-      <a class="label" data-index="3" href="#s4">zonas</a>
-      <a class="label" data-index="4" href="#s5">Metodologia</a>
+      <a class="label" data-index="2" href="#s3">Días y edad</a>
+      <a class="label" data-index="3" href="#s4">Zonas</a>
+      <a class="label" data-index="4" href="#s5">Metodología</a>
     </nav>
 
-    <!-- Vía y estaciones -->
     <div class="track">
       <div class="track__progress" id="progress"></div>
 
@@ -37,31 +83,30 @@
 
       <!-- Tren -->
       <svg class="train" id="train" viewBox="0 0 64 40">
-        <rect x="0" y="28" width="64" height="4" fill="#9ca3af"/>
-        <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#111827"/>
-        <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#e5e7eb"/>
-        <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#22c55e"/>
-        <circle cx="50" cy="22" r="2" fill="#fde047"/>
+        <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
+        <!-- cuerpo principal coloreable -->
+        <rect class="train-body" x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+        <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5EAF1"/>
+        <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
+        <circle cx="50" cy="22" r="2" fill="#F6E05E"/>
         <circle cx="18" cy="32" r="5" fill="#111827"/>
         <circle cx="38" cy="32" r="5" fill="#111827"/>
         <circle cx="18" cy="32" r="2" fill="#9ca3af"/>
         <circle cx="38" cy="32" r="2" fill="#9ca3af"/>
       </svg>
     </div>
-
   </div>
 </div>
 
 <!-- ======================
-     CONTENIDO REORGANIZADO
+     CONTENIDO
 ====================== -->
 <main>
 
-  <!-- 1️⃣ SECCIÓN 1: PORTADA (la azul arriba del todo) -->
-  <section id="s1" class="section section--hero">
-    <div class="container section__hero-layout">
-
-      <div>
+  <!-- 1️⃣ INICIO / HERO -->
+  <section id="s1">
+    <div class="container hero-layout">
+      <div class="hero-text">
         <p class="kicker">Siniestros ferroviarios en la Región Metropolitana</p>
 
         <h1 class="hero-title">
@@ -100,7 +145,10 @@
       <aside class="hero-aside">
         <figure class="hero-figure">
           <div class="hero-map-placeholder">
-            <span class="hero-map-label">Aquí va el mapa / foto de cruce</span>
+            <svg class="icon icon--hero">
+              <use href="#icon-cruce"></use>
+            </svg>
+            <span class="hero-map-label">Mapa / visualización principal</span>
           </div>
           <figcaption>
             El tramo concentra cruces con distintos niveles de resguardo técnico.
@@ -110,33 +158,76 @@
     </div>
   </section>
 
-  <!-- 2️⃣ SECCIÓN 2 -->
-  <section id="s2" class="section section--light">
-    <div class="container section__two-cols">
-      <!-- TODO TU TEXTO ORIGINAL AQUÍ -->
-      <!-- (no lo repito para ahorrar espacio) -->
-      {{CONTENIDO S2 ORIGINAL}}
+  <!-- 2️⃣ SANTIAGO -->
+  <section id="s2">
+    <div class="container two-cols">
+      <div>
+        <h2>Santiago y los cruces que se repiten</h2>
+        <p>
+          Aquí va el texto de tu sección sobre Santiago: descripción general del tramo,
+          contexto urbano y concentración de siniestros en la capital.
+        </p>
+      </div>
+      <div class="section-icon">
+        <svg class="icon icon--right">
+          <use href="#icon-peatonal"></use>
+        </svg>
+      </div>
     </div>
   </section>
 
-  <!-- 3️⃣ SECCIÓN 3 -->
-  <section id="s3" class="section section--dark">
-    <div class="container">
-      {{CONTENIDO S3 ORIGINAL}}
+  <!-- 3️⃣ DÍAS Y EDAD -->
+  <section id="s3">
+    <div class="container two-cols">
+      <div>
+        <h2>Días y edad de las víctimas</h2>
+        <p>
+          Resumen de los patrones temporales y etarios: qué días se concentran
+          los atropellos y qué grupos de edad aparecen más expuestos.
+        </p>
+      </div>
+      <div class="section-icon">
+        <svg class="icon icon--right">
+          <use href="#icon-barrera"></use>
+        </svg>
+      </div>
     </div>
   </section>
 
-  <!-- 4️⃣ SECCIÓN 4 -->
-  <section id="s4" class="section section--light">
-    <div class="container">
-      {{CONTENIDO S4 ORIGINAL}}
+  <!-- 4️⃣ ZONAS -->
+  <section id="s4">
+    <div class="container two-cols">
+      <div>
+        <h2>Zonas críticas del trazado</h2>
+        <p>
+          Aquí se despliega la visualización de zonas de riesgo:
+          cruces con infraestructura deficitaria, visibilidad limitada
+          o registros reiterados de siniestros.
+        </p>
+      </div>
+      <div class="section-icon">
+        <svg class="icon icon--right">
+          <use href="#icon-tren"></use>
+        </svg>
+      </div>
     </div>
   </section>
 
-  <!-- 5️⃣ SECCIÓN 5 -->
-  <section id="s5" class="section section--dark">
-    <div class="container section__two-cols">
-      {{CONTENIDO S5 ORIGINAL}}
+  <!-- 5️⃣ METODOLOGÍA -->
+  <section id="s5">
+    <div class="container two-cols">
+      <div>
+        <h2>Metodología</h2>
+        <p>
+          Explicación sintética de la base de datos, criterios de filtrado,
+          variables usadas y limitaciones del análisis.
+        </p>
+      </div>
+      <div class="section-icon">
+        <svg class="icon icon--right">
+          <use href="#icon-cruce"></use>
+        </svg>
+      </div>
     </div>
   </section>
 

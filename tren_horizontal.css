@@ -1,78 +1,126 @@
-/* ================================================
-   SISTEMA DE TREN POR SECCIONES (no por scroll total)
-   ================================================ */
-
-const progressEl = document.getElementById("progress");
-const trainEl = document.getElementById("train");
-
-const labels = Array.from(document.querySelectorAll(".label"));
-const stations = Array.from(document.querySelectorAll(".station"));
-const sections = Array.from(document.querySelectorAll("main section"));
-/* -----------------------------------------------
-   Mapea cada sección a una fracción exacta de vía
-   0 → 0%
-   1 → 25%
-   2 → 50%
-   3 → 75%
-   4 → 100%
------------------------------------------------ */
-function setTrainPosition(index) {
-  const fraction = index / (sections.length - 1);
-
-  // Mueve barra de progreso
-  progressEl.style.transform = `scaleX(${fraction})`;
-
-  // Mueve el tren al punto exacto
-  trainEl.style.left = `${fraction * 100}%`;
-
-  // Colorea estaciones y labels
-  labels.forEach((l) => l.classList.toggle("is-active", Number(l.dataset.index) === index));
-  stations.forEach((s) => s.classList.toggle("is-active", Number(s.dataset.index) === index));
+:root {
+  --bar-h: 72px;
+  --track-h: 8px;
 }
 
-/* -----------------------------------------------
-   IntersectionObserver: Detecta la sección visible
------------------------------------------------ */
-const observer = new IntersectionObserver(
-  (entries) => {
-    let best = null;
+/* Barra fija del tren */
+.railway {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  z-index: 900;
+  background: #0f172acc;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #1f2937;
+}
 
-    for (const e of entries) {
-      if (!best || e.intersectionRatio > best.intersectionRatio) {
-        best = e;
-      }
-    }
+.railway__inner {
+  width: 100%;
+  padding: 12px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
 
-    if (best) {
-      const idx = sections.indexOf(best.target);
-      setTrainPosition(idx);
-    }
-  },
-  {
-    root: null,
-    rootMargin: `-120px 0px 0px 0px`,
-    threshold: [0.25, 0.5, 0.75],
+/* Etiquetas del menú */
+.railway__labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.label {
+  padding: 7px 14px;
+  border-radius: 999px;
+  color: #e5e7eb;
+  opacity: 0.75;
+  text-decoration: none;
+  transition: 0.25s;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.label:hover {
+  opacity: 1;
+  background: #ffffff20;
+}
+
+/* Colores activos por sección */
+.label.is-active[data-index="0"] { background: var(--acero); color: #f9fafb; }
+.label.is-active[data-index="1"] { background: var(--senal); color: #111827; }
+.label.is-active[data-index="2"] { background: var(--oxido); color: #111827; }
+.label.is-active[data-index="3"] { background: var(--verde); color: #f9fafb; }
+.label.is-active[data-index="4"] { background: var(--gris); color: #111827; }
+
+/* Track */
+.track {
+  width: 100%;
+  height: var(--track-h);
+  background: #CBD5E1;
+  border-radius: 999px;
+  position: relative;
+}
+
+.track__progress {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: var(--acero);
+  border-radius: inherit;
+}
+
+/* Estaciones */
+.station {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #111827;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.station--1 { left: 0%; }
+.station--2 { left: 25%; }
+.station--3 { left: 50%; }
+.station--4 { left: 75%; }
+.station--5 { left: 100%; }
+
+.station.is-active {
+  opacity: 1;
+  box-shadow: 0 0 0 4px #ffffffaa;
+}
+
+/* Tren */
+.train {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 40px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,.3));
+  animation: train-float 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes train-float {
+  from { transform: translate(-50%, -52%); }
+  to   { transform: translate(-50%, -48%); }
+}
+
+/* Responsive header */
+@media (max-width: 900px) {
+  :root { --bar-h: 80px; }
+
+  .railway__inner {
+    padding-inline: 16px;
   }
-);
 
-sections.forEach((sec) => observer.observe(sec));
-
-/* -----------------------------------------------
-   Click en los labels → baja exacto a la sección
------------------------------------------------ */
-document.querySelector(".railway__labels").addEventListener("click", (e) => {
-  const a = e.target.closest("a[href^='#']");
-  if (!a) return;
-
-  e.preventDefault();
-
-  const id = a.getAttribute("href").slice(1);
-  const el = document.getElementById(id);
-
-  const headerH = parseFloat(
-    getComputedStyle(document.documentElement).getPropertyValue("--bar-h")
-  );
-
-  const top = el.getBoundingClientRect().top + window.pageYOffset - (headerH + 16);
-  window.scrollTo({ top, behavior: "smooth" });
-});
+  .label {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+}
