@@ -1,14 +1,13 @@
-/* Tren sincronizado por secciones SIN RECARGAR */
+/* Tren sincronizado por secciones usando SCROLL (sin recargar) */
 
 const progressEl = document.getElementById("progress");
 const trainEl = document.getElementById("train");
 const trainBody = document.querySelector(".train-body");
 
-const labels = [...document.querySelectorAll(".label")];
-const stations = [...document.querySelectorAll(".station")];
-const sections = [...document.querySelectorAll("main section")];
+const labels = Array.from(document.querySelectorAll(".label"));
+const stations = Array.from(document.querySelectorAll(".station"));
+const sections = Array.from(document.querySelectorAll("main section"));
 
-/* Colores por sección */
 const sectionColors = [
   "var(--acero)",
   "var(--senal)",
@@ -17,73 +16,86 @@ const sectionColors = [
   "var(--gris)"
 ];
 
-/* Función que actualiza TODO cuando cambias de sección */
+/* Mueve tren, barra, colores, labels, estaciones */
 function setTrainPosition(index) {
   const total = sections.length - 1;
+  if (total <= 0) return;
+
   const fraction = index / total;
 
-  // Progreso del track
+  // Avance de la barra
   progressEl.style.transform = `scaleX(${fraction})`;
   progressEl.style.background = sectionColors[index];
 
-  // Tren llega al borde REAL
-  trainEl.style.left = `calc(${fraction * 100}% - 20px)`;
+  // Posición del tren (centrado en cada estación)
+  trainEl.style.left = `${fraction * 100}%`;
 
-  // Color del tren
-  if (trainBody) trainBody.style.fill = sectionColors[index];
+  // Color del cuerpo del tren
+  if (trainBody) {
+    trainBody.style.fill = sectionColors[index];
+  }
 
-  // Labels activos
+  // Activar label correspondiente
   labels.forEach(l =>
     l.classList.toggle("is-active", Number(l.dataset.index) === index)
   );
 
-  // Estaciones activas
+  // Activar estación correspondiente
   stations.forEach(s =>
     s.classList.toggle("is-active", Number(s.dataset.index) === index)
   );
 }
 
-/* OBSERVER PERFECTO (detecta sección sin refrescar) */
-const observer = new IntersectionObserver(
-  entries => {
-    let mostVisible = null;
+/* Calcula qué sección está más cerca del centro de la pantalla */
+function getActiveSectionIndex() {
+  const viewportCenter = window.innerHeight / 2;
+  let bestIdx = 0;
+  let bestDistance = Infinity;
 
-    entries.forEach(entry => {
-      if (!mostVisible || entry.intersectionRatio > mostVisible.intersectionRatio) {
-        mostVisible = entry;
-      }
-    });
+  sections.forEach((sec, idx) => {
+    const rect = sec.getBoundingClientRect();
+    const sectionCenter = rect.top + rect.height / 2;
+    const distance = Math.abs(sectionCenter - viewportCenter);
 
-    if (mostVisible && mostVisible.isIntersecting) {
-      const idx = sections.indexOf(mostVisible.target);
-      if (idx >= 0) {
-        setTrainPosition(idx);   // ← TODO SE ACTUALIZA SIN RECARGAR
-      }
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestIdx = idx;
     }
-  },
-  {
-    root: null,
-    threshold: [0.3, 0.5, 0.7],       // ← detecta más rápido los cambios
-    rootMargin: "-30% 0px -30% 0px"   // ← detecta la sección CENTRO de la pantalla
-  }
-);
+  });
 
-/* Activar observer para cada sección */
-sections.forEach(section => observer.observe(section));
+  return bestIdx;
+}
 
-/* Click en menú */
+/* Throttle con requestAnimationFrame para que sea suave */
+let ticking = false;
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    const idx = getActiveSectionIndex();
+    setTrainPosition(idx);
+    ticking = false;
+  });
+}
+
+window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", onScroll);
+
+/* Click en el menú: scroll suave a la sección */
 document.querySelector(".railway__labels").addEventListener("click", e => {
   const a = e.target.closest("a[href^='#']");
   if (!a) return;
 
   e.preventDefault();
 
-  const id = a.getAttribute("href").substring(1);
+  const id = a.getAttribute("href").slice(1);
   const el = document.getElementById(id);
+  if (!el) return;
 
-  const headerH = parseFloat(
-    getComputedStyle(document.documentElement).getPropertyValue("--bar-h")
-  ) || 80;
+  const headerH =
+    parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue("--bar-h")
+    ) || 72;
 
   const top =
     el.getBoundingClientRect().top +
@@ -96,5 +108,5 @@ document.querySelector(".railway__labels").addEventListener("click", e => {
   });
 });
 
-/* Estado inicial sin recargar */
+/* Estado inicial */
 setTrainPosition(0);
