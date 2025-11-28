@@ -1,6 +1,55 @@
 <!doctype html>
 <html lang="es">
 <head>
+  <!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Punto ciego · Rieles en riesgo</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos principales -->
+  <link href="style.css" rel="stylesheet" />
+  <link href="tren_horizontal.css" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ============================================================
+                      PANTALLA DE ENTRADA
+=============================================================== -->
+<section id="intro-screen">
+  <div class="intro-content">
+
+    <svg class="intro-train" viewBox="0 0 64 40">
+      <rect x="18" y="12" width="28" height="30" fill="#E5EAF1"/>
+      <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+      <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#F6E05E"/>
+    </svg>
+
+    <h1 class="intro-title">Rieles en riesgo</h1>
+    <p class="intro-sub">Los cruces que siguen siendo punto ciego</p>
+
+    <button id="start-btn" class="intro-btn">Comenzar el viaje</button>
+  </div>
+</section>
+
+<script>
+  document.getElementById("start-btn").addEventListener("click",()=>{
+    document.getElementById("intro-screen").style.opacity="0";
+    setTimeout(()=>{ document.getElementById("intro-screen").style.display="none"; },400);
+    window.location.hash = "index2.html";
+  });
+</script>
+
+ <symbol id="icon-tren" viewBox="0 0 64 64">
+      <rect x="18" y="12" width="28" height="30" rx="4" fill="#1E3A68"/>
+      <rect x="22" y="16" width="20" height="10" rx="2" fill="#E5EAF1"/>
+      <circle cx="26" cy="46" r="6" fill="#2E7D5B"/>
+      <circle cx="38" cy="46" r="6" fill="#2E7D5B"/>
+    </symbol>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Punto ciego · Rieles en riesgo</title>
@@ -217,11 +266,41 @@
   <section id="s5">
     <div class="container two-cols">
       <div>
-        <h2>Metodología</h2>
+       <h2 class="section-title section-title--invert">Cómo hicimos este reportaje</h2>
         <p>
-          Explicación sintética de la base de datos, criterios de filtrado,
-          variables usadas y limitaciones del análisis.
+      Este proyecto cruza bases de datos de siniestros ferroviarios, registros de cruces
+            oficiales y observación en terreno. Las visualizaciones se construyeron en
+            <strong>Altair</strong>, siguiendo el criterio de mantener gráficos simples y directos
+            para responder preguntas específicas sobre seguridad ferroviaria.
+         
         </p>
+       <ul class="method-list">
+            <li>Período analizado: 2014–2024.</li>
+            <li>Unidad de análisis: siniestros por atropello en el tramo Estación Central – O’Higgins.</li>
+            <li>Variables clave: tipo de tramo, sistema de control, hora del día, gravedad, edad.</li>
+          </ul>
+        </div>
+
+        <aside class="section__side">
+          <div class="links-card">
+            <h3 class="links-card__title">Material complementario</h3>
+            <ul class="links-list">
+              <li><a href="../Entrega_03/cronica_paloma.md" target="_blank">Crónica original (v. Entrega 03)</a></li>
+              <li><a href="../Entrega_03/script_paloma.ipynb" target="_blank">Script con Altair</a></li>
+              <li><a href="../Entrega_03/datos/" target="_blank">Bases de datos utilizadas</a></li>
+            </ul>
+            <p class="links-footnote">
+              Ajustar las rutas según cómo esté organizado en el repositorio en la Entrega 05.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+
+
+
       </div>
       <div class="section-icon">
         <svg class="icon icon--right">
@@ -236,9 +315,55 @@
 <script src="tren_horizontal.js"></script>
 </body>
 </html>
+        
+          <ul class="method-list">
+            <li>Período analizado: 2014–2024.</li>
+            <li>Unidad de análisis: siniestros por atropello en el tramo Estación Central – O’Higgins.</li>
+            <li>Variables clave: tipo de tramo, sistema de control, hora del día, gravedad, edad.</li>
+          </ul>
+        </div>
 
+        <aside class="section__side">
+          <div class="links-card">
+            <h3 class="links-card__title">Material complementario</h3>
+            <ul class="links-list">
+              <li><a href="../Entrega_03/cronica_paloma.md" target="_blank">Crónica original (v. Entrega 03)</a></li>
+              <li><a href="../Entrega_03/script_paloma.ipynb" target="_blank">Script con Altair</a></li>
+              <li><a href="../Entrega_03/datos/" target="_blank">Bases de datos utilizadas</a></li>
+            </ul>
+            <p class="links-footnote">
+              Ajusta las rutas según cómo esté organizado tu repositorio en la Entrega 05.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__copy">
+        Proyecto desarrollado para el curso COM208 Narración Gráfica · Pontificia Universidad Católica de Chile.
+      </p>
+      <p class="site-footer__copy">
+        Datos: EFE, Carabineros de Chile y elaboración propia. · 2025.
+      </p>
+    </div>
+  </footer>
 
+  <!-- JS mínimo: menú mobile (si lo necesitas) -->
+  <script>
+    const navToggle = document.querySelector('.site-nav__toggle');
+    const navMenu = document.querySelector('#site-nav-menu');
 
-
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isOpen));
+        navMenu.classList.toggle('site-nav__list--open');
+      });
+    }
+  </script>
+</body>
+</html>
 
