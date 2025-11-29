@@ -15,6 +15,78 @@
   <link href="style.css" rel="stylesheet" />
   <link href="tren_horizontal.css" rel="stylesheet" />
 </head>
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- ESRI Leaflet -->
+<script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+
+<script>
+// Inicializa el mapa en pequeño
+var map = L.map('hero-map').setView([-33.60, -70.705], 12);
+
+// Capa base tenue para modo "metro"
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  opacity: 0.4
+}).addTo(map);
+
+// Estaciones
+var estaciones = [
+  [-33.4513, -70.6797],
+  [-33.4660, -70.6899],
+  [-33.4919, -70.6951],
+  [-33.5150, -70.6988],
+  [-33.5465, -70.7000],
+  [-33.5866, -70.6980],
+  [-33.5994, -70.7009],
+  [-33.6183, -70.7072],
+  [-33.6378, -70.7189],
+  [-34.1701, -70.7444]
+];
+
+// Dibuja línea estilo metro
+L.polyline(estaciones, {
+  color: "#D90429",
+  weight: 6
+}).addTo(map);
+
+// Dibuja estaciones
+estaciones.forEach(function(coord){
+  L.circleMarker(coord, {
+    radius: 7,
+    fillColor: "#FFFFFF",
+    color: "#121212",
+    weight: 2,
+    fillOpacity: 1
+  }).addTo(map);
+});
+
+// Punto del accidente
+var accidente = [-33.6069, -70.7040];
+
+var accMarker = L.circleMarker(accidente, {
+  radius: 12,
+  fillColor: "#D90429",
+  color: "#FFFFFF",
+  weight: 3,
+  fillOpacity: 1,
+  className: "pulse-marker"
+}).addTo(map);
+
+// Acción al hacer clic
+accMarker.on("click", function() {
+  
+  // Muestra el sidebar
+  document.getElementById("hero-sidebar").classList.add("show");
+
+  // Cambia a mapa satelital
+  L.esri.basemapLayer("Imagery").addTo(map);
+
+  // Anima hasta el punto exacto
+  map.flyTo(accidente, 16, {duration: 1.5});
+});
+</script>
 <body>
  <symbol id="icon-tren" viewBox="0 0 64 64">
       <rect x="18" y="12" width="28" height="30" rx="4" fill="#1E3A68"/>
@@ -146,10 +218,29 @@
           Por Andrés Hernández, Paloma Riquelme y Josefa Mariñanco<br>
           Proyecto para Narración Gráfica (COM-208) · PUC
         </p>
-        <iframe 
-          src="accidente_san_bernardo_interactivo.html"
-          style="width:100%; height:800px; border:none;">
-          </iframe>
+       <!-- MAPA INTEGRADO AL HERO -->
+<div class="hero-map-wrapper">
+
+  <!-- MAPA -->
+  <div id="hero-map"></div>
+
+  <!-- SIDEBAR -->
+  <div id="hero-sidebar">
+    <div class="hero-sidebar-title">Accidente ferroviario San Bernardo (2024)</div>
+
+    <img class="hero-sidebar-photo" src="https://static.theclinic.cl/media/2024/06/20-151152_aciv_Diseno-sin-titulo-37-1200x648.png">
+    <img class="hero-sidebar-photo" src="https://www.t13.cl/sites/default/files/styles/manual_crop_16_9/public/field/image/choque-trenes-san-bernardo.jpeg">
+    <img class="hero-sidebar-photo" src="https://elperiodico.cl/wp-content/uploads/2024/06/Choque-de-trenes-689x392.jpeg">
+
+    <p>
+      El 20 de junio de 2024, un tren de pruebas EFE colisionó de frente con
+      un tren de carga Fepasa entre Lo Blanco y Lo Herrera. El impacto dejó 
+      dos maquinistas fallecidos y nueve personas heridas, revelando fallas 
+      críticas en los protocolos de autorización simultánea de vía.
+    </p>
+  </div>
+
+</div>
         <div class="hero-highlights">
           <div class="highlight">
             <span class="highlight-label">Años analizados</span>
