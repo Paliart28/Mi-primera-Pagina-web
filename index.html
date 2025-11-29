@@ -3,76 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo · Inicio del viaje</title>
+  <title>Rieles en Riesgo · Viaje</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Tus estilos -->
+  <link href="style.css" rel="stylesheet" />
+  <link href="tren_horizontal.css" rel="stylesheet" />
 
   <style>
-    body {
-      margin: 0;
+    /* =============================
+       PANTALLA DE BIENVENIDA
+    ============================== */
+    #welcome-screen {
+      position: fixed;
+      inset: 0;
       background: #0f172a;
-      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      z-index: 999999;
       color: white;
-      font-family: "Poppins", sans-serif;
-      overflow: hidden;
+      text-align: center;
+      padding: 2rem;
     }
 
-    /* Tren */
-    #train-start {
+    #welcome-train {
       width: 180px;
-      animation: train-enter 2.5s ease-out forwards;
+      margin-bottom: 2rem;
+      animation: trainIntro 1.8s ease-out forwards;
     }
 
-    @keyframes train-enter {
-      from { transform: translateX(-120vw); }
+    @keyframes trainIntro {
+      from { transform: translateX(-70vw); }
       to   { transform: translateX(0); }
     }
 
-    /* Botón “Iniciar viaje” */
-    .start-btn {
-      margin-top: 40px;
-      padding: 16px 32px;
-      font-size: 1.4rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      background: #e63946;
+    #start-btn {
+      margin-top: 2rem;
+      background: #b91c1c;
       color: white;
-      transition: 0.3s;
+      padding: 1rem 2.2rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1.3rem;
+      font-family: "Poppins", sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: 0.25s;
     }
 
-    .start-btn:hover {
-      background: #b51f2c;
+    #start-btn:hover {
+      background: #dc2626;
       transform: scale(1.05);
+    }
+
+    /* El contenido real parte oculto */
+    #real-content {
+      display: none;
     }
   </style>
 </head>
-
 <body>
+<!-- ==========================================================
+     1) PANTALLA DE BIENVENIDA
+=========================================================== -->
+<div id="welcome-screen">
 
-  <!-- Tren centrado -->
-  <svg id="train-start" viewBox="0 0 64 40">
+  <!-- Tren que avanza hasta la mitad -->
+  <svg id="welcome-train" viewBox="0 0 64 40">
     <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
     <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
-    <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5EAF1"/>
-    <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
-    <circle cx="50" cy="22" r="2" fill="#F6E05E"/>
-    <circle cx="18" cy="32" r="5" fill="#111827"/>
-    <circle cx="38" cy="32" r="5" fill="#111827"/>
-    <circle cx="18" cy="32" r="2" fill="#9ca3af"/>
-    <circle cx="38" cy="32" r="2" fill="#9ca3af"/>
+    <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#F6E05E"/>
   </svg>
 
-  <!-- Botón para pasar al sitio real -->
-  <button
-    class="start-btn"
-    onclick="window.location.href='index2.html'">
-    Iniciar viaje
-  </button>
+  <h1 style="font-family:'Bebas Neue'; font-size:3rem; margin:0;">
+    Rieles en riesgo
+  </h1>
+  <p style="margin-top:0.5rem; opacity:0.8;">
+    Los cruces que siguen siendo punto ciego
+  </p>
 
-</body>
-</html>
+  <button id="start-btn">Iniciar viaje</button>
+  
+</div>
