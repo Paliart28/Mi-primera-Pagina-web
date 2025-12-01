@@ -153,15 +153,23 @@
      MAPA INTERACTIVO
 ====================== -->
 <script>
-// Crear mapa
-var map = L.map('hero-map').setView([-33.60, -70.705], 12);
+// Crear el mapa con movimiento activo (como Google Maps)
+var map = L.map('hero-map', {
+  zoomControl: true,
+  dragging: true,
+  scrollWheelZoom: true,
+  doubleClickZoom: true,
+  boxZoom: true,
+  keyboard: true,
+  touchZoom: true,
+}).setView([-33.6069, -70.7040], 14);
 
-// Fondo
+// Fondo sutil estilo Google Maps
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   opacity: 0.40
 }).addTo(map);
 
-// Estaciones
+// Línea del tramo
 var estaciones = [
   [-33.4513, -70.6797],
   [-33.4660, -70.6899],
@@ -177,21 +185,23 @@ var estaciones = [
 
 L.polyline(estaciones, {
   color: "#D90429",
-  weight: 6
+  weight: 6,
+  opacity: 0.8
 }).addTo(map);
 
 // Estaciones visuales
-estaciones.forEach(c => {
-  L.circleMarker(c, {
-    radius: 7,
+estaciones.forEach(coord => {
+  L.circleMarker(coord, {
+    radius: 6,
     fillColor: "#FFFFFF",
-    color: "#121212",
-    weight: 2
+    color: "#000",
+    weight: 1
   }).addTo(map);
 });
 
-// Punto del accidente (ESTÁTICO)
+// Punto del accidente — ESTÁTICO
 var accidente = [-33.6069, -70.7040];
+
 var accMarker = L.circleMarker(accidente, {
   radius: 12,
   fillColor: "#D90429",
@@ -200,16 +210,21 @@ var accMarker = L.circleMarker(accidente, {
   fillOpacity: 1
 }).addTo(map);
 
-// Click → zoom + panel, pero punto NO se mueve
+// Al hacer clic: NO mover punto, SÍ mover mapa y mostrar panel
 accMarker.on("click", function(){
+
+  // Mostrar resumen
   document.getElementById("hero-sidebar").classList.add("show");
 
+  // Capa satelital
   L.esri.basemapLayer("Imagery").addTo(map);
 
+  // Zoom al punto — mapa se mueve, punto NO
   map.flyTo(accidente, 16, {
     duration: 1.6,
     easeLinearity: 0.25
   });
+
 });
 </script>
 </body>
