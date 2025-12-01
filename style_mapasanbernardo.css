@@ -1,46 +1,42 @@
 /* ============================
-   LAYOUT HERO (lado derecho)
+   COLUMNA DERECHA DEL HERO
 ============================ */
 .hero-aside {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  position: relative;
-  z-index: 1;
+  gap: 1.2rem;
 }
 
 /* ============================
-   MAPA SAN BERNARDO
+   MAPA
 ============================ */
 #hero-map {
   width: 100%;
-  height: 300px;
-  min-height: 300px;
+  height: 320px;
+  min-height: 320px;
   border-radius: 12px;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  background: #ccc; /* fallback */
-  z-index: 2;
+  border: 2px solid rgba(255,255,255,0.35);
+  background: #ddd;
 }
 
 /* ============================
    SIDEBAR DEL ACCIDENTE
 ============================ */
 #hero-sidebar {
-  display: none;            /* oculto al inicio */
+  display: none;
+  width: 100%;
   background: #fff;
   color: #111;
-  padding: 1.2rem;
-  border-radius: 10px;
+  padding: 1.25rem;
   border-left: 5px solid #D90429;
+  border-radius: 10px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  margin-top: 1rem;
-  width: 100%;
 }
 
 #hero-sidebar.show {
-  display: block;           /* mostrar al hacer clic */
+  display: block;
 }
 
 .hero-sidebar-title {
@@ -52,14 +48,12 @@
 
 .hero-sidebar-photo {
   width: 100%;
-  border-radius: 6px;
-  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 
-/* ============================
-   MARCADOR ROJO (SIN ANIMACIÓN)
-============================ */
+/* Marcardor (sin animación para que no “se mueva”) */
 .pulse-marker {
-  /* SE QUITA ANIMACIÓN PARA QUE NO SE MUEVA */
   animation: none !important;
 }
+

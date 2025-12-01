@@ -2,7 +2,7 @@
    VARIABLES (paleta Punto Ciego)
 =========================================================== */
 :root {
-  --bar-h: 72px;
+  --bar-h: 80px;
   --track-h: 8px;
 
   --acero: #1E3A68;
@@ -18,13 +18,22 @@
 /* ===========================================================
    RESET + BASE
 =========================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 html {
-  scroll-margin-top: calc(var(--bar-h) + 60px);
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   width: 100vw;
   overflow-x: hidden;
   background: var(--gris);
@@ -32,52 +41,11 @@ body {
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-h1, h2, .hero-title {
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-h3, h4, .kicker {
-  font-family: "Poppins", sans-serif;
-}
-
-/* ===========================================================
-   PRELOADER
-=========================================================== */
-#preloader {
-  position: fixed;
-  inset: 0;
-  background: #0f172a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  animation: pre-fade 1s ease forwards;
-  animation-delay: 1.8s;
-}
-
-#preloader-train {
-  width: 80px;
-  animation: pre-train 1.8s ease-out forwards;
-}
-
-@keyframes pre-train {
-  from { transform: translateX(-70vw); }
-  to   { transform: translateX(0); }
-}
-
-@keyframes pre-fade {
-  to { opacity: 0; visibility: hidden; }
-}
-
 /* ===========================================================
    SECCIONES FULLSCREEN
 =========================================================== */
 main {
   width: 100vw;
-  margin: 0;
-  padding: 0;
 }
 
 section {
@@ -85,16 +53,11 @@ section {
   min-height: 100vh;
   margin: 0;
   padding: 7rem 0;
-  align-items: center;
   display: flex;
+  align-items: center;
 }
 
-/* 🔥 FIX CRÍTICO: evitar que el hero colapse el mapa */
-#s1 {
-  display: block !important;
-}
-
-/* Colores de fondo por sección */
+/* Colores por sección */
 #s1 { background: var(--acero); color: var(--text-light); }
 #s2 { background: var(--senal); color: var(--text-dark); }
 #s3 { background: var(--oxido); color: var(--text-dark); }
@@ -125,9 +88,10 @@ section {
 }
 
 /* ===========================================================
-   HERO LEFT
+   HERO IZQUIERDA (texto)
 =========================================================== */
 .kicker {
+  font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -135,6 +99,9 @@ section {
 }
 
 .hero-title {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   font-size: clamp(2.4rem, 4vw, 3.6rem);
   line-height: 1.05;
   margin-bottom: 1.5rem;
@@ -179,66 +146,23 @@ section {
 }
 
 /* ===========================================================
-   HERO RIGHT (MAPA + SIDEBAR)
+   SECCIONES INTERNAS (s2–s5)
 =========================================================== */
-.hero-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.section-title {
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-/* Mapa */
-#hero-map {
-  width: 100%;
-  height: 260px;
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  background: #0f172a;
+.section-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 36rem;
 }
 
-/* Sidebar oculto */
-#hero-sidebar {
-  display: none;
-  background: #ffffff;
-  color: #111827;
-  padding: 1rem 1.25rem;
-  border-radius: 0.75rem;
-  border-left: 4px solid #D90429;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-}
-
-#hero-sidebar.show {
-  display: block;
-}
-
-.hero-sidebar-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: #D90429;
-}
-
-.hero-sidebar-photo {
-  width: 100%;
-  border-radius: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-/* Punto rojo animado */
-.pulse-marker {
-  animation: pulse 1.8s infinite;
-}
-
-@keyframes pulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.35); }
-  100% { transform: scale(1); }
-}
-
-/* ===========================================================
-   ICONOS Y OTROS
-=========================================================== */
+/* Icono a la derecha */
 .section-icon {
   display: flex;
   align-items: center;
@@ -248,33 +172,6 @@ section {
 .icon--right {
   width: 72px;
   height: 72px;
-}
-
-/* ===========================================================
-   INTRO LANDING
-=========================================================== */
-.landing {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #1d4ed8 0%, #0f172a 30%, #020617 50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  color: white;
-  text-align: center;
-  padding: 2rem;
-}
-
-.landing-inner {
-  max-width: 600px;
-  animation: fadeIn 1.2s ease;
-}
-
-.landing-train {
-  width: 120px;
-  margin-bottom: 1.5rem;
-  animation: trainMove 1.5s ease-in-out infinite alternate;
 }
 
 /* ===========================================================
@@ -290,13 +187,25 @@ section {
 .site-footer__inner {
   text-align: center;
 }
-/* Evitar solapamiento entre mapa y sidebar */
-.hero-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: auto !important;
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+@media (max-width: 900px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .hero-layout,
+  .two-cols {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 6rem 0;
+  }
 }
+
 
 /* Hacer que el hero crezca con el contenido */
 #s1 .container {

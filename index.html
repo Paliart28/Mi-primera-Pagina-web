@@ -3,78 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo · Inicio del viaje</title>
+  <title>Rieles en riesgo · Inicio</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos generales -->
+  <link href="style.css" rel="stylesheet" />
+  <link href="tren_horizontal.css" rel="stylesheet" />
 
   <style>
     body {
       margin: 0;
-      background: #0f172a;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      color: white;
-      font-family: "Poppins", sans-serif;
-      overflow: hidden;
+      justify-content: center;
+      background: radial-gradient(circle at top, #1E3A68 0%, #020617 55%);
+      color: #F9FAFB;
+      font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
 
-    /* Tren */
-    #train-start {
-      width: 180px;
-      animation: train-enter 2.5s ease-out forwards;
+    .landing-wrap {
+      text-align: center;
+      padding: 2rem;
     }
 
-    @keyframes train-enter {
-      from { transform: translateX(-120vw); }
-      to   { transform: translateX(0); }
-    }
-
-    /* Botón “Iniciar viaje” */
-    .start-btn {
-      margin-top: 40px;
-      padding: 16px 32px;
-      font-size: 1.4rem;
+    .landing-title {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .landing-sub {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .start-btn {
+      margin-top: 1rem;
+      background: #F6E05E;
+      color: #111827;
       border: none;
-      border-radius: 12px;
+      border-radius: 999px;
+      padding: 0.9rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
-      background: #e63946;
-      color: white;
-      transition: 0.3s;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     }
 
     .start-btn:hover {
-      background: #b51f2c;
-      transform: scale(1.05);
+      background: #fde68a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
   </style>
 </head>
-
 <body>
-
-  <!-- Tren centrado -->
-  <svg id="train-start" viewBox="0 0 64 40">
-    <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
-    <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
-    <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5EAF1"/>
-    <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
-    <circle cx="50" cy="22" r="2" fill="#F6E05E"/>
-    <circle cx="18" cy="32" r="5" fill="#111827"/>
-    <circle cx="38" cy="32" r="5" fill="#111827"/>
-    <circle cx="18" cy="32" r="2" fill="#9ca3af"/>
-    <circle cx="38" cy="32" r="2" fill="#9ca3af"/>
-  </svg>
-
-  <!-- Botón para pasar al sitio real -->
-  <button
-    class="start-btn"
-    onclick="window.location.href='index2.html'">
-    Iniciar viaje
-  </button>
-
+  <div class="landing-wrap">
+    <h1 class="landing-title">Rieles en riesgo</h1>
+    <p class="landing-sub">Los cruces que siguen siendo punto ciego</p>
+    <button class="start-btn" onclick="window.location.href='index2.html'">
+      Iniciar viaje
+    </button>
+  </div>
 </body>
 </html>
-
-</div>
