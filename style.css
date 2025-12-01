@@ -32,7 +32,6 @@ body {
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-/* Tipografías del sistema */
 h1, h2, .hero-title {
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 0.06em;
@@ -86,8 +85,13 @@ section {
   min-height: 100vh;
   margin: 0;
   padding: 7rem 0;
-  display: flex;
   align-items: center;
+  display: flex;
+}
+
+/* 🔥 FIX CRÍTICO: evitar que el hero colapse el mapa */
+#s1 {
+  display: block !important;
 }
 
 /* Colores de fondo por sección */
@@ -97,7 +101,7 @@ section {
 #s4 { background: var(--verde); color: var(--text-light); }
 #s5 { background: var(--gris); color: var(--text-dark); }
 
-/* Contenedor interno */
+/* Contenedor */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -105,7 +109,9 @@ section {
   margin: 0 auto;
 }
 
-/* Layouts */
+/* ===========================================================
+   LAYOUTS
+=========================================================== */
 .hero-layout {
   display: grid;
   grid-template-columns: 2fr 1.2fr;
@@ -118,7 +124,9 @@ section {
   gap: 3rem;
 }
 
-/* Hero */
+/* ===========================================================
+   HERO LEFT
+=========================================================== */
 .kicker {
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -170,33 +178,67 @@ section {
   font-weight: 600;
 }
 
-/* Hero aside */
-.hero-figure {
-  margin: 0;
-}
-
-.hero-map-placeholder {
-  border-radius: 1rem;
-  border: 1px dashed rgba(148, 163, 184, 0.7);
-  padding: 2rem;
+/* ===========================================================
+   HERO RIGHT (MAPA + SIDEBAR)
+=========================================================== */
+.hero-aside {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1rem;
-  background: rgba(15, 23, 42, 0.3);
 }
 
-.hero-map-label {
-  font-size: 0.9rem;
-  text-align: center;
+/* Mapa */
+#hero-map {
+  width: 100%;
+  height: 260px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: #0f172a;
 }
 
-.icon {
-  width: 56px;
-  height: 56px;
+/* Sidebar oculto */
+#hero-sidebar {
+  display: none;
+  background: #ffffff;
+  color: #111827;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border-left: 4px solid #D90429;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
-/* Iconos en columnas derechas */
+#hero-sidebar.show {
+  display: block;
+}
+
+.hero-sidebar-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #D90429;
+}
+
+.hero-sidebar-photo {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Punto rojo animado */
+.pulse-marker {
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+/* ===========================================================
+   ICONOS Y OTROS
+=========================================================== */
 .section-icon {
   display: flex;
   align-items: center;
@@ -209,25 +251,8 @@ section {
 }
 
 /* ===========================================================
-   MODO OSCURO (según preferencias del sistema)
+   INTRO LANDING
 =========================================================== */
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #020617;
-    color: var(--text-light);
-  }
-
-  #s1 { background: #15294b; }
-  #s2 { background: #d7c447; color: #111827; }
-  #s3 { background: #cc7d3e; color: #0b1020; }
-  #s4 { background: #1f5b43; }
-  #s5 { background: #bfc6d3; color: #111827; }
-
-  .hero-map-placeholder {
-    background: rgba(15, 23, 42, 0.7);
-  }
-}
-/* ===== Pantalla inicial ===== */
 .landing {
   position: fixed;
   inset: 0;
@@ -249,59 +274,12 @@ section {
 .landing-train {
   width: 120px;
   margin-bottom: 1.5rem;
-  fill: #f9fafb;
-  stroke: #0f172a;
-  stroke-width: 1.5;
   animation: trainMove 1.5s ease-in-out infinite alternate;
 }
 
-@keyframes trainMove {
-  from { transform: translateX(-10px); }
-  to { transform: translateX(10px); }
-}
-
-.landing-title {
-  margin: 0;
-  font-size: 2.8rem;
-  font-weight: 700;
-}
-
-.landing-subtitle {
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-  opacity: 0.9;
-}
-
-.landing-btn {
-  margin-top: 1.8rem;
-  background: #facc15;
-  color: #111;
-  border: none;
-  padding: 0.9rem 1.6rem;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.landing-btn:hover {
-  background: #ffe46a;
-  transform: translateY(-2px);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Ocultar scroll mientras está la intro */
-body.landing-active {
-  overflow: hidden;
-}
-
-
-/* Footer */
-
+/* ===========================================================
+   FOOTER
+=========================================================== */
 .site-footer {
   background: #020617;
   color: #9ca3af;
@@ -311,61 +289,4 @@ body.landing-active {
 
 .site-footer__inner {
   text-align: center;
-}
-/* ==========================
-   Hero: mapa San Bernardo
-========================== */
-
-.hero-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Mapa pequeño en el hero */
-#hero-map {
-  width: 100%;
-  height: 260px;          /* ajusta si lo quieres un poco más alto */
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-}
-
-/* Panel de resumen (oculto al inicio) */
-#hero-sidebar {
-  display: none;
-  background: #ffffff;
-  color: #111827;
-  padding: 1rem 1.25rem;
-  border-radius: 0.75rem;
-  border-left: 4px solid #D90429;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
-}
-
-#hero-sidebar.show {
-  display: block;
-}
-
-.hero-sidebar-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  color: #D90429;
-}
-
-.hero-sidebar-photo {
-  width: 100%;
-  border-radius: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-/* PUNTO ROJO ANIMADO EN EL MAPA */
-.pulse-marker {
-  animation: pulse 1.8s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.35); }
-  100% { transform: scale(1); }
 }
