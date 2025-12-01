@@ -307,3 +307,25 @@ section {
   position: relative;
   z-index: 5;
 }
+/*Asegurar que la sección del hero NO colapse */
+#s1 {
+  display: block !important;
+  min-height: 100vh !important;
+}
+
+/*Asegurar que el aside tenga altura y no colapse el mapa */
+.hero-aside {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  min-height: 260px !important;
+}
+
+/* El mapa SIEMPRE visible */
+#hero-map {
+  display: block !important;
+  height: 260px !important;
+  min-height: 260px !important;
+  width: 100% !important;
+  z-index: 5;
+}
