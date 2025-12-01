@@ -211,13 +211,13 @@ accMarker.on("click", function(){
   accMarker.on("click", function() {
   const panel = document.getElementById("hero-sidebar");
 
-  // 🔥 Si está visible → esconder
+  // Si está visible → esconder
   if (panel.classList.contains("show")) {
     panel.classList.remove("show");
     return;
   }
 
-  // 🔥 Si está escondido → mostrar
+  // Si está escondido → mostrar
   panel.classList.add("show");
 
   // Capa satelital (solo al abrir)
