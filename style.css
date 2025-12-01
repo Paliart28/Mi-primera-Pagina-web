@@ -290,3 +290,20 @@ section {
 .site-footer__inner {
   text-align: center;
 }
+/* Evitar solapamiento entre mapa y sidebar */
+.hero-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: auto !important;
+}
+
+/* Hacer que el hero crezca con el contenido */
+#s1 .container {
+  display: block !important;
+}
+
+#hero-sidebar {
+  position: relative;
+  z-index: 5;
+}

@@ -153,13 +153,24 @@
      MAPA INTERACTIVO
 ====================== -->
 <script>
-var map = map.flyTo(accidente, 16, { duration: 1.5 });
-// Fondo
+// Crear mapa FIJO sin movimiento ni animación
+var map = L.map('hero-map', {
+  zoomControl: false,
+  dragging: false,
+  scrollWheelZoom: false,
+  doubleClickZoom: false,
+  boxZoom: false,
+  keyboard: false,
+  touchZoom: false,
+}).setView([-33.6069, -70.7040], 14); 
+// 👆 AHORA EL CENTRO ES EL ACCIDENTE, NO SANTIAGO
+
+// Fondo muy sutil
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  opacity: 0.40
+  opacity: 0.35
 }).addTo(map);
 
-// Estaciones
+// Línea del tramo
 var estaciones = [
   [-33.4513, -70.6797],
   [-33.4660, -70.6899],
@@ -173,39 +184,36 @@ var estaciones = [
   [-34.1701, -70.7444]
 ];
 
-// Línea
 L.polyline(estaciones, {
   color: "#D90429",
-  weight: 6
+  weight: 5,
+  opacity: 0.8
 }).addTo(map);
 
 // Estaciones visuales
-estaciones.forEach(c => {
-  L.circleMarker(c, {
-    radius: 7,
-    fillColor: "#FFFFFF",
-    color: "#121212",
-    weight: 2
+estaciones.forEach(coord => {
+  L.circleMarker(coord, {
+    radius: 5,
+    fillColor: "#FFF",
+    color: "#000",
+    weight: 1
   }).addTo(map);
 });
 
-// Punto del accidente
+// Punto del accidente (CENTRADO)
 var accidente = [-33.6069, -70.7040];
+
 var accMarker = L.circleMarker(accidente, {
   radius: 12,
   fillColor: "#D90429",
-  color: "#FFFFFF",
+  color: "#FFF",
   weight: 3,
-  fillOpacity: 1,
-  className: "pulse-marker"
-}).addTo(map);
+  fillOpacity: 1
+}).addTo(map); // 🔥 Quité el pulso: NO SE MUEVE MÁS
 
-// Click → mostrar panel
-accMarker.on("click", function(){
+// Click → mostrar panel sin mover mapa
+accMarker.on("click", () => {
   document.getElementById("hero-sidebar").classList.add("show");
-
-  L.esri.basemapLayer("Imagery").addTo(map);
-  map.flyTo(accidente, 16, { duration: 1.5 });
 });
 </script>
 
