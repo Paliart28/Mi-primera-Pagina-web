@@ -94,6 +94,7 @@
 <main>
 
   <!-- 1️⃣ INICIO / HERO -->
+   <!-- 1️⃣ INICIO / HERO -->
   <section id="s1">
     <div class="container hero-layout">
       <div class="hero-text">
@@ -132,19 +133,24 @@
         </div>
       </div>
 
+      <!-- COLUMNA DERECHA: MAPA + RESUMEN DEL CHOQUE -->
       <aside class="hero-aside">
-  <div id="hero-map"></div>
+        <div id="hero-map"></div>
 
-  <div id="hero-sidebar"> 
-     (todo el resumen e imágenes)
-  </div>
-</aside>
-            <span class="hero-map-label">Mapa / visualización principal</span>
-          </div>
-          <figcaption>
-            El tramo concentra cruces con distintos niveles de resguardo técnico.
-          </figcaption>
-        </figure>
+        <div id="hero-sidebar">
+          <h2 class="hero-sidebar-title">Accidente ferroviario San Bernardo (2024)</h2>
+
+          <img class="hero-sidebar-photo" src="https://static.theclinic.cl/media/2024/06/20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario San Bernardo">
+          <img class="hero-sidebar-photo" src="https://www.t13.cl/sites/default/files/styles/manual_crop_16_9/public/field/image/choque-trenes-san-bernardo.jpeg" alt="Choque de trenes en San Bernardo">
+          <img class="hero-sidebar-photo" src="https://elperiodico.cl/wp-content/uploads/2024/06/Choque-de-trenes-689x392.jpeg" alt="Daños tras el choque de trenes">
+
+          <p>
+            El 20 de junio de 2024, un tren de pruebas de EFE colisionó de frente con
+            un tren de carga Fepasa entre Lo Blanco y Lo Herrera, en San Bernardo.
+            El impacto dejó dos maquinistas fallecidos y nueve personas heridas,
+            y abrió un debate sobre las fallas en los protocolos de autorización simultánea de vía.
+          </p>
+        </div>
       </aside>
     </div>
   </section>
@@ -248,75 +254,90 @@
 </main>
 
 <script src="tren_horizontal.js"></script>
+<!-- JS mínimo: menú mobile (si lo necesitas) -->
+<script>
+  const navToggle = document.querySelector('.site-nav__toggle');
+  const navMenu = document.querySelector('#site-nav-menu');
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!isOpen));
+      navMenu.classList.toggle('site-nav__list--open');
+    });
+  }
+</script>
+
+<!-- Mapa interactivo San Bernardo -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
 
 <script>
+  // Crear mapa pequeño en el hero
+  var map = L.map('hero-map').setView([-33.60, -70.705], 12);
 
-// Crear mapa pequeño
-var map = L.map('hero-map').setView([-33.60, -70.705], 12);
-
-// Fondo suave estilo metro
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  opacity: 0.40
-}).addTo(map);
-
-// Estaciones del tramo
-var estaciones = [
-  [-33.4513, -70.6797],
-  [-33.4660, -70.6899],
-  [-33.4919, -70.6951],
-  [-33.5150, -70.6988],
-  [-33.5465, -70.7000],
-  [-33.5866, -70.6980],
-  [-33.5994, -70.7009],
-  [-33.6183, -70.7072],
-  [-33.6378, -70.7189],
-  [-34.1701, -70.7444]
-];
-
-// Línea del tramo
-L.polyline(estaciones, {
-  color: "#D90429",
-  weight: 6
-}).addTo(map);
-
-// Estaciones visuales
-estaciones.forEach(function(coord){
-  L.circleMarker(coord, {
-    radius: 7,
-    fillColor: "#FFFFFF",
-    color: "#121212",
-    weight: 2
+  // Fondo suave tipo "plano de metro"
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    opacity: 0.40
   }).addTo(map);
-});
 
-// Punto de colisión
-var accidente = [-33.6069, -70.7040];
+  // Estaciones del tramo
+  var estaciones = [
+    [-33.4513, -70.6797],
+    [-33.4660, -70.6899],
+    [-33.4919, -70.6951],
+    [-33.5150, -70.6988],
+    [-33.5465, -70.7000],
+    [-33.5866, -70.6980],
+    [-33.5994, -70.7009],
+    [-33.6183, -70.7072],
+    [-33.6378, -70.7189],
+    [-34.1701, -70.7444]
+  ];
 
-var accMarker = L.circleMarker(accidente, {
-  radius: 12,
-  fillColor: "#D90429",
-  color: "#FFFFFF",
-  weight: 3,
-  fillOpacity: 1,
-  className: "pulse-marker"
-}).addTo(map);
+  // Línea del tramo
+  L.polyline(estaciones, {
+    color: "#D90429",
+    weight: 6
+  }).addTo(map);
 
-// Al hacer clic en el punto
-accMarker.on("click", function(){
+  // Estaciones visuales
+  estaciones.forEach(function(coord){
+    L.circleMarker(coord, {
+      radius: 7,
+      fillColor: "#FFFFFF",
+      color: "#121212",
+      weight: 2,
+      fillOpacity: 1
+    }).addTo(map);
+  });
 
-  // Mostrar panel dentro del aside
-  document.getElementById("hero-sidebar").classList.add("show");
+  // Punto de colisión
+  var accidente = [-33.6069, -70.7040];
 
-  // Cambiar a vista satelital
-  L.esri.basemapLayer("Imagery").addTo(map);
+  var accMarker = L.circleMarker(accidente, {
+    radius: 12,
+    fillColor: "#D90429",
+    color: "#FFFFFF",
+    weight: 3,
+    fillOpacity: 1,
+    className: "pulse-marker"
+  }).addTo(map);
 
-  // Zoom al accidente
-  map.flyTo(accidente, 16, { duration: 1.5 });
+  // Al hacer clic en el punto -> zoom + panel
+  accMarker.on("click", function(){
+    // Mostrar panel
+    var sidebar = document.getElementById("hero-sidebar");
+    if (sidebar) {
+      sidebar.classList.add("show");
+    }
 
-});
+    // Cambiar a vista satelital
+    L.esri.basemapLayer("Imagery").addTo(map);
 
+    // Zoom al accidente
+    map.flyTo(accidente, 16, { duration: 1.5 });
+  });
 </script>
  <footer class="site-footer">
     <div class="container site-footer__inner">
