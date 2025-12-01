@@ -153,8 +153,7 @@
      MAPA INTERACTIVO
 ====================== -->
 <script>
-var map = L.map('hero-map').setView([-33.60, -70.705], 12);
-
+var map = map.flyTo(accidente, 16, { duration: 1.5 });
 // Fondo
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   opacity: 0.40
