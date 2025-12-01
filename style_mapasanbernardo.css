@@ -67,3 +67,59 @@
   50% { transform: scale(1.4); }
  100% { transform: scale(1); }
 }
+/* Contenedor del aside */
+.hero-aside {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Mapa pequeño */
+#hero-map {
+  width: 100%;
+  height: 260px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #ffffff33;
+  z-index: 5;
+}
+
+/* Sidebar que reemplaza la imagen */
+#hero-sidebar {
+  display: none;
+  background: white;
+  color: #121212;
+  margin-top: 15px;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #D90429;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+}
+
+#hero-sidebar.show {
+  display: block;
+}
+
+/* Fotos dentro del panel */
+.hero-sidebar-photo {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.hero-sidebar-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #D90429;
+}
+
+.pulse-marker {
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1);}
+  50% {transform: scale(1.35);}
+  100% {transform: scale(1);}
+}
