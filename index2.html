@@ -69,7 +69,6 @@
       <h1 class="hero-title">
         Rieles en riesgo:<br>los cruces que siguen siendo punto ciego
       </h1>
-
       <p class="hero-lead">
         Entre 2014 y 2024, en el tramo entre Estación Central y el límite con O’Higgins,
         los registros de atropellos en la vía férrea muestran algo incómodo:
@@ -101,6 +100,7 @@
     <!-- DERECHA: MAPA + RESUMEN -->
     <aside class="hero-aside">
 
+
       <!-- Mapa pequeño -->
       <div id="hero-map"></div>
 
@@ -109,9 +109,6 @@
         <h2 class="hero-sidebar-title">Accidente ferroviario San Bernardo (2024)</h2>
 
         <img class="hero-sidebar-photo" src="https://static.theclinic.cl/media/2024/06/20-151152_aciv_Diseno-sin-titulo-37-1200x648.png">
-        <img class="hero-sidebar-photo" src="https://www.t13.cl/sites/default/files/styles/manual_crop_16_9/public/field/image/choque-trenes-san-bernardo.jpeg">
-        <img class="hero-sidebar-photo" src="https://elperiodico.cl/wp-content/uploads/2024/06/Choque-de-trenes-689x392.jpeg">
-
         <p>
           El 20 de junio de 2024, un tren de pruebas EFE colisionó de frente con
           un tren de carga Fepasa entre Lo Blanco y Lo Herrera. El impacto dejó 
@@ -119,7 +116,6 @@
           críticas en los protocolos de autorización simultánea de vía.
         </p>
       </div>
-
     </aside>
 
   </div>
@@ -212,7 +208,28 @@ var accMarker = L.circleMarker(accidente, {
 
 // Al hacer clic: NO mover punto, SÍ mover mapa y mostrar panel
 accMarker.on("click", function(){
+  accMarker.on("click", function() {
+  const panel = document.getElementById("hero-sidebar");
 
+  // 🔥 Si está visible → esconder
+  if (panel.classList.contains("show")) {
+    panel.classList.remove("show");
+    return;
+  }
+
+  // 🔥 Si está escondido → mostrar
+  panel.classList.add("show");
+
+  // Capa satelital (solo al abrir)
+  L.esri.basemapLayer("Imagery").addTo(map);
+
+  // Zoom al punto (solo al abrir)
+  map.flyTo(accidente, 16, {
+    duration: 1.6,
+    easeLinearity: 0.25
+  });
+
+});
   // Mostrar resumen
   document.getElementById("hero-sidebar").classList.add("show");
 
