@@ -337,3 +337,16 @@ iframe.autosize::-webkit-scrollbar {
     grid-template-columns: 1fr;
   }
 }
+/* ===========================================================
+   FIX: link del repositorio en METODOLOGÍA
+=========================================================== */
+
+.section--metodo .repo-link {
+  color: var(--senal) !important;     /* Amarillo señalética */
+  font-weight: 700;
+}
+
+.section--metodo .repo-link:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
