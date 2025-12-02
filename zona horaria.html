@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.0.2"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "layer": [
+    {
+      "mark": {"type": "line", "stroke": "#6A7B8A", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "franja", "title": "Franja horaria", "type": "nominal"},
+        "y": {
+          "field": "siniestros",
+          "title": "Siniestros acumulados",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 200},
+      "encoding": {
+        "color": {
+          "field": "nivel",
+          "scale": {
+            "domain": [
+              "Alta incidencia",
+              "Incidencia media",
+              "Baja incidencia"
+            ],
+            "range": ["#FFD21F", "#6A7B8A", "#C6CDD3"]
+          },
+          "title": "Nivel de incidencia",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {"field": "franja", "type": "ordinal"},
+          {"field": "siniestros", "type": "quantitative"},
+          {"field": "nivel", "type": "nominal"}
+        ],
+        "x": {"field": "franja", "type": "nominal"},
+        "y": {"field": "siniestros", "type": "quantitative"}
+      }
+    }
+  ],
+  "data": {"name": "data-c8a7be32422331d1b8065414cc1aa326"},
+  "height": 380,
+  "title": "Riesgo ferroviario por franja horaria (2014–2024)",
+  "width": 650,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
+  "datasets": {
+    "data-c8a7be32422331d1b8065414cc1aa326": [
+      {
+        "franja": "00:00-02:59",
+        "siniestros": 38377,
+        "nivel": "Baja incidencia"
+      },
+      {
+        "franja": "03:00-05:59",
+        "siniestros": 25955,
+        "nivel": "Baja incidencia"
+      },
+      {
+        "franja": "06:00-08:59",
+        "siniestros": 135343,
+        "nivel": "Incidencia media"
+      },
+      {
+        "franja": "09:00-11:59",
+        "siniestros": 137274,
+        "nivel": "Incidencia media"
+      },
+      {
+        "franja": "12:00-14:59",
+        "siniestros": 157191,
+        "nivel": "Alta incidencia"
+      },
+      {
+        "franja": "15:00-17:59",
+        "siniestros": 167292,
+        "nivel": "Alta incidencia"
+      },
+      {
+        "franja": "18:00-20:59",
+        "siniestros": 150236,
+        "nivel": "Alta incidencia"
+      },
+      {"franja": "21:00-23:59", "siniestros": 80665, "nivel": "Baja incidencia"}
+    ]
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
