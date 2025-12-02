@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.0.2"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-72fa86dced4b68180a781b4bea86e133"},
+  "mark": {"type": "bar"},
+  "background": "#E5EAF1",
+  "encoding": {
+    "color": {
+      "field": "nivel",
+      "legend": {"title": "Nivel de riesgo"},
+      "scale": {
+        "domain": ["Baja incidencia", "Incidencia media", "Alta incidencia"],
+        "range": ["#1E3A68", "#2E7D5B", "#F2994A"]
+      },
+      "type": "nominal"
+    },
+    "opacity": {"condition": {"param": "param_1", "value": 1}, "value": 0.4},
+    "tooltip": [
+      {"field": "dia", "title": "Día", "type": "nominal"},
+      {"field": "siniestros", "title": "Siniestros", "type": "quantitative"},
+      {"field": "nivel", "title": "Nivel de riesgo", "type": "nominal"}
+    ],
+    "x": {
+      "field": "siniestros",
+      "title": "Total de siniestros (2014–2024)",
+      "type": "quantitative"
+    },
+    "y": {
+      "field": "dia",
+      "sort": [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado",
+        "Domingo"
+      ],
+      "title": "",
+      "type": "nominal"
+    }
+  },
+  "height": 350,
+  "params": [
+    {
+      "name": "param_1",
+      "select": {"type": "point", "fields": ["dia"], "on": "mouseover"}
+    }
+  ],
+  "title": "Riesgo ferroviario por día de la semana (2014–2024)",
+  "width": 600,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
+  "datasets": {
+    "data-72fa86dced4b68180a781b4bea86e133": [
+      {"dia": "Domingo", "siniestros": 99394, "nivel": "Baja incidencia"},
+      {"dia": "Jueves", "siniestros": 124450, "nivel": "Incidencia media"},
+      {"dia": "Lunes", "siniestros": 123440, "nivel": "Incidencia media"},
+      {"dia": "Martes", "siniestros": 118970, "nivel": "Incidencia media"},
+      {"dia": "Miércoles", "siniestros": 125210, "nivel": "Alta incidencia"},
+      {"dia": "Sábado", "siniestros": 116062, "nivel": "Baja incidencia"},
+      {"dia": "Viernes", "siniestros": 129578, "nivel": "Alta incidencia"}
+    ]
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
