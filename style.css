@@ -238,115 +238,176 @@ section {
   width: 100% !important;
   z-index: 5;
 }
-/* Logo en el hero */
-.hero-logo {
-  max-width: 220px;
-  margin-bottom: 1rem;
-}
 
-/* Subtítulo bajo el título principal */
-.hero-subtitle {
-  font-family: "Poppins", sans-serif;
-  font-size: 1.05rem;
-  margin-bottom: 1rem;
-  opacity: 0.95;
-}
 
-/* Cita destacada en el hero */
-.hero-quote {
-  margin: 1rem 0 1.5rem;
-  padding: 0.85rem 1rem;
-  border-left: 4px solid var(--senal);
-  background: rgba(15, 23, 42, 0.3);
-  display: flex;
-  gap: 0.4rem;
-  align-items: flex-start;
-}
-.hero-quote-mark {
-  font-size: 2rem;
-  line-height: 1;
-  opacity: 0.7;
-}
-.hero-quote p {
+
+/* === Estilos comunes para secciones individuales === */
+body {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
+  background: #0b1120;
+  color: #e5e7eb;
 }
 
-/* Foto pequeña en secciones */
-.inline-photo {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+.main-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Bloques de gráfico */
-.chart-block {
-  margin-top: 2.5rem;
+.section-header {
+  background: radial-gradient(circle at top left, #1f2937, #020617);
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
 }
-.chart-title {
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 0.06em;
+
+.section-header__inner {
+  max-width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-header__title {
+  font-family: "Bebas Neue", system-ui;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 1.3rem;
-  margin-bottom: 0.35rem;
-}
-.chart-caption {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  max-width: 36rem;
-  margin-bottom: 0.8rem;
-}
-
-/* Caja de explicación de niveles de riesgo */
-.risk-box {
-  margin-top: 1.5rem;
-  margin-bottom: 2rem;
-  padding: 1rem 1.2rem;
-  border-radius: 0.9rem;
-  background: rgba(229, 234, 241, 0.22);
-  border: 1px solid rgba(148, 163, 184, 0.7);
-}
-.risk-box-title {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 0.4rem;
-}
-
-/* Botón al repositorio */
-.repo-button {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.55rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid #111827;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  font-family: "Poppins", sans-serif;
-  background: #F6E05E;
-  color: #111827;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-.repo-button:hover {
-  transform: translateY(-1px);
-}
-
-/* Bloque de cierre */
-.closing-block {
-  padding: 1.2rem 1.2rem;
-  border-radius: 0.9rem;
-  background: rgba(15, 23, 42, 0.8);
-  color: #E5EAF1;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-.closing-text {
   margin: 0;
 }
 
-/* Ajustes responsive suaves */
+.section-header__meta {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin: 0.15rem 0 0;
+}
+
+.section-header__back {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #e5e7eb;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.6);
+  padding: 0.3rem 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.section-header__back span {
+  font-size: 1rem;
+}
+
+.section-body-wrapper {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem 2.5rem;
+}
+
+.section-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.section-title {
+  font-family: "Bebas Neue", system-ui;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin: 0 0 0.75rem;
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+  margin-bottom: 0.35rem;
+}
+
+.cronica-parrafo {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin: 0 0 0.9rem;
+  text-align: justify;
+}
+
+.chart-panel {
+  background: #020617;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(148,163,184,0.5);
+  padding: 1rem 1.1rem 1.3rem;
+  margin-bottom: 1.4rem;
+}
+
+.chart-title {
+  font-family: "Bebas Neue", system-ui;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin: 0 0 0.3rem;
+}
+
+.chart-caption {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin: 0 0 0.6rem;
+}
+
+.chart-container {
+  min-height: 260px;
+}
+
+.chart-container--wide {
+  min-height: 280px;
+}
+
+.chart-container--compact {
+  min-height: 220px;
+}
+
+.side-note {
+  background: rgba(15,23,42,0.95);
+  border-radius: 0.9rem;
+  border: 1px solid rgba(148,163,184,0.6);
+  padding: 1rem 1.1rem 1.15rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.side-note__title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+  margin: 0 0 0.4rem;
+}
+
+.side-note__pill {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  border: 1px solid rgba(156,163,175,0.7);
+  margin-right: 0.3rem;
+}
+
+.section-footer {
+  border-top: 1px solid rgba(55,65,81,0.8);
+  padding-top: 1rem;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
 @media (max-width: 900px) {
-  .chart-block {
-    margin-top: 2rem;
+  .section-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
   }
 }

@@ -1,625 +1,80 @@
 <!doctype html>
 <html lang="es">
 <head>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Más allá de la imprudencia · Rieles en riesgo</title>
-
-  <!-- Tipografías -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- Estilos principales -->
-  <link href="style.css" rel="stylesheet" />
-  <link href="tren_horizontal.css" rel="stylesheet" />
-  <link href="style_mapasanbernardo.css" rel="stylesheet" />
-
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-  <!-- Vega / Vega-Lite / Vega-Embed -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
 </head>
 <body>
-
-<!-- ======================
-     BARRA DEL TREN
-====================== -->
-<div class="railway">
-  <div class="railway__inner">
-    <nav class="railway__labels">
-      <a class="label is-active" data-index="0" href="#s1">Inicio</a>
-      <a class="label" data-index="1" href="#s2">Infraestructura</a>
-      <a class="label" data-index="2" href="#s3">Territorio</a>
-      <a class="label" data-index="3" href="#s4">Patrones</a>
-      <a class="label" data-index="4" href="#s5">Metodología</a>
-    </nav>
-
-    <div class="track">
-      <div class="track__progress" id="progress"></div>
-
-      <div class="station station--1" data-index="0"></div>
-      <div class="station station--2" data-index="1"></div>
-      <div class="station station--3" data-index="2"></div>
-      <div class="station station--4" data-index="3"></div>
-      <div class="station station--5" data-index="4"></div>
-
-      <!-- Tren -->
-      <svg class="train" id="train" viewBox="0 0 64 40">
-        <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
-        <rect class="train-body" x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
-        <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5E05E"/>
-        <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
-        <circle cx="18" cy="32" r="5" fill="#111827"/>
-        <circle cx="38" cy="32" r="5" fill="#111827"/>
-      </svg>
-    </div>
-  </div>
-</div>
-
-<main>
-
-  <!-- 1️⃣ INICIO / HERO: CASO SAN BERNARDO -->
-  <section id="s1">
-    <div class="container hero-layout">
-
-      <!-- COLUMNA IZQUIERDA -->
-      <div class="hero-text">
-        <!-- LOGO DEL PROYECTO -->
-        <!-- Ajusta el src al nombre real del archivo en tu repo -->
-        <img src="ChatGPT_Image_13_nov_2025__23_59_44-removebg-preview.png"
-             alt="Logo Rieles en riesgo"
-             class="hero-logo" />
-
-        <p class="kicker">Siniestros ferroviarios entre Estación Central y el Maule</p>
-
-        <h1 class="hero-title">
-          Más allá de la imprudencia:<br>
-          Las fallas estructurales detrás de los atropellos ferroviarios
-        </h1>
-
-        <p class="hero-subtitle">
-          Los cruces que siguen siendo punto ciego
-        </p>
-
-        <div class="hero-quote">
-          <span class="hero-quote-mark">“</span>
-          <p>Los siniestros no se repiten por azar: se repiten por diseño.</p>
-        </div>
-
-        <p class="hero-lead">
-          El accidente ferroviario de San Bernardo en 2024 volvió a instalar una pregunta incómoda:
-          ¿cuánto de estos siniestros se explica por la imprudencia de las personas y cuánto por
-          un sistema que no alcanza a protegerlas? Este reportaje cruza bases de datos, normas y
-          trabajo en terreno para mostrar que la responsabilidad no es solo individual.
-        </p>
-
-        <p class="hero-meta">
-          Por Andrés Hernández, Paloma Riquelme y Josefa Mariñanco<br>
-          Proyecto para Narración Gráfica (COM-208) · PUC
-        </p>
-
-        <div class="hero-highlights">
-          <div class="highlight">
-            <span class="highlight-label">Años analizados</span>
-            <span class="highlight-value">2014–2024</span>
-          </div>
-          <div class="highlight">
-            <span class="highlight-label">Tramo</span>
-            <span class="highlight-value">Estación Central – Maule</span>
-          </div>
-          <div class="highlight">
-            <span class="highlight-label">Unidad de análisis</span>
-            <span class="highlight-value">Siniestros por atropello</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- COLUMNA DERECHA: MAPA + CASO SAN BERNARDO -->
-      <aside class="hero-aside">
-        <div id="hero-map"></div>
-
-        <div id="hero-sidebar">
-          <h2 class="hero-sidebar-title">Caso San Bernardo (2024)</h2>
-
-          <!-- Puedes cambiar esta imagen por alguna de las capturas que generamos -->
-          <img class="hero-sidebar-photo"
-               src="Captura_de_pantalla_2025-11-15_102854.png"
-               alt="Accidente ferroviario San Bernardo">
-
-          <p>
-            El jueves 20 de junio de 2024, un tren de pruebas de EFE colisionó de frente con un tren de carga
-            entre las estaciones Lo Blanco y Lo Herrera, en San Bernardo. El choque dejó dos maquinistas
-            fallecidos y nueve personas heridas, y volvió a cuestionar los protocolos de seguridad y la
-            autorización simultánea de vía.
-          </p>
-
-          <p>
-            Este caso es el punto de partida de la historia: a partir de él, este reportaje desglosa,
-            con datos y visualizaciones, cómo la infraestructura ferroviaria puede anticipar –o agravar–
-            el error humano.
-          </p>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- 2️⃣ SECCIÓN 2: INFRAESTRUCTURA CRÍTICA -->
-  <section id="s2">
-    <div class="container two-cols">
+<div class="main-wrapper">
+  <header class="section-header">
+    <div class="section-header__inner">
       <div>
-        <h2 class="section-title">Infraestructura crítica</h2>
-        <p class="section-body">
-          Antes de mirar el comportamiento de peatones y conductores, hay que entender cómo está
-          construido el sistema. En Chile coexisten distintos tipos de señalización ferroviaria:
-          sistemas más automatizados y otros que dependen casi por completo de la coordinación humana.
+        <h1 class="section-header__title">Más allá de la imprudencia</h1>
+        <p class="section-header__meta">
+          Las fallas estructurales detrás de los atropellos ferroviarios · Región Metropolitana – Maule
         </p>
-        <p class="section-body">
-          En los tramos analizados, los accidentes por atropello se concentran en zonas donde la
-          tecnología convive con vulnerabilidades estructurales: robo de cables, mantenimiento
-          irregular y sistemas que dan una sensación de seguridad que no siempre se traduce en
-          protección efectiva.
-        </p>
-
-        <div class="chart-block">
-          <h3 class="chart-title">Sistemas de señalización por región</h3>
-          <p class="chart-caption">
-            La distribución de AUV, CTC y otros sistemas muestra que no todas las regiones cuentan
-            con el mismo nivel de automatización. Donde la infraestructura es más frágil, el margen
-            de error humano aumenta.
-          </p>
-          <div id="chart-sistemas"></div>
-        </div>
-      </div>
-
-      <div class="section-icon">
-        <!-- Puedes reemplazar por alguna imagen de señalética que generamos -->
-        <img src="Captura_de_pantalla_2025-11-15_102845.png"
-             alt="Señal ferroviaria"
-             class="inline-photo" />
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- 3️⃣ SECCIÓN 3: DESIGUALDAD TERRITORIAL -->
-  <section id="s3">
-    <div class="container two-cols">
-      <div>
-        <h2 class="section-title">Desigualdad territorial</h2>
-        <p class="section-body">
-          El riesgo no se distribuye de forma pareja. A lo largo del tramo entre Estación Central y
-          el Maule, algunos cruces cuentan con barreras, luminarias y dispositivos sonoros, mientras
-          que otros se sostienen con señalética mínima o accesos improvisados abiertos por la propia
-          comunidad.
-        </p>
-        <p class="section-body">
-          Comunas como San Bernardo y Buin concentran una mezcla de cruces regulados e irregulares,
-          con estados de uso que no siempre coinciden con lo que aparece en los registros oficiales.
-        </p>
-
-        <div class="chart-block">
-          <h3 class="chart-title">Cruces por comuna, regulación y estado</h3>
-          <p class="chart-caption">
-            La combinación de cruces “irregulares” en uso y la clausura parcial de otros puntos
-            revela un mapa de seguridad fragmentado, donde la experiencia de cruzar la vía cambia
-            drásticamente entre una comuna y otra.
-          </p>
-          <div id="chart-cruces"></div>
-        </div>
-      </div>
-
-      <div class="section-icon">
-        <img src="Captura_de_pantalla_2025-11-15_102859.png"
-             alt="Cruce ferroviario"
-             class="inline-photo" />
-      </div>
-    </div>
-  </section>
-
-  <!-- 4️⃣ SECCIÓN 4: PATRONES OCULTOS -->
-  <section id="s4">
-    <div class="container">
-      <h2 class="section-title">Patrones ocultos</h2>
-      <p class="section-body">
-        Los datos de edad, día y hora muestran que los atropellos no ocurren de manera aleatoria.
-        Se concentran en ciertos grupos etarios, se repiten en días laborales y se intensifican
-        en franjas horarias donde la vía comparte espacio con los ritmos de la ciudad.
+  <main class="section-body-wrapper">
+    <section>
+      <h2 class="section-title">Recorre el reportaje</h2>
+      <p class="cronica-parrafo">
+        Este sitio organiza la investigación en cuatro estaciones principales. Cada sección puede ser editada por un integrante del grupo
+        sin afectar el resto del reportaje. Desde aquí puedes entrar a las crónicas completas y a las visualizaciones interactivas.
       </p>
+    </section>
 
-      <!-- Caja explicativa de la clasificación -->
-      <div class="risk-box">
-        <h3 class="risk-box-title">Cómo se clasifican los niveles de riesgo</h3>
-        <p>
-          Para facilitar la lectura de los gráficos, agrupamos los siniestros en tres niveles:
-          <strong>baja incidencia</strong>, <strong>incidencia media</strong> y
-          <strong>alta incidencia</strong>. Esta clasificación se construyó a partir de la
-          distribución de los datos en el periodo 2014–2024, de modo que los valores más repetidos
-          se identifiquen rápidamente sin perder el valor exacto, disponible al pasar el cursor.
-        </p>
-      </div>
-
-      <!-- Edad -->
-      <div class="chart-block">
-        <h3 class="chart-title">Exposición al riesgo por edad</h3>
+    <section class="section-layout" style="margin-top:1.8rem;">
+      <div class="chart-panel">
+        <h3 class="chart-title">Infraestructura crítica</h3>
         <p class="chart-caption">
-          Los grupos entre 30 y 59 años concentran buena parte de los siniestros. En muchos cruces,
-          son quienes cruzan apurados entre el trabajo, el comercio barrial y el transporte público.
+          Sistemas de señalización (AUV, CTC y otros) y sus debilidades para prevenir atropellos. Crónica 1 + gráfica interactiva.
         </p>
-        <div id="chart-edad"></div>
+        <a href="infraestructura.html" class="section-header__back"><span>↳</span>Abrir sección Infraestructura</a>
       </div>
 
-      <!-- Día (heatmap tipo temperatura) -->
-      <div class="chart-block">
-        <h3 class="chart-title">Riesgo por día de la semana</h3>
+      <div class="chart-panel">
+        <h3 class="chart-title">Desigualdad territorial</h3>
         <p class="chart-caption">
-          Los días laborales reúnen la mayor carga de siniestros, con picos que coinciden con
-          el funcionamiento cotidiano de la ciudad. El fin de semana, el riesgo baja, pero no
-          desaparece.
+          Cruces regulares e irregulares por comuna, densidad y tipo de suelo. Crónica 2 + gráfica por comuna.
         </p>
-        <div id="chart-dia"></div>
+        <a href="territorio.html" class="section-header__back"><span>↳</span>Abrir sección Territorio</a>
+      </div>
+    </section>
+
+    <section class="section-layout" style="margin-top:0.8rem;">
+      <div class="chart-panel">
+        <h3 class="chart-title">Patrones ocultos</h3>
+        <p class="chart-caption">
+          Siniestros por edad, día de la semana y franja horaria entre 2014 y 2024. Crónica 3 + tres visualizaciones interactivas.
+        </p>
+        <a href="patrones.html" class="section-header__back"><span>↳</span>Abrir sección Patrones</a>
       </div>
 
-      <!-- Hora (lollipop) -->
-      <div class="chart-block">
-        <h3 class="chart-title">Riesgo por franja horaria</h3>
+      <div class="chart-panel">
+        <h3 class="chart-title">Metodología y datos</h3>
         <p class="chart-caption">
-          Al observar la jornada completa, la tarde y el inicio de la noche concentran los niveles
-          más altos de siniestros. Son horas en que se superponen salidas laborales, compras y
-          desplazamientos a pie en zonas donde la vía sigue siendo un borde activo.
+          Cómo se construyeron las bases de datos, filtros aplicados y herramientas utilizadas. Incluye enlace directo al repositorio.
         </p>
-        <div id="chart-hora"></div>
+        <a href="metodologia.html" class="section-header__back"><span>↳</span>Ver metodología</a>
       </div>
+    </section>
+
+    <div class="section-footer">
+      Proyecto desarrollado para Narración Gráfica (COM-208) · Pontificia Universidad Católica de Chile · 2025.
     </div>
-  </section>
-
-  <!-- 5️⃣ SECCIÓN 5: METODOLOGÍA Y CIERRE -->
-  <section id="s5">
-    <div class="container two-cols">
-      <div>
-        <h2 class="section-title">Cómo lo hicimos</h2>
-        <p class="section-body">
-          Este proyecto cruza bases de datos de siniestros ferroviarios, registros de cruces
-          oficiales y observación en terreno. Las visualizaciones se construyeron con herramientas
-          como Altair, Vega-Lite y Leaflet, priorizando gráficos simples y directos que respondieran
-          preguntas específicas sobre seguridad ferroviaria.
-        </p>
-        <ul class="section-body">
-          <li>Período analizado: 2014–2024.</li>
-          <li>Tramo: Estación Central – límite con el Maule.</li>
-          <li>Unidad de análisis: siniestros por atropello en la vía férrea.</li>
-          <li>Variables clave: tipo de tramo, sistema de control, hora del día, gravedad, edad y comuna.</li>
-        </ul>
-
-        <a class="repo-button" href="https://github.com/josefamar/PROYECTO" target="_blank" rel="noopener">
-          Ver código y entregas en GitHub
-        </a>
-      </div>
-
-      <div class="section-icon">
-        <div class="closing-block">
-          <p class="closing-text">
-            Los atropellos en la vía férrea no responden a una sola causa. Son el resultado de
-            decisiones técnicas, ausencia de mantenimiento, desigualdad territorial y una
-            infraestructura que no se adapta al comportamiento humano. La imprudencia existe,
-            pero el sistema la anticipa… y la reproduce.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="container site-footer__inner">
-    <p class="site-footer__copy">
-      Proyecto desarrollado para el curso COM208 Narración Gráfica · Pontificia Universidad Católica de Chile.
-    </p>
-    <p class="site-footer__copy">
-      Datos: EFE, Carabineros de Chile y elaboración propia · 2025.
-    </p>
-  </div>
-</footer>
-
-<!-- Tren -->
-<script src="tren_horizontal.js"></script>
-
-<!-- Leaflet + mapa San Bernardo -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
-<script>
-  // Mapa San Bernardo (hero)
-  var map = L.map('hero-map', {
-    zoomControl: true,
-    dragging: true,
-    scrollWheelZoom: true,
-    doubleClickZoom: true,
-    touchZoom: true
-  }).setView([-33.6069, -70.7040], 14);
-
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    opacity: 0.45
-  }).addTo(map);
-
-  var estaciones = [
-    [-33.4513, -70.6797],
-    [-33.4660, -70.6899],
-    [-33.4919, -70.6951],
-    [-33.5150, -70.6988],
-    [-33.5465, -70.7000],
-    [-33.5866, -70.6980],
-    [-33.5994, -70.7009],
-    [-33.6183, -70.7072],
-    [-33.6378, -70.7189],
-    [-34.1701, -70.7444]
-  ];
-
-  L.polyline(estaciones, {
-    color: "#D90429",
-    weight: 5,
-    opacity: 0.85
-  }).addTo(map);
-
-  estaciones.forEach(coord => {
-    L.circleMarker(coord, {
-      radius: 5,
-      fillColor: "#FFFFFF",
-      color: "#111827",
-      weight: 1,
-      fillOpacity: 1
-    }).addTo(map);
-  });
-
-  var accidente = [-33.6069, -70.7040];
-  var accMarker = L.circleMarker(accidente, {
-    radius: 12,
-    fillColor: "#D90429",
-    color: "#FFFFFF",
-    weight: 3,
-    fillOpacity: 1
-  }).addTo(map);
-
-  accMarker.on("click", function() {
-    const panel = document.getElementById("hero-sidebar");
-    if (!panel) return;
-    if (panel.classList.contains("show")) {
-      panel.classList.remove("show");
-      return;
-    }
-    panel.classList.add("show");
-    L.esri.basemapLayer("Imagery").addTo(map);
-    map.flyTo(accidente, 16, { duration: 1.5 });
-  });
-</script>
-
-<!-- ============================
-     GRÁFICOS VEGA-LITE
-============================ -->
-<script>
-  // Función helper
-  function embedChart(id, spec) {
-    vegaEmbed(id, spec, { mode: "vega-lite", actions: false }).catch(console.error);
-  }
-
-  // 1) Sistemas de señalización por región (basado en tu spec original)
-  const specSistemas = {
-    config: { view: { continuousWidth: 300, continuousHeight: 300 }, background: "transparent" },
-    data: {
-      name: "data-9b8dc32935bac64c9d327db8cbc0a566",
-      values: [
-        {"Región de inicio tramo": "Araucanía", "Sistema de señalización": "AUV", "Count": 1},
-        {"Región de inicio tramo": "Araucanía", "Sistema de señalización": "SSE/SB", "Count": 1},
-        {"Región de inicio tramo": "Bio-Bio", "Sistema de señalización": "AUV", "Count": 7},
-        {"Región de inicio tramo": "Bio-Bio", "Sistema de señalización": "CTC", "Count": 4},
-        {"Región de inicio tramo": "Bio-Bio", "Sistema de señalización": "SSE/SB", "Count": 1},
-        {"Región de inicio tramo": "Lib. Bdo. O’Higgins", "Sistema de señalización": "CTC", "Count": 2},
-        {"Región de inicio tramo": "Los Ríos", "Sistema de señalización": "AUV", "Count": 2},
-        {"Región de inicio tramo": "Maule", "Sistema de señalización": "AUV", "Count": 1},
-        {"Región de inicio tramo": "Maule", "Sistema de señalización": "CTC", "Count": 1},
-        {"Región de inicio tramo": "Metropolitana", "Sistema de señalización": "AUV", "Count": 5},
-        {"Región de inicio tramo": "Metropolitana", "Sistema de señalización": "CTC", "Count": 2},
-        {"Región de inicio tramo": "Metropolitana", "Sistema de señalización": "ERTMS N1", "Count": 1},
-        {"Región de inicio tramo": "Valparaíso", "Sistema de señalización": "AUV", "Count": 7},
-        {"Región de inicio tramo": "Valparaíso", "Sistema de señalización": "ERTMS N1", "Count": 1},
-        {"Región de inicio tramo": "Ñuble", "Sistema de señalización": "AUV", "Count": 3}
-      ]
-    },
-    mark: { type: "bar", cornerRadiusTopLeft: 2, cornerRadiusTopRight: 2 },
-    encoding: {
-      x: { field: "Región de inicio tramo", type: "nominal", title: "Región", sort: "-y" },
-      y: { field: "Count", type: "quantitative", title: "Cantidad de tramos" },
-      color: { field: "Sistema de señalización", type: "nominal", title: "Sistema" },
-      tooltip: [
-        { field: "Región de inicio tramo", type: "nominal", title: "Región" },
-        { field: "Sistema de señalización", type: "nominal" },
-        { field: "Count", type: "quantitative", title: "Cantidad" }
-      ]
-    }
-  };
-
-  // 2) Cruces por comuna / regulación / estado actual (basado en tu faceta original)
-  const specCruces = {
-    config: { view: { continuousWidth: 80, continuousHeight: 300 }, background: "transparent" },
-    data: {
-      name: "data-4c1fd46be85786b4e983fb5b40ee345f",
-      values: [
-        {"Comuna": "Buin", "Regulación": "Irregular", "Estado actual": "En Uso", "Cantidad": 3},
-        {"Comuna": "Buin", "Regulación": "Regulado", "Estado actual": "En Uso", "Cantidad": 4},
-        {"Comuna": "El Bosque", "Regulación": "Regulado", "Estado actual": "Clausurado", "Cantidad": 2},
-        {"Comuna": "Paine", "Regulación": "Regulado", "Estado actual": "En Uso", "Cantidad": 4},
-        {"Comuna": "Pedro Aguirre Cerda", "Regulación": "Regulado", "Estado actual": "Clausurado", "Cantidad": 3},
-        {"Comuna": "San Bernardo", "Regulación": "Irregular", "Estado actual": "En Uso", "Cantidad": 2},
-        {"Comuna": "San Bernardo", "Regulación": "Regulado", "Estado actual": "Clausurado", "Cantidad": 1},
-        {"Comuna": "San Bernardo", "Regulación": "Regulado", "Estado actual": "En Uso", "Cantidad": 2}
-      ]
-    },
-    mark: { type: "bar" },
-    encoding: {
-      column: { field: "Comuna", type: "nominal", title: "Comuna" },
-      x: { field: "Estado actual", type: "nominal", title: "Estado actual" },
-      y: { field: "Cantidad", type: "quantitative", title: "Cantidad de cruces" },
-      color: {
-        field: "Regulación",
-        type: "nominal",
-        scale: {
-          domain: ["Regulado", "Irregular", "Desconocido"],
-          range: ["#5A75FA", "#FA945D", "gray"]
-        },
-        title: "Regulación"
-      },
-      tooltip: [
-        { field: "Comuna", type: "nominal" },
-        { field: "Regulación", type: "nominal" },
-        { field: "Estado actual", type: "nominal" },
-        { field: "Cantidad", type: "quantitative" }
-      ]
-    },
-    title: "Cantidad de cruces ferroviarios por regulación, estado actual y comuna"
-  };
-
-  // 3) Edad – barras horizontales
-  const specEdad = {
-    config: { view: { continuousWidth: 300, continuousHeight: 300 }, background: "transparent" },
-    data: {
-      values: [
-        {"grupo_edad": "0-14", "siniestros_totales": 38960},
-        {"grupo_edad": "15-29", "siniestros_totales": 173936},
-        {"grupo_edad": "30-44", "siniestros_totales": 178636},
-        {"grupo_edad": "45-59", "siniestros_totales": 163574},
-        {"grupo_edad": "60-74", "siniestros_totales": 53543},
-        {"grupo_edad": "75+", "siniestros_totales": 13439},
-        {"grupo_edad": "No se informa", "siniestros_totales": 5326}
-      ]
-    },
-    mark: { type: "bar", cornerRadiusTopLeft: 4, cornerRadiusTopRight: 4 },
-    encoding: {
-      y: {
-        field: "grupo_edad",
-        type: "nominal",
-        title: "Grupo etario",
-        sort: ["0-14","15-29","30-44","45-59","60-74","75+","No se informa"]
-      },
-      x: {
-        field: "siniestros_totales",
-        type: "quantitative",
-        title: "Siniestros 2014–2024"
-      },
-      color: {
-        condition: {
-          test: "datum.grupo_edad === '30-44' || datum.grupo_edad === '45-59'",
-          value: "#F2994A"
-        },
-        value: "#6A7B8A"
-      },
-      tooltip: [
-        { field: "grupo_edad", type: "nominal", title: "Grupo etario" },
-        { field: "siniestros_totales", type: "quantitative", title: "Siniestros" }
-      ]
-    }
-  };
-
-  // 4) Día – heatmap tipo temperatura
-  const specDia = {
-    config: { view: { continuousWidth: 200, continuousHeight: 260 }, background: "transparent" },
-    data: {
-      values: [
-        {"dia": "Lunes", "siniestros": 123440},
-        {"dia": "Martes", "siniestros": 118970},
-        {"dia": "Miércoles", "siniestros": 125210},
-        {"dia": "Jueves", "siniestros": 124450},
-        {"dia": "Viernes", "siniestros": 129578},
-        {"dia": "Sábado", "siniestros": 116062},
-        {"dia": "Domingo", "siniestros": 99394}
-      ]
-    },
-    mark: { type: "rect", cornerRadius: 4 },
-    encoding: {
-      y: {
-        field: "dia",
-        type: "nominal",
-        sort: ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],
-        title: null
-      },
-      x: {
-        field: "dummy",
-        type: "nominal",
-        title: null,
-        axis: null
-      },
-      color: {
-        field: "siniestros",
-        type: "quantitative",
-        title: "Siniestros 2014–2024",
-        scale: {
-          domain: [90000, 130000],
-          range: ["#1E3A68", "#F6E05E", "#F97316", "#D90429"]
-        }
-      },
-      tooltip: [
-        { field: "dia", type: "nominal", title: "Día" },
-        { field: "siniestros", type: "quantitative", title: "Siniestros" }
-      ]
-    },
-    transform: [
-      { calculate: "'Riesgo ferroviario'", as: "dummy" }
-    ]
-  };
-
-  // 5) Hora – lollipop
-  const specHora = {
-    config: { view: { continuousWidth: 350, continuousHeight: 300 }, background: "transparent" },
-    data: {
-      values: [
-        {"franja": "00:00-02:59", "siniestros": 38377},
-        {"franja": "03:00-05:59", "siniestros": 25955},
-        {"franja": "06:00-08:59", "siniestros": 135343},
-        {"franja": "09:00-11:59", "siniestros": 137274},
-        {"franja": "12:00-14:59", "siniestros": 157191},
-        {"franja": "15:00-17:59", "siniestros": 167292},
-        {"franja": "18:00-20:59", "siniestros": 150236},
-        {"franja": "21:00-23:59", "siniestros": 80665}
-      ]
-    },
-    layer: [
-      {
-        mark: { type: "rule", stroke: "#9CA3AF", strokeWidth: 1 },
-        encoding: {
-          x: { field: "franja", type: "nominal", title: "Franja horaria" },
-          y: { value: 0 }
-        }
-      },
-      {
-        mark: { type: "line", stroke: "#6A7B8A", strokeWidth: 2 },
-        encoding: {
-          x: { field: "franja", type: "nominal", title: "Franja horaria" },
-          y: { field: "siniestros", type: "quantitative", title: "Siniestros acumulados" }
-        }
-      },
-      {
-        mark: { type: "circle", size: 140 },
-        encoding: {
-          x: { field: "franja", type: "nominal" },
-          y: { field: "siniestros", type: "quantitative" },
-          color: { value: "#F2994A" },
-          tooltip: [
-            { field: "franja", type: "nominal", title: "Franja" },
-            { field: "siniestros", type: "quantitative", title: "Siniestros" }
-          ]
-        }
-      }
-    ]
-  };
-
-  // Embebemos los gráficos
-  embedChart("#chart-sistemas", specSistemas);
-  embedChart("#chart-cruces", specCruces);
-  embedChart("#chart-edad", specEdad);
-  embedChart("#chart-dia", specDia);
-  embedChart("#chart-hora", specHora);
-</script>
-
+  </main>
+</div>
 </body>
 </html>
-
 

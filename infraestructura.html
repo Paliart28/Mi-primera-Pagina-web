@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Más allá de la imprudencia · Rieles en riesgo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+</head>
+<body>
+<div class="main-wrapper">
+  <header class="section-header">
+    <div class="section-header__inner">
+      <div>
+        <p class="section-subtitle">Crónica 1 · Integrante: Andrés Hernández</p>
+        <h1 class="section-header__title">Infraestructura crítica y sistemas de señalización</h1>
+        <p class="section-header__meta">
+          AUV, CTC y las debilidades estructurales del sistema ferroviario chileno frente a los atropellos.
+        </p>
+      </div>
+      <a class="section-header__back" href="index2.html"><span>←</span> Volver a la portada</a>
+    </div>
+  </header>
+
+  <main class="section-body-wrapper">
+    <section class="section-layout">
+      <article>
+        <h2 class="section-title">Crónica 1</h2>
+        <p class="cronica-parrafo">Integrante : Andrés Hernández
+Todos los años mueren personas atropelladas en las vías férreas de nuestro país. Estas cifras no son conocidas públicamente y demuestran que no solo hay imprudencias del peatón involucradas, sino que fallas estructurales del sistema ferroviario chileno, como un sistema de señalización poco seguro para evitar siniestros.
+Según cifras de 2017 a abril del presente año, la mayor cantidad de fallecidos en siniestros ferroviarios del tipo atropello se han producido en las regiones Metropolitana, O&#x27;Higgins y Maule, respectivamente. En estos, los dos sistemas de señalización más utilizados en sus tramos son, según la Empresa de Ferrocarriles del Estado (EFE), la Autorización Uso de Vía (AUV) y Control de Tráfico Centralizado (CTC).
+AUV, según la revista En Tren, es el sistema “más simple”, especialmente en la red de vías únicas. Es una comunicación entre el controlador de tráfico y el personal del tren. La autorización incluye puntos de referencia exactos (como cambios de vía o publicaciones) desde donde se extiende la autorización. El personal del tren debe repetir la información al controlador para su confirmación antes de que se autorice el movimiento del tren.</p>
+<p class="cronica-parrafo">El CTC, según el Reglamento de Tráfico Ferroviario de EFE, posee una señalización luminosa constituida por señales absolutas y no absolutas que solamente se encienden cuando son requeridas. Cuando no son requeridos reposan en su estado más restrictivo (señales absolutas, siempre con su foco alumbrando en aspecto Rojo solo y señales no absolutas siempre con su foco alumbrando en aspecto Amarillo solo).</p>
+<p class="cronica-parrafo">Ambos sistemas presentan debilidades para prevenir atropellos, mostrando que la señalización no es suficientemente segura para alertar o proteger a los peatones, lo cual es coincidente con las cifras de fallecidos en siniestros ferroviarios del tipo atropello. En el caso de AUV, existe una alta dependencia en el error humano y falta de automatización, lo que reduce la capacidad de respuesta rápida y segura ante situaciones imprevistas.
+El sistema CTC, aunque más complejo con señales luminosas y enclavamientos, opera con limitaciones técnicas relevantes. Según un artículo en el blog del Instituto Ferroviario chileno, se menciona que “La delincuencia organizada que roba constante e impunemente catenaria y cables subterráneos de los sistemas de señalización de EFE en sectores de plena vía, lo cual obliga a no emplear las vías afectadas en sectores de vía doble (…) o genera situaciones no deseadas, tales como fallas y degradaciones del sistema de Control de Tráfico Centralizado (CTC), las cuales fuerzan movilizaciones con sistemas, radiales o telefónicos que no aseguran un funcionamiento a prueba de fallas (fail safe) como sí ocurre con el CTC a plena capacidad”.</p>
+      </article>
+      <aside class="side-note">
+        <p class="side-note__title">Sobre esta sección</p>
+        <p>
+          Esta crónica se centra en los sistemas de señalización AUV y CTC, base del control ferroviario en gran parte de la red.
+          El foco está en cómo sus vulnerabilidades técnicas y su dependencia del factor humano afectan la prevención de atropellos.
+        </p>
+        <p>
+          La gráfica asociada resume cuántos tramos de cada región operan bajo distintos tipos de señalización.
+        </p>
+      </aside>
+    </section>
+
+    <section style="margin-top:2rem;">
+      <div class="chart-panel">
+        <h3 class="chart-title">Sistemas de señalización por región</h3>
+        <p class="chart-caption">
+          Distribución de tramos por tipo de sistema de señalización (AUV, CTC, ERTMS y otros) en las principales regiones con atropellos.
+          Pasa el cursor sobre cada barra para ver el detalle.
+        </p>
+        <div id="chart-sistemas" class="chart-container chart-container--wide"></div>
+      </div>
+    </section>
+
+    <div class="section-footer">
+      Puedes modificar esta sección sin alterar el resto del reportaje. El JS de esta página solo controla esta visualización.
+    </div>
+  </main>
+</div>
+
+<script>
+  function embedChart(id, spec) {
+    vegaEmbed(id, spec, { actions: false }).catch(console.error);
+  }
+
+  const specSistemas = {
+    config: { view: { continuousWidth: 520, continuousHeight: 320 }, background: "transparent" },
+    data: {
+      values: [
+        {"Región": "Araucanía", "Sistema": "AUV", "Count": 1},
+        {"Región": "Araucanía", "Sistema": "SSE/SB", "Count": 1},
+        {"Región": "Biobío", "Sistema": "AUV", "Count": 7},
+        {"Región": "Biobío", "Sistema": "CTC", "Count": 4},
+        {"Región": "Biobío", "Sistema": "SSE/SB", "Count": 1},
+        {"Región": "O’Higgins", "Sistema": "CTC", "Count": 2},
+        {"Región": "Los Ríos", "Sistema": "AUV", "Count": 2},
+        {"Región": "Maule", "Sistema": "AUV", "Count": 1},
+        {"Región": "Maule", "Sistema": "CTC", "Count": 1},
+        {"Región": "Metropolitana", "Sistema": "AUV", "Count": 5},
+        {"Región": "Metropolitana", "Sistema": "CTC", "Count": 2},
+        {"Región": "Metropolitana", "Sistema": "ERTMS N1", "Count": 1},
+        {"Región": "Valparaíso", "Sistema": "AUV", "Count": 7},
+        {"Región": "Valparaíso", "Sistema": "ERTMS N1", "Count": 1},
+        {"Región": "Ñuble", "Sistema": "AUV", "Count": 3}
+      ]
+    },
+    mark: { type: "bar", cornerRadiusTopLeft: 3, cornerRadiusTopRight: 3 },
+    encoding: {
+      x: { field: "Región", type: "nominal", sort: "-y" },
+      y: { field: "Count", type: "quantitative", title: "Cantidad de tramos" },
+      color: { field: "Sistema", type: "nominal", title: "Sistema" },
+      tooltip: [
+        { field: "Región", type: "nominal" },
+        { field: "Sistema", type: "nominal" },
+        { field: "Count", type: "quantitative", title: "Cantidad" }
+      ]
+    }
+  };
+
+  embedChart("#chart-sistemas", specSistemas);
+</script>
+</body>
+</html>
