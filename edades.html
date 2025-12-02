@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.0.2"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-e9fee25d4cd69d446168443c3976a08d"},
+  "mark": {"type": "bar", "cornerRadiusTopLeft": 4, "cornerRadiusTopRight": 4},
+  "encoding": {
+    "color": {
+      "condition": {
+        "test": "(datum.grupo_edad === '30-44')",
+        "value": "#FFD21F"
+      },
+      "value": "#6A7B8A"
+    },
+    "tooltip": [
+      {"field": "grupo_edad", "type": "nominal"},
+      {"field": "siniestros_totales", "type": "quantitative"}
+    ],
+    "x": {"field": "grupo_edad", "title": "Grupo etario", "type": "nominal"},
+    "y": {
+      "field": "siniestros_totales",
+      "title": "Siniestros 2014–2024",
+      "type": "quantitative"
+    }
+  },
+  "height": 350,
+  "title": "Exposición al riesgo por edad",
+  "width": 500,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
+  "datasets": {
+    "data-e9fee25d4cd69d446168443c3976a08d": [
+      {"grupo_edad": "0-14", "siniestros_totales": 38960},
+      {"grupo_edad": "15-29", "siniestros_totales": 173936},
+      {"grupo_edad": "30-44", "siniestros_totales": 178636},
+      {"grupo_edad": "45-59", "siniestros_totales": 163574},
+      {"grupo_edad": "60-74", "siniestros_totales": 53543},
+      {"grupo_edad": "75+", "siniestros_totales": 13439},
+      {"grupo_edad": "No se informa", "siniestros_totales": 5326}
+    ]
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
