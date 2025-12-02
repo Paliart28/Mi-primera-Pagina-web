@@ -56,4 +56,8 @@
 .pulse-marker {
   animation: none !important;
 }
+/* Mostrar / ocultar panel del accidente */
+#hero-sidebar.show {
+  display: block;
+}
 

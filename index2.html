@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Más allá de la imprudencia · Rieles en riesgo</title>
+  <title>Punto ciego · Rieles en riesgo</title>
 
   <!-- Tipografías -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
   <!-- Estilos -->
   <link href="style.css" rel="stylesheet" />
@@ -14,74 +14,52 @@
   <link href="style_mapasanbernardo.css" rel="stylesheet" />
 
   <!-- Leaflet -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
-  <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js"></script>
 </head>
+
 <body>
-  <!-- BARRA SUPERIOR FIJA -->
-  <header class="site-header">
-    <div class="site-header__inner">
-      <div class="site-logo">
-        <span class="site-logo__mark">●</span>
-        <span class="site-logo__text">Rieles en riesgo</span>
-      </div>
-      <nav class="site-nav">
-        <a href="#s1">Inicio</a>
-        <a href="#s2">Infraestructura</a>
-        <a href="#s3">Desigualdad territorial</a>
-        <a href="#s4">Patrones ocultos</a>
-        <a href="#s5">Metodología</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- BARRA DEL TREN -->
-  <div class="top-bar">
-    <div class="top-bar__inner">
-      <div class="station-labels">
-        <button class="label">Inicio</button>
-        <button class="label">Infraestructura</button>
-        <button class="label">Territorio</button>
-        <button class="label">Patrones</button>
-        <button class="label">Metodología</button>
-      </div>
+<!-- ======================
+     BARRA DEL TREN
+====================== -->
+<div class="railway">
+  <div class="railway__inner">
+    <nav class="railway__labels">
+      <a class="label is-active" data-index="0" href="#s1">Inicio</a>
+      <a class="label" data-index="1" href="#s2">Infraestructura</a>
+      <a class="label" data-index="2" href="#s3">Desigualdad</a>
+      <a class="label" data-index="3" href="#s4">Patrones</a>
+      <a class="label" data-index="4" href="#s5">Metodología</a>
+    </nav>
 
-      <div class="track">
-        <div class="track__progress" id="progress"></div>
+    <div class="track">
+      <div class="track__progress" id="progress"></div>
 
-        <div class="station station--1" data-index="0"></div>
-        <div class="station station--2" data-index="1"></div>
-        <div class="station station--3" data-index="2"></div>
-        <div class="station station--4" data-index="3"></div>
-        <div class="station station--5" data-index="4"></div>
+      <div class="station station--1" data-index="0"></div>
+      <div class="station station--2" data-index="1"></div>
+      <div class="station station--3" data-index="2"></div>
+      <div class="station station--4" data-index="3"></div>
+      <div class="station station--5" data-index="4"></div>
 
-        <!-- Tren -->
-        <svg class="train" id="train" viewBox="0 0 64 40">
-          <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
-          <rect class="train-body" x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
-          <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5E05E"/>
-          <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
-          <circle cx="18" cy="32" r="5" fill="#111827"/>
-          <circle cx="38" cy="32" r="5" fill="#111827"/>
-        </svg>
-      </div>
+      <!-- Tren -->
+      <svg class="train" id="train" viewBox="0 0 64 40">
+        <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
+        <rect class="train-body" x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+        <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#F6E05E"/>
+        <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
+        <circle cx="18" cy="32" r="5" fill="#0F172A"/>
+        <circle cx="38" cy="32" r="5" fill="#0F172A"/>
+      </svg>
     </div>
   </div>
+</div>
 
 <main>
 
   <!-- 1️⃣ INICIO / HERO -->
-  <section id="s1">
+  <section id="s1" class="section section--hero">
     <div class="container hero-layout">
       <div class="hero-text">
         <p class="kicker">Siniestros ferroviarios en la Región Metropolitana</p>
@@ -104,178 +82,225 @@
 
         <div class="hero-highlights">
           <div class="highlight">
-            <span class="highlight-label">Período analizado</span>
+            <span class="highlight-label">Años analizados</span>
             <span class="highlight-value">2014–2024</span>
           </div>
           <div class="highlight">
-            <span class="highlight-label">Tramo principal</span>
-            <span class="highlight-value">Estación Central – O’Higgins</span>
+            <span class="highlight-label">Tramo</span>
+            <span class="highlight-value">Estación Central – Maule</span>
           </div>
           <div class="highlight">
-            <span class="highlight-label">Foco</span>
-            <span class="highlight-value">Atropellos en la vía férrea</span>
-          </div>
-          <div class="highlight">
-            <span class="highlight-label">Unidad de análisis</span>
-            <span class="highlight-value">Siniestros por atropello</span>
+            <span class="highlight-label">Cruces estudiados</span>
+            <span class="highlight-value">+30 puntos</span>
           </div>
         </div>
       </div>
 
-      <!-- HERO DERECHA: MAPA + RESUMEN -->
       <aside class="hero-aside">
         <div id="hero-map"></div>
 
-        <div id="hero-sidebar">
-          <h2 class="hero-sidebar-title">Accidente ferroviario San Bernardo (2024)</h2>
+        <div id="hero-sidebar" class="hero-sidebar">
+          <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
+          <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
+          <p class="hero-sidebar-text">
+            En 2024, un siniestro fatal en San Bernardo volvió a mostrar
+            cómo la combinación de cruces a nivel, señalización vulnerable y
+            alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
+            no logra anticipar el error humano: lo espera, y lo repite.
+          </p>
+          <p class="hero-sidebar-note">
+            Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-          <img
-            class="hero-sidebar-photo"
-            src="https://static-mega.mega.cl/2024/06/20/accidente-tren-san-bernardo-efe-fepasa-820x385.jpg"
-            alt="Accidente ferroviario San Bernardo"
-          >
+  <!-- 2️⃣ INFRAESTRUCTURA Y SEÑALIZACIÓN -->
+  <section id="s2" class="section section--infra">
+    <div class="container grid-2">
+      <div>
+        <h2 class="section-title">Señales que no alcanzan</h2>
+        <p class="section-body">
+          Todos los años mueren personas atropelladas en las vías férreas de nuestro país.
+          Estas cifras, poco visibles en la conversación pública, revelan que no basta con
+          culpar a la imprudencia del peatón: los sistemas de control y señalización también
+          fallan.
+        </p>
+        <p class="section-body">
+          Según la Empresa de Ferrocarriles del Estado (EFE), gran parte de la red opera con
+          Autorización de Uso de Vía (AUV) o Control de Tráfico Centralizado (CTC). El primero
+          depende de comunicaciones radiales entre el controlador y el maquinista; el segundo,
+          de sistemas luminosos y enclavamientos automáticos.
+        </p>
+        <p class="section-body">
+          Ambos presentan vulnerabilidades documentadas: alta dependencia del factor humano,
+          cables robados, fallas eléctricas y degradación de equipos. En los datos de 2014–2024,
+          esas debilidades se traducen en atropellos concentrados en tramos donde la señalización
+          no protege lo suficiente a quienes cruzan.
+        </p>
 
+        <div class="quote-card quote-card--light">
           <p>
-            El jueves 20 de junio de 2024, un tren de pruebas de EFE colisionó de frente con un tren de carga Fepasa
-            entre las estaciones Lo Blanco y Lo Herrera, en la comuna de San Bernardo.
-            El impacto dejó dos maquinistas fallecidos y nueve personas heridas, y reabrió el debate
-            sobre los protocolos de seguridad y la autorización simultánea de vía.
+            “La imprudencia existe, pero el sistema la anticipa… y la reproduce.”
           </p>
         </div>
-      </aside>
+      </div>
+
+      <div class="viz-column">
+        <h3 class="viz-title">Siniestros por región</h3>
+        <iframe
+          src="accidentes%20por%20region.html"
+          title="Siniestros por región"
+          class="chart-frame chart-frame--light"
+          loading="lazy">
+        </iframe>
+
+        <h3 class="viz-title">Sistemas de señalización</h3>
+        <iframe
+          src="señalizacion%20por%20region.html"
+          title="Sistemas de señalización por región"
+          class="chart-frame chart-frame--light"
+          loading="lazy">
+        </iframe>
+      </div>
     </div>
   </section>
 
-  <!-- INFRAESTRUCTURA Y SEÑALIZACIÓN (CRÓNICA 1) -->
-  <section id="s2">
-    <div class="container two-cols chronicle chronicle--1">
-      <article class="chronicle-text">
-        <p class="chronicle-kicker">Crónica 1 · Infraestructura y señalización</p>
-        <h2 class="section-title">Más allá del error humano: cómo opera el sistema ferroviario</h2>
-
-        <p>Integrante : Andrés Hernández</p>
-        <p>Todos los años mueren personas atropelladas en las vías férreas de nuestro país. Estas cifras no son conocidas públicamente y demuestran que no solo hay imprudencias del peatón involucradas, sino que fallas estructurales del sistema ferroviario chileno, como un sistema de señalización poco seguro para evitar siniestros.</p>
-        <p>Según cifras de 2017 a abril del presente año, la mayor cantidad de fallecidos en siniestros ferroviarios del tipo atropello se han producido en las regiones Metropolitana, O'Higgins y Maule, respectivamente. En estos, los dos sistemas de señalización más utilizados en sus tramos son, según la Empresa de Ferrocarriles del Estado (EFE), la Autorización Uso de Vía (AUV) y Control de Tráfico Centralizado (CTC).</p>
-        <p>AUV, según la revista En Tren, es el sistema “más simple”, especialmente en la red de vías únicas. Es una comunicación entre el controlador de tráfico y el personal del tren. La autorización incluye puntos de referencia exactos (como cambios de vía o publicaciones) desde donde se extiende la autorización. El personal del tren debe repetir la información al controlador para su confirmación antes de que se autorice el movimiento del tren.</p>
-        <p>El CTC, según el Reglamento de Tráfico Ferroviario de EFE, posee una señalización luminosa constituida por señales absolutas y no absolutas que solamente se encienden cuando son requeridas. Cuando no son requeridos reposan en su estado más restrictivo (señales absolutas, siempre con su foco alumbrando en aspecto Rojo solo y señales no absolutas siempre con su foco alumbrando en aspecto Amarillo solo).</p>
-        <p>Ambos sistemas presentan debilidades para prevenir atropellos, mostrando que la señalización no es suficientemente segura para alertar o proteger a los peatones, lo cual es coincidente con las cifras de fallecidos en siniestros ferroviarios del tipo atropello. En el caso de AUV, existe una alta dependencia en el error humano y falta de automatización, lo que reduce la capacidad de respuesta rápida y segura ante situaciones imprevistas.</p>
-        <p>El sistema CTC, aunque más complejo con señales luminosas y enclavamientos, opera con limitaciones técnicas relevantes. Según un artículo en el blog del Instituto Ferroviario chileno, se menciona que “La delincencia organizada que roba constante e impunemente catenaria y cables subterráneos de los sistemas de señalización de EFE en sectores de plena vía, lo cual obliga a no emplear las vías afectadas en sectores de vía doble (…) o genera situaciones no deseadas, tales como fallas y degradaciones del sistema de Control de Tráfico Centralizado (CTC), las cuales fuerzan movilizaciones con sistemas, radiales o telefónicos que no aseguran un funcionamiento a prueba de fallas (fail safe) como sí ocurre con el CTC a plena capacidad”.</p>
-      </article>
-
-      <aside class="chronicle-chart">
-        <h3 class="chart-title">Accidentes por región (2014–2024)</h3>
-        <iframe src="accidentes por region.html" title="Accidentes ferroviarios por región" class="chart-frame"></iframe>
-        <p class="chart-note">
-          Cada círculo representa una región de Chile. El tamaño y el número indican la cantidad de siniestros ferroviarios por atropello registrados entre 2014 y 2024.
+  <!-- 3️⃣ DESIGUALDAD TERRITORIAL -->
+  <section id="s3" class="section section--territorio">
+    <div class="container grid-2">
+      <div>
+        <h2 class="section-title">Desigualdad territorial en los cruces</h2>
+        <p class="section-body">
+          Cada año, decenas de personas mueren o resultan heridas en las vías férreas de Chile.
+          Aunque los siniestros ferroviarios son menos frecuentes que los de tránsito vehicular,
+          su desenlace es grave. La mayor concentración se da en la Región Metropolitana,
+          O’Higgins y Maule, donde la vía férrea se mezcla con barrios densos y cruces a nivel.
+        </p>
+        <p class="section-body">
+          El análisis territorial muestra una relación clara entre densidad poblacional,
+          prioridad social y tipo de cruce. En sectores residenciales e industriales se
+          multiplican los accesos informales: pasos abiertos por costumbre, necesidad o falta
+          de alternativas seguras. Muchos quedan fuera de la regulación oficial.
+        </p>
+        <p class="section-body">
+          Mientras algunas comunas cuentan con cruces regulados y protegidos, otras dependen de
+          pasos improvisados. La normativa chilena distingue tipos de protección, pero la
+          realidad en terreno va por delante: señalética desgastada, barreras ausentes y
+          veredas que terminan directo en la vía.
         </p>
 
-        <h3 class="chart-title">Sistemas de señalización por región</h3>
-        <iframe src="señalizacion por region.html" title="Sistemas de señalización por región" class="chart-frame"></iframe>
-        <p class="chart-note">
-          El gráfico muestra la presencia de sistemas AUV, CTC y otros en cada región. La concentración de AUV —el sistema más dependiente del factor humano— coincide con los tramos donde se concentran los atropellos.
-        </p>
-      </aside>
+        <div class="quote-card quote-card--dark">
+          <p>
+            Cuando el cruce seguro es más lejano que el atajo por la línea, el sistema empuja a las personas a elegir el riesgo.
+          </p>
+        </div>
+      </div>
+
+      <div class="viz-column">
+        <h3 class="viz-title viz-title--light">Cruces y regulación por comuna</h3>
+        <iframe
+          src="estado%20actual%20y%20comuna.html"
+          title="Cruces por comuna y tipo de regulación"
+          class="chart-frame chart-frame--dark"
+          loading="lazy">
+        </iframe>
+      </div>
     </div>
   </section>
 
-  <!-- DESIGUALDAD TERRITORIAL (CRÓNICA 2) -->
-  <section id="s3">
-    <div class="container two-cols chronicle chronicle--2">
-      <article class="chronicle-text">
-        <p class="chronicle-kicker">Crónica 2 · Desigualdad territorial</p>
-        <h2 class="section-title">Entre cruces regulados e informales</h2>
-
-        <p>Cada año, decenas de personas mueren o resultan heridas en las vías férreas de Chile. Los siniestros ferroviarios, aunque menos frecuentes que los de tránsito vehicular, tienen consecuencias graves y muchas veces invisibles para la opinión pública. Según el último informe de la Comisión Nacional de Seguridad de Tránsito (CONASET), solo en 2023 se registraron 95 siniestros ferroviarios, con 35 fallecidos. La mayoría de estos casos se concentran en la Región Metropolitana, O'Higgins y Maule, donde la red de trenes convive con zonas urbanas densas y cruces a nivel que no siempre cuentan con la protección adecuada.</p>
-        <p>La Empresa de Ferrocarriles del Estado (EFE) reconoce oficialmente más de 700 cruces ferroviarios a nivel en todo Chile, de los cuales una parte importante se concentra en la capital y su área metropolitana. Sin embargo, la cifra real es mucho mayor si se consideran los cruces irregulares: accesos abiertos por diversas razones, la costumbre, la urgencia o la falta de alternativas.</p>
-        <p>El análisis territorial revela una evaluación clara entre la presencia de cruces irregulares y factores como la densidad poblacional, el nivel de prioridad social y el tipo de suelo en uso. En sectores residenciales de alta densidad, donde la movilidad peatonal es fundamental, los cruces informales son más frecuentes. En zonas industriales, los pasos irregulares facilitan el acceso de trabajadores y vehículos, a menudo sin ningún tipo de protección. La visualización de datos —un gráfico de barras agrupadas por comuna y tipo de regulación— permite dimensionar la desigualdad en el acceso a cruces seguros. Mientras algunas comunas cuentan con una red de cruces regulados y protegidos, otras dependen casi exclusivamente de pasos informales.</p>
-        <p>La normativa chilena sobre cruces ferroviarios, establecida por el Decreto Supremo 38 de 1986, distingue entre cruces con y sin barreras, y establece criterios para su protección y señalización. Sin embargo, la realidad supera la norma: muchos cruces formales carecen de infraestructura adecuada, y los informales quedan fuera de cualquier regulación. El Ministerio de Transportes ha propuesto en los últimos años una actualización de la normativa, con nuevos estándares de protección y criterios para la desnivelación de cruces en función del índice de peligrosidad.</p>
-      </article>
-
-      <aside class="chronicle-chart">
-        <h3 class="chart-title">Cruces ferroviarios por comuna, regulación y estado</h3>
-        <iframe src="estado actual y comuna.html" title="Cruces ferroviarios por comuna, regulación y estado actual" class="chart-frame"></iframe>
-        <p class="chart-note">
-          Cada panel representa una comuna del tramo. Los colores distinguen entre cruces regulados, irregulares o desconocidos, y el eje horizontal muestra si están en uso o clausurados. La combinación de alta densidad urbana y cruces irregulares marca los puntos más vulnerables.
-        </p>
-      </aside>
-    </div>
-  </section>
-
-  <!-- PATRONES OCULTOS (CRÓNICA 3) -->
-  <section id="s4">
-    <div class="container chronicle chronicle--3">
-      <article class="chronicle-text">
-        <p class="chronicle-kicker">Crónica 3 · Patrones ocultos</p>
-        <h2 class="section-title">Quiénes, cuándo y cómo se concentran los atropellos</h2>
-
-        <p>Los distintos cruces ferroviarios analizados —ubicados de manera dispersa entre Estación Central y el límite con la Región de O'Higgins— operan con niveles heterogéneos de advertencia y control, lo que influye directamente en los patrones de siniestros observados durante la última década. Aunque cada cruce tiene características propias, los datos entre 2014 y 2024 revelan tendencias que se repiten con consistencia y que permanecen fuera de la discusión pública: puntos ciegos donde la infraestructura, el comportamiento humano y la falta de estandarización se combinan para generar riesgo.</p>
-        <p>El análisis de los siniestros por edad muestra que las personas entre 30 y 59 años concentran la mayor cantidad de casos. No son un grupo tradicionalmente identificado como “vulnerable”, pero su exposición cotidiana —traslados laborales, cruces frecuentes, tiempos ajustados— los ubica en una posición de riesgo constante. Esta tendencia refleja que los incidentes no son aleatorios: se producen en grupos que interactúan diariamente con la infraestructura.</p>
-        <p>Un segundo punto ciego aparece en la dimensión temporal. Las franjas 15:00–17:59 y 21:00–23:59 concentran la mayor incidencia de siniestros. En la tarde, el retorno laboral y escolar genera cruces apresurados en vías que no siempre cuentan con barreras automáticas o señalización luminosa operativa. En la noche, la visibilidad disminuye y las advertencias son menos efectivas. En ambos casos, la infraestructura ferroviaria no compensa las limitaciones humanas del entorno. La línea visual de riesgo por hora —marcada por puntos de alta, media y baja incidencia— evidencia cómo la seguridad se fragmenta a lo largo del día.</p>
-        <p>Estos patrones se explican en parte por el funcionamiento de los sistemas de control presentes en la red. El AUV, dependiente de comunicación manual entre maquinista y operador, y el CTC, automatizado pero susceptible a fallas eléctricas y vandalización de cables, presentan vulnerabilidades documentadas en informes de EFE y CONASET. La población que cruza las vías no percibe estas diferencias técnicas, pero sí experimenta sus efectos: demoras imprevistas, señales apagadas o barreras que no funcionan como deberían.</p>
-        <p>La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados. Si bien las decisiones humanas —cruzar sin mirar, evadir barreras, subestimar la velocidad del tren— son un factor relevante, estas conductas se ven amplificadas cuando la señalización no es clara, está dañada o no existe. Allí se forma un punto ciego crítico: el sistema no previene comportamientos esperables en contextos de alta circulación.</p>
-      </article>
-
-      <div class="pattern-charts">
-        <div class="pattern-chart">
-          <h3 class="chart-title">Exposición al riesgo por edad</h3>
-          <iframe src="edades.html" title="Exposición al riesgo por edad" class="chart-frame"></iframe>
-          <p class="chart-note">
-            Las barras muestran el total de siniestros por grupo etario. El tramo 30–59 años concentra la mayor carga de riesgo, coherente con los cruces cotidianos vinculados al trabajo y los traslados diarios.
+  <!-- 4️⃣ PATRONES OCULTOS (EDAD · DÍA · HORA) -->
+  <section id="s4" class="section section--patrones">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h2 class="section-title">Patrones que se repiten en silencio</h2>
+          <p class="section-body">
+            Los cruces analizados entre Estación Central y el límite con O’Higgins muestran
+            patrones que se repiten en la última década. Los atropellos se concentran en
+            personas entre 30 y 59 años: adultos que cruzan la vía camino al trabajo, al
+            comercio o de regreso a sus casas.
+          </p>
+          <p class="section-body">
+            En el tiempo, destacan dos bloques críticos: la tarde (15:00–17:59) y la noche
+            (21:00–23:59). En la primera, el regreso laboral y escolar recarga los cruces; en
+            la segunda, la visibilidad cae y muchas advertencias dejan de ser efectivas.
+          </p>
+          <p class="section-body">
+            La combinación de imprudencia individual con infraestructura que no compensa
+            esas limitaciones genera los puntos ciegos del sistema: lugares donde el error
+            humano es esperable, pero la protección técnica no llega.
           </p>
         </div>
 
-        <div class="pattern-chart">
-          <h3 class="chart-title">Riesgo ferroviario por día de la semana</h3>
-          <iframe src="dia de la semana.html" title="Riesgo ferroviario por día de la semana" class="chart-frame"></iframe>
-          <p class="chart-note">
-            El color representa tres niveles de riesgo: baja, media y alta incidencia. Los tonos más intensos se concentran en miércoles y viernes, donde los flujos laborales y escolares alcanzan su punto máximo.
-          </p>
-        </div>
+        <div class="patterns-grid">
+          <div class="pattern-item">
+            <h3 class="viz-title">¿Quiénes se accidentan?</h3>
+            <iframe
+              src="edades.html"
+              title="Siniestros por grupo etario"
+              class="chart-frame chart-frame--soft"
+              loading="lazy">
+            </iframe>
+          </div>
 
-        <div class="pattern-chart">
-          <h3 class="chart-title">Riesgo ferroviario por franja horaria</h3>
-          <iframe src="zona horaria.html" title="Riesgo ferroviario por franja horaria" class="chart-frame"></iframe>
-          <p class="chart-note">
-            La línea y los círculos muestran cómo los siniestros aumentan en las franjas de mayor circulación. Los puntos más saturados corresponden a las horas de “punta” donde la infraestructura no alcanza a compensar el margen de error humano.
-          </p>
+          <div class="pattern-item">
+            <h3 class="viz-title">Días con mayor riesgo</h3>
+            <iframe
+              src="dia%20de%20la%20semana.html"
+              title="Siniestros por día de la semana"
+              class="chart-frame chart-frame--soft"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <div class="pattern-item pattern-item--wide">
+            <h3 class="viz-title">Franjas horarias críticas</h3>
+            <iframe
+              src="zona%20horaria.html"
+              title="Siniestros por franja horaria"
+              class="chart-frame chart-frame--soft chart-frame--wide"
+              loading="lazy">
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- METODOLOGÍA -->
-  <section id="s5">
-    <div class="container two-cols">
+  <!-- 5️⃣ METODOLOGÍA -->
+  <section id="s5" class="section section--metodo">
+    <div class="container grid-2">
       <div>
-        <h2 class="section-title">Cómo hicimos este reportaje</h2>
-        <p class="section-body">
+        <h2 class="section-title section-title--light">Cómo hicimos este reportaje</h2>
+        <p class="section-body section-body--light">
           Este proyecto cruza bases de datos de siniestros ferroviarios, registros de cruces
-          oficiales y observación en terreno. Las visualizaciones se construyeron con herramientas
-          como Altair y Leaflet, siguiendo el criterio de mantener gráficos simples y directos
-          para responder preguntas específicas sobre seguridad ferroviaria.
+          oficiales y observación en terreno. Las visualizaciones se construyeron con
+          Altair, Vega-Lite y Leaflet, priorizando gráficos simples y directos para responder
+          preguntas específicas sobre seguridad ferroviaria.
         </p>
-        <ul class="section-body">
+        <ul class="metodo-list">
           <li>Período analizado: 2014–2024.</li>
           <li>Tramo: Estación Central – límite con O’Higgins.</li>
           <li>Unidad de análisis: siniestros por atropello en la vía férrea.</li>
-          <li>Fuentes: bases públicas de CONASET, EFE y documentos normativos del Ministerio de Transportes.</li>
+          <li>Variables clave: tipo de tramo, sistema de control, hora del día, gravedad, edad y comuna.</li>
         </ul>
-        <p class="section-body">
-          El detalle completo de la metodología, código y bases de datos se puede revisar en nuestro
-          repositorio de GitHub:
+        <p class="section-body section-body--light">
+          Puedes revisar el detalle de las bases de datos, la ficha técnica y las versiones
+          anteriores de las visualizaciones en nuestro repositorio:
         </p>
-        <p class="section-body">
-          <a href="https://github.com/josefamar/PROYECTO" target="_blank" rel="noopener noreferrer">
-            Ver repositorio completo del proyecto
+        <p class="section-body section-body--light">
+          <a href="https://github.com/josefamar/PROYECTO" class="repo-link" target="_blank" rel="noopener">
+            Ver repositorio completo de la investigación
           </a>
         </p>
       </div>
       <div class="section-icon">
         <svg class="icon icon--right" viewBox="0 0 64 64">
-          <rect x="18" y="12" width="28" height="30" rx="4" fill="#1E3A68"/>
-          <rect x="22" y="16" width="20" height="10" rx="2" fill="#E5EAF1"/>
-          <circle cx="26" cy="46" r="6" fill="#2E7D5B"/>
-          <circle cx="38" cy="46" r="6" fill="#2E7D5B"/>
+          <rect x="10" y="28" width="44" height="8" rx="2" fill="#F2994A"/>
+          <line x1="10" y1="28" x2="54" y2="36" stroke="#1E3A68" stroke-width="4"/>
+          <line x1="10" y1="36" x2="54" y2="28" stroke="#1E3A68" stroke-width="4"/>
         </svg>
       </div>
     </div>
@@ -284,84 +309,56 @@
 </main>
 
 <footer class="site-footer">
-  <div class="site-footer__inner">
-    <p>Proyecto “Rieles en riesgo” · Narración Gráfica (COM-208) · Pontificia Universidad Católica de Chile</p>
+  <div class="container site-footer__inner">
+    <p class="site-footer__copy">
+      Proyecto desarrollado para el curso COM208 Narración Gráfica · Pontificia Universidad Católica de Chile.
+    </p>
+    <p class="site-footer__copy">
+      “Punto Ciego”: identidad visual y prototipo webstory.
+    </p>
   </div>
 </footer>
 
+<!-- JS del tren -->
 <script src="tren_horizontal.js"></script>
 
-<!-- Script mapa San Bernardo (mantiene tu mapa original) -->
+<!-- JS del mapa de San Bernardo -->
 <script>
-// Mapa centrado en el tramo Estación Central – San Bernardo
-var map = L.map("hero-map", {
-  center: [-33.57, -70.7],
-  zoom: 11,
-  scrollWheelZoom: false,
-  zoomControl: false
-});
+  document.addEventListener("DOMContentLoaded", () => {
+    const map = L.map("hero-map", {
+      zoomControl: false,
+      attributionControl: false
+    }).setView([-33.594, -70.704], 13);
 
-// Capa base
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  opacity: 0.45
-}).addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19
+    }).addTo(map);
 
-// Estaciones aproximadas del tramo
-var estaciones = [
-  [-33.4513, -70.6797],
-  [-33.4660, -70.6899],
-  [-33.4919, -70.6951],
-  [-33.5150, -70.6988],
-  [-33.5465, -70.7000],
-  [-33.5866, -70.6980],
-  [-33.5994, -70.7009],
-  [-33.6183, -70.7072],
-  [-33.6378, -70.7189],
-  [-34.1701, -70.7444]
-];
+    const accidente = [-33.594, -70.704];
 
-L.polyline(estaciones, {
-  color: "#D90429",
-  weight: 5,
-  opacity: 0.85
-}).addTo(map);
+    const marker = L.circleMarker(accidente, {
+      radius: 10,
+      color: "#D90429",
+      weight: 3,
+      fillColor: "#F6E05E",
+      fillOpacity: 0.9,
+      className: "pulse-marker"
+    }).addTo(map);
 
-// Estaciones como puntos
-estaciones.forEach(coord => {
-  L.circleMarker(coord, {
-    radius: 5,
-    fillColor: "#FFFFFF",
-    color: "#D90429",
-    weight: 2,
-    fillOpacity: 1
-  }).addTo(map);
-});
+    map.setView(accidente, 14);
 
-// Panel lateral
-const panel = document.getElementById("hero-sidebar");
+    const panel = document.getElementById("hero-sidebar");
+    if (!panel) return;
 
-// Punto del accidente (estático)
-var accidente = [-33.6069, -70.7040];
-var accMarker = L.circleMarker(accidente, {
-  radius: 12,
-  fillColor: "#D90429",
-  color: "#FFFFFF",
-  weight: 3,
-  fillOpacity: 1
-}).addTo(map);
-
-accMarker.on("click", () => {
-  if (panel.classList.contains("show")) {
-    panel.classList.remove("show");
-    return;
-  }
-
-  // Si está oculto → mostrar y hacer zoom
-  panel.classList.add("show");
-
-  L.esri.basemapLayer("Imagery").addTo(map);
-  map.flyTo(accidente, 16, { duration: 1.5 });
-});
+    marker.on("click", () => {
+      if (panel.classList.contains("show")) {
+        panel.classList.remove("show");
+      } else {
+        panel.classList.add("show");
+      }
+    });
+  });
 </script>
+
 </body>
 </html>

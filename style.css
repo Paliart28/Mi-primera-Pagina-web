@@ -1,22 +1,23 @@
 /* ===========================================================
-   VARIABLES (paleta Punto Ciego)
+   VARIABLES PUNTO CIEGO
 =========================================================== */
 :root {
   --bar-h: 80px;
-  --track-h: 8px;
 
   --acero: #1E3A68;
   --senal: #F6E05E;
   --oxido: #F2994A;
   --verde: #2E7D5B;
   --gris: #E5EAF1;
+  --beige: #F6F3E8;
 
+  --bg-body: #020617;
   --text-dark: #111827;
   --text-light: #F9FAFB;
 }
 
 /* ===========================================================
-   RESETEO BÁSICO
+   RESET BÁSICO
 =========================================================== */
 *,
 *::before,
@@ -28,338 +29,268 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--text-dark);
-  background: radial-gradient(circle at top left, #0b1220 0, #020617 40%, #020617 100%);
+  scroll-behavior: smooth;
 }
 
 body {
-  line-height: 1.6;
+  font-family: "Poppins", "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: var(--bg-body);
+  color: var(--text-dark);
 }
 
-/* Quitar subrayado y color estándar de links */
-a {
-  color: #2563EB;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+/* El contenido empieza bajo la barra del tren */
+main {
+  padding-top: calc(var(--bar-h) + 32px);
 }
 
 /* ===========================================================
-   LAYOUT GENERAL
+   CONTENEDORES Y SECCIONES
 =========================================================== */
-main {
-  margin-top: var(--bar-h);
-}
-
-section {
-  padding: 6rem 0;
+.section {
+  padding: 5rem 0;
 }
 
 .container {
-  max-width: 1080px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1.5rem;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
-/* Grid de dos columnas reutilizable */
-.two-cols {
+/* Columna doble genérica */
+.grid-2 {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-columns: 1.3fr 1fr;
   gap: 2.5rem;
   align-items: flex-start;
 }
 
-/* ===========================================================
-   CABECERA FIJA
-=========================================================== */
-.site-header {
-  position: fixed;
-  inset: 0 0 auto 0;
-  height: 56px;
-  background: rgba(15, 23, 42, 0.96);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  backdrop-filter: blur(12px);
-  z-index: 50;
-}
-
-.site-header__inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.site-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-light);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-}
-
-.site-logo__mark {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--senal);
-}
-
-.site-logo__text {
-  font-family: "Bebas Neue", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  letter-spacing: 0.18em;
-  font-size: 0.9rem;
-}
-
-.site-nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.site-nav a {
-  color: #CBD5F5;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 500;
-}
-
-.site-nav a:hover {
-  color: #F9FAFB;
-}
-
-/* ===========================================================
-   BARRA SUPERIOR DEL TREN
-=========================================================== */
-.top-bar {
-  position: fixed;
-  top: 56px;
-  left: 0;
-  right: 0;
-  height: var(--bar-h);
-  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.98));
-  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-  z-index: 40;
-}
-
-.top-bar__inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-}
-
-/* Etiquetas de estaciones */
-.station-labels {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.label {
-  background: transparent;
-  border: none;
-  color: #E5E7EB;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  cursor: pointer;
-  padding: 0;
-}
-
-.label:hover {
-  color: #FFFFFF;
-}
-
-/* Vía del tren */
-.track {
-  position: relative;
-  width: 100%;
-  height: var(--track-h);
-  background: linear-gradient(to right, #0F172A, #020617);
-  border-radius: 999px;
-  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.45);
-}
-
-/* Progreso */
-.track__progress {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #F6E05E, #F2994A);
-  width: 0%;
-}
-
-/* Estaciones */
-.station {
-  position: absolute;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  margin-top: -5px;
-  border-radius: 999px;
-  background: #0F172A;
-  border: 2px solid #E5E7EB;
-}
-
-.station--1 { left: 0%; }
-.station--2 { left: 25%; }
-.station--3 { left: 50%; }
-.station--4 { left: 75%; }
-.station--5 { left: 100%; }
-
-/* Tren */
-.train {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: auto;
-}
-
-/* ===========================================================
-   HERO
-=========================================================== */
+/* HERO ESPECIAL */
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-  gap: 2.8rem;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
   align-items: stretch;
 }
 
-#s1 {
+/* Columna derecha del hero (mapa + panel) la maneja style_mapasanbernardo.css */
+
+/* COLORES DE CADA SECCIÓN */
+.section--hero {
+  background: radial-gradient(circle at top left, #1E3A68 0, #020617 60%);
   color: var(--text-light);
 }
 
-.hero-text {
-  padding-top: 3rem;
+.section--infra {
+  background: linear-gradient(135deg, #F2994A 0%, #F6E05E 40%, #F2994A 100%);
+  color: var(--text-dark);
 }
 
+.section--territorio {
+  background: linear-gradient(135deg, #1E3A68 0%, #2E7D5B 70%);
+  color: var(--text-light);
+}
+
+.section--patrones {
+  background: var(--beige);
+  color: var(--text-dark);
+}
+
+.section--metodo {
+  background: #0B1220;
+  color: var(--text-light);
+}
+
+/* ===========================================================
+   TIPOGRAFÍA
+=========================================================== */
 .kicker {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.78rem;
-  color: #A5B4FC;
+  letter-spacing: 0.12em;
   margin-bottom: 0.75rem;
+  opacity: 0.85;
 }
 
 .hero-title {
-  font-family: "Bebas Neue", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 2.8rem;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
   line-height: 1.05;
-  letter-spacing: 0.08em;
-  margin: 0 0 1.4rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-lead {
   font-size: 1rem;
-  max-width: 34rem;
-  color: #E5E7EB;
+  max-width: 40rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-meta {
-  margin-top: 1.5rem;
-  font-size: 0.85rem;
-  color: #CBD5F5;
-}
-
-/* Destacados */
-.hero-highlights {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.highlight {
-  padding: 0.9rem 1rem;
-  border-radius: 0.9rem;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.22), rgba(15, 23, 42, 0.95));
-  border: 1px solid rgba(148, 163, 184, 0.45);
-}
-
-.highlight-label {
-  display: block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #E5E7EB;
-  margin-bottom: 0.25rem;
-}
-
-.highlight-value {
-  font-size: 0.92rem;
-  font-weight: 500;
-}
-
-/* Hero derecha */
-.hero-aside {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-#hero-map {
-  width: 100%;
-  height: 260px;
-  border-radius: 1rem;
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  overflow: hidden;
-}
-
-#hero-sidebar {
-  background: #F9FAFB;
-  color: #111827;
-  border-radius: 1rem;
-  padding: 1.25rem 1.35rem;
   font-size: 0.9rem;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.35);
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
 }
 
-.hero-sidebar-title {
-  font-size: 1rem;
-  margin: 0 0 0.7rem;
-  font-weight: 600;
-}
-
-.hero-sidebar-photo {
-  width: 100%;
-  height: auto;
-  border-radius: 0.75rem;
-  margin-bottom: 0.75rem;
-  object-fit: cover;
-}
-
-/* ===========================================================
-   SECCIONES GENERALES
-=========================================================== */
 .section-title {
-  font-family: "Bebas Neue", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1.9rem;
-  letter-spacing: 0.08em;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #E5E7EB;
-  margin: 0 0 1.2rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title--light {
+  color: var(--text-light);
 }
 
 .section-body {
   font-size: 0.98rem;
-  color: #E5E7EB;
-  max-width: 40rem;
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+}
+
+.section-body--light {
+  color: var(--text-light);
+}
+
+/* ===========================================================
+   HERO: HIGHLIGHTS
+=========================================================== */
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.highlight {
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  background: rgba(15, 23, 42, 0.7);
+  color: var(--text-light);
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  font-size: 0.85rem;
+}
+
+.highlight-label {
+  opacity: 0.8;
+}
+
+.highlight-value {
+  font-weight: 600;
+}
+
+/* ===========================================================
+   COLUMNAS DE VISUALIZACIONES
+=========================================================== */
+.viz-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.viz-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.3rem;
+}
+
+.viz-title--light {
+  color: var(--text-light);
+}
+
+/* Iframes de gráficos */
+.chart-frame {
+  width: 100%;
+  min-height: 430px;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.35);
+  overflow: hidden;
+  background: transparent;
+}
+
+.chart-frame--wide {
+  min-height: 360px;
+}
+
+.chart-frame--light {
+  background: rgba(249, 250, 251, 0.85);
+}
+
+.chart-frame--dark {
+  background: rgba(15, 23, 42, 0.15);
+}
+
+.chart-frame--soft {
+  background: rgba(229, 234, 241, 0.85);
+}
+
+/* ===========================================================
+   TARJETAS DE CITA
+=========================================================== */
+.quote-card {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.quote-card--light {
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--text-dark);
+  border-left: 4px solid #1E3A68;
+}
+
+.quote-card--dark {
+  background: rgba(15, 23, 42, 0.28);
+  color: var(--text-light);
+  border-left: 4px solid #F6E05E;
+}
+
+/* ===========================================================
+   PATRONES: GRID DE 3 GRÁFICOS
+=========================================================== */
+.patterns-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.pattern-item--wide .chart-frame--wide {
+  min-height: 360px;
+}
+
+/* ===========================================================
+   METODOLOGÍA
+=========================================================== */
+.metodo-list {
+  padding-left: 1.2rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+.metodo-list li {
+  margin-bottom: 0.35rem;
+}
+
+.repo-link {
+  color: var(--senal);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.repo-link:hover {
+  text-decoration: underline;
 }
 
 /* ===========================================================
@@ -368,7 +299,7 @@ section {
 .section-icon {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .icon {
@@ -380,164 +311,45 @@ section {
    FOOTER
 =========================================================== */
 .site-footer {
-  border-top: 1px solid rgba(148, 163, 184, 0.35);
   background: #020617;
   color: #9CA3AF;
-  padding: 2rem 0 3rem;
+  padding: 1.75rem 0;
 }
 
 .site-footer__inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: center;
-  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
 }
 
 /* ===========================================================
    RESPONSIVE
 =========================================================== */
 @media (max-width: 900px) {
-  .container {
-    padding: 0 1.5rem;
+  main {
+    padding-top: calc(var(--bar-h) + 16px);
   }
 
   .hero-layout,
-  .two-cols {
+  .grid-2 {
     grid-template-columns: 1fr;
   }
 
-  section {
-    padding: 6rem 0;
+  .section {
+    padding: 4rem 0;
   }
-}
 
-/* Hacer que el hero crezca con el contenido */
-#s1 .container {
-  display: block !important;
-}
+  .section-icon {
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+  }
 
-#hero-sidebar {
-  margin-top: 1.25rem !important;
-  display: flex !important;
-  flex-direction: column !important;
-  height: auto !important;
-  min-height: 260px !important;
-}
-
-/* El mapa SIEMPRE visible */
-#hero-map {
-  display: block !important;
-  height: 260px !important;
-  min-height: 260px !important;
-  width: 100% !important;
-  z-index: 5;
-}
-
-/* ===========================================================
-   CRÓNICAS + GRÁFICOS
-=========================================================== */
-
-.chronicle {
-  gap: 2.5rem;
-}
-
-.chronicle-text {
-  font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--text-dark);
-  background: #F9FAFB10;
-  padding: 1.2rem 1.4rem;
-  border-radius: 1rem;
-}
-
-.chronicle-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--acero);
-  margin-bottom: 0.4rem;
-}
-
-.chronicle-text .section-title {
-  margin-bottom: 1.5rem;
-  color: #E5E7EB;
-}
-
-.chronicle-text p + p {
-  margin-top: 0.75rem;
-}
-
-.chronicle-chart {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.chart-title {
-  font-family: "Bebas Neue", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  letter-spacing: 0.06em;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  color: var(--acero);
-}
-
-.chart-frame {
-  width: 100%;
-  min-height: 360px;
-  border: none;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
-  overflow: hidden;
-}
-
-.pattern-charts {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.8rem;
-  margin-top: 2rem;
-}
-
-.pattern-chart {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.chart-note {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #4B5563;
-}
-
-/* Ajustes de color para que el naranja no se pierda */
-.chronicle--2 {
-  background: rgba(242, 153, 74, 0.06);
-  border-radius: 24px;
-  padding: 2.5rem 2rem;
-}
-
-.chronicle--3 {
-  background: rgba(229, 234, 241, 0.8);
-  border-radius: 24px;
-  padding: 2.5rem 2rem;
-}
-
-/* Responsive para crónicas */
-@media (max-width: 900px) {
-  .pattern-charts {
+  .patterns-grid {
     grid-template-columns: 1fr;
-  }
-
-  .chronicle--2,
-  .chronicle--3 {
-    padding: 2rem 1.5rem;
   }
 
   .chart-frame {
-    min-height: 320px;
+    min-height: 360px;
   }
 }
