@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-4c1fd46be85786b4e983fb5b40ee345f"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Regulaci\u00f3n", "scale": {"domain": ["Regulado", "Irregular", "Desconocido"], "range": ["#5A75FA", "#FA945D", "gray"]}, "title": "Regulaci\u00f3n", "type": "nominal"}, "column": {"field": "Comuna", "type": "nominal"}, "tooltip": [{"field": "Comuna", "type": "nominal"}, {"field": "Regulaci\u00f3n", "type": "nominal"}, {"field": "Estado actual", "type": "nominal"}, {"field": "Cantidad", "type": "quantitative"}], "x": {"field": "Estado actual", "title": "Estado Actual", "type": "nominal"}, "y": {"axis": {"format": "d"}, "field": "Cantidad", "title": "Cantidad de cruces", "type": "quantitative"}}, "height": 350, "title": "Cantidad de cruces ferroviarios por regulaci\u00f3n, estado actual y comuna", "width": 80, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-4c1fd46be85786b4e983fb5b40ee345f": [{"Comuna": "Bu\u00edn", "Regulaci\u00f3n": "Irregular", "Estado actual": "En Uso", "Cantidad": 3}, {"Comuna": "Bu\u00edn", "Regulaci\u00f3n": "Regulado", "Estado actual": "En Uso", "Cantidad": 4}, {"Comuna": "El Bosque", "Regulaci\u00f3n": "Regulado", "Estado actual": "Clausurado", "Cantidad": 2}, {"Comuna": "Paine", "Regulaci\u00f3n": "Regulado", "Estado actual": "En Uso", "Cantidad": 4}, {"Comuna": "Pedro Aguirre Cerda", "Regulaci\u00f3n": "Regulado", "Estado actual": "Clausurado", "Cantidad": 3}, {"Comuna": "San Bernardo", "Regulaci\u00f3n": "Irregular", "Estado actual": "En Uso", "Cantidad": 2}, {"Comuna": "San Bernardo", "Regulaci\u00f3n": "Regulado", "Estado actual": "Clausurado", "Cantidad": 1}, {"Comuna": "San Bernardo", "Regulaci\u00f3n": "Regulado", "Estado actual": "En Uso", "Cantidad": 2}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

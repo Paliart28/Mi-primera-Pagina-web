@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ac4c94c723ad7402f0296436baa90b8e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ac4c94c723ad7402f0296436baa90b8e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ac4c94c723ad7402f0296436baa90b8e = L.map(
+                "map_ac4c94c723ad7402f0296436baa90b8e",
+                {
+                    center: [-35.6751, -71.543],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6.3,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c286d49ae914cb228e639067806f6c39 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c286d49ae914cb228e639067806f6c39.addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var circle_marker_2d1acfdd6860924d331f167e07447a79 = L.circleMarker(
+                [-23.65, -70.4],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.038461538461538, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_98781ceeb1f65ef58a2e6019fc3c88c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_92f316b94fd3faeb3a19712f5f9f8040 = $(`<div id="html_92f316b94fd3faeb3a19712f5f9f8040" style="width: 100.0%; height: 100.0%;"><b>Antofagasta</b><br>Accidentes: 7</div>`)[0];
+                popup_98781ceeb1f65ef58a2e6019fc3c88c1.setContent(html_92f316b94fd3faeb3a19712f5f9f8040);
+            
+        
+
+        circle_marker_2d1acfdd6860924d331f167e07447a79.bindPopup(popup_98781ceeb1f65ef58a2e6019fc3c88c1)
+        ;
+
+        
+    
+    
+            var marker_66177b91a244c0eae60419e699e43571 = L.marker(
+                [-23.65, -70.4],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_7679bb8888f7144a652f20eb5006484b = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e7\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_66177b91a244c0eae60419e699e43571.setIcon(div_icon_7679bb8888f7144a652f20eb5006484b);
+            
+    
+            var circle_marker_c06380927abe12445920f35e76465bf3 = L.circleMarker(
+                [-27.3668, -70.3314],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_f6a5ca77a089c0233558ffa50c6d9b1b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bf57d1c29ace763e622158bf0bfb0065 = $(`<div id="html_bf57d1c29ace763e622158bf0bfb0065" style="width: 100.0%; height: 100.0%;"><b>Atacama</b><br>Accidentes: 1</div>`)[0];
+                popup_f6a5ca77a089c0233558ffa50c6d9b1b.setContent(html_bf57d1c29ace763e622158bf0bfb0065);
+            
+        
+
+        circle_marker_c06380927abe12445920f35e76465bf3.bindPopup(popup_f6a5ca77a089c0233558ffa50c6d9b1b)
+        ;
+
+        
+    
+    
+            var marker_9174986e63adebd3e4d3d30a66d5efad = L.marker(
+                [-27.3668, -70.3314],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_d4e193778eb6af8bcc5a48e1173f0a74 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e1\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_9174986e63adebd3e4d3d30a66d5efad.setIcon(div_icon_d4e193778eb6af8bcc5a48e1173f0a74);
+            
+    
+            var circle_marker_c5515ec5849e193aaf3df906516518ac = L.circleMarker(
+                [-29.9533, -71.3395],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_e720eae5d254141b2b628bb8262701ce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7d93b8a27453b96f6eac54cb0b2c9f64 = $(`<div id="html_7d93b8a27453b96f6eac54cb0b2c9f64" style="width: 100.0%; height: 100.0%;"><b>Coquimbo</b><br>Accidentes: 1</div>`)[0];
+                popup_e720eae5d254141b2b628bb8262701ce.setContent(html_7d93b8a27453b96f6eac54cb0b2c9f64);
+            
+        
+
+        circle_marker_c5515ec5849e193aaf3df906516518ac.bindPopup(popup_e720eae5d254141b2b628bb8262701ce)
+        ;
+
+        
+    
+    
+            var marker_752de612febe701b474c16e16f7b67c6 = L.marker(
+                [-29.9533, -71.3395],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_8df23a04357a8850ce0b59481f171863 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e1\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_752de612febe701b474c16e16f7b67c6.setIcon(div_icon_8df23a04357a8850ce0b59481f171863);
+            
+    
+            var circle_marker_783e3094772c2ba2f7a3387a1e090dff = L.circleMarker(
+                [-33.0458, -71.6197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.057692307692307, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_a1c4c3ade5e3d3805c823940a18d8a70 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b6db0bec6a1cec055d571d5a6a60d33 = $(`<div id="html_5b6db0bec6a1cec055d571d5a6a60d33" style="width: 100.0%; height: 100.0%;"><b>Valparaíso</b><br>Accidentes: 10</div>`)[0];
+                popup_a1c4c3ade5e3d3805c823940a18d8a70.setContent(html_5b6db0bec6a1cec055d571d5a6a60d33);
+            
+        
+
+        circle_marker_783e3094772c2ba2f7a3387a1e090dff.bindPopup(popup_a1c4c3ade5e3d3805c823940a18d8a70)
+        ;
+
+        
+    
+    
+            var marker_16c3d4bdcee3541f1df94b17239eeaa0 = L.marker(
+                [-33.0458, -71.6197],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_a07e9e6e007a0973e9e1d697042453a0 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e10\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_16c3d4bdcee3541f1df94b17239eeaa0.setIcon(div_icon_a07e9e6e007a0973e9e1d697042453a0);
+            
+    
+            var circle_marker_6c46c69312b95a405453cdcfa116f330 = L.circleMarker(
+                [-33.4372, -70.6506],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 40.0, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_0fd8434c6b9f730eac903615836176e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_54afd67f3c3c9611ec0ae5acf3da96f9 = $(`<div id="html_54afd67f3c3c9611ec0ae5acf3da96f9" style="width: 100.0%; height: 100.0%;"><b>Metropolitana</b><br>Accidentes: 53</div>`)[0];
+                popup_0fd8434c6b9f730eac903615836176e8.setContent(html_54afd67f3c3c9611ec0ae5acf3da96f9);
+            
+        
+
+        circle_marker_6c46c69312b95a405453cdcfa116f330.bindPopup(popup_0fd8434c6b9f730eac903615836176e8)
+        ;
+
+        
+    
+    
+            var marker_7cfb3c6f8afcc0820d06633d8a19a2d8 = L.marker(
+                [-33.4372, -70.6506],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_2f526faa6c0fc1bf14fba8b10fd912fd = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e53\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_7cfb3c6f8afcc0820d06633d8a19a2d8.setIcon(div_icon_2f526faa6c0fc1bf14fba8b10fd912fd);
+            
+    
+            var circle_marker_a73e0837a02db7a1a01d6754dbf091ab = L.circleMarker(
+                [-34.5755, -71.0022],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 34.61538461538461, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_98eee7bb79c3e53c95cc3347aaa32a98 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6c24065a4ec378efc146d631b8e70b8f = $(`<div id="html_6c24065a4ec378efc146d631b8e70b8f" style="width: 100.0%; height: 100.0%;"><b>O’Higgins</b><br>Accidentes: 45</div>`)[0];
+                popup_98eee7bb79c3e53c95cc3347aaa32a98.setContent(html_6c24065a4ec378efc146d631b8e70b8f);
+            
+        
+
+        circle_marker_a73e0837a02db7a1a01d6754dbf091ab.bindPopup(popup_98eee7bb79c3e53c95cc3347aaa32a98)
+        ;
+
+        
+    
+    
+            var marker_04a1c3f6b739aca8846a21543c003f49 = L.marker(
+                [-34.5755, -71.0022],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_28d53ae30251c97f80adc8931ccc06d0 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e45\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_04a1c3f6b739aca8846a21543c003f49.setIcon(div_icon_28d53ae30251c97f80adc8931ccc06d0);
+            
+    
+            var circle_marker_d6de501c87cc23b0b59e5d16eb477e6a = L.circleMarker(
+                [-35.4291, -71.6613],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 28.55769230769231, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_414b4f28445975fc8919293e4c0ecbc2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d1bae1221e6c3488ed669d1967aa6a3 = $(`<div id="html_5d1bae1221e6c3488ed669d1967aa6a3" style="width: 100.0%; height: 100.0%;"><b>Maule</b><br>Accidentes: 36</div>`)[0];
+                popup_414b4f28445975fc8919293e4c0ecbc2.setContent(html_5d1bae1221e6c3488ed669d1967aa6a3);
+            
+        
+
+        circle_marker_d6de501c87cc23b0b59e5d16eb477e6a.bindPopup(popup_414b4f28445975fc8919293e4c0ecbc2)
+        ;
+
+        
+    
+    
+            var marker_35e97a6f4bc6ed2dacc42e04aeac16c5 = L.marker(
+                [-35.4291, -71.6613],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_1f5c750594180d1fac7a10a95de39b62 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e36\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_35e97a6f4bc6ed2dacc42e04aeac16c5.setIcon(div_icon_1f5c750594180d1fac7a10a95de39b62);
+            
+    
+            var circle_marker_1eb5216a5672a7ebfa4b60992814ab6e = L.circleMarker(
+                [-36.7226, -72.55],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.038461538461538, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_01777a15f40e954236f2fe3c75cc9511 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_06a9491b8f4f1e838c3ce57ef8699997 = $(`<div id="html_06a9491b8f4f1e838c3ce57ef8699997" style="width: 100.0%; height: 100.0%;"><b>Ñuble</b><br>Accidentes: 7</div>`)[0];
+                popup_01777a15f40e954236f2fe3c75cc9511.setContent(html_06a9491b8f4f1e838c3ce57ef8699997);
+            
+        
+
+        circle_marker_1eb5216a5672a7ebfa4b60992814ab6e.bindPopup(popup_01777a15f40e954236f2fe3c75cc9511)
+        ;
+
+        
+    
+    
+            var marker_345d11eb3ebff0841e1cf75c59fd09b6 = L.marker(
+                [-36.7226, -72.55],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_2180a99dd06e00febf46530706674318 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e7\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_345d11eb3ebff0841e1cf75c59fd09b6.setIcon(div_icon_2180a99dd06e00febf46530706674318);
+            
+    
+            var circle_marker_d47d09ea7409e422f614bd2ed9ad0bfb = L.circleMarker(
+                [-37.4697, -72.3537],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 26.53846153846154, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_6149eec4503f4743b693b07eba23f4b2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1c86969c85103060160fba631feaeef = $(`<div id="html_f1c86969c85103060160fba631feaeef" style="width: 100.0%; height: 100.0%;"><b>Biobío</b><br>Accidentes: 33</div>`)[0];
+                popup_6149eec4503f4743b693b07eba23f4b2.setContent(html_f1c86969c85103060160fba631feaeef);
+            
+        
+
+        circle_marker_d47d09ea7409e422f614bd2ed9ad0bfb.bindPopup(popup_6149eec4503f4743b693b07eba23f4b2)
+        ;
+
+        
+    
+    
+            var marker_8d9dd7129c1b0275cfb40c60dc7d5d5f = L.marker(
+                [-37.4697, -72.3537],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_ede16117d3fae244e1da4e9f9864b519 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e33\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_8d9dd7129c1b0275cfb40c60dc7d5d5f.setIcon(div_icon_ede16117d3fae244e1da4e9f9864b519);
+            
+    
+            var circle_marker_a7127fdd1ce7f0c34738648c804bbfa1 = L.circleMarker(
+                [-38.9489, -72.3311],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.057692307692307, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_65dfed23d82831f2790951556ced10d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0d35ca5a451c3442c910ede27bcb2a1b = $(`<div id="html_0d35ca5a451c3442c910ede27bcb2a1b" style="width: 100.0%; height: 100.0%;"><b>La Araucanía</b><br>Accidentes: 10</div>`)[0];
+                popup_65dfed23d82831f2790951556ced10d3.setContent(html_0d35ca5a451c3442c910ede27bcb2a1b);
+            
+        
+
+        circle_marker_a7127fdd1ce7f0c34738648c804bbfa1.bindPopup(popup_65dfed23d82831f2790951556ced10d3)
+        ;
+
+        
+    
+    
+            var marker_8376f355fb406bed9e41226084ce9beb = L.marker(
+                [-38.9489, -72.3311],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_b19efbb22df3fad6929f112349015507 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e10\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_8376f355fb406bed9e41226084ce9beb.setIcon(div_icon_b19efbb22df3fad6929f112349015507);
+            
+    
+            var circle_marker_91d3f5ef586c2251b8571fbe91f9d8c3 = L.circleMarker(
+                [-39.8196, -73.2459],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.6923076923076925, "stroke": true, "weight": 3}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+        var popup_619db1593f411ee17a6f5a2e5df7ede6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dd351874d28b60ee7494fe31037f6c9e = $(`<div id="html_dd351874d28b60ee7494fe31037f6c9e" style="width: 100.0%; height: 100.0%;"><b>Los Ríos</b><br>Accidentes: 5</div>`)[0];
+                popup_619db1593f411ee17a6f5a2e5df7ede6.setContent(html_dd351874d28b60ee7494fe31037f6c9e);
+            
+        
+
+        circle_marker_91d3f5ef586c2251b8571fbe91f9d8c3.bindPopup(popup_619db1593f411ee17a6f5a2e5df7ede6)
+        ;
+
+        
+    
+    
+            var marker_c0b115d50374ab26a5b8d02600cf56b4 = L.marker(
+                [-39.8196, -73.2459],
+                {
+}
+            ).addTo(map_ac4c94c723ad7402f0296436baa90b8e);
+        
+    
+            var div_icon_434fb0b81c282dbdfedc6df1e1177723 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12pt; color: black; font-weight:bold; text-align:center;\"\u003e5\u003c/div\u003e",
+  "iconSize": [150, 36],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_c0b115d50374ab26a5b8d02600cf56b4.setIcon(div_icon_434fb0b81c282dbdfedc6df1e1177723);
+            
+</script>
+</html>
