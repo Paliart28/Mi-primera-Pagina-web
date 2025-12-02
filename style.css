@@ -1,242 +1,191 @@
 /* ===========================================================
-   IDENTIDAD VISUAL — PUNTO CIEGO
-   Paleta: Azul acero · Verde industrial · Naranja óxido · Beige ferroviario · Amarillo señalética
-   Tipografías: Bebas Neue (títulos), Poppins/Roboto (texto)
+   VARIABLES PUNTO CIEGO
 =========================================================== */
-
 :root {
-    --acero: #1E3A68;
-    --senial: #F6E05E;
-    --oxido: #F2994A;
-    --verde: #2E7D5B;
-    --gris: #E5EAF1;
-    --beige: #F6F3E8;
+  --bar-h: 80px;
 
-    --texto-oscuro: #111827;
-    --texto-claro: #F9FAFB;
+  --acero: #1E3A68;
+  --senal: #F6E05E;
+  --oxido: #F2994A;
+  --verde: #2E7D5B;
+  --gris: #E5EAF1;
+  --beige: #F6F3E8;
 
-    --bar-h: 80px;
+  --bg-body: #020617;
+  --text-dark: #111827;
+  --text-light: #F9FAFB;
 }
 
 /* ===========================================================
-   RESET
+   RESET BÁSICO
 =========================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html, body {
-    scroll-behavior: smooth;
-    font-family: "Poppins", "Roboto", sans-serif;
-    background: #020617;
-    color: var(--texto-oscuro);
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
+body {
+  font-family: "Poppins", "Roboto", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-body);
+  color: var(--text-dark);
+}
+
+/* Espacio correcto bajo la barra del tren */
 main {
-    padding-top: calc(var(--bar-h) + 24px);
+  padding-top: calc(var(--bar-h) + 32px);
 }
 
 /* ===========================================================
-   CONTENEDOR GENERAL
+   CONTENEDORES Y SECCIONES
 =========================================================== */
+.section {
+  padding: 5rem 0;
+}
+
 .container {
-    width: 100%;
-    max-width: 1180px;
-    padding: 0 20px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  margin: 0 auto;
 }
 
+/* Columnas dobles */
 .grid-2 {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 2.4rem;
-}
-
-/* ===========================================================
-   HERO
-=========================================================== */
-.section--hero {
-    background: radial-gradient(circle at top left, var(--acero) 0%, #020617 60%);
-    padding: 6rem 0 5rem;
-    color: var(--texto-claro);
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
 }
 
 .hero-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-    gap: 3rem;
-}
-
-.kicker {
-    font-size: 0.92rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    opacity: 0.85;
-    margin-bottom: 0.5rem;
-}
-
-.hero-title {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: clamp(2.4rem, 3.8vw, 3.7rem);
-    letter-spacing: 0.05em;
-    line-height: 1.04;
-    margin-bottom: 1rem;
-}
-
-.hero-lead {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    max-width: 40rem;
-}
-
-.hero-meta {
-    font-size: 0.88rem;
-    opacity: 0.8;
-    margin-bottom: 1.4rem;
-}
-
-/* Resumen de datos */
-.hero-highlights {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    margin-top: 1.2rem;
-}
-
-.highlight {
-    background: rgba(15, 23, 42, 0.7);
-    padding: 0.45rem 1rem;
-    border-radius: 999px;
-    display: flex;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-}
-
-.highlight-label {
-    opacity: 0.8;
-}
-
-.highlight-value {
-    font-weight: 600;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
+  align-items: stretch;
 }
 
 /* ===========================================================
-   SECCIONES
+   COLORES DE FONDO DE CADA SECCIÓN
 =========================================================== */
-.section {
-    padding: 5rem 0;
+.section--hero {
+  background: radial-gradient(circle at top left, #1E3A68 0, #020617 60%);
+  color: var(--text-light);
 }
 
 .section--infra {
-    background: linear-gradient(135deg, var(--oxido) 0%, var(--senial) 40%, var(--oxido) 100%);
-    color: var(--texto-oscuro);
+  background: linear-gradient(135deg, #F2994A 0%, #F6E05E 40%, #F2994A 100%);
+  color: var(--text-dark);
 }
 
 .section--territorio {
-    background: linear-gradient(135deg, var(--acero) 0%, var(--verde) 70%);
-    color: var(--texto-claro);
+  background: linear-gradient(135deg, #1E3A68 0%, #2E7D5B 70%);
+  color: var(--text-light);
 }
 
 .section--patrones {
-    background: var(--beige);
-    color: var(--texto-oscuro);
+  background: var(--beige);
+  color: var(--text-dark);
 }
 
 .section--metodo {
-    background: #0B1220;
-    color: var(--texto-claro);
+  background: #0B1220;
+  color: var(--text-light);
 }
 
 /* ===========================================================
-   TITULOS Y TEXTO
+   TIPOGRAFÍA
 =========================================================== */
+.kicker {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.hero-title {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.hero-lead {
+  font-size: 1rem;
+  max-width: 40rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-meta {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
+}
+
 .section-title {
-    font-family: "Bebas Neue", sans-serif;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-size: 1.9rem;
-    margin-bottom: 1.2rem;
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title--light {
+  color: var(--text-light);
 }
 
 .section-body {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 1rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
 }
 
 .section-body--light {
-    color: var(--texto-claro);
+  color: var(--text-light);
 }
 
 /* ===========================================================
-   CITA DESTACADA
+   HERO HIGHLIGHTS
 =========================================================== */
-.quote-card {
-    margin-top: 1.5rem;
-    padding: 1.2rem 1.4rem;
-    border-radius: 12px;
-    font-size: 0.96rem;
-    line-height: 1.56;
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-.quote-card--light {
-    background: rgba(15, 23, 42, 0.07);
-    border-left: 4px solid var(--acero);
-    color: var(--texto-oscuro);
+.highlight {
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  background: rgba(15, 23, 42, 0.7);
+  color: var(--text-light);
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  font-size: 0.85rem;
 }
 
-.quote-card--dark {
-    background: rgba(15, 23, 42, 0.25);
-    border-left: 4px solid var(--senial);
-    color: var(--texto-claro);
+.highlight-value {
+  font-weight: 600;
 }
 
-/* ===========================================================
-   GRÁFICOS (iframes)
-=========================================================== */
-.chart-frame {
-    width: 100%;
-    min-height: 430px;
-    border: 0;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.3);
-}
-
-.chart-frame--light {
-    background: rgba(249, 250, 251, 0.85);
-}
-
-.chart-frame--dark {
-    background: rgba(15, 23, 42, 0.17);
-}
-
-.chart-frame--soft {
-    background: rgba(229, 234, 241, 0.82);
-}
-
-.chart-frame--wide {
-    min-height: 360px;
-}
-
-/* ===========================================================
-   GRID DE PATRONES (3 GRÁFICOS)
-=========================================================== */
-.patterns-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
-}
 /* ===========================================================
    COLUMNAS DE VISUALIZACIONES – REPARADO
 =========================================================== */
-
 .viz-column {
   display: flex;
   flex-direction: column;
-  gap: 2rem;           /* aumenté un poco para separar sin crear “aire” */
+  gap: 2rem;
 }
 
 .viz-title {
@@ -246,177 +195,145 @@ main {
   margin-bottom: 0.5rem;
 }
 
-/* 🔥 EL FIX REAL: AUMENTAR ALTURA DE IFRAMES Y QUITAR ESPACIOS EXTRA */
+/* 🔥 FIX DEFINITIVO PARA EL SCROLL Y ESPACIOS */
 .chart-frame {
   width: 100%;
-  height: 600px;       /* ANTES: 360–430 → quedaba pequeño */
-  border: 0;
-  border-radius: 14px;
-  overflow: hidden;    /* elimina scroll interno */
-  background: transparent;
-  margin: 0;           /* elimina espacios abajo */
-  padding: 0;
+  border: none !important;
+  overflow: hidden !important;
   display: block;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
-/* Gráficos muy largos tipo FRANJA HORARIA */
-.chart-frame--wide {
-  height: 680px;     /* ANTES: 360px */
+/* si un gráfico necesita más espacio, el JS lo expandirá automáticamente */
+iframe.autosize {
+  width: 100%;
 }
 
-/* Fondos conservados pero sin alterar altura */
+/* Fondos según tu diseño (no influyen en la altura real) */
 .chart-frame--light {
   background: rgba(249, 250, 251, 0.85);
 }
 
 .chart-frame--dark {
-  background: rgba(15, 23, 42, 0.15);
+  background: rgba(15, 23, 42, 0.28);
 }
 
 .chart-frame--soft {
   background: rgba(229, 234, 241, 0.85);
 }
 
-/* ===========================================================
-   PATRONES – FIX A LA GRILLA
-=========================================================== */
+/* Quitar scroll en navegadores WebKit */
+iframe.autosize::-webkit-scrollbar {
+  display: none !important;
+}
 
+/* ===========================================================
+   PATRONES
+=========================================================== */
 .patterns-grid {
   display: grid;
-  grid-template-columns: 1fr; /* ordena los 3 uno bajo otro, sin espacios raros */
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
-.pattern-item {
+.pattern-item--wide iframe {
   width: 100%;
 }
 
-.pattern-item--wide iframe {
-  height: 68
+/* ===========================================================
+   TARJETAS DE CITA
+=========================================================== */
+.quote-card {
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 1.25rem;
+}
+
+.quote-card--light {
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--text-dark);
+  border-left: 4px solid #1E3A68;
+}
+
+.quote-card--dark {
+  background: rgba(15, 23, 42, 0.28);
+  color: var(--text-light);
+  border-left: 4px solid #F6E05E;
+}
 
 /* ===========================================================
    METODOLOGÍA
 =========================================================== */
 .metodo-list {
-    padding-left: 1.2rem;
-    margin: 1rem 0 1.4rem;
-    line-height: 1.6;
-}
-
-.metodo-list li {
-    margin-bottom: 0.35rem;
+  padding-left: 1.2rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .repo-link {
-    color: var(--senial);
-    font-weight: 600;
+  color: var(--senal);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.repo-link:hover {
-    text-decoration: underline;
-}
-
+/* ===========================================================
+   ICONOS
+=========================================================== */
 .section-icon {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .icon {
-    width: 100px;
-    height: 100px;
+  width: 90px;
+  height: 90px;
 }
 
 /* ===========================================================
    FOOTER
 =========================================================== */
 .site-footer {
-    background: #020617;
-    padding: 1.6rem 0;
-    color: #9CA3AF;
+  background: #020617;
+  color: #9CA3AF;
+  padding: 1.75rem 0;
 }
 
 .site-footer__inner {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
 }
 
 /* ===========================================================
    RESPONSIVE
 =========================================================== */
 @media (max-width: 900px) {
+  main {
+    padding-top: calc(var(--bar-h) + 16px);
+  }
 
-    main {
-        padding-top: calc(var(--bar-h) + 16px);
-    }
-
-    .grid-2,
-    .hero-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .section {
-        padding: 4.2rem 0;
-    }
-
-    .patterns-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .chart-frame {
-        min-height: 360px;
-    }
-
-    .icon {
-        margin-top: 2rem;
-    }
-}
-/* ============================================
-   REPARACIÓN DE ESPACIOS Y ORGANIZACIÓN
-   ============================================ */
-
-/* Contenedor general */
-section {
-    padding: 40px 0;
-    margin: 0;
-}
-
-/* Eliminar espacios gigantes */
-.section-block {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 40px;
-    margin: 0 auto;
-    padding: 20px 0;
-    max-width: 1200px;
-}
-
-/* Texto a la izquierda */
-.section-text {
-    width: 40%;
-}
-
-/* Contenedor de visualizaciones */
-.section-viz {
-    width: 60%;
-    display: grid;
+  .hero-layout,
+  .grid-2 {
     grid-template-columns: 1fr;
-    gap: 25px;
-}
+  }
 
-/* Visualización completa (sin scroll) */
-.viz iframe {
-    width: 100%;
-    height: 500px;   /* Aumentado para que no se corte */
-    border: none;
-    overflow: hidden;
-    border-radius: 10px;
-}
+  .section {
+    padding: 4rem 0;
+  }
 
-/* Arreglar espacio entre secciones */
-section:nth-of-type(n+2) {
-    margin-top: 40px;
+  .section-icon {
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+  }
+
+  .patterns-grid {
+    grid-template-columns: 1fr;
+  }
 }
