@@ -1,134 +1,78 @@
-:root {
-  --bar-h: 80px;
-  --track-h: 8px;
+/* ===========================================================
+   TREN ANIMADO — PUNTO CIEGO
+   (CSS FINAL, OPTIMIZADO Y PROFESIONAL)
+=========================================================== */
 
-  --acero: #1E3A68;
-  --senal: #F6E05E;
-  --oxido: #F2994A;
-  --verde: #2E7D5B;
-  --gris: #E5EAF1;
-}
-
-/* =============================
-   BARRA SUPERIOR DEL TREN
-============================= */
-.railway {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--bar-h);
-  background: #020617;
-  display: flex;
-  align-items: center;
-  z-index: 100;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.45);
-}
-
-.railway__inner {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 5rem;
-  display: grid;
-  grid-template-columns: 1.8fr 1fr;
-  align-items: center;
-  gap: 2rem;
-}
-
-/* Etiquetas de estaciones */
-.railway__labels {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.label {
-  padding: 0.25rem 0.8rem;
-  border-radius: 999px;
-  font-family: "Poppins", sans-serif;
-  font-size: 0.85rem;
-  color: #e5e7eb;
-  text-decoration: none;
-  opacity: 0.7;
-  border: 1px solid transparent;
-  transition: 0.2s;
-}
-
-.label:hover {
-  opacity: 1;
-  background: #ffffff14;
-}
-
-.label.is-active {
-  opacity: 1;
-  border-color: #ffffff55;
-}
-
-/* Línea de rieles */
-.track {
+/* CONTENEDOR GENERAL */
+.tren-bar {
   position: relative;
   width: 100%;
-  height: var(--track-h);
-  border-radius: 999px;
-  background: #0f172a;
-  overflow: visible;
+  height: 14px;
+  background: #0f223d;
+  border-top: 3px solid #122c50;
+  border-bottom: 3px solid #122c50;
+  overflow: hidden;
 }
 
-.track__progress {
+/* LÍNEA DE PROGRESO */
+#progress {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  border-radius: 999px;
   width: 0%;
-  background: linear-gradient(90deg, #F6E05E, #F97316);
-  transition: width 0.2s ease-out;
+  background: var(--senial);
+  transition: width 0.4s ease;
+  z-index: 2;
 }
 
-/* Estaciones como puntos */
+/* TREN */
+#train {
+  position: absolute;
+  top: -24px;
+  left: 0%;
+  width: 70px;
+  transition: left 0.4s ease;
+  z-index: 5;
+
+  /* Sombra elegante */
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+}
+
+/* ESTACIONES / PUNTOS */
 .station {
   position: absolute;
-  top: 50%;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  transform: translate(-50%, -50%);
-  background: #111827;
-  border: 2px solid #9ca3af;
+  top: 2px;
+  width: 10px;
+  height: 10px;
+  background: #c8d3e2;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: background .3s ease, transform .2s ease;
+  z-index: 3;
 }
-
-.station--1 { left: 0%;   }
-.station--2 { left: 25%;  }
-.station--3 { left: 50%;  }
-.station--4 { left: 75%;  }
-.station--5 { left: 100%; }
 
 .station.is-active {
-  background: #F6E05E;
-  border-color: #F97316;
+  background: var(--senial);
+  transform: translateX(-50%) scale(1.25);
+  box-shadow: 0 0 10px var(--senial);
 }
 
-/* Icono del tren que se desplaza */
-.train {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  width: 64px;
-  height: 40px;
+/* LABELS (los nombres de las estaciones) */
+.label {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--gris);
+  transition: color 0.2s ease;
 }
 
-/* Responsive barra tren */
+.label.is-active {
+  color: var(--senial);
+}
+
+/* RESPONSIVE */
 @media (max-width: 900px) {
-  .railway__inner {
-    padding: 0 1.5rem;
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .railway__labels {
-    flex-wrap: wrap;
-    row-gap: 0.5rem;
+  #train {
+    display: none; /* el tren desaparece para no tapar nada */
   }
 }

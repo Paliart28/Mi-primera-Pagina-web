@@ -1,113 +1,302 @@
-/* ==========================
-   VARIABLES DE IDENTIDAD
-========================== */
+/* ===========================================================
+   VARIABLES DE IDENTIDAD VISUAL — PUNTO CIEGO
+=========================================================== */
 :root {
-  --azul-oscuro: #0b1426;
-  --azul-acero: #1E3A68;
-  --amarillo: #F6E05E;
+  --acero: #1E3A68;
+  --senial: #F6E05E;
   --oxido: #F2994A;
+  --verde: #2E7D5B;
+  --gris: #E5EAF1;
   --beige: #F6F3E8;
+
+  --texto-oscuro: #1a1a1a;
   --texto-claro: #ffffff;
-  --rojo: #D90429;
-  --navy: #020715;
+
+  --bar-h: 90px;
+  --maxw: 1200px;
 }
 
-/* ==========================
-   RESETEO
-========================== */
+/* ===========================================================
+   RESET
+=========================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  scroll-behavior: smooth;
   font-family: "Poppins", sans-serif;
-  background: var(--azul-acero);
-  color: var(--texto-claro);
-  overflow-x: hidden;
+  background: var(--gris);
+  color: var(--texto-oscuro);
 }
 
-/* ==========================
-   HERO INICIO
-========================== */
-.hero {
-  height: 100vh;
+/* ===========================================================
+   NAV SUPERIOR + TREN
+=========================================================== */
+.topnav {
+  position: sticky;
+  top: 0;
   width: 100%;
+  background: var(--acero);
+  padding: 12px 0 4px;
+  z-index: 999;
+  border-bottom: 5px solid var(--senial);
+}
+
+.topnav ul {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 70px;
-  background: linear-gradient(135deg, #0e1c33, #1E3A68);
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
 }
 
-.hero-text {
-  max-width: 45%;
+.topnav li {
+  color: var(--gris);
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .2s;
 }
 
-.kicker {
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  opacity: 0.9;
+.topnav li.is-active {
+  color: var(--senial);
 }
 
-.title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 3.8rem;
-  line-height: 1.1;
-  margin-bottom: 25px;
+.tren-bar {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  background: #102544;
+  margin-top: 8px;
 }
 
-.bajada {
-  font-size: 1rem;
-  line-height: 1.5;
+#progress {
+  position: absolute;
+  height: 100%;
+  background: var(--senial);
+  width: 0%;
+  transition: width .4s ease;
+}
+
+#train {
+  position: absolute;
+  top: -26px;
+  left: 0%;
+  width: 60px;
+  transition: left .4s ease;
+}
+
+/* ===========================================================
+   HERO — FOTO + MAPA + BAJADA
+=========================================================== */
+
+.hero-reportaje {
+  background: var(--gris);
+  padding: 60px 20px 80px;
+}
+
+.hero-titulo {
+  font-family: "Bebas Neue";
+  font-size: 48px;
+  color: var(--acero);
+  margin-bottom: 10px;
+}
+
+.hero-bajada {
+  font-size: 18px;
+  max-width: 800px;
   margin-bottom: 40px;
-  max-width: 85%;
 }
 
-/* BOTÓN */
-.btn-inicio {
-  background: var(--rojo);
-  color: white;
-  padding: 14px 32px;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: var(--maxw);
+  margin: auto;
+}
+
+.hero-foto {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,.15);
+}
+
+.hero-mapa {
+  position: relative;
+}
+
+#hero-map {
+  width: 100%;
+  height: 350px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,.2);
+}
+
+/* PANEL */
+.hero-sidebar {
+  position: absolute;
+  top: 0;
+  right: -310px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 20px;
+  border-left: 4px solid var(--oxido);
+  box-shadow: -4px 0 10px rgba(0,0,0,.15);
+  transition: .4s ease;
+}
+
+.hero-sidebar.show {
+  right: 0;
+}
+
+.hero-sidebar-kicker {
+  color: var(--oxido);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.hero-sidebar-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* ===========================================================
+   SECCIONES GENERALES
+=========================================================== */
+
+.seccion {
+  padding: 80px 20px;
+}
+
+.titulo-seccion {
+  font-family: "Bebas Neue";
+  font-size: 42px;
+  margin-bottom: 40px;
+  color: var(--acero);
+  text-align: center;
+}
+
+.grid-seccion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: var(--maxw);
+  margin: auto;
+}
+
+.col-texto p {
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.cita {
+  background: var(--beige);
+  padding: 20px;
+  border-left: 6px solid var(--oxido);
+  margin-top: 20px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* ===========================================================
+   GRÁFICOS
+=========================================================== */
+
+.viz {
+  width: 100%;
+  height: 380px;
   border: none;
   border-radius: 8px;
-  font-size: 1.1rem;
-  cursor: pointer;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+
+.col-graficos {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.col-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.subtitulo-viz {
+  font-size: 18px;
   font-weight: 600;
-  transition: 0.3s;
+  color: var(--acero);
+  margin-bottom: 10px;
 }
 
-.btn-inicio:hover {
-  background: #b10322;
+/* ===========================================================
+   METODOLOGÍA
+=========================================================== */
+
+.metodologia {
+  background: var(--gris);
 }
 
-/* ==========================
-   TREN ANIMADO
-========================== */
-.tren-wrapper {
-  width: 50%;
-  height: 250px;
-  position: relative;
-  overflow: hidden;
+.lista-metodologia {
+  margin: 20px 0 30px;
+  padding-left: 20px;
 }
 
-#tren {
-  position: absolute;
-  bottom: 40px;
-  left: -300px;
-  width: 280px;
-  height: 120px;
-  background-image: url("../img/tren_horizontal.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  animation: trenAvanza 4s ease-out forwards;
+.lista-metodologia li {
+  margin-bottom: 10px;
 }
 
-@keyframes trenAvanza {
-  0% { left: -300px; }
-  70% { left: 50%; transform: translateX(-50%); }
-  100% { left: 50%; transform: translateX(-50%); }
+.btn-repo {
+  display: inline-block;
+  padding: 14px 20px;
+  background: var(--acero);
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn-repo:hover {
+  background: #132b4b;
+}
+
+/* ===========================================================
+   CIERRE
+=========================================================== */
+
+.cierre {
+  background: var(--beige);
+}
+
+.cierre-texto {
+  font-size: 20px;
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+
+@media (max-width: 900px) {
+
+  .grid-seccion,
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .col-2 {
+    grid-template-columns: 1fr;
+  }
+
+  #train {
+    display: none;
+  }
 }
