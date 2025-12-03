@@ -3,73 +3,52 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo · Inicio</title>
+  <title>Punto ciego · Rieles en riesgo</title>
 
   <!-- Tipografías -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Estilos generales -->
   <link href="style.css" rel="stylesheet" />
-  <link href="tren_horizontal.css" rel="stylesheet" />
-
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #1E3A68 0%, #020617 55%);
-      color: #F9FAFB;
-      font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
-    }
-
-    .landing-wrap {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .landing-title {
-      font-family: "Bebas Neue", sans-serif;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 2.8rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .landing-sub {
-      font-size: 1rem;
-      opacity: 0.85;
-      margin-bottom: 1.5rem;
-    }
-
-    .start-btn {
-      margin-top: 1rem;
-      background: #F6E05E;
-      color: #111827;
-      border: none;
-      border-radius: 999px;
-      padding: 0.9rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .start-btn:hover {
-      background: #fde68a;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-  </style>
 </head>
-<body>
-  <div class="landing-wrap">
-    <h1 class="landing-title">Más allá de la imprudencia</h1>
-    <p class="landing-sub">LLas fallas estructurales detrás de los atropellos ferroviarios</p>
-    <button class="start-btn" onclick="window.location.href='index2.html'">
-      Iniciar viaje
-    </button>
-  </div>
+
+<body class="landing-body">
+
+  <main class="landing">
+    <div class="landing-inner">
+
+      <header class="landing-text">
+        <p class="landing-kicker">Webstory · COM208 Narración Gráfica</p>
+        <h1 class="landing-title">Punto ciego: rieles en riesgo</h1>
+        <p class="landing-lead">
+          Una exploración visual de los siniestros ferroviarios por atropello entre Estación Central
+          y el límite con la Región del Maule, donde la imprudencia individual convive con fallas
+          estructurales del sistema ferroviario chileno.
+        </p>
+
+        <a href="index2.html#s1" class="btn-primary">Iniciar viaje</a>
+      </header>
+
+      <div class="landing-illustration">
+        <div class="landing-track">
+          <div class="landing-train">
+            <svg viewBox="0 0 64 40" class="landing-train-svg">
+              <rect x="0" y="28" width="64" height="4" />
+              <rect x="6" y="6" rx="6" ry="6" width="46" height="22" />
+              <rect x="14" y="10" rx="3" ry="3" width="22" height="8" class="landing-window" />
+              <rect x="38" y="10" rx="2" ry="2" width="10" height="8" class="landing-window" />
+              <circle cx="18" cy="32" r="5" />
+              <circle cx="38" cy="32" r="5" />
+            </svg>
+          </div>
+        </div>
+        <p class="landing-note">
+          Desplázate y recorre cada estación del reportaje.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
 </body>
 </html>

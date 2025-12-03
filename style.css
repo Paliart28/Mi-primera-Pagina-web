@@ -1,5 +1,5 @@
 /* ===========================================================
-   VARIABLES PUNTO CIEGO
+   VARIABLES
 =========================================================== */
 :root {
   --bar-h: 80px;
@@ -17,7 +17,7 @@
 }
 
 /* ===========================================================
-   RESET BÁSICO
+   RESET
 =========================================================== */
 *,
 *::before,
@@ -25,13 +25,15 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
 }
 
+/* ===========================================================
+   TIPOGRAFÍA BASE
+=========================================================== */
 body {
   font-family: "Poppins", "Roboto", system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -39,14 +41,144 @@ body {
   color: var(--text-dark);
 }
 
-/* Espacio correcto bajo la barra del tren */
+/* ===========================================================
+   BOTONES
+=========================================================== */
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--senal);
+  color: #1F2933;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--senal);
+  border: 2px solid var(--senal);
+}
+
+.btn-secondary:hover {
+  background: rgba(246, 224, 94, 0.1);
+}
+
+/* ===========================================================
+   LANDING (index.html)
+=========================================================== */
+.landing-body {
+  background: radial-gradient(circle at top left, #1E3A68 0, #020617 55%);
+  color: var(--text-light);
+}
+
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.landing-inner {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.landing-text {
+  max-width: 32rem;
+}
+
+.landing-kicker {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.landing-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.landing-lead {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+}
+
+.landing-illustration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.landing-track {
+  width: 100%;
+  max-width: 380px;
+  height: 120px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0B1220, #1E293B);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+}
+
+.landing-train-svg {
+  width: 100%;
+  max-width: 260px;
+  fill: var(--text-light);
+}
+
+.landing-train-svg rect:first-child {
+  fill: #E5EAF1;
+}
+.landing-train-svg rect[rx="6"] {
+  fill: var(--acero);
+}
+.landing-window {
+  fill: var(--senal);
+}
+.landing-train-svg circle {
+  fill: #0F172A;
+}
+
+.landing-note {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ===========================================================
+   ESTRUCTURA INDEX2
+=========================================================== */
 main {
   padding-top: calc(var(--bar-h) + 32px);
 }
 
-/* ===========================================================
-   CONTENEDORES Y SECCIONES
-=========================================================== */
 .section {
   padding: 5rem 0;
 }
@@ -58,23 +190,22 @@ main {
   margin: 0 auto;
 }
 
-/* Columnas dobles */
 .grid-2 {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
   gap: 2.5rem;
   align-items: flex-start;
 }
 
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0,1.5fr) minmax(0,1.1fr);
   gap: 2.5rem;
   align-items: stretch;
 }
 
 /* ===========================================================
-   COLORES DE FONDO DE CADA SECCIÓN
+   COLORES DE SECCIÓN
 =========================================================== */
 .section--hero {
   background: radial-gradient(circle at top left, #1E3A68 0, #020617 60%);
@@ -97,12 +228,12 @@ main {
 }
 
 .section--metodo {
-  background: #0B1220;
+  background: #020617;
   color: var(--text-light);
 }
 
 /* ===========================================================
-   TIPOGRAFÍA
+   TEXTOS GENERALES
 =========================================================== */
 .kicker {
   font-size: 0.9rem;
@@ -129,7 +260,7 @@ main {
 
 .hero-meta {
   font-size: 0.9rem;
-  opacity: 0.85;
+  opacity: 0.9;
   margin-bottom: 1.5rem;
 }
 
@@ -153,6 +284,75 @@ main {
 
 .section-body--light {
   color: var(--text-light);
+}
+
+.section-body-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.source-note {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ===========================================================
+   HERO DETALLES
+=========================================================== */
+.hero-text {
+  max-width: 40rem;
+}
+
+.hero-aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#hero-map {
+  width: 100%;
+  min-height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(148,163,184,0.5);
+}
+
+.hero-sidebar {
+  display: none;
+  margin-top: 0.75rem;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  background: rgba(15,23,42,0.9);
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.hero-sidebar.show {
+  display: block;
+}
+
+.hero-sidebar-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--senal);
+  margin-bottom: 0.4rem;
+}
+
+.hero-sidebar-title {
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.hero-sidebar-text {
+  margin: 0 0 0.5rem;
+}
+
+.hero-sidebar-note {
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
 /* ===========================================================
@@ -180,53 +380,76 @@ main {
 }
 
 /* ===========================================================
-   COLUMNAS DE VISUALIZACIONES – REPARADO
+   VISUALIZACIONES
 =========================================================== */
 .viz-column {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.2rem;
 }
 
 .viz-title {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.4rem;
 }
 
-/* 🔥 FIX DEFINITIVO PARA EL SCROLL Y ESPACIOS */
+/* iframes autosize (altura definida por JS) */
 .chart-frame {
   width: 100%;
-  border: none !important;
+  border: none;
   overflow: hidden !important;
-  display: block;
-  margin: 0;
-  padding: 0;
   background: transparent;
 }
 
-/* si un gráfico necesita más espacio, el JS lo expandirá automáticamente */
-iframe.autosize {
-  width: 100%;
-}
-
-/* Fondos según tu diseño (no influyen en la altura real) */
+/* fondos suaves opcionales */
 .chart-frame--light {
   background: rgba(249, 250, 251, 0.85);
 }
-
 .chart-frame--dark {
-  background: rgba(15, 23, 42, 0.28);
+  background: rgba(15, 23, 42, 0.3);
 }
-
 .chart-frame--soft {
   background: rgba(229, 234, 241, 0.85);
 }
 
-/* Quitar scroll en navegadores WebKit */
 iframe.autosize::-webkit-scrollbar {
-  display: none !important;
+  display: none;
+}
+
+/* ===========================================================
+   DESIGUALDAD
+=========================================================== */
+.desig-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
+  gap: 2.8rem;
+  align-items: flex-start;
+}
+
+.desig-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  color: var(--text-light);
+}
+
+.desig-quote {
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--senal);
+  padding: 1.2rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.desig-viz {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
 /* ===========================================================
@@ -275,15 +498,6 @@ iframe.autosize::-webkit-scrollbar {
   line-height: 1.6;
 }
 
-.repo-link {
-  color: var(--senal);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-/* ===========================================================
-   ICONOS
-=========================================================== */
 .section-icon {
   display: flex;
   justify-content: flex-end;
@@ -315,12 +529,18 @@ iframe.autosize::-webkit-scrollbar {
    RESPONSIVE
 =========================================================== */
 @media (max-width: 900px) {
+  .landing-inner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
   main {
     padding-top: calc(var(--bar-h) + 16px);
   }
 
   .hero-layout,
-  .grid-2 {
+  .grid-2,
+  .desig-grid {
     grid-template-columns: 1fr;
   }
 
@@ -332,21 +552,4 @@ iframe.autosize::-webkit-scrollbar {
     justify-content: flex-start;
     margin-top: 1.5rem;
   }
-
-  .patterns-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* ===========================================================
-   FIX: link del repositorio en METODOLOGÍA
-=========================================================== */
-
-.section--metodo .repo-link {
-  color: var(--senal) !important;     /* Amarillo señalética */
-  font-weight: 700;
-}
-
-.section--metodo .repo-link:hover {
-  text-decoration: underline;
-  opacity: 0.9;
 }
