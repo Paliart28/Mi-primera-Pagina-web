@@ -1,6 +1,5 @@
 /* ===========================================================
 <<<<<<< HEAD
-<<<<<<< HEAD
    VARIABLES (paleta Punto Ciego)
 =======
    IDENTIDAD VISUAL — PUNTO CIEGO
@@ -163,36 +162,6 @@ section {
     box-sizing: border-box;
 }
 
-=======
-   IDENTIDAD VISUAL — PUNTO CIEGO
-   Paleta: Azul acero · Verde industrial · Naranja óxido · Beige ferroviario · Amarillo señalética
-   Tipografías: Bebas Neue (títulos), Poppins/Roboto (texto)
-=========================================================== */
-
-:root {
-    --acero: #1E3A68;
-    --senial: #F6E05E;
-    --oxido: #F2994A;
-    --verde: #2E7D5B;
-    --gris: #E5EAF1;
-    --beige: #F6F3E8;
-
-    --texto-oscuro: #111827;
-    --texto-claro: #F9FAFB;
-
-    --bar-h: 80px;
-}
-
-/* ===========================================================
-   RESET
-=========================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
->>>>>>> parent of 728f669 (coreecion 1010101)
 html, body {
     scroll-behavior: smooth;
     font-family: "Poppins", "Roboto", sans-serif;
@@ -227,7 +196,6 @@ main {
     background: radial-gradient(circle at top left, var(--acero) 0%, #020617 60%);
     padding: 6rem 0 5rem;
     color: var(--texto-claro);
-<<<<<<< HEAD
 >>>>>>> parent of 728f669 (coreecion 1010101)
 }
 
@@ -1112,70 +1080,6 @@ section {
 }
 
 /* ===========================================================
-=======
-}
-
-.hero-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
-    gap: 3rem;
-}
-
-.kicker {
-    font-size: 0.92rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    opacity: 0.85;
-    margin-bottom: 0.5rem;
-}
-
-.hero-title {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: clamp(2.4rem, 3.8vw, 3.7rem);
-    letter-spacing: 0.05em;
-    line-height: 1.04;
-    margin-bottom: 1rem;
-}
-
-.hero-lead {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    max-width: 40rem;
-}
-
-.hero-meta {
-    font-size: 0.88rem;
-    opacity: 0.8;
-    margin-bottom: 1.4rem;
-}
-
-/* Resumen de datos */
-.hero-highlights {
-    display: flex;
-    gap: 0.8rem;
-    flex-wrap: wrap;
-    margin-top: 1.2rem;
-}
-
-.highlight {
-    background: rgba(15, 23, 42, 0.7);
-    padding: 0.45rem 1rem;
-    border-radius: 999px;
-    display: flex;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-}
-
-.highlight-label {
-    opacity: 0.8;
-}
-
-.highlight-value {
-    font-weight: 600;
-}
-
-/* ===========================================================
->>>>>>> parent of 728f669 (coreecion 1010101)
    SECCIONES
 =========================================================== */
 .section {
@@ -1378,9 +1282,6 @@ section {
 .icon {
     width: 100px;
     height: 100px;
-<<<<<<< HEAD
->>>>>>> parent of 728f669 (coreecion 1010101)
-=======
 >>>>>>> parent of 728f669 (coreecion 1010101)
 }
 
@@ -1388,7 +1289,6 @@ section {
    FOOTER
 =========================================================== */
 .site-footer {
-<<<<<<< HEAD
 <<<<<<< HEAD
   border-top: 1px solid rgba(148, 163, 184, 0.35);
   background: #020617;
@@ -1415,18 +1315,6 @@ section {
     background: #020617;
     padding: 1.6rem 0;
     color: #9CA3AF;
-=======
-    background: #020617;
-    padding: 1.6rem 0;
-    color: #9CA3AF;
-}
-
-.site-footer__inner {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    font-size: 0.85rem;
->>>>>>> parent of 728f669 (coreecion 1010101)
 }
 
 .site-footer__inner {
@@ -1592,7 +1480,6 @@ section {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
   .chart-block {
     margin-top: 2rem;
 =======
@@ -1625,22 +1512,6 @@ section {
         padding: 4.2rem 0;
     }
 
-=======
-
-    main {
-        padding-top: calc(var(--bar-h) + 16px);
-    }
-
-    .grid-2,
-    .hero-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .section {
-        padding: 4.2rem 0;
-    }
-
->>>>>>> parent of 728f669 (coreecion 1010101)
     .patterns-grid {
         grid-template-columns: 1fr;
     }
@@ -1699,7 +1570,6 @@ section {
 /* Arreglar espacio entre secciones */
 section:nth-of-type(n+2) {
     margin-top: 40px;
-<<<<<<< HEAD
 >>>>>>> parent of 728f669 (coreecion 1010101)
 }
 
@@ -1835,7 +1705,5 @@ section:nth-of-type(n+2) {
 =======
 >>>>>>> parent of d494f5a (ok porfavor que este si sea)
   }
-=======
->>>>>>> parent of 728f669 (coreecion 1010101)
 }
 >>>>>>> parent of f626e0e (finsal)
