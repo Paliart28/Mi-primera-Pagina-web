@@ -93,24 +93,19 @@
             <span class="highlight-label">Cruces estudiados</span>
             <span class="highlight-value">+30 puntos</span>
           </div>
-        </div>
-      </div>
 
-      <aside class="hero-aside">
-        <div id="hero-map"></div>
 
-        <div id="hero-sidebar" class="hero-sidebar">
-          <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
-          <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
+        <div id="hero-sidebar">
+          <h2 class="hero-sidebar-title">Accidente ferroviario San Bernardo (2024)</h2>
+
           <img class="hero-sidebar-photo" src="https://static.theclinic.cl/media/2024/06/20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario San Bernardo">
-          </p>
-          <p class="hero-sidebar-text">
+
+          <p>
             El jueves 20 de junio de 2024, un tren de pruebas de EFE colisionó de frente con un tren de carga Fepasa
             entre las estaciones Lo Blanco y Lo Herrera, en la comuna de San Bernardo.
             El impacto dejó dos maquinistas fallecidos y nueve personas heridas, y reabrió el debate
             sobre los protocolos de seguridad y la autorización simultánea de vía.
-          </p>
-          <p class="hero-sidebar-note">
+          </p>       
         </div>
       </aside>
     </div>
@@ -370,43 +365,82 @@
 <!-- JS del tren -->
 <script src="tren_horizontal.js"></script>
 
-<!-- JS del mapa de San Bernardo -->
+<!-- Mapa San Bernardo -->
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const map = L.map("hero-map", {
-      zoomControl: false,
-      attributionControl: false
-    }).setView([-33.594, -70.704], 13);
+// Crear mapa estilo “Google Maps” pero minimalista
+var map = L.map('hero-map', {
+  zoomControl: true,
+  dragging: true,
+  scrollWheelZoom: true,
+  doubleClickZoom: true,
+  touchZoom: true
+}).setView([-33.6069, -70.7040], 14);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19
-    }).addTo(map);
+// Capa base
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  opacity: 0.45
+}).addTo(map);
 
-    const accidente = [-33.594, -70.704];
+// Estaciones aproximadas del tramo
+var estaciones = [
+  [-33.4513, -70.6797],
+  [-33.4660, -70.6899],
+  [-33.4919, -70.6951],
+  [-33.5150, -70.6988],
+  [-33.5465, -70.7000],
+  [-33.5866, -70.6980],
+  [-33.5994, -70.7009],
+  [-33.6183, -70.7072],
+  [-33.6378, -70.7189],
+  [-34.1701, -70.7444]
+];
 
-    const marker = L.circleMarker(accidente, {
-      radius: 10,
-      color: "#D90429",
-      weight: 3,
-      fillColor: "#F6E05E",
-      fillOpacity: 0.9,
-      className: "pulse-marker"
-    }).addTo(map);
+L.polyline(estaciones, {
+  color: "#D90429",
+  weight: 5,
+  opacity: 0.85
+}).addTo(map);
 
-    map.setView(accidente, 14);
+// Estaciones como puntos
+estaciones.forEach(coord => {
+  L.circleMarker(coord, {
+    radius: 5,
+    fillColor: "#FFFFFF",
+    color: "#111827",
+    weight: 1,
+    fillOpacity: 1
+  }).addTo(map);
+});
 
-    const panel = document.getElementById("hero-sidebar");
-    if (!panel) return;
+// Punto del accidente (estático)
+var accidente = [-33.6069, -70.7040];
+var accMarker = L.circleMarker(accidente, {
+  radius: 12,
+  fillColor: "#D90429",
+  color: "#FFFFFF",
+  weight: 3,
+  fillOpacity: 1
+}).addTo(map);
 
-    marker.on("click", () => {
-      if (panel.classList.contains("show")) {
-        panel.classList.remove("show");
-      } else {
-        panel.classList.add("show");
-      }
-    });
-  });
+// Toggle del panel al hacer clic
+accMarker.on("click", function() {
+  const panel = document.getElementById("hero-sidebar");
+
+  if (!panel) return;
+
+  // Si está visible → esconder
+  if (panel.classList.contains("show")) {
+    panel.classList.remove("show");
+    return;
+  }
+
+  // Si está oculto → mostrar y hacer zoom
+  panel.classList.add("show");
+
+  L.esri.basemapLayer("Imagery").addTo(map);
+  map.flyTo(accidente, 16, { duration: 1.5 });
+});
 </script>
-
 </body>
 </html>
+
