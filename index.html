@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punto Ciego – Webstory Ferroviaria</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punto Ciego – Inicio</title>
 
-    <!-- Tipografías -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/style.css" />
+
 </head>
-
 <body>
 
-<!-- ==========================================================
-   NAV
-============================================================== -->
-<nav class="nav">
-  <div class="nav-container">
-    <h1 class="nav-logo">Punto Ciego</h1>
-    <ul class="nav-links">
-      <li><a href="#infra">Infraestructura</a></li>
-      <li><a href="#desig">Desigualdad</a></li>
-      <li><a href="#patrones">Patrones</a></li>
-      <li><a href="#edades">Edades</a></li>
-      <li><a href="#metodologia">Metodología</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- ============================
+       HERO PRINCIPAL
+    ============================ -->
+  <section class="hero">
+
+    <div class="hero-text">
+      <p class="kicker">Siniestros ferroviarios · Región Metropolitana</p>
+
+      <h1 class="title">
+        MÁS ALLÁ DE LA IMPRUDENCIA:<br>
+        LAS FALLAS ESTRUCTURALES DETRÁS DE LOS ATROPELLOS FERROVIARIOS
+      </h1>
+
+      <p class="bajada">
+        Entre 2014 y 2024, los registros de atropellos en la vía férrea muestran algo incómodo: casi todos se anotan como imprudencia del peatón, 
+        pero muchos ocurren en cruces donde la infraestructura no alcanza para que ese error humano no termine en tragedia.
+      </p>
+
+      <button class="btn-inicio" onclick="location.href='index2.html'">
+        INICIAR VIAJE
+      </button>
+    </div>
+
+
+    <!-- Tren animado del inicio -->
+    <div class="tren-wrapper">
+      <div id="tren"></div>
+    </div>
+
+  </section>
+
+
+  <!-- Script del tren -->
+  <script src="js/tren_inicio.js"></script>
+
+</body>
+</html>
