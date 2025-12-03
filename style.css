@@ -1,274 +1,294 @@
-/* =========================================================
-   VARIABLES
-========================================================= */
+/* ===========================================================
+   VARIABLES (paleta Punto Ciego)
+=========================================================== */
 :root {
+  --bar-h: 80px;
+  --track-h: 8px;
+
   --acero: #1E3A68;
-  --senial: #F6E05E;
+  --senal: #F6E05E;
   --oxido: #F2994A;
   --verde: #2E7D5B;
-  --beige: #F6F3E8;
   --gris: #E5EAF1;
-  --texto: #111;
-  --bg-suave: #f4f7fb;
-  --max-width: 1250px;
+
+  --text-dark: #111827;
+  --text-light: #F9FAFB;
 }
 
-/* =========================================================
-   RESET
-========================================================= */
-* {
-  margin: 0;
-  padding: 0;
+/* ===========================================================
+   RESET + BASE
+=========================================================== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html, body {
-  font-family: "Poppins", sans-serif;
-  color: var(--texto);
-  background: white;
+  margin: 0;
+  padding: 0;
 }
 
-/* =========================================================
-   NAV SUPERIOR
-========================================================= */
-.topnav {
-  position: sticky;
-  top: 0;
-  z-index: 900;
-  background: white;
-  padding: 10px 25px;
-  border-bottom: 2px solid var(--gris);
+html {
+  scroll-behavior: smooth;
 }
 
-.topnav ul {
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background: var(--gris);
+  color: var(--text-dark);
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ===========================================================
+   SECCIONES FULLSCREEN
+=========================================================== */
+main {
+  width: 100vw;
+}
+
+section {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 7rem 0;
   display: flex;
-  gap: 30px;
-  list-style: none;
-  font-weight: 500;
+  align-items: center;
 }
 
-.label {
-  cursor: pointer;
-  transition: 0.3s;
-}
+/* Colores por sección */
+#s1 { background: var(--acero); color: var(--text-light); }
+#s2 { background: var(--senal); color: var(--text-dark); }
+#s3 { background: var(--oxido); color: var(--text-dark); }
+#s4 { background: var(--verde); color: var(--text-light); }
+#s5 { background: var(--gris); color: var(--text-dark); }
 
-.label.is-active {
-  color: var(--oxido);
-  font-weight: 600;
-}
-
-/* =========================================================
-   TREN
-========================================================= */
-.tren-bar {
-  position: relative;
-  height: 6px;
-  background: #ccc;
-  margin-top: 10px;
-  border-radius: 4px;
-}
-
-#progress {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 6px;
-  width: 0%;
-  background: var(--oxido);
-  transition: width 0.3s ease;
-  border-radius: 4px;
-}
-
-#train {
-  position: absolute;
-  top: -25px;
-  left: 0%;
-  width: 60px;
-  transition: left 0.3s ease;
-}
-
-/* =========================================================
-   HERO REPORTAJE
-========================================================= */
-.hero-reportaje {
-  padding: 60px 20px 80px;
-  background: var(--acero);
-  color: white;
-}
-
-.hero-titulo {
-  font-family: "Bebas Neue";
-  font-size: 64px;
-  line-height: 1.1;
-  margin-bottom: 10px;
-}
-
-.hero-bajada {
-  font-size: 20px;
-  max-width: 900px;
-  opacity: 0.9;
-  margin-bottom: 40px;
-}
-
-.hero-grid {
-  display: flex;
-  gap: 35px;
-  max-width: var(--max-width);
-  margin: auto;
-}
-
-/* FOTO */
-.hero-foto {
-  width: 45%;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-/* MAPA + PANEL */
-.hero-aside {
-  position: relative;
-  width: 55%;
-}
-
-#hero-map {
+/* Contenedor */
+.container {
   width: 100%;
-  height: 420px;
-  border-radius: 12px;
-  overflow: hidden;
+  max-width: 1200px;
+  padding: 0 5rem;
+  margin: 0 auto;
 }
 
-/* PANEL INFO */
-.hero-sidebar {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: -310px;
-  width: 300px;
-  height: 100%;
-  background: white;
-  color: var(--texto);
-  padding: 20px;
-  border-left: 4px solid var(--oxido);
-  box-shadow: -4px 0 10px rgba(0,0,0,0.15);
-}
-
-.hero-sidebar.show {
-  display: block;
-}
-
-/* =========================================================
-   SECCIONES GENERALES
-========================================================= */
-.seccion {
-  padding: 90px 30px;
-  max-width: var(--max-width);
-  margin: auto;
-}
-
-.titulo-seccion {
-  font-family: "Bebas Neue";
-  font-size: 48px;
-  margin-bottom: 30px;
-  color: var(--acero);
-}
-
-/* COLORES POR SECCIÓN */
-.infraestructura { background: var(--bg-suave); }
-.desigualdad     { background: var(--beige); }
-.patrones        { background: var(--gris); }
-.metodologia     { background: white; }
-
-/* =========================================================
-   GRID DOS COLUMNAS
-========================================================= */
-.grid-2cols {
+/* ===========================================================
+   LAYOUTS
+=========================================================== */
+.hero-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 3rem;
 }
 
-/* =========================================================
-   TEXTO Y CRÓNICAS
-========================================================= */
-.cronica-tag {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--oxido);
-  margin-bottom: 12px;
+.two-cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
 }
 
-.cita {
-  margin: 25px 0;
-  padding: 18px 22px;
-  background: white;
-  border-left: 5px solid var(--oxido);
-  font-style: italic;
-  border-radius: 6px;
+/* ===========================================================
+   HERO IZQUIERDA (texto)
+=========================================================== */
+.kicker {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
 }
 
-/* =========================================================
-   GRÁFICOS
-========================================================= */
-.col-graficos {
+.hero-title {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.hero-lead {
+  font-size: 1rem;
+  max-width: 40rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-meta {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.hero-highlights {
   display: flex;
-  flex-direction: column;
-  gap: 35px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-/* Iframes GRANDES */
-.grafico-iframe {
-  width: 100%;
-  height: 480px;
-  border: none;
-  border-radius: 10px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+.highlight {
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(148, 163, 184, 0.6);
 }
 
-/* Para los gráficos de Flourish que son más altos */
-.grafico-iframe.alto {
-  height: 620px;
+.highlight-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.9;
 }
 
-/* =========================================================
-   BOTÓN REPOSITORIO
-========================================================= */
-.btn-repo {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 28px;
-  background: var(--oxido);
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
+.highlight-value {
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
-  transition: 0.3s;
 }
 
-.btn-repo:hover {
-  background: #d47c2f;
+/* ===========================================================
+   SECCIONES INTERNAS (s2–s5)
+=========================================================== */
+.section-title {
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-/* =========================================================
+.section-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 36rem;
+}
+
+/* Icono a la derecha */
+.section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon--right {
+  width: 72px;
+  height: 72px;
+}
+
+/* ===========================================================
+   FOOTER
+=========================================================== */
+.site-footer {
+  background: #020617;
+  color: #9ca3af;
+  padding: 1.5rem 0 2rem;
+  font-size: 0.8rem;
+}
+
+.site-footer__inner {
+  text-align: center;
+}
+
+/* ===========================================================
    RESPONSIVE
-========================================================= */
+=========================================================== */
 @media (max-width: 900px) {
-
-  .hero-grid {
-    flex-direction: column;
+  .container {
+    padding: 0 1.5rem;
   }
 
-  .hero-foto, .hero-aside {
-    width: 100%;
-  }
-
-  .grid-2cols {
+  .hero-layout,
+  .two-cols {
     grid-template-columns: 1fr;
   }
 
-  #train {
-    width: 45px;
+  section {
+    padding: 6rem 0;
   }
 }
 
+
+/* Hacer que el hero crezca con el contenido */
+#s1 .container {
+  display: block !important;
+}
+
+#hero-sidebar {
+  position: relative;
+  z-index: 5;
+}
+/*Asegurar que la sección del hero NO colapse */
+#s1 {
+  display: block !important;
+  min-height: 100vh !important;
+}
+
+/*Asegurar que el aside tenga altura y no colapse el mapa */
+.hero-aside {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  min-height: 260px !important;
+}
+
+/* El mapa SIEMPRE visible */
+#hero-map {
+  display: block !important;
+  height: 260px !important;
+  min-height: 260px !important;
+  width: 100% !important;
+  z-index: 5;
+}
+/* Para iframes de gráficos — ocupar todo el ancho, altura suficiente */
+.grafico-iframe {
+  width: 100%;
+  height: 650px;  /* altura mayor — ajusta si necesitas más alto */
+  border: none;
+  background: white;
+  /* elimina scroll interno si aparece */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Responsivo: en pantallas pequeñas aumenta altura */
+@media (max-width: 800px) {
+  .grafico-iframe {
+    height: 800px;
+  }
+}
+/* ============================
+   ESTILO PRO PARA IFRAMES
+   (SE VEN GRANDES Y EDITORIALES)
+============================== */
+
+.col-graficos {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;              /* más aire entre gráficos */
+  padding: 10px 0;
+}
+
+.grafico-iframe {
+  width: 100%;
+  max-width: 100%;
+  height: 720px;          /* ← TAMAÑO GRANDE */
+  border: none;
+  background: white;
+  border-radius: 14px;     /* bordes suaves */
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15); /* sombra elegante */
+  overflow: hidden;
+}
+
+/* versión para pantallas MUY grandes (monitores) */
+@media (min-width: 1600px) {
+  .grafico-iframe {
+    height: 900px;
+  }
+}
+
+/* versión para celulares */
+@media (max-width: 900px) {
+  .grafico-iframe {
+    height: 1100px;
+  }
+}
