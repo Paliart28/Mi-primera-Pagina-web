@@ -36,7 +36,7 @@
     <!-- HERO / INTRO -->
     <section class="hero-story" id="inicio">
         <div class="hero-inner">
-            <h1>Rieles en riesgo: 10 años de atropellos invisibles</h1>
+            <h1>Más allá de la imprudencia: Las fallas estructurales detrás de los atropellos ferroviarios</h1>
             <p class="hero-bajada">
                 Entre 2014 y 2024, los siniestros ferroviarios del tipo atropello entre Estación Central
                 y la Región de Maule revelan patrones que se repiten en silencio: fallas estructurales
@@ -56,28 +56,25 @@
             <span class="cita-comillas cierre">”</span>
         </div>
     </section>
+<!-- HERO DERECHA: MAPA + RESUMEN -->
+      <aside class="hero-aside">
+        <div id="hero-map"></div>
 
-    <!-- SIMBOLOGÍA DE LAS VISUALIZACIONES -->
-    <section class="section light" id="simbolos">
-        <div class="section-inner">
-            <h2>Cómo leer las visualizaciones</h2>
-            <p>
-                Los gráficos de esta historia utilizan una simbología consistente con la identidad visual ferroviaria
-                definida para <strong>Punto Ciego</strong>. Cada color y forma aporta información sobre el nivel
-                de advertencia, el tipo de cruce o la gravedad de los siniestros.
-            </p>
+        <div id="hero-sidebar">
+          <h2 class="hero-sidebar-title">Accidente ferroviario San Bernardo (2024)</h2>
 
-            <ul class="simbolo-lista">
-                <li><span class="dot azul"></span> <strong>Azul acero:</strong> tramos y cruces con señalización formal o control centralizado.</li>
-                <li><span class="dot oxido"></span> <strong>Naranja óxido:</strong> zonas de advertencia baja o infraestructura degradada.</li>
-                <li><span class="dot amarillo"></span> <strong>Amarillo señalética:</strong> advertencias intermedias o parcialidad en la protección.</li>
-                <li><span class="dot rojo"></span> <strong>Rojo:</strong> puntos de atropellos, siniestros graves o cruces críticos.</li>
-                <li><span class="icono-linea"></span> <strong>Líneas continuas:</strong> tramos formales de vía con control definido.</li>
-                <li><span class="icono-punteado"></span> <strong>Líneas punteadas:</strong> cruces irregulares o trazados abiertos por uso cotidiano.</li>
-            </ul>
+          <img class="hero-sidebar-photo" src="https://static.theclinic.cl/media/2024/06/20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario San Bernardo">
+
+          <p>
+            El jueves 20 de junio de 2024, un tren de pruebas de EFE colisionó de frente con un tren de carga Fepasa
+            entre las estaciones Lo Blanco y Lo Herrera, en la comuna de San Bernardo.
+            El impacto dejó dos maquinistas fallecidos y nueve personas heridas, y reabrió el debate
+            sobre los protocolos de seguridad y la autorización simultánea de vía.
+          </p>
         </div>
-    </section>
-
+      </aside>
+    </div>
+  </section>
     <!-- =========================
          CRÓNICA 1 – SISTEMA Y SEÑALIZACIÓN
     ========================== -->
@@ -328,6 +325,85 @@
             <p><strong>Andrés Hernández</strong> · Procesamiento de bases de datos, desarrollo y soporte técnico.</p>
         </div>
     </section>
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
 
+<!-- Mapa San Bernardo -->
+<script>
+// Crear mapa estilo “Google Maps” pero minimalista
+var map = L.map('hero-map', {
+  zoomControl: true,
+  dragging: true,
+  scrollWheelZoom: true,
+  doubleClickZoom: true,
+  touchZoom: true
+}).setView([-33.6069, -70.7040], 14);
+
+// Capa base
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  opacity: 0.45
+}).addTo(map);
+
+// Estaciones aproximadas del tramo
+var estaciones = [
+  [-33.4513, -70.6797],
+  [-33.4660, -70.6899],
+  [-33.4919, -70.6951],
+  [-33.5150, -70.6988],
+  [-33.5465, -70.7000],
+  [-33.5866, -70.6980],
+  [-33.5994, -70.7009],
+  [-33.6183, -70.7072],
+  [-33.6378, -70.7189],
+  [-34.1701, -70.7444]
+];
+
+L.polyline(estaciones, {
+  color: "#D90429",
+  weight: 5,
+  opacity: 0.85
+}).addTo(map);
+
+// Estaciones como puntos
+estaciones.forEach(coord => {
+  L.circleMarker(coord, {
+    radius: 5,
+    fillColor: "#FFFFFF",
+    color: "#111827",
+    weight: 1,
+    fillOpacity: 1
+  }).addTo(map);
+});
+
+// Punto del accidente (estático)
+var accidente = [-33.6069, -70.7040];
+var accMarker = L.circleMarker(accidente, {
+  radius: 12,
+  fillColor: "#D90429",
+  color: "#FFFFFF",
+  weight: 3,
+  fillOpacity: 1
+}).addTo(map);
+
+// Toggle del panel al hacer clic
+accMarker.on("click", function() {
+  const panel = document.getElementById("hero-sidebar");
+
+  if (!panel) return;
+
+  // Si está visible → esconder
+  if (panel.classList.contains("show")) {
+    panel.classList.remove("show");
+    return;
+  }
+
+  // Si está oculto → mostrar y hacer zoom
+  panel.classList.add("show");
+
+  L.esri.basemapLayer("Imagery").addTo(map);
+  map.flyTo(accidente, 16, { duration: 1.5 });
+});
+</script>
 </body>
 </html>
