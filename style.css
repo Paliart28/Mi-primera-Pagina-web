@@ -238,3 +238,21 @@ section {
   width: 100% !important;
   z-index: 5;
 }
+/* Para iframes de gráficos — ocupar todo el ancho, altura suficiente */
+.grafico-iframe {
+  width: 100%;
+  height: 650px;  /* altura mayor — ajusta si necesitas más alto */
+  border: none;
+  background: white;
+  /* elimina scroll interno si aparece */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Responsivo: en pantallas pequeñas aumenta altura */
+@media (max-width: 800px) {
+  .grafico-iframe {
+    height: 800px;
+  }
+}
