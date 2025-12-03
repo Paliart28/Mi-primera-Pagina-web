@@ -1,61 +1,76 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rieles en riesgo · Inicio del viaje</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rieles en riesgo · Inicio</title>
 
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="tren_horizontal.css">
+  <!-- Estilos generales -->
+  <link href="style.css" rel="stylesheet" />
+  <link href="tren_horizontal.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #1E3A68 0%, #020617 55%);
+      color: #F9FAFB;
+      font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    .landing-wrap {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .landing-title {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 2.8rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .landing-sub {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .start-btn {
+      margin-top: 1rem;
+      background: #F6E05E;
+      color: #111827;
+      border: none;
+      border-radius: 999px;
+      padding: 0.9rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .start-btn:hover {
+      background: #fde68a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
-<body class="landing-body">
-
-    <!-- HEADER SIMPLE CON LOGO -->
-    <header class="landing-header">
-        <div class="landing-logo">
-            <img src="logo_punto_ciego.png" alt="Logo Punto Ciego">
-            <span class="landing-title">Punto Ciego</span>
-        </div>
-    </header>
-
-    <!-- HERO CON TREN -->
-    <main class="landing-main">
-        <section class="landing-hero">
-            <div class="landing-text">
-                <h1>Rieles en riesgo</h1>
-                <p>
-                    Una historia web sobre los puntos ciegos de la seguridad ferroviaria
-                    entre Estación Central y Maule.
-                </p>
-            </div>
-
-            <div class="landing-tren-wrapper">
-                <div class="vias"></div>
-                <div class="tren" id="tren-animado">
-                    <div class="tren-cabina"></div>
-                    <div class="tren-cuerpo"></div>
-                    <div class="tren-ventanas">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <div class="tren-ruedas">
-                        <span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    
-  <!-- Botón para pasar al sitio real -->
-  <button
-    class="start-btn"
-    onclick="window.location.href='index2.html'">
-    Iniciar viaje
-  </button>
-
+<body>
+  <div class="landing-wrap">
+    <h1 class="landing-title">Rieles en riesgo</h1>
+    <p class="landing-sub">Los cruces que siguen siendo punto ciego</p>
+    <button class="start-btn" onclick="window.location.href='index2.html'">
+      Iniciar viaje
+    </button>
+  </div>
 </body>
 </html>
