@@ -1,302 +1,311 @@
 /* ===========================================================
-   VARIABLES DE IDENTIDAD VISUAL — PUNTO CIEGO
+   IDENTIDAD VISUAL — PUNTO CIEGO
+   Paleta: Azul acero · Verde industrial · Naranja óxido · Beige ferroviario · Amarillo señalética
+   Tipografías: Bebas Neue (títulos), Poppins/Roboto (texto)
 =========================================================== */
+
 :root {
-  --acero: #1E3A68;
-  --senial: #F6E05E;
-  --oxido: #F2994A;
-  --verde: #2E7D5B;
-  --gris: #E5EAF1;
-  --beige: #F6F3E8;
+    --acero: #1E3A68;
+    --senial: #F6E05E;
+    --oxido: #F2994A;
+    --verde: #2E7D5B;
+    --gris: #E5EAF1;
+    --beige: #F6F3E8;
 
-  --texto-oscuro: #1a1a1a;
-  --texto-claro: #ffffff;
+    --texto-oscuro: #111827;
+    --texto-claro: #F9FAFB;
 
-  --bar-h: 90px;
-  --maxw: 1200px;
+    --bar-h: 80px;
 }
 
 /* ===========================================================
    RESET
 =========================================================== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html, body {
-  scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
-  background: var(--gris);
-  color: var(--texto-oscuro);
+    scroll-behavior: smooth;
+    font-family: "Poppins", "Roboto", sans-serif;
+    background: #020617;
+    color: var(--texto-oscuro);
+}
+
+main {
+    padding-top: calc(var(--bar-h) + 24px);
 }
 
 /* ===========================================================
-   NAV SUPERIOR + TREN
+   CONTENEDOR GENERAL
 =========================================================== */
-.topnav {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background: var(--acero);
-  padding: 12px 0 4px;
-  z-index: 999;
-  border-bottom: 5px solid var(--senial);
+.container {
+    width: 100%;
+    max-width: 1180px;
+    padding: 0 20px;
+    margin: 0 auto;
 }
 
-.topnav ul {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  list-style: none;
-}
-
-.topnav li {
-  color: var(--gris);
-  font-weight: 600;
-  cursor: pointer;
-  transition: color .2s;
-}
-
-.topnav li.is-active {
-  color: var(--senial);
-}
-
-.tren-bar {
-  position: relative;
-  width: 100%;
-  height: 12px;
-  background: #102544;
-  margin-top: 8px;
-}
-
-#progress {
-  position: absolute;
-  height: 100%;
-  background: var(--senial);
-  width: 0%;
-  transition: width .4s ease;
-}
-
-#train {
-  position: absolute;
-  top: -26px;
-  left: 0%;
-  width: 60px;
-  transition: left .4s ease;
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2.4rem;
 }
 
 /* ===========================================================
-   HERO — FOTO + MAPA + BAJADA
+   HERO
 =========================================================== */
-
-.hero-reportaje {
-  background: var(--gris);
-  padding: 60px 20px 80px;
+.section--hero {
+    background: radial-gradient(circle at top left, var(--acero) 0%, #020617 60%);
+    padding: 6rem 0 5rem;
+    color: var(--texto-claro);
 }
 
-.hero-titulo {
-  font-family: "Bebas Neue";
-  font-size: 48px;
-  color: var(--acero);
-  margin-bottom: 10px;
+.hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+    gap: 3rem;
 }
 
-.hero-bajada {
-  font-size: 18px;
-  max-width: 800px;
-  margin-bottom: 40px;
+.kicker {
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+    margin-bottom: 0.5rem;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: var(--maxw);
-  margin: auto;
+.hero-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(2.4rem, 3.8vw, 3.7rem);
+    letter-spacing: 0.05em;
+    line-height: 1.04;
+    margin-bottom: 1rem;
 }
 
-.hero-foto {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,.15);
+.hero-lead {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    max-width: 40rem;
 }
 
-.hero-mapa {
-  position: relative;
+.hero-meta {
+    font-size: 0.88rem;
+    opacity: 0.8;
+    margin-bottom: 1.4rem;
 }
 
-#hero-map {
-  width: 100%;
-  height: 350px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,.2);
+/* Resumen de datos */
+.hero-highlights {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
 }
 
-/* PANEL */
-.hero-sidebar {
-  position: absolute;
-  top: 0;
-  right: -310px;
-  width: 300px;
-  height: 100%;
-  background: white;
-  padding: 20px;
-  border-left: 4px solid var(--oxido);
-  box-shadow: -4px 0 10px rgba(0,0,0,.15);
-  transition: .4s ease;
+.highlight {
+    background: rgba(15, 23, 42, 0.7);
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.85rem;
 }
 
-.hero-sidebar.show {
-  right: 0;
+.highlight-label {
+    opacity: 0.8;
 }
 
-.hero-sidebar-kicker {
-  color: var(--oxido);
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.hero-sidebar-title {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 8px;
+.highlight-value {
+    font-weight: 600;
 }
 
 /* ===========================================================
-   SECCIONES GENERALES
+   SECCIONES
 =========================================================== */
-
-.seccion {
-  padding: 80px 20px;
+.section {
+    padding: 5rem 0;
 }
 
-.titulo-seccion {
-  font-family: "Bebas Neue";
-  font-size: 42px;
-  margin-bottom: 40px;
-  color: var(--acero);
-  text-align: center;
+.section--infra {
+    background: linear-gradient(135deg, var(--oxido) 0%, var(--senial) 40%, var(--oxido) 100%);
+    color: var(--texto-oscuro);
 }
 
-.grid-seccion {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  max-width: var(--maxw);
-  margin: auto;
+.section--territorio {
+    background: linear-gradient(135deg, var(--acero) 0%, var(--verde) 70%);
+    color: var(--texto-claro);
 }
 
-.col-texto p {
-  margin-bottom: 18px;
-  line-height: 1.6;
+.section--patrones {
+    background: var(--beige);
+    color: var(--texto-oscuro);
 }
 
-.cita {
-  background: var(--beige);
-  padding: 20px;
-  border-left: 6px solid var(--oxido);
-  margin-top: 20px;
-  font-style: italic;
-  font-weight: 500;
+.section--metodo {
+    background: #0B1220;
+    color: var(--texto-claro);
 }
 
 /* ===========================================================
-   GRÁFICOS
+   TITULOS Y TEXTO
 =========================================================== */
-
-.viz {
-  width: 100%;
-  height: 380px;
-  border: none;
-  border-radius: 8px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,.1);
+.section-title {
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 1.9rem;
+    margin-bottom: 1.2rem;
 }
 
-.col-graficos {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+.section-body {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
-.col-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+.section-body--light {
+    color: var(--texto-claro);
 }
 
-.subtitulo-viz {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--acero);
-  margin-bottom: 10px;
+/* ===========================================================
+   CITA DESTACADA
+=========================================================== */
+.quote-card {
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.4rem;
+    border-radius: 12px;
+    font-size: 0.96rem;
+    line-height: 1.56;
+}
+
+.quote-card--light {
+    background: rgba(15, 23, 42, 0.07);
+    border-left: 4px solid var(--acero);
+    color: var(--texto-oscuro);
+}
+
+.quote-card--dark {
+    background: rgba(15, 23, 42, 0.25);
+    border-left: 4px solid var(--senial);
+    color: var(--texto-claro);
+}
+
+/* ===========================================================
+   GRÁFICOS (iframes)
+=========================================================== */
+.chart-frame {
+    width: 100%;
+    min-height: 430px;
+    border: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.3);
+}
+
+.chart-frame--light {
+    background: rgba(249, 250, 251, 0.85);
+}
+
+.chart-frame--dark {
+    background: rgba(15, 23, 42, 0.17);
+}
+
+.chart-frame--soft {
+    background: rgba(229, 234, 241, 0.82);
+}
+
+.chart-frame--wide {
+    min-height: 360px;
+}
+
+/* ===========================================================
+   GRID DE PATRONES (3 GRÁFICOS)
+=========================================================== */
+.patterns-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
 }
 
 /* ===========================================================
    METODOLOGÍA
 =========================================================== */
-
-.metodologia {
-  background: var(--gris);
+.metodo-list {
+    padding-left: 1.2rem;
+    margin: 1rem 0 1.4rem;
+    line-height: 1.6;
 }
 
-.lista-metodologia {
-  margin: 20px 0 30px;
-  padding-left: 20px;
+.metodo-list li {
+    margin-bottom: 0.35rem;
 }
 
-.lista-metodologia li {
-  margin-bottom: 10px;
+.repo-link {
+    color: var(--senial);
+    font-weight: 600;
 }
 
-.btn-repo {
-  display: inline-block;
-  padding: 14px 20px;
-  background: var(--acero);
-  color: white;
-  font-weight: 600;
-  border-radius: 6px;
-  text-decoration: none;
+.repo-link:hover {
+    text-decoration: underline;
 }
 
-.btn-repo:hover {
-  background: #132b4b;
+.section-icon {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
 }
 
 /* ===========================================================
-   CIERRE
+   FOOTER
 =========================================================== */
-
-.cierre {
-  background: var(--beige);
+.site-footer {
+    background: #020617;
+    padding: 1.6rem 0;
+    color: #9CA3AF;
 }
 
-.cierre-texto {
-  font-size: 20px;
-  max-width: 900px;
-  margin: auto;
-  line-height: 1.7;
-  text-align: center;
+.site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.85rem;
 }
 
 /* ===========================================================
    RESPONSIVE
 =========================================================== */
-
 @media (max-width: 900px) {
 
-  .grid-seccion,
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
+    main {
+        padding-top: calc(var(--bar-h) + 16px);
+    }
 
-  .col-2 {
-    grid-template-columns: 1fr;
-  }
+    .grid-2,
+    .hero-layout {
+        grid-template-columns: 1fr;
+    }
 
-  #train {
-    display: none;
-  }
+    .section {
+        padding: 4.2rem 0;
+    }
+
+    .patterns-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-frame {
+        min-height: 360px;
+    }
+
+    .icon {
+        margin-top: 2rem;
+    }
 }
