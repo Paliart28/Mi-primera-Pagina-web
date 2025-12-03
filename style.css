@@ -1,238 +1,364 @@
-/* ==========================================================
-   IDENTIDAD VISUAL — PUNTO CIEGO
-   Paleta: Azul acero · Verde industrial · Naranja óxido · Beige ferroviario · Amarillo señalética
+/* ===========================================================
+   VARIABLES PUNTO CIEGO
 =========================================================== */
-
 :root {
-    --acero: #1E3A68;
-    --senial: #F6E05E;
-    --oxido: #F2994A;
-    --verde: #2E7D5B;
-    --gris: #E5EAF1;
-    --beige: #F6F3E8;
+  --bar-h: 80px;
 
-    --texto-oscuro: #111827;
-    --texto-claro: #F9FAFB;
+  --acero: #1E3A68;
+  --senal: #F6E05E;
+  --oxido: #F2994A;
+  --verde: #2E7D5B;
+  --gris: #E5EAF1;
+  --beige: #F6F3E8;
+
+  --bg-body: #020617;
+  --text-dark: #111827;
+  --text-light: #F9FAFB;
 }
 
-/* ==========================================================
-   RESETEO BÁSICO
+/* ===========================================================
+   RESET BÁSICO
 =========================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html, body {
-    scroll-behavior: smooth;
-    font-family: "Poppins", sans-serif;
-    background: var(--beige);
-    color: var(--texto-oscuro);
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-/* ==========================================================
-   NAV
+body {
+  font-family: "Poppins", "Roboto", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-body);
+  color: var(--text-dark);
+}
+
+/* Espacio correcto bajo la barra del tren */
+main {
+  padding-top: calc(var(--bar-h) + 32px);
+}
+
+/* ===========================================================
+   CONTENEDORES Y SECCIONES
 =========================================================== */
-.nav {
-    background: var(--acero);
-    padding: 15px 0;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 20;
+.section {
+  padding: 5rem 0;
 }
 
-.nav-container {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  margin: 0 auto;
 }
 
-.nav-logo {
-    color: white;
-    font-size: 28px;
-    font-family: "Bebas Neue", sans-serif;
-    letter-spacing: 2px;
+/* Columnas dobles */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
+  align-items: stretch;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--senial);
-}
-
-/* ==========================================================
-   HERO
+/* ===========================================================
+   COLORES DE FONDO DE CADA SECCIÓN
 =========================================================== */
-.hero {
-    padding: 80px 20px;
-    text-align: center;
-    color: white;
+.section--hero {
+  background: radial-gradient(circle at top left, #1E3A68 0, #020617 60%);
+  color: var(--text-light);
+}
+
+.section--infra {
+  background: linear-gradient(135deg, #F2994A 0%, #F6E05E 40%, #F2994A 100%);
+  color: var(--text-dark);
+}
+
+.section--territorio {
+  background: linear-gradient(135deg, #1E3A68 0%, #2E7D5B 70%);
+  color: var(--text-light);
+}
+
+.section--patrones {
+  background: var(--beige);
+  color: var(--text-dark);
+}
+
+.section--metodo {
+  background: #0B1220;
+  color: var(--text-light);
+}
+
+/* ===========================================================
+   TIPOGRAFÍA
+=========================================================== */
+.kicker {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
 }
 
 .hero-title {
-    font-size: 70px;
-    font-family: "Bebas Neue", sans-serif;
-    margin-bottom: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
 }
 
-.hero-sub {
-    font-size: 20px;
-    opacity: 0.9;
+.hero-lead {
+  font-size: 1rem;
+  max-width: 40rem;
+  margin-bottom: 1.5rem;
 }
 
-/* ==========================================================
-   SECCIONES GENERALES
-=========================================================== */
-.section {
-    padding: 80px 5%;
-    width: 100%;
+.hero-meta {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
 }
 
 .section-title {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 50px;
-    margin-bottom: 40px;
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
-/* ==========================================================
-   GRID DE TEXTO + VISUALIZACIONES
+.section-title--light {
+  color: var(--text-light);
+}
+
+.section-body {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+}
+
+.section-body--light {
+  color: var(--text-light);
+}
+
+/* ===========================================================
+   HERO HIGHLIGHTS
 =========================================================== */
-.section-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-/* En móviles */
-@media (max-width: 900px) {
-    .section-grid {
-        grid-template-columns: 1fr;
-    }
+.highlight {
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  background: rgba(15, 23, 42, 0.7);
+  color: var(--text-light);
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: baseline;
+  font-size: 0.85rem;
 }
 
-.section-text p {
-    font-size: 18px;
-    line-height: 1.7;
-    margin-bottom: 20px;
+.highlight-value {
+  font-weight: 600;
 }
 
-/* ==========================================================
-   IFAMES (GRÁFICOS)
+/* ===========================================================
+   COLUMNAS DE VISUALIZACIONES – REPARADO
 =========================================================== */
+.viz-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.viz-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.5rem;
+}
+
+/* 🔥 FIX DEFINITIVO PARA EL SCROLL Y ESPACIOS */
 .chart-frame {
-    width: 100%;
-    border: none;
-    margin-bottom: 40px;
-    overflow: hidden;
+  width: 100%;
+  border: none !important;
+  overflow: hidden !important;
+  display: block;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 
-/* Para que siempre se vean completos */
-iframe {
-    display: block;
+/* si un gráfico necesita más espacio, el JS lo expandirá automáticamente */
+iframe.autosize {
+  width: 100%;
 }
 
-/* ==========================================================
-   FONDOS POR SECCIÓN
+/* Fondos según tu diseño (no influyen en la altura real) */
+.chart-frame--light {
+  background: rgba(249, 250, 251, 0.85);
+}
+
+.chart-frame--dark {
+  background: rgba(15, 23, 42, 0.28);
+}
+
+.chart-frame--soft {
+  background: rgba(229, 234, 241, 0.85);
+}
+
+/* Quitar scroll en navegadores WebKit */
+iframe.autosize::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ===========================================================
+   PATRONES
 =========================================================== */
-.section-infra {
-    background: var(--gris);
+.patterns-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
-.section-desig {
-    background: white;
+.pattern-item--wide iframe {
+  width: 100%;
 }
 
-.section-patrones {
-    background: var(--beige);
-}
-
-.section-edades {
-    background: #fff7f2; /* tono cálido suave */
-}
-
-.section-metodo {
-    background: var(--gris);
-}
-
-/* ==========================================================
-   SUBTÍTULOS DE VISUALIZACIÓN
+/* ===========================================================
+   TARJETAS DE CITA
 =========================================================== */
-.viz-subtitle {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 15px;
+.quote-card {
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 1.25rem;
 }
 
-/* ==========================================================
-   BLOQUES DE CITA
-=========================================================== */
-.desig-quote {
-    background: var(--senial);
-    padding: 20px;
-    border-left: 6px solid var(--acero);
-    font-weight: 600;
-    font-size: 18px;
-    margin-top: 25px;
+.quote-card--light {
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--text-dark);
+  border-left: 4px solid #1E3A68;
 }
 
-/* ==========================================================
+.quote-card--dark {
+  background: rgba(15, 23, 42, 0.28);
+  color: var(--text-light);
+  border-left: 4px solid #F6E05E;
+}
+
+/* ===========================================================
    METODOLOGÍA
 =========================================================== */
-.metodo-text {
-    font-size: 19px;
-    margin-bottom: 20px;
-}
-
 .metodo-list {
-    list-style: none;
-    font-size: 18px;
-    margin-bottom: 30px;
+  padding-left: 1.2rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.metodo-list li {
-    margin-bottom: 10px;
+.repo-link {
+  color: var(--senal);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.repo-btn {
-    display: inline-block;
-    background: var(--acero);
-    color: white;
-    padding: 14px 30px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.repo-btn:hover {
-    background: var(--verde);
-}
-
-/* ==========================================================
-   RESPONSIVE CONTROL EN PARRAFOS
+/* ===========================================================
+   ICONOS
 =========================================================== */
-.section-text, .section-viz {
-    width: 100%;
+.section-icon {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
-/* ==========================================================
-   CORRECCIÓN DE ESPACIADO FINAL
+.icon {
+  width: 90px;
+  height: 90px;
+}
+
+/* ===========================================================
+   FOOTER
 =========================================================== */
-section:last-of-type {
-    padding-bottom: 140px;
+.site-footer {
+  background: #020617;
+  color: #9CA3AF;
+  padding: 1.75rem 0;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+}
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+@media (max-width: 900px) {
+  main {
+    padding-top: calc(var(--bar-h) + 16px);
+  }
+
+  .hero-layout,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section-icon {
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+  }
+
+  .patterns-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===========================================================
+   FIX DE TEXTO INVISIBLE EN SECCIONES OSCURAS
+=========================================================== */
+
+/* HERO */
+.section--hero,
+.section--hero .kicker,
+.section--hero .hero-title,
+.section--hero .hero-lead,
+.section--hero .hero-meta,
+.section--hero p {
+  color: var(--text-light) !important;
+}
+
+/* TERRITORIO */
+.section--territorio,
+.section--territorio * {
+  color: var(--text-light) !important;
+}
+
+/* METODOLOGÍA */
+.section--metodo,
+.section--metodo * {
+  color: var(--text-light) !important;
 }

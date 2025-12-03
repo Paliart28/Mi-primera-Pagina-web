@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Punto ciego · Rieles en riesgo</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link href="style.css" rel="stylesheet" />
+  <link href="tren_horizontal.css" rel="stylesheet" />
+  <link href="style_mapasanbernardo.css" rel="stylesheet" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js"></script>
+</head>
+
+<body>
+
+<!-- ====================== -->
+<!-- BARRA DEL TREN -->
+<!-- ====================== -->
+
+<div class="railway">
+  <div class="railway__inner">
+    <nav class="railway__labels">
+      <a class="label is-active" data-index="0" href="#s1">Inicio</a>
+      <a class="label" data-index="1" href="#s2">Infraestructura</a>
+      <a class="label" data-index="2" href="#s3">Desigualdad</a>
+      <a class="label" data-index="3" href="#s4">Patrones</a>
+      <a class="label" data-index="4" href="#s5">Metodología</a>
+    </nav>
+
+    <div class="track">
+      <div class="track__progress" id="progress"></div>
+
+      <div class="station station--1" data-index="0"></div>
+      <div class="station station--2" data-index="1"></div>
+      <div class="station station--3" data-index="2"></div>
+      <div class="station station--4" data-index="3"></div>
+      <div class="station station--5" data-index="4"></div>
+
+      <!-- Tren -->
+      <svg class="train" id="train" viewBox="0 0 64 40">
+        <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
+        <rect class="train-body" x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+        <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#F6E05E"/>
+        <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
+        <circle cx="18" cy="32" r="5" fill="#0F172A"/>
+        <circle cx="38" cy="32" r="5" fill="#0F172A"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============= HERO ============== -->
+
+  <section id="s1" class="section section--hero">
+    <div class="container hero-layout">
+
+      <div class="hero-text">
+        <p class="kicker">Siniestros ferroviarios en la Región Metropolitana</p>
+
+        <h1 class="hero-title">
+          Más allá de la imprudencia:<br>
+          las fallas estructurales detrás de los atropellos ferroviarios
+        </h1>
+
+        <p class="hero-lead">
+          Entre 2014 y 2024, en el tramo entre Estación Central y el límite con O’Higgins,
+          los registros de atropellos en la vía férrea muestran algo incómodo:
+          casi todos se anotan como “imprudencia del peatón”, pero muchos ocurren en cruces donde
+          la infraestructura técnica no alcanza para que ese error humano no termine en tragedia.
+        </p>
+
+        <p class="hero-meta">
+          Por Andrés Hernández, Paloma Riquelme y Josefa Mariñanco<br>
+          Proyecto para Narración Gráfica (COM-208) · PUC
+        </p>
+
+        <div class="hero-highlights">
+          <div class="highlight">
+            <span class="highlight-label">Años analizados</span>
+            <span class="highlight-value">2014–2024</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-label">Tramo</span>
+            <span class="highlight-value">Estación Central – Maule</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-label">Cruces estudiados</span>
+            <span class="highlight-value">+30 puntos</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-aside">
+        <div id="hero-map"></div>
+
+        <div id="hero-sidebar" class="hero-sidebar">
+          <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
+          <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
+          <p class="hero-sidebar-text">
+            En 2024, un siniestro fatal en San Bernardo volvió a mostrar
+            cómo la combinación de cruces a nivel, señalización vulnerable y
+            alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
+            no logra anticipar el error humano: lo espera, y lo repite.
+          </p>
+          <p class="hero-sidebar-note">
+            Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ========== SECCIÓN 2 — INFRAESTRUCTURA ========== -->
+
+  <section id="s2" class="section section--infra">
+    <div class="container grid-2">
+
+      <div>
+        <h2 class="section-title">Señales que no alcanzan</h2>
+
+        <p class="section-body">
+          Todos los años mueren personas atropelladas en las vías férreas de nuestro país...
+        </p>
+
+        <div class="quote-card quote-card--light">
+          <p>“La imprudencia existe, pero el sistema la anticipa… y la reproduce.”</p>
+        </div>
+
+      </div>
+
+      <div class="viz-column">
+
+        <h3 class="viz-title">Siniestros por región</h3>
+        <iframe src="accidentes por region.html" class="chart-frame autosize"></iframe>
+
+        <h3 class="viz-title">Sistemas de señalización</h3>
+        <iframe src="señalizacion por region.html" class="chart-frame autosize"></iframe>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SECCIÓN 3 — DESIGUALDAD ========= -->
+
+  <section id="s3" class="section section--territorio">
+    <div class="container grid-2">
+
+      <div>
+        <h2 class="section-title">Desigualdad territorial</h2>
+
+        <p class="section-body">
+          Cada año, decenas de personas mueren o resultan heridas...
+        </p>
+
+        <div class="quote-card quote-card--dark">
+          <p>Cuando el cruce seguro es más lejano que el atajo por la línea, el sistema empuja a las personas a elegir el riesgo.</p>
+        </div>
+      </div>
+
+      <div class="viz-column">
+        <h3 class="viz-title viz-title--light">Cruces y regulación por comuna</h3>
+        <iframe src="estado actual y comuna.html" class="chart-frame autosize chart-frame--dark"></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== SECCIÓN 4 — PATRONES ========= -->
+
+  <section id="s4" class="section section--patrones">
+    <div class="container">
+      <div class="grid-2">
+
+        <div>
+          <h2 class="section-title">Patrones que se repiten</h2>
+          <p class="section-body">
+            Entre 2014 y 2024 los patrones muestran...
+          </p>
+        </div>
+
+        <div class="patterns-grid">
+
+          <div class="pattern-item">
+            <h3 class="viz-title">¿Quiénes se accidentan?</h3>
+            <iframe src="edades.html" class="chart-frame autosize chart-frame--soft"></iframe>
+          </div>
+
+          <div class="pattern-item">
+            <h3 class="viz-title">Días con mayor riesgo</h3>
+            <iframe src="dia de la semana.html" class="chart-frame autosize chart-frame--soft"></iframe>
+          </div>
+
+          <div class="pattern-item pattern-item--wide">
+            <h3 class="viz-title">Franjas horarias críticas</h3>
+            <iframe src="zona horaria.html" class="chart-frame autosize chart-frame--soft"></iframe>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECCIÓN 5 — METODOLOGÍA ========= -->
+
+  <section id="s5" class="section section--metodo">
+    <div class="container grid-2">
+
+      <div>
+        <h2 class="section-title section-title--light">Metodología</h2>
+        <p class="section-body section-body--light">Este proyecto cruza bases de datos...</p>
+      </div>
+
+      <div class="section-icon">
+        <svg class="icon icon--right" viewBox="0 0 64 64">
+          <rect x="10" y="28" width="44" height="8" rx="2" fill="#F2994A"/>
+          <line x1="10" y1="28" x2="54" y2="36" stroke="#1E3A68" stroke-width="4"/>
+          <line x1="10" y1="36" x2="54" y2="28" stroke="#1E3A68" stroke-width="4"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__copy">
+      Proyecto desarrollado para el curso COM208 Narración Gráfica · PUC.
+    </p>
+  </div>
+</footer>
+
+<!-- ========== FIX DEFINITIVO PARA EL ALTO DE IFRAMES ========== -->
+
+<script>
+document.querySelectorAll("iframe.autosize").forEach(iframe => {
+    iframe.onload = function () {
+        try {
+            const doc = iframe.contentWindow.document;
+            if (!doc) return;
+
+            const body = doc.body;
+            const html = doc.documentElement;
+
+            const height = Math.max(
+                body.scrollHeight,
+                body.offsetHeight,
+                html.clientHeight,
+                html.scrollHeight,
+                html.offsetHeight
+            );
+
+            iframe.style.height = height + "px";
+        } catch (e) {
+            console.warn("No se pudo ajustar el iframe:", e);
+        }
+    };
+});
+</script>
+
+<!-- Tren -->
+<script src="tren_horizontal.js"></script>
+
+<!-- Mapa San Bernardo -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const map = L.map("hero-map", {
+      zoomControl: false,
+      attributionControl: false
+    }).setView([-33.594, -70.704], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19
+    }).addTo(map);
+
+    const accidente = [-33.594, -70.704];
+
+    const marker = L.circleMarker(accidente, {
+      radius: 10,
+      color: "#D90429",
+      weight: 3,
+      fillColor: "#F6E05E",
+      fillOpacity: 0.9,
+      className: "pulse-marker"
+    }).addTo(map);
+
+    map.setView(accidente, 14);
+
+    const panel = document.getElementById("hero-sidebar");
+    if (!panel) return;
+
+    marker.on("click", () => {
+      panel.classList.toggle("show");
+    });
+  });
+</script>
+
+</body>
+</html>
