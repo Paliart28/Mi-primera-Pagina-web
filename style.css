@@ -1,7 +1,15 @@
 /* ===========================================================
+<<<<<<< HEAD
    VARIABLES (paleta Punto Ciego)
+=======
+   IDENTIDAD VISUAL — PUNTO CIEGO
+   Paleta: Azul acero · Verde industrial · Naranja óxido · Beige ferroviario · Amarillo señalética
+   Tipografías: Bebas Neue (títulos), Poppins/Roboto (texto)
+>>>>>>> parent of 728f669 (coreecion 1010101)
 =========================================================== */
+
 :root {
+<<<<<<< HEAD
 <<<<<<< HEAD
   --bar-h: 72px;
 =======
@@ -131,6 +139,64 @@ section {
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: 2.5rem;
   align-items: flex-start;
+=======
+    --acero: #1E3A68;
+    --senial: #F6E05E;
+    --oxido: #F2994A;
+    --verde: #2E7D5B;
+    --gris: #E5EAF1;
+    --beige: #F6F3E8;
+
+    --texto-oscuro: #111827;
+    --texto-claro: #F9FAFB;
+
+    --bar-h: 80px;
+}
+
+/* ===========================================================
+   RESET
+=========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    font-family: "Poppins", "Roboto", sans-serif;
+    background: #020617;
+    color: var(--texto-oscuro);
+}
+
+main {
+    padding-top: calc(var(--bar-h) + 24px);
+}
+
+/* ===========================================================
+   CONTENEDOR GENERAL
+=========================================================== */
+.container {
+    width: 100%;
+    max-width: 1180px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2.4rem;
+}
+
+/* ===========================================================
+   HERO
+=========================================================== */
+.section--hero {
+    background: radial-gradient(circle at top left, var(--acero) 0%, #020617 60%);
+    padding: 6rem 0 5rem;
+    color: var(--texto-claro);
+>>>>>>> parent of 728f669 (coreecion 1010101)
 }
 
 /* ===========================================================
@@ -297,6 +363,7 @@ section {
    HERO
 =========================================================== */
 .hero-layout {
+<<<<<<< HEAD
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
   gap: 2.8rem;
@@ -953,12 +1020,276 @@ section {
   width: 120px;
   margin-bottom: 1.5rem;
   animation: trainMove 1.5s ease-in-out infinite alternate;
+=======
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+    gap: 3rem;
+}
+
+.kicker {
+    font-size: 0.92rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+    margin-bottom: 0.5rem;
+}
+
+.hero-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(2.4rem, 3.8vw, 3.7rem);
+    letter-spacing: 0.05em;
+    line-height: 1.04;
+    margin-bottom: 1rem;
+}
+
+.hero-lead {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    max-width: 40rem;
+}
+
+.hero-meta {
+    font-size: 0.88rem;
+    opacity: 0.8;
+    margin-bottom: 1.4rem;
+}
+
+/* Resumen de datos */
+.hero-highlights {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
+}
+
+.highlight {
+    background: rgba(15, 23, 42, 0.7);
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+}
+
+.highlight-label {
+    opacity: 0.8;
+}
+
+.highlight-value {
+    font-weight: 600;
+}
+
+/* ===========================================================
+   SECCIONES
+=========================================================== */
+.section {
+    padding: 5rem 0;
+}
+
+.section--infra {
+    background: linear-gradient(135deg, var(--oxido) 0%, var(--senial) 40%, var(--oxido) 100%);
+    color: var(--texto-oscuro);
+}
+
+.section--territorio {
+    background: linear-gradient(135deg, var(--acero) 0%, var(--verde) 70%);
+    color: var(--texto-claro);
+}
+
+.section--patrones {
+    background: var(--beige);
+    color: var(--texto-oscuro);
+}
+
+.section--metodo {
+    background: #0B1220;
+    color: var(--texto-claro);
+}
+
+/* ===========================================================
+   TITULOS Y TEXTO
+=========================================================== */
+.section-title {
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 1.9rem;
+    margin-bottom: 1.2rem;
+}
+
+.section-body {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.section-body--light {
+    color: var(--texto-claro);
+}
+
+/* ===========================================================
+   CITA DESTACADA
+=========================================================== */
+.quote-card {
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.4rem;
+    border-radius: 12px;
+    font-size: 0.96rem;
+    line-height: 1.56;
+}
+
+.quote-card--light {
+    background: rgba(15, 23, 42, 0.07);
+    border-left: 4px solid var(--acero);
+    color: var(--texto-oscuro);
+}
+
+.quote-card--dark {
+    background: rgba(15, 23, 42, 0.25);
+    border-left: 4px solid var(--senial);
+    color: var(--texto-claro);
+}
+
+/* ===========================================================
+   GRÁFICOS (iframes)
+=========================================================== */
+.chart-frame {
+    width: 100%;
+    min-height: 430px;
+    border: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.3);
+}
+
+.chart-frame--light {
+    background: rgba(249, 250, 251, 0.85);
+}
+
+.chart-frame--dark {
+    background: rgba(15, 23, 42, 0.17);
+}
+
+.chart-frame--soft {
+    background: rgba(229, 234, 241, 0.82);
+}
+
+.chart-frame--wide {
+    min-height: 360px;
+}
+
+/* ===========================================================
+   GRID DE PATRONES (3 GRÁFICOS)
+=========================================================== */
+.patterns-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+}
+/* ===========================================================
+   COLUMNAS DE VISUALIZACIONES – REPARADO
+=========================================================== */
+
+.viz-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;           /* aumenté un poco para separar sin crear “aire” */
+}
+
+.viz-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.5rem;
+}
+
+/* 🔥 EL FIX REAL: AUMENTAR ALTURA DE IFRAMES Y QUITAR ESPACIOS EXTRA */
+.chart-frame {
+  width: 100%;
+  height: 600px;       /* ANTES: 360–430 → quedaba pequeño */
+  border: 0;
+  border-radius: 14px;
+  overflow: hidden;    /* elimina scroll interno */
+  background: transparent;
+  margin: 0;           /* elimina espacios abajo */
+  padding: 0;
+  display: block;
+}
+
+/* Gráficos muy largos tipo FRANJA HORARIA */
+.chart-frame--wide {
+  height: 680px;     /* ANTES: 360px */
+}
+
+/* Fondos conservados pero sin alterar altura */
+.chart-frame--light {
+  background: rgba(249, 250, 251, 0.85);
+}
+
+.chart-frame--dark {
+  background: rgba(15, 23, 42, 0.15);
+}
+
+.chart-frame--soft {
+  background: rgba(229, 234, 241, 0.85);
+}
+
+/* ===========================================================
+   PATRONES – FIX A LA GRILLA
+=========================================================== */
+
+.patterns-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* ordena los 3 uno bajo otro, sin espacios raros */
+  gap: 2rem;
+}
+
+.pattern-item {
+  width: 100%;
+}
+
+.pattern-item--wide iframe {
+  height: 68
+
+/* ===========================================================
+   METODOLOGÍA
+=========================================================== */
+.metodo-list {
+    padding-left: 1.2rem;
+    margin: 1rem 0 1.4rem;
+    line-height: 1.6;
+}
+
+.metodo-list li {
+    margin-bottom: 0.35rem;
+}
+
+.repo-link {
+    color: var(--senial);
+    font-weight: 600;
+}
+
+.repo-link:hover {
+    text-decoration: underline;
+}
+
+.section-icon {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+>>>>>>> parent of 728f669 (coreecion 1010101)
 }
 
 /* ===========================================================
    FOOTER
 =========================================================== */
 .site-footer {
+<<<<<<< HEAD
   border-top: 1px solid rgba(148, 163, 184, 0.35);
   background: #020617;
 <<<<<<< HEAD
@@ -980,6 +1311,18 @@ section {
 >>>>>>> parent of d494f5a (ok porfavor que este si sea)
 =======
 >>>>>>> parent of d494f5a (ok porfavor que este si sea)
+=======
+    background: #020617;
+    padding: 1.6rem 0;
+    color: #9CA3AF;
+}
+
+.site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.85rem;
+>>>>>>> parent of 728f669 (coreecion 1010101)
 }
 
 .site-footer__inner {
@@ -1136,6 +1479,7 @@ section {
 @media (max-width: 900px) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   .chart-block {
     margin-top: 2rem;
 =======
@@ -1153,6 +1497,80 @@ section {
   section {
     padding: 6rem 0;
   }
+=======
+
+    main {
+        padding-top: calc(var(--bar-h) + 16px);
+    }
+
+    .grid-2,
+    .hero-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 4.2rem 0;
+    }
+
+    .patterns-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-frame {
+        min-height: 360px;
+    }
+
+    .icon {
+        margin-top: 2rem;
+    }
+}
+/* ============================================
+   REPARACIÓN DE ESPACIOS Y ORGANIZACIÓN
+   ============================================ */
+
+/* Contenedor general */
+section {
+    padding: 40px 0;
+    margin: 0;
+}
+
+/* Eliminar espacios gigantes */
+.section-block {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 0 auto;
+    padding: 20px 0;
+    max-width: 1200px;
+}
+
+/* Texto a la izquierda */
+.section-text {
+    width: 40%;
+}
+
+/* Contenedor de visualizaciones */
+.section-viz {
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+/* Visualización completa (sin scroll) */
+.viz iframe {
+    width: 100%;
+    height: 500px;   /* Aumentado para que no se corte */
+    border: none;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Arreglar espacio entre secciones */
+section:nth-of-type(n+2) {
+    margin-top: 40px;
+>>>>>>> parent of 728f669 (coreecion 1010101)
 }
 
 /* Hacer que el hero crezca con el contenido */
