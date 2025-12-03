@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Punto ciego · Rieles en riesgo</title>
+  <title>Más allá de la imprudencia: Rieles en riesgo</title>
 
   <!-- Tipografías -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -58,7 +58,7 @@
 
 <main>
 
-  <!-- 1️⃣ INICIO / HERO -->
+  <!--INICIO / HERO -->
   <section id="s1" class="section section--hero">
     <div class="container hero-layout">
       <div class="hero-text">
@@ -69,7 +69,7 @@
         </h1>
 
         <p class="hero-lead">
-          Entre 2014 y 2024, en el tramo entre Estación Central y el límite con O’Higgins,
+          Entre 2014 y 2024, en el tramo entre Estación Central y el límite con el Maule,
           los registros de atropellos en la vía férrea muestran algo incómodo:
           casi todos se anotan como “imprudencia del peatón”, pero muchos ocurren en cruces donde
           la infraestructura técnica no alcanza para que ese error humano no termine en tragedia.
@@ -102,21 +102,21 @@
         <div id="hero-sidebar" class="hero-sidebar">
           <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
           <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
+          <img class="hero-sidebar-photo" src="https://static.theclinic.cl/media/2024/06/20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario San Bernardo">
+          </p>
           <p class="hero-sidebar-text">
-            En 2024, un siniestro fatal en San Bernardo volvió a mostrar
-            cómo la combinación de cruces a nivel, señalización vulnerable y
-            alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
-            no logra anticipar el error humano: lo espera, y lo repite.
+            El jueves 20 de junio de 2024, un tren de pruebas de EFE colisionó de frente con un tren de carga Fepasa
+            entre las estaciones Lo Blanco y Lo Herrera, en la comuna de San Bernardo.
+            El impacto dejó dos maquinistas fallecidos y nueve personas heridas, y reabrió el debate
+            sobre los protocolos de seguridad y la autorización simultánea de vía.
           </p>
           <p class="hero-sidebar-note">
-            Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
-          </p>
         </div>
       </aside>
     </div>
   </section>
 
-  <!-- 2️⃣ INFRAESTRUCTURA Y SEÑALIZACIÓN -->
+  <!--INFRAESTRUCTURA Y SEÑALIZACIÓN -->
   <section id="s2" class="section section--infra">
     <div class="container grid-2">
       <div>
@@ -150,7 +150,7 @@
       <div class="viz-column">
         <h3 class="viz-title">Siniestros por región</h3>
         <iframe
-          src="accidentes%20por%20region.html"
+          src="graficos/andrés_vis1.html"
           title="Siniestros por región"
           class="chart-frame chart-frame--light"
           loading="lazy">
@@ -158,7 +158,7 @@
 
         <h3 class="viz-title">Sistemas de señalización</h3>
         <iframe
-          src="señalizacion%20por%20region.html"
+          src="graficos/andrés_vis2.html"
           title="Sistemas de señalización por región"
           class="chart-frame chart-frame--light"
           loading="lazy">
@@ -167,7 +167,7 @@
     </div>
   </section>
 
-  <!-- 3️⃣ DESIGUALDAD TERRITORIAL -->
+  <!--DESIGUALDAD TERRITORIAL -->
   <section id="s3" class="section section--territorio">
     <div class="container grid-2">
       <div>
@@ -199,9 +199,19 @@
       </div>
 
       <div class="viz-column">
+        <h3 class="viz-title viz-title--light">Tipos de señalización</h3>
+        <iframe
+          src="graficos/mariñanco_gráfico1.txt"
+          title="Cruces por comuna y tipo de regulación"
+          class="chart-frame chart-frame--dark"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+    <div class="viz-column">
         <h3 class="viz-title viz-title--light">Cruces y regulación por comuna</h3>
         <iframe
-          src="estado%20actual%20y%20comuna.html"
+          src="graficos/mariñanco_gráfico2_.txt"
           title="Cruces por comuna y tipo de regulación"
           class="chart-frame chart-frame--dark"
           loading="lazy">
@@ -210,7 +220,7 @@
     </div>
   </section>
 
-  <!-- 4️⃣ PATRONES OCULTOS (EDAD · DÍA · HORA) -->
+  <!--PATRONES OCULTOS (EDAD · DÍA · HORA) -->
   <section id="s4" class="section section--patrones">
     <div class="container">
       <div class="grid-2">
@@ -238,7 +248,7 @@
           <div class="pattern-item">
             <h3 class="viz-title">¿Quiénes se accidentan?</h3>
             <iframe
-              src="edades.html"
+              src="graficos/edades.html"
               title="Siniestros por grupo etario"
               class="chart-frame chart-frame--soft"
               loading="lazy">
@@ -248,7 +258,7 @@
           <div class="pattern-item">
             <h3 class="viz-title">Días con mayor riesgo</h3>
             <iframe
-              src="dia%20de%20la%20semana.html"
+              src="graficos/dia de la semana.html"
               title="Siniestros por día de la semana"
               class="chart-frame chart-frame--soft"
               loading="lazy">
@@ -258,7 +268,7 @@
           <div class="pattern-item pattern-item--wide">
             <h3 class="viz-title">Franjas horarias críticas</h3>
             <iframe
-              src="zona%20horaria.html"
+              src="graficos/zona horaria.html"
               title="Siniestros por franja horaria"
               class="chart-frame chart-frame--soft chart-frame--wide"
               loading="lazy">
@@ -269,7 +279,7 @@
     </div>
   </section>
 
-  <!-- 5️⃣ METODOLOGÍA -->
+  <!-- METODOLOGÍA -->
   <section id="s5" class="section section--metodo">
     <div class="container grid-2">
       <div>
@@ -291,8 +301,14 @@
           anteriores de las visualizaciones en nuestro repositorio:
         </p>
         <p class="section-body section-body--light">
-          <a href="https://github.com/josefamar/PROYECTO" class="repo-link" target="_blank" rel="noopener">
-            Ver repositorio completo de la investigación
+           <button
+    class="start-btn"
+    onclick="window.location.href='https://github.com/josefamar/PROYECTO'"> <a href="" class="repo-link" target="_blank" rel="noopener"></a>
+    Ver repositorio completo de la investigación 
+  </button>
+
+          
+           
           </a>
         </p>
       </div>
