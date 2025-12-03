@@ -1,112 +1,60 @@
-/* Tren sincronizado por secciones usando SCROLL (sin recargar) */
+/* Tren sincronizado con secciones */
 
-const progressEl = document.getElementById("progress");
-const trainEl = document.getElementById("train");
-const trainBody = document.querySelector(".train-body");
+document.addEventListener("DOMContentLoaded", () => {
+  const progressEl = document.getElementById("progress");
+  const trainEl = document.getElementById("train");
 
-const labels = Array.from(document.querySelectorAll(".label"));
-const stations = Array.from(document.querySelectorAll(".station"));
-const sections = Array.from(document.querySelectorAll("main section"));
+  const labels = Array.from(document.querySelectorAll(".label"));
+  const stations = Array.from(document.querySelectorAll(".station"));
+  const sections = Array.from(document.querySelectorAll("main section"));
 
-const sectionColors = [
-  "var(--acero)",
-  "var(--senal)",
-  "var(--oxido)",
-  "var(--verde)",
-  "var(--gris)"
-];
+  if (!progressEl || !trainEl || sections.length === 0) return;
 
-/* Mueve tren, barra, colores, labels, estaciones */
-function setTrainPosition(index) {
-  const total = sections.length - 1;
-  if (total <= 0) return;
+  function getActiveSectionIndex() {
+    const viewportCenter = window.innerHeight / 2;
+    let bestIdx = 0;
+    let bestDist = Infinity;
 
-  const fraction = index / total;
+    sections.forEach((sec, idx) => {
+      const rect = sec.getBoundingClientRect();
+      const secCenter = rect.top + rect.height / 2;
+      const d = Math.abs(secCenter - viewportCenter);
+      if (d < bestDist) {
+        bestDist = d;
+        bestIdx = idx;
+      }
+    });
 
-  // Avance de la barra
-  progressEl.style.transform = `scaleX(${fraction})`;
-  progressEl.style.background = sectionColors[index];
-
-  // Posición del tren (centrado en cada estación)
-  trainEl.style.left = `${fraction * 100}%`;
-
-  // Color del cuerpo del tren
-  if (trainBody) {
-    trainBody.style.fill = sectionColors[index];
+    return bestIdx;
   }
 
-  // Activar label correspondiente
-  labels.forEach(l =>
-    l.classList.toggle("is-active", Number(l.dataset.index) === index)
-  );
-
-  // Activar estación correspondiente
-  stations.forEach(s =>
-    s.classList.toggle("is-active", Number(s.dataset.index) === index)
-  );
-}
-
-/* Calcula qué sección está más cerca del centro de la pantalla */
-function getActiveSectionIndex() {
-  const viewportCenter = window.innerHeight / 2;
-  let bestIdx = 0;
-  let bestDistance = Infinity;
-
-  sections.forEach((sec, idx) => {
-    const rect = sec.getBoundingClientRect();
-    const sectionCenter = rect.top + rect.height / 2;
-    const distance = Math.abs(sectionCenter - viewportCenter);
-
-    if (distance < bestDistance) {
-      bestDistance = distance;
-      bestIdx = idx;
-    }
-  });
-
-  return bestIdx;
-}
-
-/* Throttle con requestAnimationFrame para que sea suave */
-let ticking = false;
-function onScroll() {
-  if (ticking) return;
-  ticking = true;
-  requestAnimationFrame(() => {
+  function updateTrain() {
     const idx = getActiveSectionIndex();
-    setTrainPosition(idx);
-    ticking = false;
-  });
-}
+    const total = sections.length - 1 || 1;
+    const ratio = idx / total;
 
-window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", onScroll);
+    const percent = ratio * 100;
+    progressEl.style.width = `${percent}%`;
+    trainEl.style.left = `${percent}%`;
 
-/* Click en el menú: scroll suave a la sección */
-document.querySelector(".railway__labels").addEventListener("click", e => {
-  const a = e.target.closest("a[href^='#']");
-  if (!a) return;
+    labels.forEach((lab, i) => lab.classList.toggle("is-active", i === idx));
+    stations.forEach((s, i) => s.classList.toggle("is-active", i === idx));
+  }
 
-  e.preventDefault();
+  // Scroll listener
+  window.addEventListener("scroll", updateTrain);
+  window.addEventListener("resize", updateTrain);
+  updateTrain();
 
-  const id = a.getAttribute("href").slice(1);
-  const el = document.getElementById(id);
-  if (!el) return;
-
-  const headerH =
-    parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue("--bar-h")
-    ) || 72;
-
-  const top =
-    el.getBoundingClientRect().top +
-    window.pageYOffset -
-    (headerH + 16);
-
-  window.scrollTo({
-    top,
-    behavior: "smooth"
+  // Click en etiquetas → scroll a secciones
+  labels.forEach((lab, idx) => {
+    lab.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = sections[idx];
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.scrollY - 90; // margen por la barra
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    });
   });
 });
-
-/* Estado inicial */
-setTrainPosition(0);
