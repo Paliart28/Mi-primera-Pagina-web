@@ -1,0 +1,449 @@
+{
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-22d69211e6d2a1f66ea056149b31955e"},
+  "mark": {"type": "bar"},
+  "encoding": {
+    "color": {
+      "field": "Regulación",
+      "scale": {
+        "domain": ["Regulado", "Irregular"],
+        "range": ["#5A75FA", "#FA945D"]
+      },
+      "title": "Regulación",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {"field": "Regulación", "type": "nominal"},
+      {"field": "Total", "type": "quantitative"},
+      {"field": "Región", "type": "nominal"},
+      {"field": "Índice de Ruralidad por Comuna", "type": "nominal"},
+      {"field": "Densidad Poblacional por KM Cuadrado", "type": "quantitative"}
+    ],
+    "x": {"field": "Total", "type": "quantitative"},
+    "y": {"field": "Comuna", "type": "ordinal"}
+  },
+  "height": 500,
+  "title": "Cantidad de cruces ferroviarios en uso por regulación y comuna",
+  "width": 400,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
+  "datasets": {
+    "data-22d69211e6d2a1f66ea056149b31955e": [
+      {
+        "Comuna": "San Bernardo",
+        "Regulación": "Regulado",
+        "Total": 2,
+        "Región": "Metropolitana",
+        "Índice de Ruralidad por Comuna": "Mixta (1,354% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 1976.5
+      },
+      {
+        "Comuna": "San Bernardo",
+        "Regulación": "Irregular",
+        "Total": 2,
+        "Región": "Metropolitana",
+        "Índice de Ruralidad por Comuna": "Mixta (1,354% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 1976.5
+      },
+      {
+        "Comuna": "Buin",
+        "Regulación": "Regulado",
+        "Total": 4,
+        "Región": "Metropolitana",
+        "Índice de Ruralidad por Comuna": "Mixta (13,7% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 546.5
+      },
+      {
+        "Comuna": "Buin",
+        "Regulación": "Irregular",
+        "Total": 3,
+        "Región": "Metropolitana",
+        "Índice de Ruralidad por Comuna": "Mixta (13,7% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 546.5
+      },
+      {
+        "Comuna": "Paine",
+        "Regulación": "Regulado",
+        "Total": 4,
+        "Región": "Metropolitana",
+        "Índice de Ruralidad por Comuna": "Mixta (35,9% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 96.1
+      },
+      {
+        "Comuna": "Paine",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "Metropolitana",
+        "Índice de Ruralidad por Comuna": "Mixta (35,9% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 96.1
+      },
+      {
+        "Comuna": "Mostazal",
+        "Regulación": "Regulado",
+        "Total": 4,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (17,3% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 64.6
+      },
+      {
+        "Comuna": "Mostazal",
+        "Regulación": "Irregular",
+        "Total": 4,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (17,3% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 64.6
+      },
+      {
+        "Comuna": "Codegua",
+        "Regulación": "Regulado",
+        "Total": 1,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (44,5% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 48.6
+      },
+      {
+        "Comuna": "Codegua",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (44,5% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 48.6
+      },
+      {
+        "Comuna": "Graneros",
+        "Regulación": "Regulado",
+        "Total": 3,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (9,7% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 318
+      },
+      {
+        "Comuna": "Graneros",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (9,7% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 318
+      },
+      {
+        "Comuna": "Rancagua",
+        "Regulación": "Regulado",
+        "Total": 8,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (2,9% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 990.1
+      },
+      {
+        "Comuna": "Rancagua",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (2,9% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 990.1
+      },
+      {
+        "Comuna": "Olivar",
+        "Regulación": "Regulado",
+        "Total": 2,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (30,6% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 308.9
+      },
+      {
+        "Comuna": "Olivar",
+        "Regulación": "Irregular",
+        "Total": 1,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (30,6% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 308.9
+      },
+      {
+        "Comuna": "Requínoa",
+        "Regulación": "Regulado",
+        "Total": 13,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (40,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 43.8
+      },
+      {
+        "Comuna": "Requínoa",
+        "Regulación": "Irregular",
+        "Total": 1,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (40,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 43.8
+      },
+      {
+        "Comuna": "Rengo",
+        "Regulación": "Regulado",
+        "Total": 8,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (20,5% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 84.2
+      },
+      {
+        "Comuna": "Rengo",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (20,5% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 84.2
+      },
+      {
+        "Comuna": "Malloa",
+        "Regulación": "Regulado",
+        "Total": 3,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (57,6% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 112.8
+      },
+      {
+        "Comuna": "Malloa",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (57,6% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 112.8
+      },
+      {
+        "Comuna": "San Fernando",
+        "Regulación": "Regulado",
+        "Total": 4,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (13% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 30.9
+      },
+      {
+        "Comuna": "San Fernando",
+        "Regulación": "Irregular",
+        "Total": 2,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (13% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 30.9
+      },
+      {
+        "Comuna": "Chimbarongo",
+        "Regulación": "Regulado",
+        "Total": 9,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (40,4% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 74.8
+      },
+      {
+        "Comuna": "Chimbarongo",
+        "Regulación": "Irregular",
+        "Total": 6,
+        "Región": "O´Higgins",
+        "Índice de Ruralidad por Comuna": "Mixta (40,4% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 74.8
+      },
+      {
+        "Comuna": "Teno",
+        "Regulación": "Regulado",
+        "Total": 5,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (65% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 48.6
+      },
+      {
+        "Comuna": "Teno",
+        "Regulación": "Irregular",
+        "Total": 3,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (65% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 48.6
+      },
+      {
+        "Comuna": "Curicó",
+        "Regulación": "Regulado",
+        "Total": 8,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (10,3% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 120.4
+      },
+      {
+        "Comuna": "Curicó",
+        "Regulación": "Irregular",
+        "Total": 2,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (10,3% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 120.4
+      },
+      {
+        "Comuna": "Molina",
+        "Regulación": "Regulado",
+        "Total": 6,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (16,6% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 31.5
+      },
+      {
+        "Comuna": "Molina",
+        "Regulación": "Irregular",
+        "Total": 1,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (16,6% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 31.5
+      },
+      {
+        "Comuna": "Río Claro",
+        "Regulación": "Regulado",
+        "Total": 1,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (66,3% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 33.1
+      },
+      {
+        "Comuna": "Río Claro",
+        "Regulación": "Irregular",
+        "Total": 1,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (66,3% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 33.1
+      },
+      {
+        "Comuna": "San Rafael",
+        "Regulación": "Regulado",
+        "Total": 4,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (44,7% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 42.6
+      },
+      {
+        "Comuna": "San Rafael",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (44,7% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 42.6
+      },
+      {
+        "Comuna": "Talca",
+        "Regulación": "Regulado",
+        "Total": 12,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (4,7% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 1000.5
+      },
+      {
+        "Comuna": "Talca",
+        "Regulación": "Irregular",
+        "Total": 2,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (4,7% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 1000.5
+      },
+      {
+        "Comuna": "Maule",
+        "Regulación": "Regulado",
+        "Total": 1,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (16,8% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 321.4
+      },
+      {
+        "Comuna": "Maule",
+        "Regulación": "Irregular",
+        "Total": 1,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (16,8% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 321.4
+      },
+      {
+        "Comuna": "San Javier",
+        "Regulación": "Regulado",
+        "Total": 3,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (24,9% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 37.7
+      },
+      {
+        "Comuna": "San Javier",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (24,9% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 37.7
+      },
+      {
+        "Comuna": "Villa Alegre",
+        "Regulación": "Regulado",
+        "Total": 3,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (36,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 94.3
+      },
+      {
+        "Comuna": "Villa Alegre",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (36,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 94.3
+      },
+      {
+        "Comuna": "Linares",
+        "Regulación": "Regulado",
+        "Total": 9,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (17,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 65.9
+      },
+      {
+        "Comuna": "Linares",
+        "Regulación": "Irregular",
+        "Total": 1,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (17,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 65.9
+      },
+      {
+        "Comuna": "Longaví",
+        "Regulación": "Regulado",
+        "Total": 6,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (67,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 22.9
+      },
+      {
+        "Comuna": "Longaví",
+        "Regulación": "Irregular",
+        "Total": 6,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (67,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 22.9
+      },
+      {
+        "Comuna": "Retiro",
+        "Regulación": "Regulado",
+        "Total": 5,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (61,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 26.9
+      },
+      {
+        "Comuna": "Retiro",
+        "Regulación": "Irregular",
+        "Total": 0,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (61,1% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 26.9
+      },
+      {
+        "Comuna": "Parral",
+        "Regulación": "Regulado",
+        "Total": 4,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (24,8% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 27.6
+      },
+      {
+        "Comuna": "Parral",
+        "Regulación": "Irregular",
+        "Total": 5,
+        "Región": "Maule",
+        "Índice de Ruralidad por Comuna": "Mixta (24,8% de Población Rural)",
+        "Densidad Poblacional por KM Cuadrado": 27.6
+      }
+    ]
+  }
+}
