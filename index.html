@@ -1,80 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo · Inicio del viaje</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rieles en riesgo · Inicio del viaje</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #0f172a;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-family: "Poppins", sans-serif;
-      overflow: hidden;
-    }
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    /* Tren */
-    #train-start {
-      width: 180px;
-      animation: train-enter 2.5s ease-out forwards;
-    }
-
-    @keyframes train-enter {
-      from { transform: translateX(-120vw); }
-      to   { transform: translateX(0); }
-    }
-
-    /* Botón “Iniciar viaje” */
-    .start-btn {
-      margin-top: 40px;
-      padding: 16px 32px;
-      font-size: 1.4rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      background: #e63946;
-      color: white;
-      transition: 0.3s;
-    }
-
-    .start-btn:hover {
-      background: #b51f2c;
-      transform: scale(1.05);
-    }
-  </style>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="tren_horizontal.css">
 </head>
+<body class="landing-body">
 
-<body>
+    <!-- HEADER SIMPLE CON LOGO -->
+    <header class="landing-header">
+        <div class="landing-logo">
+            <img src="logo_punto_ciego.png" alt="Logo Punto Ciego">
+            <span class="landing-title">Punto Ciego</span>
+        </div>
+    </header>
 
-  <!-- Tren centrado -->
-  <svg id="train-start" viewBox="0 0 64 40">
-    <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
-    <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
-    <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5EAF1"/>
-    <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
-    <circle cx="50" cy="22" r="2" fill="#F6E05E"/>
-    <circle cx="18" cy="32" r="5" fill="#111827"/>
-    <circle cx="38" cy="32" r="5" fill="#111827"/>
-    <circle cx="18" cy="32" r="2" fill="#9ca3af"/>
-    <circle cx="38" cy="32" r="2" fill="#9ca3af"/>
-  </svg>
+    <!-- HERO CON TREN -->
+    <main class="landing-main">
+        <section class="landing-hero">
+            <div class="landing-text">
+                <h1>Rieles en riesgo</h1>
+                <p>
+                    Una historia web sobre los puntos ciegos de la seguridad ferroviaria
+                    entre Estación Central y Maule.
+                </p>
 
-  <!-- Botón para pasar al sitio real -->
-  <button
-    class="start-btn"
-    onclick="window.location.href='index2.html'">
-    Iniciar viaje
-  </button>
+                <button class="btn-primario" id="btn-iniciar">
+                    Iniciar viaje
+                </button>
+            </div>
 
+            <div class="landing-tren-wrapper">
+                <div class="vias"></div>
+                <div class="tren" id="tren-animado">
+                    <div class="tren-cabina"></div>
+                    <div class="tren-cuerpo"></div>
+                    <div class="tren-ventanas">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="tren-ruedas">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="tren_horizontal.js"></script>
 </body>
 </html>
-
-</div>
