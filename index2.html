@@ -197,28 +197,60 @@
           </p>
         </div>
       </div>
-      <div class="viz-column">
-        <h3 class="viz-title viz-title--light">Tipos de señalización</h3>
-        <iframe
-          src="graficos/mariñanco_gráfico1.html"
-          title="Cruces por comuna y tipo de regulación"
-          class="chart-frame chart-frame--dark"
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
-    <div class="viz-column">
-        <h3 class="viz-title viz-title--light">Cruces y regulación por comuna</h3>
-        <iframe
-          src="graficos/mariñanco_gráfico2_.html"
-          title="Cruces por comuna y tipo de regulación"
-          class="chart-frame chart-frame--dark"
-          loading="lazy">
-        </iframe>
-      </div>
-    </div>
-  </section>
+        <div class="flourish-embed flourish-cards" data-src="visualisation/26561140"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26561140/thumbnail" width="100%" alt="cards visualization" /></noscript></div>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-22d69211e6d2a1f66ea056149b31955e"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Regulaci\u00f3n", "scale": {"domain": ["Regulado", "Irregular"], "range": ["#5A75FA", "#FA945D"]}, "title": "Regulaci\u00f3n", "type": "nominal"}, "tooltip": [{"field": "Regulaci\u00f3n", "type": "nominal"}, {"field": "Total", "type": "quantitative"}, {"field": "Regi\u00f3n", "type": "nominal"}, {"field": "\u00cdndice de Ruralidad por Comuna", "type": "nominal"}, {"field": "Densidad Poblacional por KM Cuadrado", "type": "quantitative"}], "x": {"field": "Total", "type": "quantitative"}, "y": {"field": "Comuna", "type": "ordinal"}}, "height": 500, "title": "Cantidad de cruces ferroviarios en uso por regulaci\u00f3n y comuna", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-22d69211e6d2a1f66ea056149b31955e": [{"Comuna": "San Bernardo", "Regulaci\u00f3n": "Regulado", "Total": 2, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (1,354% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1976.5}, {"Comuna": "San Bernardo", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (1,354% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1976.5}, {"Comuna": "Buin", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (13,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 546.5}, {"Comuna": "Buin", "Regulaci\u00f3n": "Irregular", "Total": 3, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (13,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 546.5}, {"Comuna": "Paine", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (35,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 96.1}, {"Comuna": "Paine", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (35,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 96.1}, {"Comuna": "Mostazal", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 64.6}, {"Comuna": "Mostazal", "Regulaci\u00f3n": "Irregular", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 64.6}, {"Comuna": "Codegua", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Codegua", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Graneros", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (9,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 318.0}, {"Comuna": "Graneros", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (9,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 318.0}, {"Comuna": "Rancagua", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (2,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 990.1}, {"Comuna": "Rancagua", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (2,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 990.1}, {"Comuna": "Olivar", "Regulaci\u00f3n": "Regulado", "Total": 2, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (30,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 308.9}, {"Comuna": "Olivar", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (30,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 308.9}, {"Comuna": "Requ\u00ednoa", "Regulaci\u00f3n": "Regulado", "Total": 13, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 43.8}, {"Comuna": "Requ\u00ednoa", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 43.8}, {"Comuna": "Rengo", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (20,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 84.2}, {"Comuna": "Rengo", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (20,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 84.2}, {"Comuna": "Malloa", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (57,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 112.8}, {"Comuna": "Malloa", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (57,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 112.8}, {"Comuna": "San Fernando", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (13% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 30.9}, {"Comuna": "San Fernando", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (13% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 30.9}, {"Comuna": "Chimbarongo", "Regulaci\u00f3n": "Regulado", "Total": 9, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,4% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 74.8}, {"Comuna": "Chimbarongo", "Regulaci\u00f3n": "Irregular", "Total": 6, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,4% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 74.8}, {"Comuna": "Teno", "Regulaci\u00f3n": "Regulado", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (65% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Teno", "Regulaci\u00f3n": "Irregular", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (65% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Curic\u00f3", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (10,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 120.4}, {"Comuna": "Curic\u00f3", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (10,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 120.4}, {"Comuna": "Molina", "Regulaci\u00f3n": "Regulado", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 31.5}, {"Comuna": "Molina", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 31.5}, {"Comuna": "R\u00edo Claro", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (66,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 33.1}, {"Comuna": "R\u00edo Claro", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (66,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 33.1}, {"Comuna": "San Rafael", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 42.6}, {"Comuna": "San Rafael", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 42.6}, {"Comuna": "Talca", "Regulaci\u00f3n": "Regulado", "Total": 12, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (4,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1000.5}, {"Comuna": "Talca", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (4,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1000.5}, {"Comuna": "Maule", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 321.4}, {"Comuna": "Maule", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 321.4}, {"Comuna": "San Javier", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 37.7}, {"Comuna": "San Javier", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 37.7}, {"Comuna": "Villa Alegre", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (36,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 94.3}, {"Comuna": "Villa Alegre", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (36,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 94.3}, {"Comuna": "Linares", "Regulaci\u00f3n": "Regulado", "Total": 9, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 65.9}, {"Comuna": "Linares", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 65.9}, {"Comuna": "Longav\u00ed", "Regulaci\u00f3n": "Regulado", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (67,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 22.9}, {"Comuna": "Longav\u00ed", "Regulaci\u00f3n": "Irregular", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (67,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 22.9}, {"Comuna": "Retiro", "Regulaci\u00f3n": "Regulado", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (61,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 26.9}, {"Comuna": "Retiro", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (61,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 26.9}, {"Comuna": "Parral", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 27.6}, {"Comuna": "Parral", "Regulaci\u00f3n": "Irregular", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 27.6}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
+      </div>
+      <div class="section-icon">
+        <svg class="icon icon--right" viewBox="0 0 64 64">
+          <rect x="4" y="28" width="56" height="8" rx="2" fill="#1E3A68"/>
+          <line x1="12" y1="18" x2="52" y2="46" stroke="#F2994A" stroke-width="4"/>
+          <line x1="12" y1="46" x2="52" y2="18" stroke="#F2994A" stroke-width="4"/>
+        </svg>
+      </div>
+     </div>
+  </section>
 
   <!--PATRONES OCULTOS (EDAD · DÍA · HORA) -->
   <section id="s4" class="section section--patrones">
