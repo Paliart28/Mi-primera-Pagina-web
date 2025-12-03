@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+
+<div id="mari1"></div>
+
+<script type="text/javascript">
+var spec = {
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "data": {"name": "data-22d69211e6d2a1f66ea056149b31955e"},
+  "mark": {"type": "bar"},
+  "encoding": {
+    "color": {
+      "field": "Regulación",
+      "scale": {
+        "domain": ["Regulado", "Irregular"],
+        "range": ["#5A75FA", "#FA945D"]
+      },
+      "title": "Regulación",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {"field": "Regulación", "type": "nominal"},
+      {"field": "Total", "type": "quantitative"}
+    ],
+    "x": {"field": "Comuna", "type": "nominal", "title": "Comuna"},
+    "y": {"field": "Total", "type": "quantitative", "title": "N° cruces"}
+  },
+  "datasets": {
+    "data-22d69211e6d2a1f66ea056149b31955e": []
+  }
+};
+vegaEmbed('#mari1', spec);
+</script>
+
+</body>
+</html>
