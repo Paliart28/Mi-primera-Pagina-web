@@ -329,3 +329,118 @@ section {
   width: 100% !important;
   z-index: 5;
 }
+<<<<<<< HEAD
+=======
+/* Logo en el hero */
+.hero-logo {
+  max-width: 220px;
+  margin-bottom: 1rem;
+}
+
+/* Subtítulo bajo el título principal */
+.hero-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  opacity: 0.95;
+}
+
+/* Cita destacada en el hero */
+.hero-quote {
+  margin: 1rem 0 1.5rem;
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--senal);
+  background: rgba(15, 23, 42, 0.3);
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-start;
+}
+.hero-quote-mark {
+  font-size: 2rem;
+  line-height: 1;
+  opacity: 0.7;
+}
+.hero-quote p {
+  margin: 0;
+}
+
+/* Foto pequeña en secciones */
+.inline-photo {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Bloques de gráfico */
+.chart-block {
+  margin-top: 2.5rem;
+}
+.chart-title {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+}
+.chart-caption {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  max-width: 36rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Caja de explicación de niveles de riesgo */
+.risk-box {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 1.2rem;
+  border-radius: 0.9rem;
+  background: rgba(229, 234, 241, 0.22);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+}
+.risk-box-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Botón al repositorio */
+.repo-button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid #111827;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  background: #F6E05E;
+  color: #111827;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.repo-button:hover {
+  transform: translateY(-1px);
+}
+
+/* Bloque de cierre */
+.closing-block {
+  padding: 1.2rem 1.2rem;
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.8);
+  color: #E5EAF1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.closing-text {
+  margin: 0;
+}
+
+/* Ajustes responsive suaves */
+@media (max-width: 900px) {
+  .chart-block {
+    margin-top: 2rem;
+  }
+}
+>>>>>>> parent of f626e0e (finsal)
