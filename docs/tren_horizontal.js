@@ -1,90 +1,34 @@
-/* ===========================================================
-   TREN ANIMADO — JS FINAL OPTIMIZADO
-   Detecta la sección activa y mueve el tren sin errores
-=========================================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
-
   const progressEl = document.getElementById("progress");
   const trainEl = document.getElementById("train");
-  const labels = Array.from(document.querySelectorAll(".label"));
-  const stations = Array.from(document.querySelectorAll(".station")); // opcional si los usas
-  const sections = Array.from(document.querySelectorAll("main section"));
+  const labels = [...document.querySelectorAll(".label")];
+  const stations = [...document.querySelectorAll(".station")];
+  const sections = [...document.querySelectorAll("main section")];
 
-  if (!progressEl || !trainEl || sections.length === 0) return;
+  function getActiveSection() {
+    let index = 0, best = Infinity;
+    const mid = window.innerHeight/2;
 
-  /* -----------------------------------------------------------
-     FUNCIÓN — DETERMINAR QUÉ SECCIÓN ESTÁ AL CENTRO DE LA PANTALLA
-  ----------------------------------------------------------- */
-  function getActiveSectionIndex() {
-    const midpoint = window.innerHeight * 0.50;
-    let closest = 0;
-    let minDist = Infinity;
-
-    sections.forEach((sec, i) => {
-      const rect = sec.getBoundingClientRect();
-      const secMid = rect.top + rect.height / 2;
-      const dist = Math.abs(secMid - midpoint);
-
-      if (dist < minDist) {
-        minDist = dist;
-        closest = i;
-      }
+    sections.forEach((s,i)=>{
+      const r=s.getBoundingClientRect();
+      const d=Math.abs((r.top+r.height/2)-mid);
+      if(d<best){best=d; index=i;}
     });
 
-    return closest;
+    return index;
   }
 
-  /* -----------------------------------------------------------
-     FUNCIÓN — ACTUALIZA EL TREN Y LOS LABELS
-  ----------------------------------------------------------- */
-  function updateTrain() {
-    const idx = getActiveSectionIndex();
-    const total = sections.length - 1 || 1;
-    const ratio = idx / total;
+  function update() {
+    const i=getActiveSection();
+    const percent = i/(sections.length-1)*100;
+    progressEl.style.width=percent+"%";
+    trainEl.style.left=percent+"%";
 
-    const percent = ratio * 100;
-
-    // Progreso y tren
-    progressEl.style.width = `${percent}%`;
-    trainEl.style.left = `${percent}%`;
-
-    // Labels activos
-    labels.forEach((label, i) => {
-      label.classList.toggle("is-active", i === idx);
-    });
-
-    // Estaciones activas (si existen)
-    stations.forEach((st, i) => {
-      st.classList.toggle("is-active", i === idx);
-    });
+    labels.forEach((l,idx)=>l.classList.toggle("is-active",idx===i));
   }
 
-  /* -----------------------------------------------------------
-     SCROLL + RESIZE → ACTUALIZA EL TREN
-  ----------------------------------------------------------- */
-  window.addEventListener("scroll", updateTrain);
-  window.addEventListener("resize", updateTrain);
-  updateTrain();
-
-  /* -----------------------------------------------------------
-     CLICK EN LOS LABELS → SCROLLEAR A SECCIÓN
-  ----------------------------------------------------------- */
-  labels.forEach((label, idx) => {
-    label.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = sections[idx];
-
-      if (target) {
-        // Ajuste para que la barra superior no tape el título
-        const offset = target.getBoundingClientRect().top + window.scrollY - 90;
-
-        window.scrollTo({
-          top: offset,
-          behavior: "smooth"
-        });
-      }
-    });
-  });
-
+  window.addEventListener("scroll",update);
+  window.addEventListener("resize",update);
+  update();
 });
+
