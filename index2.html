@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Punto ciego · Rieles en riesgo</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos generales -->
+  <link href="style.css" rel="stylesheet" />
+  <link href="tren_horizontal.css" rel="stylesheet" />
+  <link href="style_mapasanbernardo.css" rel="stylesheet" />
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+</head>
+
+<body>
+
+<!-- ======================
+     BARRA DEL TREN
+====================== -->
+<div class="railway">
+  <div class="railway__inner">
+    <nav class="railway__labels">
+      <a class="label is-active" data-index="0" href="#s1">Inicio</a>
+      <a class="label" data-index="1" href="#s2">Santiago</a>
+      <a class="label" data-index="2" href="#s3">Días y edad</a>
+      <a class="label" data-index="3" href="#s4">Zonas</a>
+      <a class="label" data-index="4" href="#s5">Metodología</a>
+    </nav>
+
+    <div class="track">
+      <div class="track__progress" id="progress"></div>
+      <div class="station station--1" data-index="0"></div>
+      <div class="station station--2" data-index="1"></div>
+      <div class="station station--3" data-index="2"></div>
+      <div class="station station--4" data-index="3"></div>
+      <div class="station station--5" data-index="4"></div>
+
+      <svg class="train" id="train" viewBox="0 0 64 40">
+        <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
+        <rect class="train-body" x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+        <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5EAF1"/>
+        <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
+        <circle cx="50" cy="22" r="2" fill="#F6E05E"/>
+        <circle cx="18" cy="32" r="5" fill="#111827"/>
+        <circle cx="38" cy="32" r="5" fill="#111827"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ======================
+     1. HERO
+====================== -->
+<section id="s1">
+  <div class="container hero-layout">
+
+    <!-- IZQUIERDA -->
+    <div class="hero-text">
+      <p class="kicker">Siniestros ferroviarios en la Región Metropolitana</p>
+
+      <h1 class="hero-title">
+        Rieles en riesgo:<br>los cruces que siguen siendo punto ciego
+      </h1>
+      <p class="hero-lead">
+        Entre 2014 y 2024, en el tramo entre Estación Central y el límite con O’Higgins,
+        los registros de atropellos en la vía férrea muestran algo incómodo:
+        casi todos se anotan como “imprudencia del peatón”, pero muchos ocurren en cruces donde
+        la infraestructura técnica no alcanza para que ese error humano no termine en tragedia.
+      </p>
+
+      <p class="hero-meta">
+        Por Andrés Hernández, Paloma Riquelme y Josefa Mariñanco<br>
+        Proyecto para Narración Gráfica (COM-208) · PUC
+      </p>
+
+      <div class="hero-highlights">
+        <div class="highlight">
+          <span class="highlight-label">Años analizados</span>
+          <span class="highlight-value">2014–2024</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight-label">Tramo</span>
+          <span class="highlight-value">Estación Central – O’Higgins</span>
+        </div>
+        <div class="highlight">
+          <span class="highlight-label">Unidad de análisis</span>
+          <span class="highlight-value">Siniestros por atropello</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DERECHA: MAPA + RESUMEN -->
+    <aside class="hero-aside">
+
+
+      <!-- Mapa pequeño -->
+      <div id="hero-map"></div>
+
+      <!-- SIDEBAR DEL ACCIDENTE -->
+      <div id="hero-sidebar">
+        <h2 class="hero-sidebar-title">Accidente ferroviario San Bernardo (2024)</h2>
+
+        <img class="hero-sidebar-photo" src="https://static.theclinic.cl/media/2024/06/20-151152_aciv_Diseno-sin-titulo-37-1200x648.png">
+        <p>
+          El 20 de junio de 2024, un tren de pruebas EFE colisionó de frente con
+          un tren de carga Fepasa entre Lo Blanco y Lo Herrera. El impacto dejó 
+          dos maquinistas fallecidos y nueve personas heridas, revelando fallas 
+          críticas en los protocolos de autorización simultánea de vía.
+        </p>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ======================
+     2. RESTO DEL CONTENIDO
+====================== -->
+
+<section id="s2">…</section>
+<section id="s3">…</section>
+<section id="s4">…</section>
+<section id="s5">…</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__copy">Proyecto desarrollado para COM208 · 2025</p>
+  </div>
+</footer>
+
+<!-- ANIMACIÓN DEL TREN -->
+<script src="tren_horizontal.js"></script>
+
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+
+<!-- ======================
+     MAPA INTERACTIVO
+====================== -->
+<script>
+// Crear el mapa con movimiento activo (como Google Maps)
+var map = L.map('hero-map', {
+  zoomControl: true,
+  dragging: true,
+  scrollWheelZoom: true,
+  doubleClickZoom: true,
+  boxZoom: true,
+  keyboard: true,
+  touchZoom: true,
+}).setView([-33.6069, -70.7040], 14);
+
+// Fondo sutil estilo Google Maps
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  opacity: 0.40
+}).addTo(map);
+
+// Línea del tramo
+var estaciones = [
+  [-33.4513, -70.6797],
+  [-33.4660, -70.6899],
+  [-33.4919, -70.6951],
+  [-33.5150, -70.6988],
+  [-33.5465, -70.7000],
+  [-33.5866, -70.6980],
+  [-33.5994, -70.7009],
+  [-33.6183, -70.7072],
+  [-33.6378, -70.7189],
+  [-34.1701, -70.7444]
+];
+
+L.polyline(estaciones, {
+  color: "#D90429",
+  weight: 6,
+  opacity: 0.8
+}).addTo(map);
+
+// Estaciones visuales
+estaciones.forEach(coord => {
+  L.circleMarker(coord, {
+    radius: 6,
+    fillColor: "#FFFFFF",
+    color: "#000",
+    weight: 1
+  }).addTo(map);
+});
+
+// Punto del accidente — ESTÁTICO
+var accidente = [-33.6069, -70.7040];
+
+var accMarker = L.circleMarker(accidente, {
+  radius: 12,
+  fillColor: "#D90429",
+  color: "#FFFFFF",
+  weight: 3,
+  fillOpacity: 1
+}).addTo(map);
+
+// Al hacer clic: NO mover punto, SÍ mover mapa y mostrar panel
+accMarker.on("click", function(){
+  accMarker.on("click", function() {
+  const panel = document.getElementById("hero-sidebar");
+
+  // Si está visible → esconder
+  if (panel.classList.contains("show")) {
+    panel.classList.remove("show");
+    return;
+  }
+
+  // Si está escondido → mostrar
+  panel.classList.add("show");
+
+  // Capa satelital (solo al abrir)
+  L.esri.basemapLayer("Imagery").addTo(map);
+
+  // Zoom al punto (solo al abrir)
+  map.flyTo(accidente, 16, {
+    duration: 1.6,
+    easeLinearity: 0.25
+  });
+
+});
+  // Mostrar resumen
+  document.getElementById("hero-sidebar").classList.add("show");
+
+  // Capa satelital
+  L.esri.basemapLayer("Imagery").addTo(map);
+
+  // Zoom al punto — mapa se mueve, punto NO
+  map.flyTo(accidente, 16, {
+    duration: 1.6,
+    easeLinearity: 0.25
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+:root {
+  --bar-h: 80px;
+  --track-h: 8px;
+
+  --acero: #1E3A68;
+  --senal: #F6E05E;
+  --oxido: #F2994A;
+  --verde: #2E7D5B;
+  --gris: #E5EAF1;
+}
+
+/* =============================
+   BARRA SUPERIOR DEL TREN
+============================= */
+
+.railway {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  width: 100vw;
+  background: #0f172acc;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #1f2937;
+}
+
+.railway__inner {
+  width: 100%;
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* =============================
+   MENÚ SUPERIOR (labels)
+============================= */
+
+.railway__labels {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.label {
+  flex: 1;                     /* ← evita que se corte Metodología */
+  text-align: center;
+  padding: 10px 14px;
+  white-space: nowrap;
+  margin: 0;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: 0.25s;
+}
+
+.label:hover {
+  opacity: 1;
+  background: #ffffff20;
+}
+
+.label.is-active[data-index="0"] { background: var(--acero); color:white; }
+.label.is-active[data-index="1"] { background: var(--senal); color:#111; }
+.label.is-active[data-index="2"] { background: var(--oxido); color:#111; }
+.label.is-active[data-index="3"] { background: var(--verde); color:white; }
+.label.is-active[data-index="4"] { background: var(--gris); color:#111; }
+
+/* =============================
+   TRACK (vía)
+============================= */
+
+.track {
+  width: 100%;
+  height: var(--track-h);
+  background: #CBD5E1;
+  border-radius: 999px;
+  position: relative;
+}
+
+.track__progress {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: var(--acero);
+  border-radius: inherit;
+}
+
+/* =============================
+   ESTACIONES
+============================= */
+
+.station {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #111827;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.station--1 { left: 0%; }
+.station--2 { left: 25%; }
+.station--3 { left: 50%; }
+.station--4 { left: 75%; }
+.station--5 { left: 100%; }
+
+.station.is-active {
+  opacity: 1;
+  box-shadow: 0 0 0 4px #ffffffaa;
+}
+
+/* =============================
+   TREN SVG
+============================= */
+
+.train {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 40px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,.3));
+  animation: train-float 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes train-float {
+  from { transform: translate(-50%, -52%); }
+  to   { transform: translate(-50%, -48%); }
+}
