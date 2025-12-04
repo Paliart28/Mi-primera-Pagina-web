@@ -1,76 +1,131 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo · Inicio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Punto Ciego – Webstory</title>
 
-  <!-- Tipografías -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Estilos generales -->
-  <link href="style.css" rel="stylesheet" />
-  <link href="tren_horizontal.css" rel="stylesheet" />
+    <!-- Estilos propios -->
+    <style>
+        :root {
+            --azul1: #0A1A33;
+            --azul2: #122A4E;
+            --texto-claro: #ffffff;
+            --acento-rojo: #E63946;
+            --radius: 14px;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #1E3A68 0%, #020617 55%);
-      color: #F9FAFB;
-      font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .landing-wrap {
-      text-align: center;
-      padding: 2rem;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(160deg, var(--azul1), var(--azul2));
+            color: var(--texto-claro);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    .landing-title {
-      font-family: "Bebas Neue", sans-serif;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 2.8rem;
-      margin-bottom: 0.25rem;
-    }
+        header {
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+        }
 
-    .landing-sub {
-      font-size: 1rem;
-      opacity: 0.85;
-      margin-bottom: 1.5rem;
-    }
+        header img {
+            height: 38px;
+            margin-right: 10px;
+        }
 
-    .start-btn {
-      margin-top: 1rem;
-      background: #F6E05E;
-      color: #111827;
-      border: none;
-      border-radius: 999px;
-      padding: 0.9rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
+        header span {
+            font-family: 'Bebas Neue';
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
 
-    .start-btn:hover {
-      background: #fde68a;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-  </style>
+        .hero {
+            width: 80%;
+            max-width: 900px;
+            margin: 120px auto 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero small {
+            letter-spacing: 3px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .hero h1 {
+            margin-top: 15px;
+            font-family: 'Bebas Neue';
+            font-size: 48px;
+            line-height: 1.15;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            margin-top: 18px;
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .btn-iniciar {
+            display: inline-block;
+            margin-top: 30px;
+            background: var(--acento-rojo);
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .btn-iniciar:hover {
+            opacity: 0.85;
+        }
+    </style>
 </head>
 <body>
-  <div class="landing-wrap">
-    <h1 class="landing-title">Rieles en riesgo</h1>
-    <p class="landing-sub">Los cruces que siguen siendo punto ciego</p>
-    <button class="start-btn" onclick="window.location.href='index2.html'">
-      Iniciar viaje
+
+<header>
+    <img src="foto logo.png" alt="Logo Punto Ciego">
+    <span>PUNTO CIEGO</span>
+</header>
+
+<section class="hero">
+    <small>WEBSTORY · NARRACIÓN GRAFICA</small>
+
+    <h1>
+        MÁS ALLÁ DE LA IMPRUDENCIA:  
+        LAS FALLAS ESTRUCTURALES DETRÁS DE LOS ATROPELLOS FERROVIARIOS
+    </h1>
+
+    <p>
+        Entre 2014 y 2024, los siniestros ferroviarios del tipo atropello entre Estación Central y la Región de Maule 
+        revelan patrones que se repiten en silencio: fallas estructurales del sistema ferroviario, desigualdad territorial 
+        y puntos ciegos en la vida cotidiana de quienes cruzan las vías.
+    </p>
+
+    <button class="btn-iniciar" onclick="window.location.href='index2.html'">
+        INICIAR VIAJE
     </button>
-  </div>
+</section>
+
 </body>
 </html>

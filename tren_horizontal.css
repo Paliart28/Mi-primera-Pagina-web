@@ -1,6 +1,7 @@
+
 :root {
   --bar-h: 80px;
-  --track-h: 8px;
+  --track-h: 4px;
 
   --acero: #1E3A68;
   --senal: #F6E05E;
@@ -11,124 +12,119 @@
 
 /* =============================
    BARRA SUPERIOR DEL TREN
+   (debajo del header)
 ============================= */
 .railway {
   position: fixed;
-  top: 0;
+  top: 72px; /* altura aproximada del header */
+  left: 0;
+  width: 100%;
+  z-index: 900;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 10px;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.55);
+}
+
+.railway__track {
+  position: relative;
+  width: min(960px, 100% - 3rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+}
+
+/* Línea general del riel */
+.railway__line {
+  position: absolute;
   left: 0;
   right: 0;
-  height: var(--bar-h);
-  background: #020617;
-  display: flex;
-  align-items: center;
-  z-index: 100;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.45);
-}
-
-.railway__inner {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 5rem;
-  display: grid;
-  grid-template-columns: 1.8fr 1fr;
-  align-items: center;
-  gap: 2rem;
-}
-
-/* Etiquetas de estaciones */
-.railway__labels {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.label {
-  padding: 0.25rem 0.8rem;
-  border-radius: 999px;
-  font-family: "Poppins", sans-serif;
-  font-size: 0.85rem;
-  color: #e5e7eb;
-  text-decoration: none;
-  opacity: 0.7;
-  border: 1px solid transparent;
-  transition: 0.2s;
-}
-
-.label:hover {
-  opacity: 1;
-  background: #ffffff14;
-}
-
-.label.is-active {
-  opacity: 1;
-  border-color: #ffffff55;
-}
-
-/* Línea de rieles */
-.track {
-  position: relative;
-  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
   height: var(--track-h);
+  background: linear-gradient(to right, #E5EAF1, #CBD5F5);
   border-radius: 999px;
-  background: #0f172a;
-  overflow: visible;
 }
 
-.track__progress {
+/* Progreso del viaje */
+.railway__progress {
   position: absolute;
-  top: 0;
   left: 0;
-  height: 100%;
-  border-radius: 999px;
-  width: 0%;
-  background: linear-gradient(90deg, #F6E05E, #F97316);
-  transition: width 0.2s ease-out;
-}
-
-/* Estaciones como puntos */
-.station {
-  position: absolute;
   top: 50%;
-  width: 14px;
-  height: 14px;
+  transform: translateY(-50%);
+  height: var(--track-h);
+  width: 0;
+  background: linear-gradient(to right, #F6E05E, #F97316);
   border-radius: 999px;
-  transform: translate(-50%, -50%);
-  background: #111827;
-  border: 2px solid #9ca3af;
+  z-index: 1;
+  transition: width 0.3s ease-out;
 }
 
-.station--1 { left: 0%;   }
-.station--2 { left: 25%;  }
-.station--3 { left: 50%;  }
-.station--4 { left: 75%;  }
-.station--5 { left: 100%; }
-
-.station.is-active {
-  background: #F6E05E;
-  border-color: #F97316;
+/* Estaciones */
+.railway__station {
+  position: relative;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #020617;
+  border: 2px solid #E5EAF1;
+  box-shadow: 0 0 0 2px #020617;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
-/* Icono del tren que se desplaza */
-.train {
+.railway__station.is-active {
+  background: #F2994A;
+  border-color: #1E293B;
+}
+
+/* Tren pegado a la línea (opción A) */
+.railway__train {
   position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  width: 64px;
-  height: 40px;
+  top: 50%; /* centrado respecto a la línea */
+  transform: translate(-50%, -70%); /* que toque el riel visualmente */
+  width: 54px;
+  height: 34px;
+  z-index: 3;
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,0.7));
 }
 
-/* Responsive barra tren */
-@media (max-width: 900px) {
-  .railway__inner {
-    padding: 0 1.5rem;
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+/* Ajuste del contenido general por header + tren fijos */
+body {
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+  main, .page-wrapper, .site-main {
+    padding-top: 150px; /* header fijo + barra del tren */
+  }
+}
+
+@media (max-width: 767px) {
+  .railway {
+    top: 64px;
+    padding: 6px 0 8px;
   }
 
-  .railway__labels {
-    flex-wrap: wrap;
-    row-gap: 0.5rem;
+  .railway__track {
+    width: min(100%, 80px - 2rem);
   }
+
+  .railway__train {
+    width: 46px;
+    height: 30px;
+  }
+
+  .railway__station {
+    width: 14px;
+    height: 14px;
+  }
+}
+.train-icon {
+    position: absolute;
+    top: -12px;
+    transition: transform 0.6s ease;
 }

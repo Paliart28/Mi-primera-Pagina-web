@@ -3,407 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punto Ciego · Rieles en riesgo</title>
+    <title>Punto Ciego — Historia Web</title>
 
     <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
-    <!-- Si tienes estilos específicos para San Bernardo, puedes mantener este -->
-    <!-- <link rel="stylesheet" href="estilo_mapasanbernardo.css"> -->
+    <link rel="stylesheet" href="style_mapasanbernardo.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
+
 <body>
 
-    <!-- HEADER FIJO CON LOGO + MENÚ -->
-    <header class="main-header">
-        <div class="header-logo">
-            <img src="foto logo.png" alt="Logo Punto Ciego">
-            <span class="brand-text">Punto Ciego</span>
-        </div>
-
-        <nav class="main-nav">
-            <a href="#inicio">Inicio</a>
-            <a href="#sistema">Señalización</a>
-            <a href="#territorio">Territorio</a>
-            <a href="#patrones">Patrones humanos</a>
-            <a href="#san-bernardo">Caso San Bernardo</a>
-            <a href="#metodologia">Metodología</a>
-            <a href="#equipo">Equipo</a>
-        </nav>
-    </header>
-
-    <!-- HERO / INTRO -->
-    <section class="hero-story" id="inicio">
-        <div class="hero-inner">
-            <h1>Más allá de la imprudencia: Las fallas estructurales detrás de los atropellos ferroviarios</h1>
-            <p class="hero-bajada">
-                Entre 2014 y 2024, los siniestros ferroviarios del tipo atropello entre Estación Central
-                y la Región de Maule revelan patrones que se repiten en silencio: fallas estructurales
-                del sistema ferroviario, desigualdad territorial y puntos ciegos en la vida cotidiana
-                de quienes cruzan las vías.
-            </p>
-        </div>
-    </section>
-
-    <!-- CITA DESTACADA ESTILO DIARIO -->
-    <section class="cita-destacada">
-        <div class="cita-contenido">
-            <span class="cita-comillas">“</span>
-            <blockquote>
-                <strong>La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados.</strong>
-            </blockquote>
-            <span class="cita-comillas cierre">”</span>
-        </div>
-    </section>
-<!-- HERO DERECHA: MAPA + RESUMEN -->
-      <aside class="hero-aside">
-        <div id="hero-map"></div>
-
-        <div id="hero-sidebar">
-          <h2 class="hero-sidebar-title">Accidente ferroviario San Bernardo (2024)</h2>
-
-          <img class="hero-sidebar-photo" src="https://static.theclinic.cl/media/2024/06/20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario San Bernardo">
-
-          <p>
-            El jueves 20 de junio de 2024, un tren de pruebas de EFE colisionó de frente con un tren de carga Fepasa
-            entre las estaciones Lo Blanco y Lo Herrera, en la comuna de San Bernardo.
-            El impacto dejó dos maquinistas fallecidos y nueve personas heridas, y reabrió el debate
-            sobre los protocolos de seguridad y la autorización simultánea de vía.
-          </p>
-        </div>
-      </aside>
+<!-- =========================================================
+     HEADER + TREN
+========================================================= -->
+<header class="pc-header">
+    <div class="pc-topbar">
+        <img src="foto logo.png" class="pc-logo">
+        <span class="pc-title">Punto Ciego</span>
     </div>
-  </section>
-    <!-- =========================
-         CRÓNICA 1 – SISTEMA Y SEÑALIZACIÓN
-    ========================== -->
-    <section class="section dark" id="sistema">
-        <div class="section-inner">
-            <h2>1. Fallas estructurales: señalización que no previene atropellos</h2>
 
-            <article class="cronica">
-                <p>
-                    Todos los años mueren personas atropelladas en las vías férreas de nuestro país. Estas cifras no son conocidas públicamente y demuestran que no solo hay imprudencias del peatón involucradas, sino que fallas estructurales del sistema ferroviario chileno, como un sistema de señalización poco seguro para evitar siniestros.
-                </p>
-                <p>
-                    Según cifras de 2017 a abril del presente año, la mayor cantidad de fallecidos en siniestros ferroviarios del tipo atropello se han producido en las regiones Metropolitana, O'Higgins y Maule, respectivamente. En estos, los dos sistemas de señalización más utilizados en sus tramos son, según la Empresa de Ferrocarriles del Estado (EFE), la Autorización Uso de Vía (AUV) y Control de Tráfico Centralizado (CTC).
-                </p>
-                <p>
-                    AUV, según la revista En Tren, es el sistema “más simple”, especialmente en la red de vías únicas. Es una comunicación entre el controlador de tráfico y el personal del tren. La autorización incluye puntos de referencia exactos (como cambios de vía o publicaciones) desde donde se extiende la autorización. El personal del tren debe repetir la información al controlador para su confirmación antes de que se autorice el movimiento del tren.
-                </p>
-                <p>
-                    El CTC, según el Reglamento de Tráfico Ferroviario de EFE, posee una señalización luminosa constituida por señales absolutas y no absolutas que solamente se encienden cuando son requeridas. Cuando no son requeridos reposan en su estado más restrictivo (señales absolutas, siempre con su foco alumbrando en aspecto Rojo solo y señales no absolutas siempre con su foco alumbrando en aspecto Amarillo solo).
-                </p>
-                <p>
-                    Ambos sistemas presentan debilidades para prevenir atropellos, mostrando que la señalización no es suficientemente segura para alertar o proteger a los peatones, lo cual es coincidente con las cifras de fallecidos en siniestros ferroviarios del tipo atropello. En el caso de AUV, existe una alta dependencia en el error humano y falta de automatización, lo que reduce la capacidad de respuesta rápida y segura ante situaciones imprevistas.
-                </p>
-                <p>
-                    El sistema CTC, aunque más complejo con señales luminosas y enclavamientos, opera con limitaciones técnicas relevantes. Según un artículo en el blog del Instituto Ferroviario chileno, se menciona que “La delincuencia organizada que roba constante e impunemente catenaria y cables subterráneos de los sistemas de señalización de EFE en sectores de plena vía, lo cual obliga a no emplear las vías afectadas en sectores de vía doble (…) o genera situaciones no deseadas, tales como fallas y degradaciones del sistema de Control de Tráfico Centralizado (CTC), las cuales fuerzan movilizaciones con sistemas, radiales o telefónicos que no aseguran un funcionamiento a prueba de fallas (fail safe) como sí ocurre con el CTC a plena capacidad”.
-                </p>
-            </article>
+    <nav class="pc-trainbar">
+        <div class="pc-track">
+            <div class="pc-line"></div>
+            <div id="train-icon" class="train-icon">🚆</div>
 
-            <!-- GRÁFICOS ASOCIADOS CRÓNICA 1 -->
-            <div class="viz-bloque">
-                <h3>Distribución de sistemas AUV y CTC en el tramo estudiado</h3>
-                <p class="viz-desc">
-                    Este gráfico muestra cómo se distribuyen los sistemas de señalización AUV y CTC en el tramo entre Estación Central y la Región de O’Higgins, y permite observar qué tramos operan con mayor dependencia del error humano.
-                </p>
-                <div class="viz-contenedor">
-                    <iframe src="graficos\andrés_vis1.html" loading="lazy"></iframe>
-                </div>
-                 <div class="viz-contenedor">
-                    <iframe src="graficos\andrés_vis2.html" loading="lazy"></iframe>
-                </div>
-            </div>
+            <div class="pc-stations">
+                <button class="station is-active" data-target="inicio" data-step="0">Inicio</button>
+                <button class="station" data-target="san-bernardo" data-step="1">San Bernardo</button>
+                <button class="station" data-target="senializacion" data-step="2">Señalización</button>
+                <button class="station" data-target="territorio" data-step="3">Territorio</button>
+                <button class="station" data-target="patrones" data-step="4">Patrones</button>
+                <button class="station" data-target="metodologia" data-step="5">Metodología</button>
+                <button class="station" data-target="equipo" data-step="6">Equipo</button>
             </div>
         </div>
-    </section>
-
-    <!-- =========================
-         CRÓNICA 2 – TERRITORIO Y DESIGUALDAD
-    ========================== -->
-    <section class="section light" id="territorio">
-        <div class="section-inner">
-            <h2>2. Territorios en riesgo: cruces irregulares y desigualdad</h2>
-
-            <article class="cronica">
-                <p>
-                    Cada año, decenas de personas mueren o resultan heridas en las vías férreas de Chile. Los siniestros ferroviarios, aunque menos frecuentes que los de tránsito vehicular, tienen consecuencias graves y muchas veces invisibles para la opinión pública. Según el último informe de la Comisión Nacional de Seguridad de Tránsito (CONASET), solo en 2023 se registraron 95 siniestros ferroviarios, con 35 fallecidos. La mayoría de estos casos se concentran en la Región Metropolitana, O'Higgins y Maule, donde la red de trenes convive con zonas urbanas densas y cruces a nivel que no siempre cuentan con la protección adecuada.
-                </p>
-                <p>
-                    La Empresa de Ferrocarriles del Estado (EFE) reconoce oficialmente más de 700 cruces ferroviarios a nivel en todo Chile, de los cuales una parte importante se concentra en la capital y su área metropolitana. Sin embargo, la cifra real es mucho mayor si se consideran los cruces irregulares: accesos abiertos por diversas razones, la costumbre, la urgencia o la falta de alternativas.
-                </p>
-                <p>
-                    El análisis territorial revela una evaluación clara entre la presencia de cruces irregulares y factores como la densidad poblacional, el nivel de prioridad social y el tipo de suelo en uso. En sectores residenciales de alta densidad, donde la movilidad peatonal es fundamental, los cruces informales son más frecuentes. En zonas industriales, los pasos irregulares facilitan el acceso de trabajadores y vehículos, a menudo sin ningún tipo de protección. La visualización de datos —un gráfico de barras agrupadas por comuna y tipo de regulación— permite dimensionar la desigualdad en el acceso a cruces seguros. Mientras algunas comunas cuentan con una red de cruces regulados y protegidos, otras dependen casi exclusivamente de pasos informales.
-                </p>
-                <p>
-                    La normativa chilena sobre cruces ferroviarios, establecida por el Decreto Supremo 38 de 1986, distingue entre cruces con y sin barreras, y establece criterios para su protección y señalización. Sin embargo, la realidad supera la norma: muchos cruces formales carecen de infraestructura adecuada, y los informales quedan fuera de cualquier regulación. El Ministerio de Transportes ha propuesto en los últimos años una actualización de la normativa, con nuevos estándares de protección y criterios para la desnivelación de cruces en función del índice de peligrosidad.
-                </p>
-            </article>
-
-            <!-- GRÁFICOS ASOCIADOS CRÓNICA 2 -->
-            <div class="viz-bloque">
-        <h2 class="section-title">Santiago y los cruces que se repiten</h2>
-        <p class="section-body">
-          A medida que el trazado avanza desde Estación Central hacia el sur, los cruces ferroviarios
-          se insertan en una ciudad que creció hacia la vía, muchas veces sin que la infraestructura
-          de resguardo se actualizara al mismo ritmo. En comunas residenciales y zonas industriales,
-          los siniestros se concentran en puntos donde la visibilidad es limitada o las barreras son parciales.
+    </nav>
+</header>
+<!-- =========================================================
+     INICIO
+========================================================= -->
+<section id="inicio" class="section inicio fade">
+    <div class="section-inner">
+        <h1> Más allá de la imprudencia: Las fallas estructurales detrás de los atropellos ferroviarios</h1>
+        <p>
+            Esta historia web explora una década de siniestros ferroviarios del tipo atropello entre Estación Central
+            y la Región de Maule. A partir de registros oficiales, mapas y visualizaciones de datos.
         </p>
-
-        <div class="flourish-embed flourish-cards" data-src="visualisation/26561140"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26561140/thumbnail" width="100%" alt="cards visualization" /></noscript></div>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <style>
-    #vis.vega-embed {
-      width: 100%;
-      display: flex;
-    }
-
-    #vis.vega-embed details,
-    #vis.vega-embed details summary {
-      position: relative;
-    }
-  </style>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-</head>
-<body>
-  <div id="vis"></div>
-  <script>
-    (function(vegaEmbed) {
-      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-22d69211e6d2a1f66ea056149b31955e"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Regulaci\u00f3n", "scale": {"domain": ["Regulado", "Irregular"], "range": ["#5A75FA", "#FA945D"]}, "title": "Regulaci\u00f3n", "type": "nominal"}, "tooltip": [{"field": "Regulaci\u00f3n", "type": "nominal"}, {"field": "Total", "type": "quantitative"}, {"field": "Regi\u00f3n", "type": "nominal"}, {"field": "\u00cdndice de Ruralidad por Comuna", "type": "nominal"}, {"field": "Densidad Poblacional por KM Cuadrado", "type": "quantitative"}], "x": {"field": "Total", "type": "quantitative"}, "y": {"field": "Comuna", "type": "ordinal"}}, "height": 500, "title": "Cantidad de cruces ferroviarios en uso por regulaci\u00f3n y comuna", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-22d69211e6d2a1f66ea056149b31955e": [{"Comuna": "San Bernardo", "Regulaci\u00f3n": "Regulado", "Total": 2, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (1,354% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1976.5}, {"Comuna": "San Bernardo", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (1,354% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1976.5}, {"Comuna": "Buin", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (13,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 546.5}, {"Comuna": "Buin", "Regulaci\u00f3n": "Irregular", "Total": 3, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (13,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 546.5}, {"Comuna": "Paine", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (35,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 96.1}, {"Comuna": "Paine", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (35,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 96.1}, {"Comuna": "Mostazal", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 64.6}, {"Comuna": "Mostazal", "Regulaci\u00f3n": "Irregular", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 64.6}, {"Comuna": "Codegua", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Codegua", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Graneros", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (9,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 318.0}, {"Comuna": "Graneros", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (9,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 318.0}, {"Comuna": "Rancagua", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (2,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 990.1}, {"Comuna": "Rancagua", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (2,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 990.1}, {"Comuna": "Olivar", "Regulaci\u00f3n": "Regulado", "Total": 2, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (30,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 308.9}, {"Comuna": "Olivar", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (30,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 308.9}, {"Comuna": "Requ\u00ednoa", "Regulaci\u00f3n": "Regulado", "Total": 13, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 43.8}, {"Comuna": "Requ\u00ednoa", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 43.8}, {"Comuna": "Rengo", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (20,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 84.2}, {"Comuna": "Rengo", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (20,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 84.2}, {"Comuna": "Malloa", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (57,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 112.8}, {"Comuna": "Malloa", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (57,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 112.8}, {"Comuna": "San Fernando", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (13% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 30.9}, {"Comuna": "San Fernando", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (13% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 30.9}, {"Comuna": "Chimbarongo", "Regulaci\u00f3n": "Regulado", "Total": 9, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,4% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 74.8}, {"Comuna": "Chimbarongo", "Regulaci\u00f3n": "Irregular", "Total": 6, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,4% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 74.8}, {"Comuna": "Teno", "Regulaci\u00f3n": "Regulado", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (65% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Teno", "Regulaci\u00f3n": "Irregular", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (65% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Curic\u00f3", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (10,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 120.4}, {"Comuna": "Curic\u00f3", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (10,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 120.4}, {"Comuna": "Molina", "Regulaci\u00f3n": "Regulado", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 31.5}, {"Comuna": "Molina", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 31.5}, {"Comuna": "R\u00edo Claro", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (66,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 33.1}, {"Comuna": "R\u00edo Claro", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (66,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 33.1}, {"Comuna": "San Rafael", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 42.6}, {"Comuna": "San Rafael", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 42.6}, {"Comuna": "Talca", "Regulaci\u00f3n": "Regulado", "Total": 12, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (4,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1000.5}, {"Comuna": "Talca", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (4,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1000.5}, {"Comuna": "Maule", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 321.4}, {"Comuna": "Maule", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 321.4}, {"Comuna": "San Javier", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 37.7}, {"Comuna": "San Javier", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 37.7}, {"Comuna": "Villa Alegre", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (36,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 94.3}, {"Comuna": "Villa Alegre", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (36,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 94.3}, {"Comuna": "Linares", "Regulaci\u00f3n": "Regulado", "Total": 9, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 65.9}, {"Comuna": "Linares", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 65.9}, {"Comuna": "Longav\u00ed", "Regulaci\u00f3n": "Regulado", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (67,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 22.9}, {"Comuna": "Longav\u00ed", "Regulaci\u00f3n": "Irregular", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (67,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 22.9}, {"Comuna": "Retiro", "Regulaci\u00f3n": "Regulado", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (61,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 26.9}, {"Comuna": "Retiro", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (61,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 26.9}, {"Comuna": "Parral", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 27.6}, {"Comuna": "Parral", "Regulaci\u00f3n": "Irregular", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 27.6}]}};
-      var embedOpt = {"mode": "vega-lite"};
-
-      function showError(el, error){
-          el.innerHTML = ('<div style="color:red;">'
-                          + '<p>JavaScript Error: ' + error.message + '</p>'
-                          + "<p>This usually means there's a typo in your chart specification. "
-                          + "See the javascript console for the full traceback.</p>"
-                          + '</div>');
-          throw error;
-      }
-      const el = document.getElementById('vis');
-      vegaEmbed("#vis", spec, embedOpt)
-        .catch(error => showError(el, error));
-    })(vegaEmbed);
-
-  </script>
-</body>
-</html>
+    </div>
+            <div class="hero-highlights">
+          <div class="highlight">
+            <span class="highlight-label">Años analizados</span>
+            <span class="highlight-value">2014–2024</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-label">Tramo</span>
+            <span class="highlight-value">Estación Central – Maule</span>
+          </div>
+          <div class="highlight">
+            <span class="highlight-label">Unidad de análisis</span>
+            <span class="highlight-value">Siniestros por atropello</span>
+          </div>
+        </div>
       </div>
-      <div class="section-icon">
-        <svg class="icon icon--right" viewBox="0 0 64 64">
-          <rect x="4" y="28" width="56" height="8" rx="2" fill="#1E3A68"/>
-          <line x1="12" y1="18" x2="52" y2="46" stroke="#F2994A" stroke-width="4"/>
-          <line x1="12" y1="46" x2="52" y2="18" stroke="#F2994A" stroke-width="4"/>
-        </svg>
-      </div>
-     </div>
-  </section>        
+</section>
 
-    <!-- =========================
-         CRÓNICA 3 – PATRONES HUMANOS
-    ========================== -->
-    <section class="section dark" id="patrones">
-        <div class="section-inner">
-            <h2>3. Puntos ciegos humanos: edades, horarios y vida cotidiana</h2>
+<div class="riel-deco"></div>
 
-            <article class="cronica">
-                <p>
-                    Los distintos cruces ferroviarios analizados —ubicados de manera dispersa entre Estación Central y el límite con la Región de O'Higgins— operan con niveles heterogéneos de advertencia y control, lo que influye directamente en los patrones de siniestros observados durante la última década. Aunque cada cruce tiene características propias, los datos entre 2014 y 2024 revelan tendencias que se repiten con consistencia y que permanecen fuera de la discusión pública: puntos ciegos donde la infraestructura, el comportamiento humano y la falta de estandarización se combinan para generar riesgo.
-                </p>
-                <p>
-                    El análisis de los siniestros por edad muestra que las personas entre 30 y 59 años concentran la mayor cantidad de casos. No son un grupo tradicionalmente identificado como “vulnerable”, pero su exposición cotidiana —traslados laborales, cruces frecuentes, tiempos ajustados— los ubica en una posición de riesgo constante. Esta tendencia refleja que los incidentes no son aleatorios: se producen en grupos que interactúan diariamente con la infraestructura.
-                </p>
-                <p>
-                    Un segundo punto ciego aparece en la dimensión temporal. Las franjas 15:00–17:59 y 21:00–23:59 concentran la mayor incidencia de siniestros. En la tarde, el retorno laboral y escolar genera cruces apresurados en vías que no siempre cuentan con barreras automáticas o señalización luminosa operativa. En la noche, la visibilidad disminuye y las advertencias son menos efectivas. En ambos casos, la infraestructura ferroviaria no compensa las limitaciones humanas del entorno. La línea visual de riesgo por hora —marcada por puntos de alta, media y baja incidencia— evidencia cómo la seguridad se fragmenta a lo largo del día.
-                </p>
-                <p>
-                    Estos patrones se explican en parte por el funcionamiento de los sistemas de control presentes en la red. El AUV, dependiente de comunicación manual entre maquinista y operador, y el CTC, automatizado pero susceptible a fallas eléctricas y vandalización de cables, presentan vulnerabilidades documentadas en informes de EFE y CONASET. La población que cruza las vías no percibe estas diferencias técnicas, pero sí experimenta sus efectos: demoras imprevistas, señales apagadas o barreras que no funcionan como deberían.
-                </p>
-                <p>
-                    La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados. Si bien las decisiones humanas —cruzar sin mirar, evadir barreras, subestimar la velocidad del tren— son un factor relevante, estas conductas se ven amplificadas cuando la señalización no es clara, está dañada o no existe. Allí se forma un punto ciego crítico: el sistema no previene comportamientos esperables en contextos de alta circulación.
-                </p>
-            </article>
+<!-- =========================================================
+     CITA DESTACADA
+========================================================= -->
+<section class="cita-destacada fade">
+    <div class="cita-contenido">
+        <span class="cita-comillas">“</span>
+        <blockquote>
+            La combinación de imprudencia individual con infraestructura defectuosa aparece
+            de manera transversal en todos los cruces analizados.
+        </blockquote>
+        <span class="cita-comillas cierre">”</span>
+    </div>
+</section>
 
-            <!-- GRÁFICOS ASOCIADOS CRÓNICA 3 -->
-            <div class="viz-bloque">
-                <h3>¿Quiénes y cuándo se exponen más al riesgo?</h3>
-                <p class="viz-desc">
-                    Estas visualizaciones muestran la concentración de siniestros por grupo etario y por horario del día,
-                    revelando cómo los trayectos cotidianos se cruzan con la falta de protección en las vías.
-                </p>
-                <div class="viz-contenedor">
-                    <iframe src="graficos/edades.html" loading="lazy"></iframe>
-                </div>
-                <div class="viz-contenedor">
-                    <iframe src="graficos/zona horaria.html" loading="lazy"></iframe>
-                </div>
-                  <div class="viz-contenedor">
-                    <iframe src="graficos/dia de la semana.html" loading="lazy"></iframe>
-                </div>
+<div class="riel-deco"></div>
+
+<!-- =========================================================
+     SAN BERNARDO
+========================================================= -->
+<section id="san-bernardo" class="section sanbernardo"> 
+<div class="section-inner section-grid"> <div class="section-texto">
+     <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
+ <p> San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan los patrones descritos en las secciones anteriores. </p> <p> El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos, junto con el contexto urbano que rodea la línea férrea. </p> <p> A partir de este accidente, se vuelve evidente la necesidad de fortalecer la protección en cruces a nivel, mejorar la señalización y revisar la planificación urbana en torno a la vía férrea para evitar que estos patrones se repitan. </p> </div>
+
+        <div class="section-visual">
+            <div class="tarjeta-mapa">
+                <h3>Mapa interactivo del siniestro (2024)</h3>
+                <div id="mapa-san-bernardo" class="mapa-sb"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- =========================
-         CASO SAN BERNARDO
-    ========================== -->
-    <section class="section highlight" id="san-bernardo">
-        <div class="section-inner">
-            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
-            <p>
-                San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen
-                alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan
-                los patrones descritos en las secciones anteriores.
-            </p>
+<div class="riel-deco"></div>
 
-            <div class="viz-bloque">
-                <h3>Mapa interactivo del siniestro en San Bernardo</h3>
-                <p class="viz-desc">
-                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
-                    junto con el contexto urbano que rodea la línea férrea.
-                </p>
-                <div class="viz-contenedor">
-                    <!-- ASIDE DEL HERO: MAPA + PANEL -->
-<aside class="hero-aside">
-  <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
-  <div id="hero-sidebar" class="hero-sidebar">
-    <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
-    <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
-    <p class="hero-sidebar-text">
-      En 2024, un siniestro fatal en San Bernardo volvió a mostrar
-      cómo la combinación de cruces a nivel, señalización vulnerable y
-      alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
-      no logra anticipar el error humano: lo espera, y lo repite.
-    </p>
-    <p class="hero-sidebar-note">
-      Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
-    </p>
-  </div>
-
-</aside>
-  </section>
-    <!-- =========================
-         METODOLOGÍA
-    ========================== -->
-    <section class="section light" id="metodologia">
-        <div class="section-inner">
-            <h2>Metodología y fuentes de datos</h2>
-            <p>
-                Los datos utilizados en esta historia provienen de registros de Carabineros de Chile, Empresa de
-                Ferrocarriles del Estado (EFE), Fesur, CONASET y bases públicas complementarias. Se sistematizaron
-                siniestros ferroviarios del tipo atropello entre 2014 y 2024 en el tramo que conecta Estación Central
-                con la Región de Maule.
-            <p>
-                La depuración y el análisis se realizaron con Python, utilizando librerías de procesamiento de datos
-                y visualización. Las visualizaciones interactivas fueron desarrolladas mediante librerías de
-                Javascript y plataformas de visualización, exportadas como componentes HTML para su integración en la web.
-            </p>
-
-            <button class="btn-primario btn-metodologia"
-                    onclick="window.open('https://github.com/josefamar/PROYECTO', '_blank')">
-                Ver repositorio y documentación
-            </button>
+<!-- =========================================================
+     SEÑALIZACIÓN
+========================================================= -->
+<section id="senializacion" class="section senial"> 
+<div class="section-inner">
+ <h2>1. Fallas estructurales: señalización que no previene atropellos</h2> 
+ <article class="cronica"> 
+<p>Todos los años mueren personas atropelladas en las vías férreas de nuestro país. Estas cifras no son conocidas públicamente y demuestran que no solo hay imprudencias del peatón involucradas, sino que fallas estructurales del sistema ferroviario chileno, como un sistema de señalización poco seguro para evitar siniestros. Según cifras de 2017 a abril del presente año, la mayor cantidad de fallecidos en siniestros ferroviarios del tipo atropello se han producido en las regiones Metropolitana, O'Higgins y Maule, respectivamente. En estos, los dos sistemas de señalización más utilizados en sus tramos son, según la Empresa de Ferrocarriles del Estado (EFE), la Autorización Uso de Vía (AUV) y Control de Tráfico Centralizado (CTC). AUV, según la revista En Tren, es el sistema “más simple”, especialmente en la red de vías únicas. Es una comunicación entre el controlador de tráfico y el personal del tren. La autorización incluye puntos de referencia exactos (como cambios de vía o publicaciones) desde donde se extiende la autorización. El personal del tren debe repetir la información al controlador para su confirmación antes de que se autorice el movimiento del tren. El CTC, según el Reglamento de Tráfico Ferroviario de EFE, posee una señalización luminosa constituida por señales absolutas y no absolutas que solamente se encienden cuando son requeridas. Cuando no son requeridos reposan en su estado más restrictivo (señales absolutas, siempre con su foco alumbrando en aspecto Rojo solo y señales no absolutas siempre con su foco alumbrando en aspecto Amarillo solo). Ambos sistemas presentan debilidades para prevenir atropellos, mostrando que la señalización no es suficientemente segura para alertar o proteger a los peatones, lo cual es coincidente con las cifras de fallecidos en siniestros ferroviarios del tipo atropello. En el caso de AUV, existe una alta dependencia en el error humano y falta de automatización, lo que reduce la capacidad de respuesta rápida y segura ante situaciones imprevistas. El sistema CTC, aunque más complejo con señales luminosas y enclavamientos, opera con limitaciones técnicas relevantes. Según un artículo en el blog del Instituto Ferroviario chileno, se menciona que “La delincuencia organizada que roba constante e impunemente catenaria y cables subterráneos de los sistemas de señalización de EFE en sectores de plena vía, lo cual obliga a no emplear las vías afectadas en sectores de vía doble (…) o genera situaciones no deseadas, tales como fallas y degradaciones del sistema de Control de Tráfico Centralizado (CTC), las cuales fuerzan movilizaciones con sistemas, radiales o telefónicos que no aseguran un funcionamiento a prueba de fallas (fail safe) como sí ocurre con el CTC a plena capacidad”. </p>
+        <div class="viz-grid">
+            <iframe src="graficos/andrés_vis1.html"></iframe>
+            <iframe src="graficos/andrés_vis2.html"></iframe>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- =========================
-         EQUIPO
-    ========================== -->
-    <section class="section dark" id="equipo">
-        <div class="section-inner">
-            <h2>Equipo</h2>
-            <p><strong>Paloma Riquelme</strong> · Reporter&iacute;a, crónicas, diseño de la historia web.</p>
-            <p><strong>Josefa Mariñanco</strong> · Visualización de datos, mapas y análisis cuantitativo.</p>
-            <p><strong>Andrés Hernández</strong> · Procesamiento de bases de datos, desarrollo y soporte técnico.</p>
-        </div>
-    </section>
-<!-- Leaflet -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+<div class="riel-deco"></div>
 
-<!-- Mapa San Bernardo -->
+<!-- =========================================================
+     TERRITORIO
+========================================================= -->
+<section id="territorio" class="section territorio"> 
+<div class="section-inner"> 
+<h2>2. Territorios en riesgo: cruces irregulares y desigualdad</h2> 
+<article class="cronica"> 
+<p>Cada año, decenas de personas mueren o resultan heridas en las vías férreas de Chile. Los siniestros ferroviarios, aunque menos frecuentes que los de tránsito vehicular, tienen consecuencias graves y muchas veces invisibles para la opinión pública. Según el último informe de la Comisión Nacional de Seguridad de Tránsito (CONASET), solo en 2023 se registraron 95 siniestros ferroviarios, con 35 fallecidos. La mayoría de estos casos se concentran en la Región Metropolitana, O'Higgins y Maule, donde la red de trenes convive con zonas urbanas densas y cruces a nivel que no siempre cuentan con la protección adecuada. La Empresa de Ferrocarriles del Estado (EFE) reconoce oficialmente más de 700 cruces ferroviarios a nivel en todo Chile, de los cuales una parte importante se concentra en la capital y su área metropolitana. Sin embargo, la cifra real es mucho mayor si se consideran los cruces irregulares: accesos abiertos por diversas razones, la costumbre, la urgencia o la falta de alternativas. El análisis territorial revela una evaluación clara entre la presencia de cruces irregulares y factores como la densidad poblacional, el nivel de prioridad social y el tipo de suelo en uso. En sectores residenciales de alta densidad, donde la movilidad peatonal es fundamental, los cruces informales son más frecuentes. En zonas industriales, los pasos irregulares facilitan el acceso de trabajadores y vehículos, a menudo sin ningún tipo de protección. La visualización de datos —un gráfico de barras agrupadas por comuna y tipo de regulación— permite dimensionar la desigualdad en el acceso a cruces seguros. Mientras algunas comunas cuentan con una red de cruces regulados y protegidos, otras dependen casi exclusivamente de pasos informales. La normativa chilena sobre cruces ferroviarios, establecida por el Decreto Supremo 38 de 1986, distingue entre cruces con y sin barreras, y establece criterios para su protección y señalización. Sin embargo, la realidad supera la norma: muchos cruces formales carecen de infraestructura adecuada, y los informales quedan fuera de cualquier regulación. El Ministerio de Transportes ha propuesto en los últimos años una actualización de la normativa, con nuevos estándares de protección y criterios para la desnivelación de cruces en función del índice de peligrosidad. </p> </article> <h3>Santiago y los cruces que se repiten</h3> <div class="viz-bloque"> <div class="flourish-embed flourish-cards" data-src="visualisation/26561140"> <script src="https://public.flourish.studio/resources/embed.js"></script> </div> </div> <h3>Cruces ferroviarios por comuna</h3>
+ <iframe src="graficos\mariñanco_grafico2.html"></iframe> </div> </section>
+<div class="riel-deco"></div>
+
+<!-- =========================================================
+     PATRONES
+========================================================= -->
+<section id="patrones" class="section patrones"> 
+<div class="section-inner"> 
+<h2>3. Puntos ciegos humanos: edades, horarios y vida cotidiana</h2> 
+<article class="cronica"> 
+<p>Los distintos cruces ferroviarios analizados —ubicados de manera dispersa entre Estación Central y el límite con la Región de O'Higgins— operan con niveles heterogéneos de advertencia y control, lo que influye directamente en los patrones de siniestros observados durante la última década. Aunque cada cruce tiene características propias, los datos entre 2014 y 2024 revelan tendencias que se repiten con consistencia y que permanecen fuera de la discusión pública: puntos ciegos donde la infraestructura, el comportamiento humano y la falta de estandarización se combinan para generar riesgo. El análisis de los siniestros por edad muestra que las personas entre 30 y 59 años concentran la mayor cantidad de casos. No son un grupo tradicionalmente identificado como “vulnerable”, pero su exposición cotidiana —traslados laborales, cruces frecuentes, tiempos ajustados— los ubica en una posición de riesgo constante. Esta tendencia refleja que los incidentes no son aleatorios: se producen en grupos que interactúan diariamente con la infraestructura. </p> </article> <div class="viz-grid"> <iframe src="graficos/edades.html"></iframe> </div> <p>Un segundo punto ciego aparece en la dimensión temporal. Las franjas 15:00–17:59 y 21:00–23:59 concentran la mayor incidencia de siniestros. En la tarde, el retorno laboral y escolar genera cruces apresurados en vías que no siempre cuentan con barreras automáticas o señalización luminosa operativa. En la noche, la visibilidad disminuye y las advertencias son menos efectivas. En ambos casos, la infraestructura ferroviaria no compensa las limitaciones humanas del entorno. La línea visual de riesgo por hora —marcada por puntos de alta, media y baja incidencia— evidencia cómo la seguridad se fragmenta a lo largo del día.</p> </article> <iframe src="graficos/zona horaria.html"></iframe> <iframe src="graficos/dia de la semana.html"></iframe> </div> <article class="cronica"> <p>Estos patrones se explican en parte por el funcionamiento de los sistemas de control presentes en la red. El AUV, dependiente de comunicación manual entre maquinista y operador, y el CTC, automatizado pero susceptible a fallas eléctricas y vandalización de cables, presentan vulnerabilidades documentadas en informes de EFE y CONASET. La población que cruza las vías no percibe estas diferencias técnicas, pero sí experimenta sus efectos: demoras imprevistas, señales apagadas o barreras que no funcionan como deberían. La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados. Si bien las decisiones humanas —cruzar sin mirar, evadir barreras, subestimar la velocidad del tren— son un factor relevante, estas conductas se ven amplificadas cuando la señalización no es clara, está dañada o no existe. Allí se forma un punto ciego crítico: el sistema no previene comportamientos esperables en contextos de alta circulación. </p> 
+</article> </div> </section>
+
+<!-- =========================================================
+     METODOLOGÍA
+========================================================= -->
+<section id="metodologia" class="section metodo"> 
+<div class="section-inner"> <h2>Metodología y fuentes de datos</h2> 
+<p>Este proyecto cruza bases de datos de siniestros ferroviarios, registros de cruces oficiales y observación en terreno. Las visualizaciones se construyeron con herramientas como Altair y Leaflet, siguiendo el criterio de mantener gráficos simples y directos para responder preguntas específicas sobre seguridad ferroviaria.</p>
+<button class="btn-primario" onclick="window.open('https://github.com/josefamar/PROYECTO', '_blank')">
+ Ver repositorio </button> </div> </section>
+<div class="riel-deco"></div>
+
+<!-- =========================================================
+     EQUIPO
+========================================================= -->
+<section id="equipo" class="section equipo fade">
+    <div class="section-inner">
+        <h2>Equipo</h2>
+
+        <p><strong>Paloma Riquelme</strong> — Reportería, crónicas y diseño.</p>
+        <p><strong>Josefa Mariñanco</strong> — Visualización y análisis.</p>
+        <p><strong>Andrés Hernández</strong> — Datos y soporte técnico.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="riel-deco"></div>
+    <p>Gracias por viajar con nosotros 🚆</p>
+</footer>
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+
+<script src="tren.js"></script>
+
 <script>
-// Crear mapa estilo “Google Maps” pero minimalista
-var map = L.map('hero-map', {
-  zoomControl: true,
-  dragging: true,
-  scrollWheelZoom: true,
-  doubleClickZoom: true,
-  touchZoom: true
-}).setView([-33.6069, -70.7040], 14);
+document.addEventListener("DOMContentLoaded", () => {
 
-// Capa base
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  opacity: 0.45
-}).addTo(map);
+    const acc = [-33.5933, -70.6996];
 
-// Estaciones aproximadas del tramo
-var estaciones = [
-  [-33.4513, -70.6797],
-  [-33.4660, -70.6899],
-  [-33.4919, -70.6951],
-  [-33.5150, -70.6988],
-  [-33.5465, -70.7000],
-  [-33.5866, -70.6980],
-  [-33.5994, -70.7009],
-  [-33.6183, -70.7072],
-  [-33.6378, -70.7189],
-  [-34.1701, -70.7444]
-];
+    const mapa = L.map("mapa-san-bernardo").setView(acc, 16);
 
-L.polyline(estaciones, {
-  color: "#D90429",
-  weight: 5,
-  opacity: 0.85
-}).addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(mapa);
 
-// Estaciones como puntos
-estaciones.forEach(coord => {
-  L.circleMarker(coord, {
-    radius: 5,
-    fillColor: "#FFFFFF",
-    color: "#111827",
-    weight: 1,
-    fillOpacity: 1
-  }).addTo(map);
-});
-
-// Punto del accidente (estático)
-var accidente = [-33.6069, -70.7040];
-var accMarker = L.circleMarker(accidente, {
-  radius: 12,
-  fillColor: "#D90429",
-  color: "#FFFFFF",
-  weight: 3,
-  fillOpacity: 1
-}).addTo(map);
-
-// Toggle del panel al hacer clic
-accMarker.on("click", function() {
-  const panel = document.getElementById("hero-sidebar");
-
-  if (!panel) return;
-
-  // Si está visible → esconder
-  if (panel.classList.contains("show")) {
-    panel.classList.remove("show");
-    return;
-  }
-
-  // Si está oculto → mostrar y hacer zoom
-  panel.classList.add("show");
-
-  L.esri.basemapLayer("Imagery").addTo(map);
-  map.flyTo(accidente, 16, { duration: 1.5 });
+    L.circleMarker(acc, {
+        radius: 12,
+        fillColor: "#D90429",
+        color: "#fff",
+        weight: 3
+    }).addTo(mapa)
+    .bindPopup(`
+        <h3>Accidente San Bernardo (2024)</h3>
+        <img src="20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" style="width:100%;border-radius:8px;">
+        <p>Colisión entre tren de pruebas EFE y carga FEPASA.</p>
+    `);
 });
 </script>
+
 </body>
 </html>
