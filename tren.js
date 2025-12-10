@@ -1,54 +1,73 @@
-const sections = [
-    "inicio",
-    "san-bernardo",
-    "senializacion",
-    "territorio",
-    "patrones",
-    "metodologia",
-    "equipo"
-];
+// ================================================
+// TREN — NAVEGACIÓN SINCRONIZADA
+// ================================================
 
-const train = document.getElementById("train-icon");
-const stations = document.querySelectorAll(".station");
-const rail = document.querySelector(".pc-line");
+document.addEventListener("DOMContentLoaded", () => {
+    const stations = Array.from(document.querySelectorAll(".station"));
+    const train = document.getElementById("train-icon");
+    const rail = document.querySelector(".pc-line");
 
-stations.forEach(btn => {
-    btn.addEventListener("click", () => {
+    if (!stations.length || !train || !rail) return;
 
-        const step = parseInt(btn.dataset.step);
+    const sections = stations.map(btn => document.getElementById(btn.dataset.target));
+
+    const moveTrain = (index) => {
+        const total = stations.length - 1;
+        if (total <= 0) return;
         const width = rail.offsetWidth;
-
-        const x = (step / (sections.length - 1)) * width;
-
+        const x = (index / total) * width;
         train.style.transform = `translateX(${x}px)`;
+    };
 
-        stations.forEach(b => b.classList.remove("is-active"));
-        btn.classList.add("is-active");
+    const setActive = (index) => {
+        stations.forEach((b, i) => {
+            if (i === index) {
+                b.classList.add("is-active");
+            } else {
+                b.classList.remove("is-active");
+            }
+        });
+        moveTrain(index);
+    };
 
-        document.getElementById(btn.dataset.target).scrollIntoView({
-            behavior: "smooth"
+    // Click en estación → scroll + tren
+    stations.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+            const target = document.getElementById(btn.dataset.target);
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+            setActive(index);
         });
     });
-});
 
-window.addEventListener("scroll", () => {
+    // Scroll → detectar sección dominante
+    const observer = new IntersectionObserver(
+        (entries) => {
+            const visible = entries
+                .filter(e => e.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (!visible) return;
 
-    let activeIndex = 0;
+            const secId = visible.target.id;
+            const index = sections.findIndex(sec => sec && sec.id === secId);
+            if (index !== -1) {
+                setActive(index);
+            }
+        },
+        { threshold: 0.4 }
+    );
 
-    sections.forEach((id, i) => {
-        const sec = document.getElementById(id);
-        if (!sec) return;
-
-        const top = sec.offsetTop;
-        if (window.scrollY >= top - window.innerHeight * 0.4) {
-            activeIndex = i;
-        }
+    sections.forEach(sec => {
+        if (sec) observer.observe(sec);
     });
 
-    const width = rail.offsetWidth;
-    const x = (activeIndex / (sections.length - 1)) * width;
-    train.style.transform = `translateX(${x}px)`;
+    // Ajuste en resize
+    window.addEventListener("resize", () => {
+        const activeIndex = stations.findIndex(b => b.classList.contains("is-active"));
+        if (activeIndex >= 0) moveTrain(activeIndex);
+    });
 
-    stations.forEach(s => s.classList.remove("is-active"));
-    stations[activeIndex].classList.add("is-active");
+    // Estado inicial
+    setActive(0);
 });

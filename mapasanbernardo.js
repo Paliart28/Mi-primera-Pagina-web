@@ -1,59 +1,75 @@
-document.addEventListener("DOMContentLoaded", () => {
+// ===========================================================
+// MAPA SAN BERNARDO — VERSIÓN ANALÍTICA
+// ===========================================================
 
-    // Coordenadas reales del accidente
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("mapa-san-bernardo");
+    if (!container || typeof L === "undefined") return;
+
     const accidente = [-33.5933, -70.6996];
 
-    // Crear mapa
-    const mapa = L.map("mapa-san-bernardo", {
-        zoomControl: true,
-        scrollWheelZoom: true
-    }).setView(accidente, 16);
+    const cruceVehicular = [-33.59285, -70.70080];
+    const crucePeatonal = [-33.59390, -70.69860];
+    const zonaResidencial = [-33.59240, -70.69790];
+    const estacion = [-33.59440, -70.70180];
 
-    // Capa base estilo OpenStreetMap
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
-    }).addTo(mapa);
-
-    // POLILÍNEA DEL TRAMO (estilo parecido al ejemplo)
-    const tramo = [
-        [-33.5850, -70.7050],
-        [-33.5890, -70.7020],
-        [-33.5933, -70.6996],
-        [-33.5980, -70.6960],
-        [-33.6020, -70.6930]
+    const areaRiesgo = [
+        [-33.59200, -70.70180],
+        [-33.59450, -70.70140],
+        [-33.59480, -70.69800],
+        [-33.59210, -70.69810]
     ];
 
-    L.polyline(tramo, {
-        color: "#1E3A68",    // azul acero (tu paleta)
-        weight: 6,           // línea gruesa (igual al ejemplo)
-        opacity: 0.85
+    const mapa = L.map("mapa-san-bernardo", {
+        zoomControl: true
+    }).setView(accidente, 16);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap"
     }).addTo(mapa);
 
-    // MARCADOR circular tipo METRO SANTIAGO
-    const marcador = L.circleMarker(accidente, {
-        radius: 12,
-        fillColor: "#D90429",   // rojo alerta como el ejemplo
-        color: "#ffffff",
-        weight: 3,
-        fillOpacity: 1
-    }).addTo(mapa);
+    // Área crítica
+    L.polygon(areaRiesgo, {
+        color: "#D90429",
+        weight: 2,
+        fillOpacity: 0.08
+    }).addTo(mapa)
+      .bindPopup("Área crítica: convergencia de cruces, viviendas y maniobras ferroviarias.");
 
-    // POPUP profesional
-    marcador.bindPopup(`
-        <div style="max-width:230px">
-            <h4 style="margin:0 0 6px; font-family:'Poppins'; font-size:16px;">Accidente San Bernardo (2023)</h4>
-            <p style="font-size:13px; margin:0;">
-                Colisión entre convoy de pasajeros y de carga.
-                <br><br><strong>Click de nuevo para cerrar.</strong>
-            </p>
-        </div>
-    `);
+    const add = (coord, color, html) => {
+        L.circleMarker(coord, {
+            radius: 8,
+            fillColor: color,
+            color: "#FFFFFF",
+            weight: 2,
+            fillOpacity: 1
+        }).addTo(mapa).bindPopup(html);
+    };
 
-    // efecto de apertura/cierre igual al de ejemplo
-    marcador.on("click", () => {
-        if (mapa.hasLayer(marcador)) {
-            marcador.openPopup();
-        }
-    });
+    add(
+        accidente,
+        "#D90429",
+        "<h3>Accidente San Bernardo (2024)</h3><p>Colisión entre tren de pruebas EFE y tren de carga FEPASA entre Lo Blanco y Lo Herrera. Dos maquinistas fallecidos y nueve heridos.</p>"
+    );
+    add(
+        cruceVehicular,
+        "#F2994A",
+        "<strong>Cruce vehicular:</strong> alto flujo y visibilidad limitada en horas punta."
+    );
+    add(
+        crucePeatonal,
+        "#F6E05E",
+        "<strong>Cruce peatonal:</strong> uso cotidiano de residentes y escolares del sector."
+    );
+    add(
+        zonaResidencial,
+        "#2E7D5B",
+        "<strong>Barrio residencial:</strong> viviendas a pocos metros de la vía."
+    );
+    add(
+        estacion,
+        "#1E3A68",
+        "<strong>Estación cercana:</strong> nodo de maniobras y tráfico ferroviario."
+    );
 });
